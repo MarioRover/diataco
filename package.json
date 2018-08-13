@@ -1,0 +1,41 @@
+{
+  "name": "artakhe",
+  "version": "1.0.0",
+  "description": "Artakhe Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Hossein Akbari",
+  "license": "ISC",
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "auto-bind": "^1.2.1",
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^6.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-ejs-layouts": "^2.4.0",
+    "express-recaptcha": "^4.0.2",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.3.0",
+    "mongoose": "^5.2.5",
+    "nodemon": "^1.18.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "unique-string": "^1.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarioRover/Artakhe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MarioRover/Artakhe/issues"
+  },
+  "homepage": "https://github.com/MarioRover/Artakhe#readme"
+}
