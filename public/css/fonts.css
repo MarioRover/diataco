@@ -1,3 +1,4 @@
+/* ///////////IRAN Sans/////////////// */
 @font-face {
   font-family: 'iransans';
   src: url('../fonts/iransans/eot/IRANSansWeb_Bold.eot') format('eot'), /* IE6�8 */
@@ -48,4 +49,31 @@
   url('../fonts/iransans/woff/IRANSansWeb.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
   url('../fonts/iransans/ttf/IRANSansWeb.ttf') format('ttf');
   font-weight: normal;
+}
+/* ///////////Vazir/////////// */
+@font-face {
+  font-family: Vazir;
+  src: url('../fonts/vazir/Vazir.eot');
+  src: url('../fonts/vazir/Vazir.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/vazir/Vazir.woff') format('woff'),
+  url('../fonts/vazir/Vazir.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url('../fonts/vazir/Vazir-Bold.eot');
+  src: url('../fonts/vazir/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/vazir/Vazir-Bold.woff') format('woff'),
+  url('../fonts/vazir/Vazir-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url('../fonts/vazir/Vazir-Light.eot');
+  src: url('../fonts/vazir/Vazir-Light.eot?#iefix') format('embedded-opentype'), 
+  url('../fonts/vazir/Vazir-Light.woff') format('woff'), 
+  url('../fonts/vazir/Vazir-Light.ttf') format('truetype');
+  font-weight: 300;
 }
