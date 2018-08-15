@@ -75,6 +75,12 @@ Artakhe
             </div>
         </div>
     </div>
+    <div class="rellax layer-1" data-rellax-speed="0">
+        <img class="wrap100" src="/img/layer-1.png">
+    </div>
+    <div class="rellax layer-2" data-rellax-speed="-5">
+        <img class="wrap100" src="/img/layer-2.png">
+    </div>
 </section>
 <section class="wrapper aboutUs grid align-center">
     <div class="container" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
@@ -407,4 +413,11 @@ Artakhe
 <script src="/plugin/home/particleEffectButton/demo.js"></script>
 <script src="/plugin/home/owlcarousel/owl.carousel.min.js"></script>
 <script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
+<script src="/js/rellax.js"></script>
+<script>
+    var rellax = new Rellax('.rellax', {
+        callback: function (position) {
 
+        }
+    })
+</script>

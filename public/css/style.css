@@ -2,7 +2,6 @@ body {
   background-color: #000;
 }
 main {
-  margin-bottom: 21.625rem;
   position: relative;
   z-index: 2;
 }
@@ -41,10 +40,17 @@ main {
   height: 36em;
   margin-top: -7em;
   position: relative;
-  background-image: url('/img/reactjs-wallpaper.jpg');
-  background-position: 51% center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #200003;
+}
+.homeSlider .layer-1 {
+  position: absolute;
+  width: 100% !important;
+  z-index: 2;
+}
+.homeSlider .layer-2 {
+  position: absolute;
+  width: 100% !important;
+  z-index: 1;
 }
 .homeSlider .wrap {
   width: 100%;
@@ -55,6 +61,7 @@ main {
 .homeSlider .wrap.down {
   display: none;
   bottom: 0;
+  z-index: 3;
 }
 .homeSlider .wrap2,
 .header-site .wrap2 {
@@ -70,13 +77,13 @@ main {
   font-family: 'iransans';
 }
 .homeSlider .wrap2 .navbar a.active {
-  color: #93cb52 !important;
+  color: #f9cb52 !important;
 }
 .homeSlider .wrap2 .navbar a:hover,
 .homeSlider .wrap2 .navbar a:focus,
 .homeSlider .wrap2 .social a i:hover,
 .homeSlider .wrap2 .social a i:focus {
-  color: #93cb52;
+  color: #f9cb52;
 }
 .homeSlider .wrap2 .social a {
   margin: 0 .5em;
@@ -284,9 +291,10 @@ main {
   font-size: 1.3em;
 }
 .aboutUs{
-  background-color: #fff;
+  background-color: #200003;
   padding-bottom: 0;
-  color: #333;
+  color: #fff;
+  z-index: 15;
 }
 .aboutUs .logo {
   width: 5em;
@@ -430,8 +438,6 @@ main {
 .footer{
   width: 100%;
   min-height: 21.625rem;
-  position: fixed;
-  bottom: 0;
   background-image: url('/img/footer-image.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -450,9 +456,6 @@ main {
 }
 .footer span{
   text-align: center;
-}
-.footer-1 {
-  margin-top: 4em;
 }
 .footer-1 .header-section h3 {
   font-family: Vazir;
