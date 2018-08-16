@@ -13,11 +13,17 @@ Artakhe
             <a href="/">
             <span>A</span>rtakhe</a>
         </div>
-        <div class="grid__item theme-1">
-            <button class="action"></button>
-            <button class="particles-button grid align-center-middle">
-                <span>ورود</span>
-            </button>
+        <div class="grid-x-no align-middle">
+            <div class="grid__item theme-1">
+                <button class="action"></button>
+                <button class="particles-button grid align-center-middle">
+                    <span>ورود</span>
+                </button>
+            </div>
+            <div class="light-mode day grid align-center-middle">
+                <i class="sun fas fa-sun"></i>
+                <i class="moon fas fa-moon"></i>
+            </div>
         </div>
         <div class="mobile-icon" id="nav-icon">
             <span></span>
@@ -76,10 +82,12 @@ Artakhe
         </div>
     </div>
     <div class="rellax layer-1" data-rellax-speed="0">
-        <img class="wrap100" src="/img/layer-1.png">
+        <img class="wrap100 day" src="/img/layer-1.png">
+        <img class="wrap100 night" style="display:none" src="/img/layer-1.night.png">
     </div>
     <div class="rellax layer-2" data-rellax-speed="-5">
-        <img class="wrap100" src="/img/layer-2.png">
+        <img class="wrap100 day" src="/img/layer-2.png">
+        <img class="wrap100 night" style="display:none" src="/img/layer-2.night.png">
     </div>
 </section>
 <section class="wrapper aboutUs grid align-center">
