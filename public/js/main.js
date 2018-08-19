@@ -33,43 +33,6 @@ $.each(tabNavs , (tabIndex , tabNav) => {
     $(tabContent[tabIndex]).addClass('active');
   });
 })
-////////Light Mode///////////
-let lightMode = $('.light-mode');
-let sunIcon = $('.light-mode .sun');
-let moonIcon = $('.light-mode .moon');
-let homeSlider = $('.homeSlider');
-let aboutUs = $('.aboutUs');
-let layer1 = $('.homeSlider .layer-1');
-let layer2 = $('.homeSlider .layer-2');
-
-$(sunIcon).css('display', 'block');
-
-$(lightMode).click((e) => { 
-  e.preventDefault();
-  if(! $(lightMode).hasClass('night')) {
-    $(lightMode).removeClass('day');
-    $(lightMode).addClass('night');
-    $(sunIcon).css('display', 'none');
-    $(moonIcon).css('display', 'block');
-    $(homeSlider).css('background-color', '#0e1b23');
-    $(aboutUs).css('background-color', '#0e1b23');
-    $('.homeSlider .layer-1 .day').css('display' , 'none');
-    $('.homeSlider .layer-2 .day').css('display', 'none');
-    $('.homeSlider .layer-1 .night').css('display', 'block');
-    $('.homeSlider .layer-2 .night').css('display', 'block');
-  } else {
-    $(lightMode).removeClass('night');
-    $(lightMode).addClass('day');
-    $(sunIcon).css('display', 'block');
-    $(moonIcon).css('display', 'none');
-    $(homeSlider).css('background-color', '#0e0001');
-    $(aboutUs).css('background-color', '#0e0001');
-    $('.homeSlider .layer-1 .day').css('display', 'block');
-    $('.homeSlider .layer-2 .day').css('display', 'block');
-    $('.homeSlider .layer-1 .night').css('display', 'none');
-    $('.homeSlider .layer-2 .night').css('display', 'none');
-  }
-});
 
 
 
