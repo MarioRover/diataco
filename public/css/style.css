@@ -58,7 +58,8 @@ main {
   height: 36em;
   margin-top: -7em;
   position: relative;
-  background-color: #200003;
+  background-color: #0e0001;
+  z-index: -10;
 }
 .homeSlider .layer-1 {
   position: absolute;
