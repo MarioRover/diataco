@@ -8,7 +8,7 @@ router.use('/admin', adminRouter);
 const homeRouter = require('./home');
 router.use('/', homeRouter);
 // Page not Found
-router.use((req , res) => {
+router.get('*' ,(req , res) => {
   res.status(404).render('pageNotFound');
 });
 module.exports = router;
