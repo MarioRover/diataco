@@ -4,6 +4,8 @@ body {
 main {
   position: relative;
   z-index: 2;
+  width: 100%;
+  height: 100%;
 }
 .header-section {
   width: 100%;
@@ -1042,4 +1044,51 @@ main {
   #card {
     margin-bottom: 0;
   }
+}
+/* ///// Page Not Found /////// */
+.page-not-found {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 52%;
+}
+.page-not-found h4 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2em;
+}
+.page-not-found .btn-wrap a {
+  overflow: hidden;
+  width: 7em;
+  height: 2.5em;
+  margin: 0 10px;
+  border-radius: 7px;
+  background-color: #864031;
+  -webkit-transition: transform 0.3s linear;
+  -moz-transition: transform 0.3s linear;
+  -ms-transition: transform 0.3s linear;
+  transition: transform 0.3s linear;
+}
+.page-not-found .btn-wrap a:hover {
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+.page-not-found .btn-wrap a span {
+  color: #fff;
+  font-weight: 300;
+}
+#canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url('/img/404.png');
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
