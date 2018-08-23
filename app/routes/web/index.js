@@ -11,4 +11,5 @@ router.use('/', homeRouter);
 router.get('*' ,(req , res) => {
   res.status(404).render('pageNotFound');
 });
+
 module.exports = router;
