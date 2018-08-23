@@ -36,6 +36,16 @@ $.each(tabNavs , (tabIndex , tabNav) => {
     $(tabContent[tabIndex]).addClass('active');
   });
 })
+//////////// PreLoader //////////////
+$(window).preloader({
+  selector: '#preloader',
+  type: 'document',
+  removeType: 'fade',
+  fadeDuration: 1000,
+  delay: 0
+});
+//////AOS////////
+AOS.init();
 
 
 
