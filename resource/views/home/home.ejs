@@ -13,11 +13,17 @@ Artakhe
             <a href="/">
             <span>A</span>rtakhe</a>
         </div>
-        <div class="grid-x-no align-middle">
+        <div class="btn-wrap grid-x-no align-middle">
             <div class="grid__item theme-1">
                 <button class="action"></button>
-                <button class="particles-button grid align-center-middle">
+                <button class="particles-button grid align-center-middle" id="login">
                     <span>ورود</span>
+                </button>
+            </div>
+            <div class="grid__item theme-1">
+                <button class="action"></button>
+                <button class="particles-button grid align-center-middle" id="register">
+                    <span>ثبت نام</span>
                 </button>
             </div>
         </div>
@@ -34,8 +40,8 @@ Artakhe
 <section class="mobile-nav">
     <ul>
         <li><a href="/" class="active">خانه</a></li>
-        <li><a href="#">وب سایت</a></li>
-        <li><a href="#">اپلیکیشن</a></li>
+        <li><a href="/website">وب سایت</a></li>
+        <li><a href="/application">اپلیکیشن</a></li>
         <li><a href="#">سئو (بهینه سازی)</a></li>
         <li><a href="#">وبلاگ</a></li>
         <li><a href="#">درباره ما</a></li>
@@ -43,10 +49,10 @@ Artakhe
     </ul>
     <div class="wrapper btn-wrap grid align-left">
         <div class="grid-x-no">
-            <a href="#" class="grid align-center-middle">
+            <a href="/auth/login" class="grid align-center-middle">
                 <span>ورود</span>
             </a>
-            <a href="#" class="grid align-center-middle">
+            <a href="/auth/register" class="grid align-center-middle">
                 <span>
                     ثبت نام
                 </span>

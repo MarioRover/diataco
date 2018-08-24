@@ -49,6 +49,18 @@ window.addEventListener('load' , function (event) {
 })
 //////AOS////////
 AOS.init();
-
-
+/////// Header Buttons////////
+$('.particles-button#login').click(function (e) {
+  e.preventDefault();
+  setTimeout(() => {
+    window.location = '/auth/login';
+  } , 1500);
+});
+$('.particles-button#register').click(function (e) {
+  e.preventDefault();
+  setTimeout(() => {
+    window.location = '/auth/register';
+  }, 1500);
+});
+/////////////////
 
