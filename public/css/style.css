@@ -414,7 +414,7 @@ main {
 .ability .item .content h4 {
   font-size: 17px;
   margin-bottom: 7px;
-  color: #a3e05c;
+  color: #f9cb52;
   font-weight: 400;
 }
 .ability .item .content p {
@@ -594,9 +594,9 @@ main {
   padding-top: 40px;
 }
 .view-all-news a{
-  color: white;
+  color: #333;
   padding: 12px;
-  background-color: #a3e05c;
+  background-color: #f9cb52;
   border: 1px solid #a3e05c;
   font-size: 14px;
   font-weight: 200;
@@ -609,6 +609,7 @@ main {
 .view-all-news a:hover{
   background: none;
   border: 1px solid;
+  color: #fff;
 }
 
 .blog-card {
@@ -954,13 +955,13 @@ main {
   border-radius: 5px;
 }
 #card #front #social-bar a:hover {
-  color: #262626;
+  color: #f9cb52;
   background: rgba(255, 255, 255, 0.3);
   -webkit-transition: .25s ease-in-out;
   -moz-transition: .25s ease-in-out;
   -ms-transition: .25s ease-in-out;
   -o-transition: .25s ease-in-out;
-  transition: .25s ease-in-out;
+  transition: .25s ease-in-out; 
 }
 #card #back {
   -webkit-transform: rotateY(180deg);
@@ -1066,7 +1067,7 @@ main {
   height: 2.5em;
   margin: 0 10px;
   border-radius: 7px;
-  background-color: #864031;
+  background-color: #f9cb52;
   -webkit-transition: transform 0.3s linear;
   -moz-transition: transform 0.3s linear;
   -ms-transition: transform 0.3s linear;
@@ -1079,7 +1080,7 @@ main {
   transform: translateY(-10px);
 }
 .page-not-found .btn-wrap a span {
-  color: #fff;
+  color: #333;
   font-weight: 300;
 }
 #canvas {
