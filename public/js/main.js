@@ -36,17 +36,6 @@ $.each(tabNavs , (tabIndex , tabNav) => {
     $(tabContent[tabIndex]).addClass('active');
   });
 })
-//////////// PreLoader //////////////
-window.addEventListener('load' , function (event) {
-  console.log('page is loaded');
-  $(window).preloader({
-    selector: '#preloader',
-    type: 'document',
-    removeType: 'fade',
-    fadeDuration: 1000,
-    delay: 0
-  });
-})
 //////AOS////////
 AOS.init();
 /////// Header Buttons////////
@@ -62,5 +51,10 @@ $('.particles-button#register').click(function (e) {
     window.location = '/auth/register';
   }, 1500);
 });
-/////////////////
+////////Rellax/////////
+var rellax = new Rellax('.rellax', {
+  callback: function (position) {
+
+  }
+})
 

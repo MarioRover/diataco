@@ -1,8 +1,10 @@
 const controller = require('./../controller');
 
 class adminController extends controller {
-  showPage(req, res) {
-    res.json('Admin Page');
+  dashboard(req, res) {
+    res.render('admin/dashboard' , {
+      title : 'پنل مدیریت'
+    });
   }
 }
 

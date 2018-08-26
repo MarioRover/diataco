@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title><%- title || Artakhe  %></title>
+  <title><%- title || Artakhe %></title>
   <%- include(viewPath('layout/favicon')) %>
   <link rel="stylesheet" href="/css/fonts.css">
   <link rel="stylesheet" href="/css/fontawesome-all.css">
   <link rel="stylesheet" href="/css/setting.css">
   <link rel="stylesheet" href="/plugin/preloader/preloader.css">
-  <link rel="stylesheet" href="/css/style.css">
-  <%- style %>  
+  <link rel="stylesheet" href="/plugin/admin/admin.css">
+  <%- style %>
 </head>
+
 <body>
   <main>
     <div id="preloader">
@@ -20,16 +21,18 @@
         <div id="preloader-inner"></div>
       </div>
     </div>
-    <%- body %>
+    <app-layout class="admin-panel">
+      <div class="wrapper">
+        <%- include(viewPath('admin/layout/sidebar')) -%>
+        <%- body %>
+      </div>
+    </app-layout>
+
   </main>
-  <footer>
-    <%- defineContent('footer') %>
-  </footer>
   <script src="/js/Jquery-3.3.1.js"></script>
-  <script src="/js/aos.js"></script>
   <script src="/plugin/preloader/jquery.preloader.min.js"></script>
   <script src="/plugin/preloader/preloader.js"></script>
   <%- script %>
-  <script src="/js/main.js"></script>
+  <script src="/plugin/admin/admin.js"></script>
 </body>
 </html>

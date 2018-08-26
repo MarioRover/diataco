@@ -1,5 +1,5 @@
 const path = require('path');
-const expressLayouts = require('express-ejs-layouts');
+const expressLayouts = require('express-ejs-layouts'); 
 
 module.exports = {
   public_dir: 'public',
@@ -7,8 +7,8 @@ module.exports = {
   view_engine: 'ejs',
   ejs: {
     expressLayouts,
-    extractScript: false,
-    extractStyle: false,
+    extractScripts: true,
+    extractStyles: true,
     master: 'home/master'
   }
 }
