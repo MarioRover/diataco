@@ -101,9 +101,7 @@ main {
   color: #f9cb52 !important;
 }
 .homeSlider .wrap2 .navbar a:hover,
-.homeSlider .wrap2 .navbar a:focus,
-.homeSlider .wrap2 .social a i:hover,
-.homeSlider .wrap2 .social a i:focus {
+.homeSlider .wrap2 .social a i:hover {
   color: #f9cb52;
 }
 .homeSlider .wrap2 .social a {

@@ -1,15 +1,28 @@
-let collTabs = $('.coll-tab');
+let rows = $('.sidebar .row');
 
-$.each(collTabs , (collIndex, collTab) => { 
-  $(collTab).click(() => { 
-    if (! $(collTab).next().hasClass('show') ) {
-      //Show Collapse
-      $(collTab).next().addClass('show');
-      $(collTab).find('.caret').addClass('rotate');
-    } else {
-      //Hidden Collapse
-      $(collTab).next().removeClass('show');
-      $(collTab).find('.caret').removeClass('rotate');
-    }
+$.each(rows, function (rowIndex, row) { 
+  $(row).click(function () { 
+    
+    if($(this).hasClass('coll-tab') && ! $(this).hasClass('open')) {
+
+      if(! $(this).next().hasClass('open')) {
+        $(this).addClass('open');
+        $(this).next().addClass('show');
+      } else {
+        $(this).removeClass('open');
+        $(this).next().removeClass('show');
+      }
+    } else if ($(this).hasClass('coll-tab') && $(this).hasClass('open')) {
+      $(this).removeClass('open');
+      $(this).next().removeClass('show');
+    }    
   });
+  if($(row).hasClass('active')) {
+    $(this).parent().prev().addClass('open');
+    $(this).parent().addClass('show');
+  }
 });
+
+function activeRow(rowName) {
+  $(`.sidebar .row.${rowName}`).addClass('active');
+}

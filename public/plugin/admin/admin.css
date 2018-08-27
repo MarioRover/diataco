@@ -26,7 +26,7 @@
   right: 0;
   z-index: 2;
   width: 260px;
-  background-image: url('/img/slider3.jpg');
+  background-image: url('/img/sidebar-wallpaper.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -80,7 +80,8 @@
   border-radius: 50%;
 }
 .sidebar .user .user-info ,
-.sidebar .collapse .row span {
+.sidebar .collapse .row span,
+.sidebar .navbar .row span {
   font-size: 13px;
   font-weight: 300;
 }
@@ -102,7 +103,7 @@
   -ms-transition: all .3s linear;
   transition: all .3s linear;
 }
-.sidebar .caret.rotate {
+.sidebar .row.coll-tab.open .caret {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
@@ -114,10 +115,8 @@
   overflow: hidden;
   transition: height .3s linear;
 }
-.userColl.show {
-  height: 143px;
-}
-.sidebar .collapse .row i {
+.sidebar .collapse .row i,
+.sidebar .navbar .row i {
   font-size: 18px;
   margin-left: 32px;
 }
@@ -125,13 +124,54 @@
   padding: 10px 20px;
   margin-bottom: 10px;
   border-radius: 4px;
-  color: #fae8d0;
+  /* color: #fae8d0; */
+  color: #f6ffb8;
 }
 .sidebar .collapse .row:hover {
   background-color: rgba(200, 200, 200, .2);
   color: #fff;
 }
-
+.sidebar .collapse.userColl .row:nth-child(2) {
+  padding: 10px 13px;
+}
+/* ////// Nav Bar ///// */
+.sidebar .navbar {
+  padding: 20px 10px;
+  overflow: hidden;
+}
+.sidebar .navbar .row {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+.sidebar .navbar .row:hover {
+  background-color: rgba(200,200,200,.2);
+}
+.sidebar .navbar .row.open {
+  background-color: rgba(200, 200, 200, .2);
+}
+.sidebar .row.active,
+.sidebar .row.active:hover {
+  background-color: #fff;
+}
+.sidebar .row.active i,
+.sidebar .row.active span,
+.sidebar .row.active .caret {
+  color: #000;
+}
+.sidebar .navbar .row .caret {
+  left: 20px;
+}
+.sidebar .navbar .collapse {
+  padding: 0;
+}
+/* ////// Setting Collapse//////// */
+.userColl.show {
+  height: 143px;
+}
+.archiveColl.show {
+  height: 143px;
+}
 /* ////////// Main Panel //////////// */
 .main-panel {
   position: relative;
