@@ -2,10 +2,23 @@
 <link rel="stylesheet" href="/css/aos.css">
 <link rel="stylesheet" href="/plugin/home/owlcarousel/owl.carousel.min.css">
 <link rel="stylesheet" href="/plugin/home/owlcarousel/owl.theme.default.min.css">
-
+<script src="/js/jparticle.jquery.min.js"></script>
 <%- include(viewPath('home/layout/header'))  %>
-<section class="homeSlider grid align-center">
-    
+<section class="homeSlider grid align-center-middle">
+    <div class="grid align-center-middle">
+    <div class="align-center-middle item-1">
+        <i class="fa fa-desktop-alt"></i>
+        <h3>اگر میخواهید یک وب سایت معمولی داشته باشید، ما اصلاً گزینه خوبی نیستیم!</h3><br>
+ </div>
+    <div class="align-center-middle item-2">
+    <i class="fal fa-mobile"></i>
+    <h3>اگر میخواهید یک وب سایت معمولی داشته باشید، ما اصلاً گزینه خوبی نیستیم!</h3><br>
+</div>
+    <div class="align-center-middle item-3">
+    <i class="fab fa-google"></i>
+    <h3>اگر میخواهید یک وب سایت معمولی داشته باشید، ما اصلاً گزینه خوبی نیستیم!</h3><br>
+</div>
+  </div>
 </section>
 <section class="wrapper aboutUs grid align-center">
     <div class="container" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
@@ -307,27 +320,37 @@
         </div>
     </div>
 </section>
-<section class="footer">
-    <div class="wrap footer-1 grid align-center">
-        <div class="container grid-y align-center-middle">
-            <div class="header-section">
-                <h3>آینده اینترنتی خود را به ما بسپارید</h3>
-            </div>
-            <div class="social grid-x-no align-middle">
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
+<section class="footer grid grid-y align-center-middle parallax" >
+    <div class="container  grid-x align-justify align-middle" style="position: absolute;">
+    <div class="social grid-x-no align-middle">
+        
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        
+    </div>
+    <div><img src="/img/artakhe-logo.png" width="100"></div>
+    <div><p style="direction:ltr"><span style="color:grey">2018 ©</span> Diata company</p></div>
     </div>
     <div class="wrap footer-2 grid align-center">
-        <div class="container grid-x align-justify">
-            <p>طراحی و پیاده سازی با <i class="fa fa-heart"></i> توسط <a>ارتاخه</a></p>
-            <p>تمامی حقوق این وب سایت متعلق به شرکت است</p>
-        </div>
-    </div> 
+    <div class="container grid-x align-justify">
+        <p>طراحی و پیاده سازی با <i class="fa fa-heart"></i> توسط <a>ارتاخه</a></p>
+        <p>تمامی حقوق این وب سایت متعلق به شرکت است</p>
+    </div>
+</div> 
 </section>
+<script>
+$(function(){
+    $(".footer").jParticle({
+        width: null,
+        particlesNumber: 55,
+        speed: 50,
+        background: 'none',
+
+        color: "#fff"
+    });
+});
+</script>
 <script src="/plugin/home/owlcarousel/owl.carousel.min.js"></script>
 <script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
