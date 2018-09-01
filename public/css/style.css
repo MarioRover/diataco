@@ -20,6 +20,8 @@ main {
 .header-site {
   width: 100%;
   height: 4.5em;
+  position: absolute;
+  z-index: 9;
   background-color: rgba(0, 0, 0, 0.6);
 }
 .header-site .container {
@@ -60,7 +62,7 @@ main {
 .navbar a {
   font-size: 14px;
   margin: 0 1em;
-  font-weight: bold;
+  font-weight: 300;
 }
 .navbar a:hover,
 .mobile-nav ul li:hover a {
@@ -188,6 +190,12 @@ main {
   width: 100%;
   z-index: 9;
   direction: rtl;
+}
+.mobile-nav ul{
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+  margin-top: 63px;
 }
 .mobile-nav.open {
   display: block;
