@@ -1013,7 +1013,7 @@ main {
 	position: absolute;
   display: block;
   text-align: center;
-  width: 50%;
+  width: 95%;
   color: white;
 	animation-duration: 30s;
 	animation-timing-function: ease-in-out;
@@ -1048,20 +1048,18 @@ main {
 
 @keyframes anim-1 {
 	0%, 8.3% { left: -100%; opacity: 0; }
-  8.3%,25% { left: 25%; opacity: 1; }
-  33.33%, 100% { left: 110%; opacity: 0; }
+  8.3%,25% { left: 0%; opacity: 1; }
+  33.33%, 100% { left: 100%; opacity: 0; }
 }
 
 @keyframes anim-2 {
 	0%, 33.33% { left: -100%; opacity: 0; }
-  41.63%, 58.29% { left: 25%; opacity: 1; }
-  66.66%, 100% { left: 110%; opacity: 0; }
+  41.63%, 58.29% { left: 0%; opacity: 1; }
+  66.66%, 100% { left: 100%; opacity: 0; }
 }
 
 @keyframes anim-3 {
 	0%, 66.66% { left: -100%; opacity: 0; }
-  74.96%, 91.62% { left: 25%; opacity: 1; }
-  100% { left: 110%; opacity: 0; }
+  74.96%, 91.62% { left: 0%; opacity: 1; }
+  100% { left: 100%; opacity: 0; }
 }
-
-/* particle JS */
