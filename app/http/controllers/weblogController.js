@@ -1,14 +1,14 @@
 const controller = require('./controller');
 
-class aboutUs extends controller {
+class weblogController extends controller {
   async showPage(req, res, next) {
     try {
-      res.render('home/website', {
-        title: 'وب سایت'
+      res.render('home/weblog', {
+        title: 'وبلاگ'
       });
     } catch (error) {
       next(error);
     }
   }
 }
-module.exports = new aboutUs();
+module.exports = new weblogController();

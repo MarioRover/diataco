@@ -1,10 +1,14 @@
 const controller = require('./controller');
 
 class homeController extends controller {
-  showPage(req , res) {
-    res.render('home/home' , {
-      title : 'Artakhe'
-    });
+  async showPage(req , res) {
+    try {
+      res.render('home/home', {
+        title: 'Diata'
+      });
+    } catch (error) {
+      next(error);
+    }
   }
 }
 

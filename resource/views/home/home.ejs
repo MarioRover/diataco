@@ -1,91 +1,11 @@
 <link rel="stylesheet" href="/plugin/home/homeSlider/css/homeSlider.css">
-<link rel="stylesheet" href="/plugin/home/particleEffectButton/particleEffectButton.css">
 <link rel="stylesheet" href="/css/aos.css">
 <link rel="stylesheet" href="/plugin/home/owlcarousel/owl.carousel.min.css">
 <link rel="stylesheet" href="/plugin/home/owlcarousel/owl.theme.default.min.css">
-<section class="header-site grid align-center-middle">
-    <div class="container grid-x-no align-justify align-middle">
-        <div class="logo">
-            <a href="/">
-            <span>A</span>rtakhe</a>
-        </div>
-        <div class="btn-wrap grid-x-no align-middle">
-            <div class="grid__item theme-1">
-                <button class="action"></button>
-                <button class="particles-button grid align-center-middle" id="login">
-                    <span>ورود</span>
-                </button>
-            </div>
-            <div class="grid__item theme-1">
-                <button class="action"></button>
-                <button class="particles-button grid align-center-middle" id="register">
-                    <span>ثبت نام</span>
-                </button>
-            </div>
-        </div>
-        <div class="mobile-icon" id="nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</section>
-<section class="mobile-nav">
-    <ul>
-        <li><a href="/" class="active">خانه</a></li>
-        <li><a href="/website">وب سایت</a></li>
-        <li><a href="/application">اپلیکیشن</a></li>
-        <li><a href="#">سئو (بهینه سازی)</a></li>
-        <li><a href="#">وبلاگ</a></li>
-        <li><a href="#">درباره ما</a></li>
-        <li><a href="#">تماس با ما</a></li>
-    </ul>
-    <div class="wrapper btn-wrap grid align-left">
-        <div class="grid-x-no">
-            <a href="/auth/login" class="grid align-center-middle">
-                <span>ورود</span>
-            </a>
-            <a href="/auth/register" class="grid align-center-middle">
-                <span>
-                    ثبت نام
-                </span>
-            </a>
-        </div>
-    </div>
-</section>
+
+<%- include(viewPath('home/layout/header'))  %>
 <section class="homeSlider grid align-center">
-    <div class="container">
-        <div class="wrap down grid align-middle">
-            <div class="wrap2 grid-x-no align-justify align-middle">
-                <div class="navbar grid-x-no align-middle">
-                    <a href="/" class="active">خانه</a>
-                    <a href="#">وب سایت</a>
-                    <a href="#">اپلیکیشن</a>
-                    <a href="#">سئو (بهینه سازی)</a>
-                    <a href="#">وبلاگ</a>
-                    <a href="#">درباره ما</a>
-                    <a href="#">تماس با ما</a>
-                </div>
-                <div class="social grid-x-no align-middle">
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="rellax layer-1" data-rellax-speed="0">
-        <img class="wrap100 day" src="/img/layer-1.png">
-    </div>
-    <div class="rellax layer-2" data-rellax-speed="-3">
-        <img class="wrap100 day" src="/img/layer-2.png">
-    </div>
-    <div class="color-helper"></div>
+    
 </section>
 <section class="wrapper aboutUs grid align-center">
     <div class="container" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
@@ -409,9 +329,5 @@
         </div>
     </div> 
 </section>
-<script src="/plugin/home/particleEffectButton/anime.min.js"></script>
-<script src="/plugin/home/particleEffectButton/particles.js"></script>
-<script src="/plugin/home/particleEffectButton/demo.js"></script>
 <script src="/plugin/home/owlcarousel/owl.carousel.min.js"></script>
 <script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
-<script src="/js/rellax.js"></script>

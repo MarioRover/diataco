@@ -6,5 +6,6 @@ module.exports = {
   port : process.env.PORT,
   database,
   layout,
-  session
+  session,
+  debug: false
 }

@@ -1,0 +1,17 @@
+<section class="error-stack grid align-center-middle">
+  <div class="container grid-y">
+    <div class="row grid-x-no align-middle"> 
+      <h6>Error Message</h6>
+      <p><%= message %></p>
+    </div>
+    <div class="row grid-x-no align-middle">
+      <h6>Status Code : </h6>
+      <p><%= statusCode %></p>
+    </div>
+    <pre>
+      <code class="html">
+        <%= stack %>
+      </code>
+    </pre>
+  </div>
+</section>

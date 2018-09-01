@@ -12,21 +12,22 @@ main {
   text-align: center;
 }
 .header-section h3 {
-  color: #fff;
+  color: #000;
   font-size: 18px;
   font-weight: bold;
 }
 /* /////////Header Site////// */
 .header-site {
   width: 100%;
-  height: 5em;
-  background-color: #bfd5e3;
+  height: 4.5em;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .header-site .container {
   height: 100%;
 }
-.header-site .btn-wrap .grid__item:last-child {
-  margin-right: 10px;
+.header-site .navbar {
+  display: none;
+  color: #fff;
 }
 .header-site .logo {
   z-index: 10;
@@ -37,145 +38,53 @@ main {
   font-family: sans-serif;
 }
 .header-site .logo a span {
-  color: #f9cb52;
+  color: #fff;
   font-size: 28px;
-}
-.header-site .grid__item {
-  display: none;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
 }
 /* //////////////Home Slider///////////// */
 .homeSlider {
   width: 100%;
-  height: 19em;
+  /* height: 40em; */
+  min-height: 31em;
+  z-index: 2;
   overflow: hidden;
   position: relative;
-  background-color: #bfd5e3;
-  z-index: -10;
+  background-image: url("/img/web-designing-wallpaper.jpg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 10px 20px rgba(26, 26, 26, 0.5);
 }
-.homeSlider .layer-1 {
-  position: absolute;
-  z-index: 2;
-}
-.homeSlider .layer-2 {
-  position: absolute;
-  z-index: 1;
-}
-.homeSlider .layer-1,
-.homeSlider .layer-2 {
-  width: 40em;
-}
-.color-helper {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  background-color: #0e1b23;
-  width: 100%;
-  height: 5em;
-  z-index: 1;
-}
-.homeSlider .wrap {
-  width: 100%;
-  height: 5em;
-  position: absolute;
-  color: #fff;
-}
-.homeSlider .wrap.down {
-  display: none;
-  bottom: 0;
-  z-index: 3;
-}
-.homeSlider .wrap2,
-.header-site .wrap2 {
-  width: 100%;
-}
-.header-site .wrap2 .grid__item {
-  display: none;
-  z-index: 10;
-}
-.homeSlider .wrap2 .navbar a {
+.navbar a {
   font-size: 14px;
   margin: 0 1em;
-  font-family: 'iransans';
+  font-weight: bold;
 }
-.homeSlider .wrap2 .navbar a.active {
-  color: #f9cb52 !important;
-}
-.homeSlider .wrap2 .navbar a:hover,
-.homeSlider .wrap2 .social a i:hover {
-  color: #f9cb52;
-}
-.homeSlider .wrap2 .social a {
-  margin: 0 .5em;
-}
-.homeSlider .wrap2 .social a i {
-  font-size: 1em;
+.navbar a:hover,
+.mobile-nav ul li:hover a {
+  color: rgba(255,255,255,0.7);
 }
 /* //////////Responsive///////////////// */
-@media print, screen and (min-width: 320px) {
-  .homeSlider {
-    height: 22em;
-  }
-}
-@media print, screen and (min-width: 600px) {
-  .homeSlider {
-    height: 27em;
-  }
-  .homeSlider .layer-1,
-  .homeSlider .layer-2 {
-    width: 49em;
-  }
-}
 @media print, screen and (min-width: 780px) {
   .homeSlider {
-    height: 39em;
-  }
-  .homeSlider .layer-1,
-  .homeSlider .layer-2 {
-    width: 63em;
+    min-height: 35em;
   }
 }
 @media print, screen and (min-width: 1000px) {
   .homeSlider {
-    height: 46em;
-  }
-  .homeSlider .layer-1,
-  .homeSlider .layer-2 {
-    width: 76em;
+    min-height: 40em;
   }
 }
-@media print, screen and (min-width: 1200px) {
+@media print, screen and (min-width: 1366px) {
   .homeSlider {
-    height: 47em;
-    margin-top: -5em;
-  }
-  .homeSlider .layer-1,
-  .homeSlider .layer-2 {
-    width: 100%;
-  }
-}
-@media print, screen and (min-width: 1300px) {
-  .homeSlider {
-    height: 50em;
-  }
-}
-@media print, screen and (min-width: 1400px) {
-  .homeSlider {
-    height: 54em;
+    min-height: 47em; 
   }
 }
 @media print, screen and (min-width: 1600px) {
   .homeSlider {
-    height: 61em;
-  }
-}
-@media print, screen and (min-width: 1700px) {
-  .homeSlider {
-    height: 64em;
-  }
-}
-@media print, screen and (min-width: 1800px) {
-  .homeSlider {
-    height: 70em;
+    min-height: 54em; 
   }
 }
 /* ///////Mobile Icon/////////// */
@@ -212,9 +121,6 @@ main {
   -moz-transition: .2s ease-in-out;
   -o-transition: .2s ease-in-out;
   transition: .2s ease-in-out;
-}
-#nav-icon.open span {
-  background: #f9cb52;
 }
 #nav-icon span:nth-child(even) {
   left: 50%;
@@ -301,44 +207,13 @@ main {
   -ms-transition: .2s linear;
   transition: .2s linear;
 }
-.mobile-nav ul li:hover a {
-  color: #f9cb52;
-}
-.mobile-nav .btn-wrap {
-  padding: 1em 1.875em;
-  font-size: 13px;
-}
-.mobile-nav .btn-wrap a {
-  width: 6em;
-  height: 2.4em;
-  margin: 0 5px;
-  background-color: transparent;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 5px;
-  -webkit-transition: .2s linear;
-  -moz-transition: .2s linear;
-  -ms-transition: .2s linear;
-  transition: .2s linear;
-}
-.mobile-nav .btn-wrap a span {
-  font-weight: 300;
-}
-.mobile-nav .btn-wrap a:hover,
-.mobile-nav .btn-wrap a:focus {
-  border: 1px solid #f9cb52;
-  color: #f9cb52;
-}
 /* //////////Responsive///////////////// */
 @media print, screen and (min-width: 780px) {
-  #nav-icon {
-    display: none;
+  #nav-icon ,
+  .mobile-nav {
+    display: none !important;
   }
-  .header-site .grid__item,
-  .color-helper {
-    display: block;
-  }
-  .homeSlider .wrap.down {
+  .header-site .navbar {
     display: flex;
   }
 }
@@ -357,10 +232,10 @@ main {
   font-size: 1.3em;
 }
 .aboutUs{
-  background-color: #0e1b23;
-  padding-bottom: 0;
-  color: #fff;
-  z-index: 19;
+  background-color: #f8f8f8;
+  padding: 0;
+  color: #333;
+  padding-top: 3em;
 }
 .aboutUs .logo {
   width: 5em;
@@ -392,9 +267,9 @@ main {
 }
 /* ///////////Ability///////////////// */
 .ability {
-  background-color: #262626;
+  background-color: #f8f8f8;
   min-height: 25em;
-  color: #DCE3E7;
+  color: #333;
   z-index: 20;
 }
 .ability-wrap {
@@ -415,8 +290,8 @@ main {
 .ability .item .content h4 {
   font-size: 17px;
   margin-bottom: 7px;
-  color: #f9cb52;
-  font-weight: 400;
+  color: #25478a;
+  font-weight: bold;
 }
 .ability .item .content p {
   font-size: 13px;
@@ -1096,5 +971,29 @@ main {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+/* ///////// Error Stack /////////// */
+.error-stack {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  direction: ltr;
+}
+.error-stack .row h6 {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 20px;
+}
+.error-stack .row p {
+  font-size: 14px;
+}
+.error-stack .row {
+  width: 100%;
+  margin-bottom: 1em;
+}
+.error-stack pre code {
+  font-size: 14px;
+  font-family: iran-sans;
+  line-height: 24px;
 }
 
