@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = isNumeric;
+exports.default = isMagnetURI;
 
 var _assertString = require('./util/assertString');
 
@@ -11,14 +11,10 @@ var _assertString2 = _interopRequireDefault(_assertString);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var numeric = /^[+-]?([0-9]*[.])?[0-9]+$/;
-var numericNoSymbols = /^[0-9]+$/;
+var magnetURI = /^magnet:\?xt=urn:[a-z0-9]+:[a-z0-9]{32,40}&dn=.+&tr=.+$/i;
 
-function isNumeric(str, options) {
-  (0, _assertString2.default)(str);
-  if (options && options.no_symbols) {
-    return numericNoSymbols.test(str);
-  }
-  return numeric.test(str);
+function isMagnetURI(url) {
+  (0, _assertString2.default)(url);
+  return magnetURI.test(url.trim());
 }
 module.exports = exports['default'];

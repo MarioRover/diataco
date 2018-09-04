@@ -31,8 +31,9 @@ module.exports = class Aplication {
     });
   }
   setConfig() {
-    // require('app/passport/passport-local');
-
+    // Passport
+    require('app/passport/passport-admin');
+    //
     app.use(express.static(config.layout.public_dir));
     // Layout & Views Config
     app.set('view engine', config.layout.view_engine);

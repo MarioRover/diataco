@@ -1,0 +1,46 @@
+
+<section class="login-admin grid align-center-middle">
+  <div class="login-wrap grid-x-no">
+    <div class="right grid align-center">
+      <form action="/admin" method="POST">
+        <%- include(viewPath('errors/errorMessages')) %>
+        <div class="group">
+          <input type="email" name="email" class="input-en">
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>ایمیل</label>
+        </div>
+        <div class="group">
+          <input type="password" name="password" class="input-en">
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>رمز عبور</label>
+        </div>
+        <div class="recaptcha grid align-center">
+          <%- recaptcha %>
+        </div>
+        <div class="group">
+          <div class="checkbox grid-x-no align-middle">
+            <label for="remember">من را به یاد بسپار</label>
+            <input type="checkbox" name="remember">
+          </div>
+        </div>
+        <div class="btn-wrap wrap100 grid align-left">
+          <button type="submit" class="btn grid align-center-middle">
+            <span>ورود</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="left grid align-middle">
+      <div class="wrap100 grid-y">
+        <div class="icon grid align-center">
+          <img src="/img/rocket.png" alt="rocket">
+        </div>
+        <p>این بخش مخصوص ورود ادمین  سایت دیاتا می باشد</p>
+      </div>
+    </div>
+    
+  </div>
+</section>

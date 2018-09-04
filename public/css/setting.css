@@ -614,3 +614,61 @@ figure {
 .wrap100{
   width: 100%;
 }
+/* /////////// Input /////////////// */
+.group {
+  position: relative;
+  margin: 45px 0;
+}
+input,
+textarea {
+  display: block;
+  background: none;
+  padding: 10px 10px 10px 5px;
+  border: none;
+  border-radius: 0;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+}
+label {
+  color: #c6c6c6;
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  right: 5px;
+  top: 10px;
+  font-weight: 300;
+  -webkit-transition: 300ms ease all;
+  -moz-transition: 300ms ease all;
+  -ms-transition: 300ms ease all;
+  transition: 300ms ease all;
+}
+.bar {
+  position: relative;
+  display: block;
+  width: 320px;
+}
+.bar:before {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 0px;
+  position: absolute;
+  background: #2196F3;
+  -webkit-transition: 300ms ease all;
+  -moz-transition: 300ms ease all;
+  -ms-transition: 300ms ease all;
+  transition: 300ms ease all;
+  left: 0%;
+}
+.btn-wrap .btn span {
+  color: #333;
+  font-size: 15px;
+  font-weight: normal;
+}
+.recaptcha {
+  width: 100%;
+  margin-bottom: 45px;
+}

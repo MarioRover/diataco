@@ -4,9 +4,11 @@ class adminController extends controller {
   dashboard(req, res) {
     res.render('admin/dashboard' , {
       title : 'پنل مدیریت',
-      activeRow: 'dashbaord'
+      activeRow: 'dashbaord',
     });
   }
+  
+  
 }
 
 module.exports = new adminController();

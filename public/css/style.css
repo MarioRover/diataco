@@ -1063,3 +1063,90 @@ main {
   74.96%, 91.62% { left: 0%; opacity: 1; }
   100% { left: 100%; opacity: 0; }
 }
+/* /////////// Login Admins ///////////// */
+.login-admin {
+  width: 100%;
+  height: 100%;
+  background-color: #002055;
+  background-image: radial-gradient(ellipse 50% 70% at 50% 0, #002c74 20%, #001536);
+  background-attachment: fixed;
+}
+.login-admin .login-wrap {
+  width: 50em;
+  height: 35em;
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+}
+.login-admin .right form {
+  width: 320px;
+}
+.login-wrap .left {
+  background-color: #60d0c0;
+}
+.login-admin .right {
+  background-color: #162335;
+  box-shadow: 4px 0px 16px 2px #162335;
+  z-index: 2;
+  overflow: hidden;
+}
+.login-admin .left,
+.login-admin .right {
+  width: 50%;
+  height: 100%;
+}
+.login-admin input,
+.login-admin textarea {
+  color: #f7f7f7;
+  font-size: 14px;
+  width: 100%;
+  border-bottom: 1px solid #60d0c0;
+}
+input:focus~label,
+textarea:focus~label {
+  top: -14px;
+  font-size: 12px;
+  color: #2196F3;
+}
+input:focus~.bar:before,
+textarea:focus~.bar:before {
+  width: 320px;
+}
+input[type="password"] {
+  letter-spacing: 0.3em;
+}
+.btn-wrap .btn {
+  width: 8em;
+  height: 2.4em;
+  background-color: #60d0c0;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.login-admin .left .icon img {
+  width: 23em;
+  margin-bottom: 10px;
+}
+.login-admin .left p {
+  color: #333;
+  font-weight: 300;
+  text-align: center;
+  font-size: 14px;
+}
+.login-admin .errors-msg {
+  width: 100%;
+  color: #fc8f8f;
+  font-weight: 300;
+  line-height: 23px;
+  font-size: 13px;
+  margin-top: 45px;
+}
+.login-admin .btn-wrap .btn:hover {
+  background-color: #21f7d8;
+}
+.login-admin input[type = "checkbox"] {
+  width: auto;
+}
+.login-admin .right .group .checkbox label {
+  position: inherit;
+  margin-left: 10px;
+}

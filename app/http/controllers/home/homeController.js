@@ -1,4 +1,4 @@
-const controller = require('./controller');
+const controller = require('../controller');
 
 class homeController extends controller {
   async showPage(req , res) {
