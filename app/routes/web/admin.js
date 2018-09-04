@@ -15,10 +15,10 @@ router.use((req, res, next) => {
 });
 // Routes
 router.get('/', redirectIfAuthenticated.adminDashboard , loginAdmins.index);
-router.post('/', loginAdmins.registerProccess);
-// router.post('/', loginAdmins.loginProccess);
+// router.post('/', loginAdmins.registerProccess);
+router.post('/', loginAdmins.loginProccess);
 router.get('/logout' ,(req , res) => {
-  req.logOut();
+  req.logout();
   res.clearCookie('remember_token');
   res.redirect('/');
 })

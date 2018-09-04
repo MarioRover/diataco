@@ -53,7 +53,8 @@ class loginAdmins extends controller {
    try {
       passport.authenticate('admin.login', (error, admin) => {
         if (!admin) return this.back(req, res);
-        req.logIn(admin, err => {
+        req.login(admin, error => {
+          if(error) return next(error);
           try {
             if (req.body.remember) {
               admin.setRememberToken(res);

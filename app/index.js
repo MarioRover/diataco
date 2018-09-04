@@ -10,8 +10,8 @@ const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const passport = require('passport');
 const Helpers = require('./helper');
-// Path
-
+//Middleware
+const rememberLogin = require('app/http/middleware/rememberLogin');
 // Application
 module.exports = class Aplication {
   constructor() {
@@ -53,7 +53,7 @@ module.exports = class Aplication {
     app.use(flash());
     app.use(passport.initialize());
     app.use(passport.session());
-    // app.use(rememberLogin.handle);
+    app.use(rememberLogin.handle);
     app.use((req, res, next) => {
       app.locals = new Helpers(req, res).getObjects();
       next();
