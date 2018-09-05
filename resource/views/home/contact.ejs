@@ -1,0 +1,73 @@
+<%- include(viewPath('home/layout/header'))  %>
+<section class="contact-page grid-y">
+  <header>
+    <div class="overlay">
+      <div class="content grid-y align-center">
+        <h4>با ما در ارتباط باشید</h4>
+        <p>اگر در مورد همکاری با ما در تولید وب سایت یا اپلیکشن خود سوالی دارید هم اکنون با تماس حاصل بفرمایید</p>
+      </div>
+    </div>
+  </header>
+  <content class="grid-x align-center">
+    <div class="container grid-y">
+      <div class="header grid align-middle">
+        <h4>درباره شرکت</h4>
+      </div>
+      <div class="about">
+        <div class="wrap100 grid align-center">
+          <img src="/img/artakhe-logo.png" alt="diata logo">
+        </div>
+        <p>شرکت دیاتا ، شرکتی با کادر فنی قوی و مجرب و تجربه ای فراوان آماره خدمت گزاری به مشتریان محترم می باشد . این شرکت در سال 1397 تاسیس گردید</p>
+      </div>
+      <div class="header grid align-middle">
+        <h4>راه های تماس با ما</h4>
+      </div>
+      <div class="grid-x align-justify">
+        <div class="call-us grid align-center">
+        <div class="wrap grid-y">
+          <h6>نظر یا سوال خود را با ما مطرح کنید</h6>
+          <form action="/contact" method="POST">
+            <div class="group">
+              <input name="name" class="input-fa" type="text">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>اسم شما</label>
+            </div>
+            <div class="group">
+              <input name="email" class="input-en" type="email">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>ایمیل</label>
+            </div>
+            <div class="group">
+              <textarea name="comment" cols="30" rows="5"></textarea>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>نظر شما</label>
+            </div>
+            <div class="group">
+              <button type="submit" class="grid align-center-middle">
+                <span>ارسال</span>
+              </button>
+            </div>
+          </form>
+        </div>
+        </div>
+        <div class="about-us" class="grid-y">
+          <div class="row grid-x align-justify align-middle">
+            <span>شماره تماش</span>
+            <p>0213322552 , 021885599</p>
+          </div>
+          <div class="row grid-x align-justify align-middle">
+            <span>ایمیل</span>
+            <p>info@diataco.com</p>
+          </div>
+          <div class="row grid-y">
+            <span>آدرس</span>
+            <p>تهران ، خیابان جمهوری ، ساختمان آلومینیوم ، طیقه 12 ، واحد 121</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </content>
+</section>

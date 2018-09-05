@@ -1,9 +1,9 @@
 const controller = require('../controller');
 
-class applicationController extends controller {
+class contactController extends controller {
   async showPage(req, res, next) {
     try {
-      res.render('home/aboutUs', {
+      res.render('home/contact', {
         title: 'دریاره ما'
       });
     } catch (error) {
@@ -11,4 +11,4 @@ class applicationController extends controller {
     }
   }
 }
-module.exports = new applicationController();
+module.exports = new contactController();
