@@ -33,4 +33,11 @@ $.each(tabNavs , (tabIndex , tabNav) => {
 })
 //////AOS////////
 AOS.init();
+//////Input/////
+let inputs = $('input');
+$.each(inputs, (indexInArray, input) => { 
+  $(input).val('');
+});
+
+
 

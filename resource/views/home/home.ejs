@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="/css/aos.css">
 <link rel="stylesheet" href="/plugin/home/owlcarousel/owl.carousel.min.css">
 <link rel="stylesheet" href="/plugin/home/owlcarousel/owl.theme.default.min.css">
-<script src="/js/jparticle.jquery.min.js"></script>
 <%- include(viewPath('home/layout/header'))  %>
 <section class="homeSlider grid align-center-middle">
     <div class="grid align-center-middle">
@@ -320,37 +319,6 @@
         </div>
     </div>
 </section>
-<section class="footer grid grid-y align-center-middle parallax" >
-    <div class="container  grid-x align-justify align-middle" style="position: absolute;">
-    <div class="social grid-x-no align-middle">
-        
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-telegram"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        
-    </div>
-    <div><img src="/img/artakhe-logo.png" width="100"></div>
-    <div><p style="direction:ltr"><span style="color:grey">2018 ©</span> Diata company</p></div>
-    </div>
-    <div class="wrap footer-2 grid align-center">
-    <div class="container grid-x align-justify">
-        <p>طراحی و پیاده سازی با <i class="fa fa-heart"></i> توسط <a>ارتاخه</a></p>
-        <p>تمامی حقوق این وب سایت متعلق به شرکت است</p>
-    </div>
-</div> 
-</section>
-<script>
-$(function(){
-    $(".footer").jParticle({
-        width: null,
-        particlesNumber: 30,
-        speed: 50,
-        background: 'none',
-
-        color: "#fff"
-    });
-});
-</script>
+<%- include(viewPath('home/layout/footer')) %>
 <script src="/plugin/home/owlcarousel/owl.carousel.min.js"></script>
 <script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
