@@ -318,7 +318,7 @@ main {
 }
 /* /////////////Product Tab/////////// */
 .products-tab {
-  background-color: #000;
+  background-color: #202020;
   min-height: 25em;
   color: #333;
   padding: 50px 0;
@@ -471,7 +471,9 @@ main {
 }
 /*///////////////New(blog) Box/////////////*/
 .news{
-  background:#262626;
+  background-image:url(/img/20026_itok=1Odz5tVC);
+  background-color: rgba(0,0,0,0.4);
+  z-index: -1;
 }
 .news .owl-carousel {
   padding-top: 2.58824em;
@@ -483,7 +485,7 @@ main {
   color: #333;
   padding: 12px;
   background-color: #f9cb52;
-  border: 1px solid #a3e05c;
+  border: 1px solid #f9cb52;
   font-size: 14px;
   font-weight: 200;
   display: block;
