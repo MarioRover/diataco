@@ -603,7 +603,8 @@ figure {
   position: relative;
   padding: 50px 0;
 }
-.wrap100{
+.wrap100,
+.w100{
   width: 100%;
 }
 /* /////////// Input /////////////// */
