@@ -22,8 +22,10 @@ $.each(tabNavs , (tabIndex , tabNav) => {
     // Remove Active Class From Navs
     $.each(tabNavs , (tabI , tab) => {
       $(tab).removeClass('active');
+      $(tab).parent().removeClass('active');
     });
     $(tabNav).addClass('active');
+    $(tabNav).parent().addClass('active');
     // Remove Active Class From Content
     $.each(tabContent , (index ,content) => {
       $(content).removeClass('active');
