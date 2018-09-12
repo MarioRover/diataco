@@ -1,5 +1,4 @@
 const middleware = require('./middleware');
-const Admin = require('app/models/admins');
 
 class rememberLogin extends middleware {
   handle(req , res , next) {
@@ -11,7 +10,7 @@ class rememberLogin extends middleware {
   }
 
   adminFind(rememberToken , req , next) {
-    Admin.findOne({ rememberToken } , (error , admin) => {
+    this.models.Admin.findOne({ rememberToken } , (error , admin) => {
       if(admin) {
         req.login(admin , (error) => {
           if(error) next(error);

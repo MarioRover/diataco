@@ -1,10 +1,15 @@
 const autoBind = require('auto-bind');
 const Recaptcha = require('express-recaptcha').Recaptcha;
+const {validationResult} = require('express-validator/check');
+// Models
+const Contacts = require('app/models/contact');
+const Admins = require('app/models/admin');
 
 module.exports = class controller {
   constructor() {
     autoBind(this);
     this.recaptchaConfig();
+    this.models = {Contacts , Admins};
   }
   async recaptchaConfig() {
     this.recaptcha = new Recaptcha(
@@ -25,9 +30,21 @@ module.exports = class controller {
       })
     })
   };
-
-  async adminInfo(req , res , next) {
-    
+  async validationData(req , res , next) {
+    try {
+      const result = validationResult(req);
+      if(!result.isEmpty()) {
+        const errors  = result.array();
+        const messages = [];
+        errors.forEach(err => messages.push(err.msg));
+        req.flash('errors' , messages);
+        return false;
+      } else {
+        return true;
+      }
+    } catch (error) {
+      this.error('Error in ValidationData in Controller.js' , 422 , next);
+    }
   }
   // Method Helper
   back(req , res) {

@@ -1000,7 +1000,7 @@ main {
 }
 .contact-page .contact .contact-wrap {
   width: 52em;
-  height: 35em;
+  height: 38em;
   position: absolute;
   top: -12em;
   box-shadow: 0 10px 8px rgba(26, 26, 26, 0.5);
@@ -1028,7 +1028,7 @@ main {
 }
 .contact-page .contact .info-us .header,
 .contact-page .contact .call-us .header {
-  margin-bottom: 5em;
+  margin-bottom: 2em;
 }
 .contact-page .contact .info-us .row {
   color: #fff;
@@ -1303,13 +1303,13 @@ input[type="password"] {
   text-align: center;
   font-size: 14px;
 }
-.login-admin .errors-msg {
+.errors-msg {
   width: 100%;
   color: #fc8f8f;
   font-weight: 300;
   line-height: 23px;
   font-size: 13px;
-  margin-top: 45px;
+  margin-bottom: 1em;
 }
 .login-admin .btn-wrap .btn:hover {
   background-color: #21f7d8;

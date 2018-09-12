@@ -10,17 +10,20 @@
           <h6>نظرات خود را با ما در میان بگذارید</h6>
         </div>
         <content class="wrap100 grid-y">
+          <%- include(viewPath('errors/errorMessages')) %>
           <form action="/contact" method="POST">
             <div class="row grid-x align-middle align-justify">
-              <input type="text" name="name" placeholder="نام">
-              <input type="text" name="family" placeholder="نام خانوادگی">
+              <input type="text" name="fullName" placeholder="نام">
+              <input type="text" name="email" placeholder="ایمیل">
             </div>
             <div class="row grid-x align-middle align-justify">
-              <input type="text" name="email" placeholder="ایمیل">
               <input type="text" name="phone" placeholder="شماره تماس">
             </div>
             <div class="row grid-x align-middle align-justify">
               <textarea name="description" cols="30" rows="10" placeholder="توضیحات"></textarea>
+            </div>
+            <div class="row grid align-left">
+              <%- recaptcha %>
             </div>
             <div class="row grid-x align-middle align-justify">
               <button class="btn btn-primary grid align-center-middle" type="submit">

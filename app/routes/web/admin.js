@@ -4,6 +4,7 @@ const router = express.Router();
 // Controllers
 const adminController = require('app/http/controllers/admin/adminController');
 const loginAdmins = require('app/http/controllers/admin/auth/loginAdmins');
+const messagesController = require('app/http/controllers/admin/messagesController');
 // Validators
 
 // Middleware
@@ -22,6 +23,7 @@ router.get('/logout' ,(req , res) => {
   res.clearCookie('remember_token');
   res.redirect('/');
 })
-router.get('/dashboard', redirectIfAuthenticated.adminLogin, adminController.dashboard);
+router.get('/dashboard', redirectIfAuthenticated.adminLogin, adminController.index);
+router.get('/messages', redirectIfAuthenticated.adminLogin, messagesController.index);
 
 module.exports = router;
