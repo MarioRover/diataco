@@ -9,5 +9,5 @@ module.exports = {
   layout,
   session,
   service,
-  debug: true
+  debug: false
 }

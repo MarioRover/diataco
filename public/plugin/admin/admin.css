@@ -14,10 +14,11 @@
 .sidebar .user .user-info>a>span {
   transition: all .3s linear;
 }
-.admin-panel .wrapper {
+.admin-panel .wrap {
   position: relative;
   top: 0;
   height: 100vh;
+  background-color: #f9f9f9;
 }
 .sidebar {
   position: fixed;
@@ -176,9 +177,10 @@
 .main-panel {
   position: relative;
   float: right;
-  width: calc(100% - 260px);
+  width: 100%;
   transition: .33s,
   cubic-bezier(.685, .0473, .346, 1);
+  padding: 1em 0;
 }
 .ps {
   overflow: hidden !important;
@@ -186,4 +188,86 @@
   -ms-overflow-style: none;
   touch-action: auto;
   -ms-touch-action: auto;
+}
+.main-panel .panel-wrap {
+  width: calc(100% - 260px);
+}
+.main-panel .header {
+  width: 100%;
+  height: 5em;
+  padding: 10px 15px;
+}
+.main-panel .header i#siderbarIcon {
+  margin-left: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #555;
+}
+.main-panel .header .route-address {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 9px 15px;
+}
+.main-panel .header .route-address .address i {
+  margin-left: 8px;
+}
+.main-panel .header .route-address .address span {
+  font-size: 13px;
+}
+.main-panel .header .route-address .address .active {
+  color: #23a4e9;
+}
+.main-panel .header .route-address .address .arrow {
+  margin: 0px 10px;
+  font-size: 13px;
+  color: #c3baba;
+}
+.main-panel content {
+  width: 100%;
+  padding: 20px 15px;
+}
+/* ============Message Page================ */
+.message-page table thead th {
+  width: 100%;
+  height: 2.5em;
+  background-color: #000;
+}
+.message-page table {
+  width: 80%;
+  background-color: #fff;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .14);
+  margin: 10px 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.message-page table thead {
+  width: 8em;
+}
+.message-page table tbody {
+  width: 100%;
+  padding: 0 20px;
+}
+.message-page table thead th span {
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: bold;
+}   
+.message-page table tbody td {
+  width: 100%;
+  height: 2.5em;
+} 
+.message-page table tbody td span {
+  font-size: 12px;
+  color: #555;
+  font-weight: 300;
+}
+span.digit {
+  direction: ltr;
+  color: #555;
+  font-weight: 300;
+}
+.message-page table tbody td {
+  justify-content: flex-start;
+  justify-items: flex-start;
 }

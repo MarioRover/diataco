@@ -27,7 +27,7 @@ class errorHandler {
     } else {
       res.render(`errors/${statusCode}`, {
         ...layouts,
-        title: message,
+        title: `Error ${statusCode}`,
         message,
         statusCode
       });

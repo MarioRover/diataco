@@ -19,8 +19,8 @@ module.exports = new class contactController extends controller {
       if(!result) {
         this.back(req,res);
       } else {
-        let {fullName , email , phone , description} = req.body;
-        let newMessage = new this.models.Contacts({fullName,email,phone,description});
+        let {fullName , email , subject , description} = req.body;
+        let newMessage = new this.models.Messages({fullName,email,subject,description});
         await newMessage.save((error) => {
           if(error) return this.error('Error in save Message at contactController.js' , 500 , next);
           return res.json('message send');

@@ -1,15 +1,16 @@
 const autoBind = require('auto-bind');
 const Recaptcha = require('express-recaptcha').Recaptcha;
 const {validationResult} = require('express-validator/check');
+const isMongoId = require('validator/lib/isMongoId');
 // Models
-const Contacts = require('app/models/contact');
+const Messages = require('app/models/messages');
 const Admins = require('app/models/admin');
 
 module.exports = class controller {
   constructor() {
     autoBind(this);
     this.recaptchaConfig();
-    this.models = {Contacts , Admins};
+    this.models = {Admins , Messages};
   }
   async recaptchaConfig() {
     this.recaptcha = new Recaptcha(
@@ -44,6 +45,17 @@ module.exports = class controller {
       }
     } catch (error) {
       this.error('Error in ValidationData in Controller.js' , 422 , next);
+    }
+  }
+  async isMongoId(paramId , next) {
+    try {
+      if(! isMongoId(paramId)) {
+        return false;
+      } else {
+        return true;
+      }
+    } catch (error) {
+      this.error('Error in validate mongoid in controller.js' , 500 , next);
     }
   }
   // Method Helper

@@ -1,3 +1,63 @@
-<div class="main-panel ps">
-
+<%- contentFor('panel-header') %>
+<a href="/admin/messages/" class="active grid-x-no align-middle">
+  <i class="fas fa-envelope"></i>
+  <span class="name">پیام های دریافتی</span>
+</a>
+<%- contentFor('body') %>
+<link rel="stylesheet" href="/plugin/Table-Highlight/Table-Highlight.css">
+<div class="table w100 grid align-center">
+  <div class="table100 ver1">
+    <table data-vertable="ver1" class="w100 grid-y">
+      <thead>
+        <tr class="row100 head grid-x-no">
+          <th class="column100 col3 column1" data-column="column1"></th>
+          <th class="column100 col10 column2" data-column="column2">
+            <span>نام</span>
+          </th>
+          <th class="column100 col10 column3" data-column="column4">
+            <span>تاریخ</span>
+          </th>
+          <th class="column100 col10 column4" data-column="column4">
+            <span>زمان</span>
+          </th>
+           <th class="column100 col20 column5" data-column="column3">
+            <span>موضوع</span>
+          </th>
+          <th class="column100 col20 column6" data-column="column5"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(messages.length > 0) { %>
+          <% messages.forEach(message => { %>
+            <tr class="row100 grid-x-no">
+              <td class="column100 col3 column1" data-column="column1">
+                <input type="checkbox">
+              </td>
+              <td class="column100 col10 column2" data-column="column2"><span><%= message.fullName %></span></td>
+              <td class="column100 col10 column3" data-column="column4"><span class="digit"><%= message.createdDate %></span></td>
+              <td class="column100 col10 column4" data-column="column4"><span class="digit"><%= message.createdTime %></span></td>
+              <td class="column100 col20 column5" data-column="column3"><span><%= message.subject %></span></td>
+              <td class="column100 col20 column6" data-column="column5">
+                <a href="/admin/messages/<%= message._id %>" title="مشاهده" class="btn view grid align-center-middle">
+                  <div class="grid-x-no align-center-middle">
+                    <i class="fal fa-eye"></i>
+                  </div>
+                </a>
+                <a href="#" title="حذف" class="btn delete grid align-center-middle">
+                  <div class="grid-x-no align-center-middle">
+                    <i class="fal fa-trash-alt"></i>
+                  </div>
+                </a>
+              </td>
+            </tr>
+          <% }) %>    
+        <% } %>  
+      </tbody>
+    </table>
+  </div>
 </div>
+
+
+
+
+

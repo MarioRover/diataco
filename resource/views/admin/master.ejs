@@ -22,12 +22,30 @@
       </div>
     </div>
     <app-layout class="admin-panel">
-      <div class="wrapper">
+      <div class="wrap">
         <%- include(viewPath('admin/layout/sidebar')) -%>
-        <%- body %>
+        <div class="main-panel ps grid align-right">
+         <div class="panel-wrap grid align-center">
+          <div class="container grid-y">
+            <div class="header grid align-left align-middle">
+              <div class="panel-info grid-x-no">
+                <i class="fas fa-bars grid align-center-middle" id="siderbarIcon"></i>
+                <div class="route-address">
+                  <div class="address grid-x-no align-middle">
+                    <%- defineContent('panel-header')%>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="line-space"></div>
+            <content>
+              <%- defineContent('body')%>
+            </content>
+          </div>
+         </div>
+        </div>
       </div>
     </app-layout>
-
   </main>
   <script src="/js/Jquery-3.3.1.js"></script>
   <script src="/plugin/preloader/jquery.preloader.min.js"></script>
@@ -36,6 +54,6 @@
   <script src="/plugin/admin/admin.js"></script>
   <script>
     activeRow('<%- activeRow %>')
-  </script> 
+  </script>
 </body>
 </html>

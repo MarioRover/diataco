@@ -13,7 +13,7 @@ module.exports = new class contactValidation extends validator {
       check('email')
       .isEmail()
       .withMessage('فرمت ایمیل وارد شده صحیح نمی باشد'),
-      check('phone')
+      check('subject')
         .not().isEmpty()
         .withMessage('فیلد شماره تماس نمی تواند خالی باشد'),
       check('description')

@@ -25,5 +25,6 @@ router.get('/logout' ,(req , res) => {
 })
 router.get('/dashboard', redirectIfAuthenticated.adminLogin, adminController.index);
 router.get('/messages', redirectIfAuthenticated.adminLogin, messagesController.index);
+router.get('/messages/:id', redirectIfAuthenticated.adminLogin, messagesController.viewMessage);
 
 module.exports = router;

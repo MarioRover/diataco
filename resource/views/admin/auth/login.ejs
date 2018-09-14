@@ -5,16 +5,10 @@
       <form action="/admin" method="POST">
         <%- include(viewPath('errors/errorMessages')) %>
         <div class="group">
-          <input type="email" name="email" class="input-en">
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>ایمیل</label>
+          <input type="email" name="email" class="input-en w100" placeholder="ایمیل">
         </div>
         <div class="group">
-          <input type="password" name="password" class="input-en">
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>رمز عبور</label>
+          <input type="password" name="password" class="input-en w100" placeholder="رمز عبور">
         </div>
         <div class="recaptcha grid align-center">
           <%- recaptcha %>
