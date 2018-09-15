@@ -1,0 +1,7 @@
+<% if(typeof izitoast !== 'undefined') { %>
+  <% izitoast.messages.forEach(message => { %>
+  <script>
+    izitoast('<%= izitoast.method %>', '<%= message %>');
+  </script>
+  <% }) %>
+<% } %>

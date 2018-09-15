@@ -1,14 +1,14 @@
 const controller = require('../controller');
 
-
 module.exports = new class messagesController extends controller {
   async index(req, res , next) {
     try {
-      let messages = await this.models.Messages.find({})
+      let messages = await this.models.Messages.find({});
       res.render('admin/messages', {
         title: 'پیام های دریافتی',
         activeRow: 'messages',
-        messages 
+        messages,
+        izitoast: this.izitoast('success', req.flash('iziMsg'))
       });
     } catch (error) {
       this.error('Error in Index method at messageController.js' , 500 , next);
@@ -33,6 +33,25 @@ module.exports = new class messagesController extends controller {
       
     } catch (error) {
       this.error('Error in viewMessage method at messageController.js', 500, next);
+    }
+  };
+
+  async destroy(req , res , next) {
+    try {
+      let result = await this.isMongoId(req.params.id, next);
+      if (!result) {
+        return this.error('Error in validate mongoid in messageController.js', 404, next);
+      }
+      await this.models.Messages.findById(req.params.id, (err, message) => {
+        if (err) return this.error(err.msg, 404, next);
+        if (!message) return this.error('Error in find mongoid in messageController.js', 404, next);
+        message.remove();
+        req.flash('iziMsg' , ['پیام شما با موفقیت حذف شد']);
+        return this.back(req,res);
+      });
+
+    } catch (error) {
+      this.error('Error in destroy method at messageController.js', 500, next);
     }
   }
     

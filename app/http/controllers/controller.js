@@ -59,6 +59,12 @@ module.exports = class controller {
     }
   }
   // Method Helper
+  izitoast(method , messages) {
+    return {
+      method,
+      messages
+    }
+  }
   back(req , res) {
     return res.redirect(req.header('Referer') || '/');
   }

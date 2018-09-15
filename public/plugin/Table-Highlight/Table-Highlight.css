@@ -68,9 +68,12 @@ td[class^="col"] {
   height: 2.3em;
   width: 2.3em;
   margin: 0 3px;
+  cursor: pointer;
 }
 .table100.ver1 td .btn i {
   font-size: 16px;
+  color: #fff;
+  cursor: pointer;
 }
 .table100.ver1 td .btn span {
   font-size: 13px;
@@ -94,5 +97,8 @@ td[class^="col"] {
 .table100.ver1 td:last-child {
   justify-content: flex-end;
   padding-left: 15px;
+}
+.table100.ver1 td .btn button {
+  cursor: pointer;
 }
 /*==================================================================

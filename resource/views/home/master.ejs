@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/plugin/preloader/preloader.css">
   <link rel="stylesheet" href="/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|Orbitron" rel="stylesheet">
+  <link rel="stylesheet" href="/plugin/izitoast/iziToast.css">
   <%- style %>  
 </head>
 <body>
@@ -27,6 +28,8 @@
   <script src="/js/aos.js"></script>
   <script src="/plugin/preloader/jquery.preloader.min.js"></script>
   <script src="/plugin/preloader/preloader.js"></script>
+  <script src="/plugin/izitoast/iziToast.min.js"></script>
+  <%- include(viewPath('errors/izitoast')) %>
   <%- script %>
   <script src="/js/main.js"></script>
 </body>

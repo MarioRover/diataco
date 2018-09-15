@@ -6,7 +6,7 @@
 <%- contentFor('body') %>
 <link rel="stylesheet" href="/plugin/Table-Highlight/Table-Highlight.css">
 <div class="table w100 grid align-center">
-  <div class="table100 ver1">
+  <b class="table100 ver1">
     <table data-vertable="ver1" class="w100 grid-y">
       <thead>
         <tr class="row100 head grid-x-no">
@@ -43,11 +43,11 @@
                     <i class="fal fa-eye"></i>
                   </div>
                 </a>
-                <a href="#" title="حذف" class="btn delete grid align-center-middle">
-                  <div class="grid-x-no align-center-middle">
+                <form action="/admin/messages/<%= message._id %>?_method=DELETE" method="post" class="btn delete grid align-center-middle">
+                  <button type="submit" title="حذف" class="grid-x-no align-center-middle">
                     <i class="fal fa-trash-alt"></i>
-                  </div>
-                </a>
+                  </button>
+                </form>
               </td>
             </tr>
           <% }) %>    

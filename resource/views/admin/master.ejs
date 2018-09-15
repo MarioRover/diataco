@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/css/setting.css">
   <link rel="stylesheet" href="/plugin/preloader/preloader.css">
   <link rel="stylesheet" href="/plugin/admin/admin.css">
+  <link rel="stylesheet" href="/plugin/izitoast/iziToast.css">
   <%- style %>
 </head>
 
@@ -52,6 +53,8 @@
   <script src="/plugin/preloader/preloader.js"></script>
   <%- script %>
   <script src="/plugin/admin/admin.js"></script>
+  <script src="/plugin/izitoast/iziToast.min.js"></script>
+  <%- include(viewPath('errors/izitoast')) %>
   <script>
     activeRow('<%- activeRow %>')
   </script>

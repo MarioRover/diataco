@@ -2,11 +2,11 @@ const controller = require('../controller');
 
 module.exports = new class contactController extends controller {
   async index(req, res, next) {
-    try {      
+    try {
       res.render('home/contact', {
-        title: 'دریاره ما',
+        title: 'درباره ما',
         recaptcha: this.recaptcha.render(),
-        errors: req.flash('errors')
+        izitoast: this.izitoast('warning', req.flash('errors'))
       });
     } catch (error) {
       this.error('Error in index Method at contactController.js');
@@ -23,7 +23,11 @@ module.exports = new class contactController extends controller {
         let newMessage = new this.models.Messages({fullName,email,subject,description});
         await newMessage.save((error) => {
           if(error) return this.error('Error in save Message at contactController.js' , 500 , next);
-          return res.json('message send');
+          res.render('home/contact', {
+            title: 'درباره ما',
+            recaptcha: this.recaptcha.render(),
+            izitoast: this.izitoast('success', ['پیام شما با موفقیت ارسال گردید'])
+          });
         });
       }
     } catch (error) {

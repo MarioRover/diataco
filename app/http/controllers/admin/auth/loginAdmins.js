@@ -8,7 +8,7 @@ class loginAdmins extends controller {
         layout : 'home/master',
         recaptcha: this.recaptcha.render(),
         title : 'ورود',
-        errors : req.flash('errors')
+        izitoast: this.izitoast('warning', req.flash('errors'))
       })
     } catch (error) {
       this.error('Error in render login page (index method)' , 500 , next);
@@ -17,8 +17,11 @@ class loginAdmins extends controller {
 
   async loginProccess(req , res , next) {
     try {
-      let result = await this.recaptchaValidation(req, res, next);
-      if (result) {
+      await this.recaptchaValidation(req, res, next);
+      let result = await this.validationData(req, next);
+      if (! result) {
+        this.back(req, res);
+      } else {
         return this.login(req , res , next);
       }
     } catch (error) {
@@ -28,8 +31,11 @@ class loginAdmins extends controller {
 
   async registerProccess(req , res , next) {
     try {
-      let result = await this.recaptchaValidation(req , res , next);
-      if(result) {
+      await this.recaptchaValidation(req, res, next);
+      let result = await this.validationData(req, next);
+      if(!result) {
+        this.back(req, res);
+      } else {
         return this.register(req , res , next);
       }
     } catch (error) {
@@ -52,9 +58,10 @@ class loginAdmins extends controller {
   async login(req, res, next) {
    try {
       passport.authenticate('admin.login', (error, admin) => {
+        if(error) return this.error('Error in Auth at login method',500,next);
         if (!admin) return this.back(req, res);
         req.login(admin, error => {
-          if(error) return next(error);
+          if(error) return this.error('Error in login ar login method',500,next);
           try {
             if (req.body.remember) {
               admin.setRememberToken(res);
