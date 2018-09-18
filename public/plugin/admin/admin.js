@@ -26,3 +26,35 @@ $.each(rows, function (rowIndex, row) {
 function activeRow(rowName) {
   $(`.sidebar .row.${rowName}`).addClass('active');
 }
+
+// document.querySelector('.contactPageSetting').addEventListener('submit' , function(e) {
+//   e.preventDefault();
+//   let address = document.querySelector('input[name = "address"]');
+//   let iconAddress = document.querySelector('input[name = "iconAddress"]');
+//   let file = document.querySelector('input[name = "file"]');
+  
+  // $('.contactPageSetting').submit((e) =>{
+  //   e.preventDefault();
+  //   let address = $('input[name = "address"]');
+  //   let iconAddress = $('input[name = "iconAddress"]');
+
+  //   fetch('/admin/site-setting/pages/contact', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       address: address.value,
+  //       iconAddress: iconAddress.value,
+  //     }),
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }).then(res => {
+  //     return res.json();
+  //   }).then(res => {
+  //     console.log(res);
+  //   }).catch(err => {
+  //     console.log(err);
+  //   })
+
+  // });
+

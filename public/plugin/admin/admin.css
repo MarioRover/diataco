@@ -212,9 +212,11 @@
   margin-left: 8px;
 }
 .main-panel .header .route-address .address span {
-  font-size: 13px;
+  font-size: 12px;
+  color: #979797;
 }
-.main-panel .header .route-address .address .active {
+.main-panel .header .route-address .address .active span,
+.main-panel .header .route-address .address .active i {
   color: #23a4e9;
 }
 .main-panel .header .route-address .address .arrow {
@@ -270,4 +272,52 @@ span.digit {
 .message-page table tbody td {
   justify-content: flex-start;
   justify-items: flex-start;
+}
+/* ////////////Site Pages//////////////// */
+.site-pages .page-box {
+  width: 10em;
+  height: 10em;
+  border: 1px solid #000;
+}
+.site-pages .input-box {
+  margin: 2em;
+  padding: 1em;
+  z-index: 3;
+  background-color: #fff;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .14);
+  border-radius: 7px 0px 7px 7px;
+  position: relative;
+}
+.site-pages .input-box .flag {
+  background-color: blue;
+  position: absolute;
+  padding: 6px;
+  top: -27px;
+  right: 0;
+  z-index: 1;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .14);
+}
+.site-pages .input-box .flag span {
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+}
+.site-pages .input-box .input-wrap label {
+  margin-bottom: 12px;
+}
+.site-pages .input-box .input-wrap {
+  margin-bottom: 2em;
+}
+.site-pages .input-box .input-wrap .input-group {
+  overflow: hidden;
+  width: 50%;
+}
+.site-pages .input-box .input-wrap .input-group:first-child {
+  padding-left: 1em;
+}
+.site-pages .input-box .input-wrap .input-group:last-child {
+  padding-right: 1em;
+}
+.input-group .image {
+  width: 60%;
 }

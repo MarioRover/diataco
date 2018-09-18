@@ -628,41 +628,14 @@ textarea:focus {
   outline: none;
 }
 label {
-  color: #c6c6c6;
-  font-size: 14px;
-  font-weight: normal;
-  position: absolute;
+  color: #555;
+  font-size: 13px;
   pointer-events: none;
-  right: 5px;
-  top: 10px;
   font-weight: 300;
   -webkit-transition: 300ms ease all;
   -moz-transition: 300ms ease all;
   -ms-transition: 300ms ease all;
   transition: 300ms ease all;
-}
-.bar {
-  position: relative;
-  display: block;
-  width: 320px;
-}
-.bar:before {
-  content: '';
-  height: 2px;
-  width: 0;
-  bottom: 0px;
-  position: absolute;
-  background: #2196F3;
-  -webkit-transition: 300ms ease all;
-  -moz-transition: 300ms ease all;
-  -ms-transition: 300ms ease all;
-  transition: 300ms ease all;
-  left: 0%;
-}
-.btn-wrap .btn span {
-  color: #333;
-  font-size: 15px;
-  font-weight: normal;
 }
 .recaptcha {
   width: 100%;
@@ -670,27 +643,79 @@ label {
 }
 /* Buttons */
 .btn {
-  width: 7em;
   height: 2em;
-  border-radius: 4px;
+  padding: 0 10px;
+  border-radius: .25rem;
+  text-align: center;
+  white-space: nowrap;
   cursor: pointer;
+  order: 1px solid transparent;
+  line-height: 1.5;
+  transition: color .15s ease-in-out,
+  background-color .15s ease-in-out,
+  border-color .15s ease-in-out,
+  box-shadow .15s ease-in-out;
+}
+.btn span {
+  font-weight: normal;
+  font-size: 13px;
 }
 .btn-primary {
   color: #fff;
-  background-color: #28a745;
-  background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+  background-color: #007bff;
+  border-color: #007bff;
 }
 .btn-primary:hover {
-  background-color: #269f42;
-  background-image: linear-gradient(-180deg, #2fcb53 0%, #269f42 90%);
-  background-position: -.5em;
-  border-color: rgba(27, 31, 35, 0.5);
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.btn-success:hover {
+  color: #fff;
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.btn-danger:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+.btn-warning {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+.btn-warning:hover {
+  color: #212529;
+  background-color: #e0a800;
+  border-color: #d39e00;
 }
 input,textarea {
   min-height: 34px;
   font-size: 13px;
   padding: 6px 8px;
   line-height: 20px;
+  margin: 2px;
   color: #24292e;
   background-color: #fafbfc;
   border: 1px solid #d1d5da;

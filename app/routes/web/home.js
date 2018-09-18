@@ -21,4 +21,7 @@ router.post('/contact', contactValidation.handle() ,contactController.getMessage
 // About Us Router
 router.get('/about', aboutController.showPage);
 
+
+
+
 module.exports = router;

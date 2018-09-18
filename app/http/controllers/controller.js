@@ -5,12 +5,13 @@ const isMongoId = require('validator/lib/isMongoId');
 // Models
 const Messages = require('app/models/messages');
 const Admins = require('app/models/admin');
+const contactPage = require('app/models/contactPage');
 
 module.exports = class controller {
   constructor() {
     autoBind(this);
     this.recaptchaConfig();
-    this.models = {Admins , Messages};
+    this.models = {Admins , Messages , contactPage};
   }
   async recaptchaConfig() {
     this.recaptcha = new Recaptcha(
@@ -58,6 +59,9 @@ module.exports = class controller {
       this.error('Error in validate mongoid in controller.js' , 500 , next);
     }
   }
+  addressImage(image) {
+    return this.getUrlImage(`${image.destination}/${image.filename}`);
+  }
   // Method Helper
   izitoast(method , messages) {
     return {
@@ -65,10 +69,10 @@ module.exports = class controller {
       messages
     }
   }
-  back(req , res) {
+  async back(req , res) {
     return res.redirect(req.header('Referer') || '/');
   }
-  error(message , status = 500 , next) {
+  async error(message , status = 500 , next) {
     try {
       let error = new Error(message);
       error.statusCode = status;
@@ -76,5 +80,8 @@ module.exports = class controller {
     } catch (error) {
       next(error);
     } 
+  }
+  getUrlImage(dir) {
+    return dir.substring(8);
   }
 }
