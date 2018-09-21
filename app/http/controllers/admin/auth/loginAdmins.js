@@ -6,9 +6,7 @@ class loginAdmins extends controller {
     try {
       res.render('admin/auth/login' , {
         layout : 'home/master',
-        recaptcha: this.recaptcha.render(),
-        title : 'ورود',
-        izitoast: this.izitoast('warning', req.flash('errors'))
+        title : 'ورود'
       })
     } catch (error) {
       this.error('Error in render login page (index method)' , 500 , next);
@@ -17,63 +15,76 @@ class loginAdmins extends controller {
 
   async loginProccess(req , res , next) {
     try {
-      // await this.recaptchaValidation(req, res, next);
+      let recaptcha = await this.recaptchaValidation(req, res, next);
+      if (!recaptcha) {
+        return this.izitoastMessage(['گزینه امنیتی مربوط به شناسایی ربات خاموش است'], 'warning', res);
+      }
       let result = await this.validationData(req, next);
       if (! result) {
-        this.back(req, res);
+        return this.izitoastMessage(req.flash('errors'), 'warning', res);
       } else {
         return this.login(req , res , next);
       }
     } catch (error) {
-      this.error('Error In Recaptcha Validation' , 500 , next);
+      return this.serverError('Error in loginProccess Method at loginAdmins.js', 500, error, res);
     }
   };
 
   async registerProccess(req , res , next) {
     try {
-      await this.recaptchaValidation(req, res, next);
+      let recaptcha = await this.recaptchaValidation(req, res, next);
+      if (!recaptcha) {
+        return this.izitoastMessage(['گزینه امنیتی مربوط به شناسایی ربات خاموش است'], 'warning', res);
+      }
       let result = await this.validationData(req, next);
       if(!result) {
-        this.back(req, res);
+        return this.izitoastMessage(req.flash('errors'), 'warning', res);
       } else {
         return this.register(req , res , next);
       }
     } catch (error) {
-      this.error('Error In Recaptcha Validation', 500, next);
+      return this.serverError('Error in registerProccess Method at loginAdmins.js', 500, error, res);
     }
   };
 
   async register(req , res , next) {
     try {
-      passport.authenticate('admin.register', {
-        successRedirect: '/',
-        failureRedirect: '/admin',
-        failureFlash: true
+      passport.authenticate('admin.register', (error, newAdmin) => {
+        if (error) return this.serverError('Error in Auth at register method', 500, error, res);
+        if (!newAdmin) return this.izitoastMessage(req.flash('errors'), 'error', res);
+        return this.izitoastMessage(['ثبت نام با موفقیت انجام شد'] , 'success', res);
       })(req, res, next);
     } catch (error) {
-      this.error('Error In register method', 500, next);
+      return this.serverError('Error In register method', 500, error, res);
     }
   }
 
   async login(req, res, next) {
    try {
       passport.authenticate('admin.login', (error, admin) => {
-        if(error) return this.error('Error in Auth at login method',500,next);
-        if (!admin) return this.back(req, res);
+        if (error) return this.serverError('Error in Auth at login method', 500, error, res);
+        if (!admin) return this.izitoastMessage(['اطلاعات وارد شده صحیح نمی باشد'], 'warning', res);
         req.login(admin, error => {
-          if(error) return this.error('Error in login ar login method',500,next);
+          if (error) return this.serverError('Error in login at login method', 500, error, res);
           try {
             if (req.body.remember) {
               admin.setRememberToken(res);
             }
           } catch (error) {
-            this.error('Error In setRememberToken', 500, next);
+            return this.serverError('Error In setRememberToken', 500, error, res);
           }
-          return res.redirect('/admin/dashboard');
+          return res.json({
+            data   : {
+              msg: ['در حال انتقال به پنل مدیریت'],
+              method : 'success',
+              redirect : '/admin/dashboard'
+            },
+            status : 'userError'
+          })
         })
       })(req, res, next);
    } catch (error) {
-     this.error('Error In login method', 500, next);
+     return this.serverError('Error In login method at loginAdmins', 500, error, res);
    }
   }
 }

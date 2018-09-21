@@ -43,6 +43,11 @@ const Fetch2 = (url,method,body) => {
           izitoast(res.data.method, message);
         });
       }
+      if (typeof res.data.redirect !== 'undefined') {
+        setTimeout(() => {
+          window.location = res.data.redirect;
+        },4000);
+      }
     }
     if (res.status == 'serverError') {
       if (res.data.debug) {
@@ -53,6 +58,11 @@ const Fetch2 = (url,method,body) => {
       } else {
         window.location = 'errors/errorPage';
       }
+    }
+    if(res.status == 'redirect') {
+      setTimeout(() => {
+        window.location = res.data.url;
+      }, 3000);
     }
   }).catch(err => {
     console.log(err);

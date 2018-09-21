@@ -20,6 +20,27 @@ $('.contactPage').submit((e) => {
   Fetch2('/contact', 'POST', body);
 });
 
+$('.adminLogin').submit((e) => {
+  e.preventDefault();
+  let email = $('input[name = "email"]');
+  let password = $('input[name = "password"]');
+  let remember = false;
+  let recaptcha = false;
+  if ($('input[name = "remember"]').is(':checked')) {
+    remember = true;
+  }
+  if (sessionStorage.getItem('recaptcha') == token) {
+    recaptcha = true;
+  }
+  const body = {
+    email: email.val(),
+    password: password.val(),
+    remember,
+    recaptcha
+  };
+  Fetch2('/admin', 'POST', body);
+});
+
 
 
 
