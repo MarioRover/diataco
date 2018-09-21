@@ -980,7 +980,6 @@ main {
   width: 100%;
   height: 30em;
   color: #fff;
-  background-image: url('./../img/static1.squarespace.com.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1054,7 +1053,8 @@ main {
 .contact-page .contact .call-us content .row textarea {
   width: 17em;
 }
-.contact-page .contact .call-us content .row textarea {
+.contact-page .contact .call-us content .row textarea,
+.contact-page .contact .call-us content .row input[name="subject"] {
   width: 100% !important;
 }
 /* /////////////////////////////////////// */

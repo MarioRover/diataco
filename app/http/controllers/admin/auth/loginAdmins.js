@@ -17,7 +17,7 @@ class loginAdmins extends controller {
 
   async loginProccess(req , res , next) {
     try {
-      await this.recaptchaValidation(req, res, next);
+      // await this.recaptchaValidation(req, res, next);
       let result = await this.validationData(req, next);
       if (! result) {
         this.back(req, res);

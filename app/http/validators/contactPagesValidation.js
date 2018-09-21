@@ -1,6 +1,7 @@
 const validator = require('./validator');
 const {check} = require('express-validator/check');
 const path = require('path');
+const isEmail = require('validator/lib/isEmail');
 
 module.exports = new class contactValidation extends validator {
   handle() {
@@ -12,11 +13,10 @@ module.exports = new class contactValidation extends validator {
         .not().isEmpty()
         .withMessage('فیلد آیکون آدرس نمی تواند خالی باشد'),
       check('email')
-        .not().isEmpty()
-        .withMessage('فیلد ایمیل نمی تواند خالی باشد'),
-      check('email')
-        .isEmail()
-        .withMessage('فرمت ایمیل وارد شده صحیح نمی باشد'),
+        .custom(async (value , {req}) => {
+          if (!value) throw new Error('فیلد ایمیل نمی تواند خالی باشد');
+          if (!isEmail(value)) throw new Error('فرمت ایمیل وارد شده صحیح نمی باشد');
+        }),
       check('iconEmail')
         .not().isEmpty()
         .withMessage('فیلد آیکون ایمیل نمی تواند خالی باشد'),

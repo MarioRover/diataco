@@ -35,11 +35,15 @@ $.each(tabNavs , (tabIndex , tabNav) => {
 })
 //////AOS////////
 AOS.init();
-//////Input/////
-let inputs = $('input');
-$.each(inputs, (indexInArray, input) => { 
-  $(input).val('');
+window.addEventListener('load', function (event) {
+  //////Input/////
+  let inputs = $('input');
+  let textareas = $('textarea');
+  $.each(inputs, (indexInArray, input) => {
+    $(input).val('');
+  });
+  $.each(textareas, (indexInArray, textarea) => {
+    $(textarea).val('');
+  });
 });
-
-
 

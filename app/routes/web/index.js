@@ -16,6 +16,13 @@ router.use('/', homeRouter);
 router.use('/application', applicationRouter);
 // Website
 router.use('/website', websiteRouter);
+// Error Pages
+router.get('/error' , (req , res , next) => {
+  res.render('errors/stack' , {
+    title : 'Error',
+    layout: 'home/master'
+  })
+})
 
 
 // Error Handler

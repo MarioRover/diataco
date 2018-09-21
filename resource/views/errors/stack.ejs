@@ -2,16 +2,24 @@
   <div class="container grid-y">
     <div class="row grid-x-no align-middle"> 
       <h6>Error Message</h6>
-      <p><%= message %></p>
+      <p class="message"><</p>
     </div>
     <div class="row grid-x-no align-middle">
       <h6>Status Code : </h6>
-      <p><%= statusCode %></p>
+      <p class="statusCode"></p>
     </div>
     <pre>
-      <code class="html">
-        <%= stack %>
+      <code class="html stack">
+        
       </code>
     </pre>
   </div>
+  <script>
+    $('.message').text(window.localStorage.getItem('message'));
+    $('.statusCode').text(window.localStorage.getItem('statusCode'));
+    $('.stack').text(window.localStorage.getItem('stack'));
+    window.localStorage.removeItem('message');
+    window.localStorage.removeItem('statusCode');
+    window.localStorage.removeItem('stack');
+  </script>
 </section>

@@ -17,7 +17,7 @@ module.exports = new class contactPagesController extends controller {
         contactPage
       });
     } catch (error) {
-      this.error('Error in Index method at sitePagesController.js', 500, next);
+      return this.serverError('Error in Index method at sitePagesController.js', 500, error, res);
     }
   };
 
@@ -26,10 +26,7 @@ module.exports = new class contactPagesController extends controller {
       let result = await this.validationData(req, next);
       if (!result) {
         if (req.file) fs.unlinkSync(req.file.path);
-        return res.json({
-          data: req.flash('errors'),
-          status : 'warning'
-        });
+        return this.izitoastMessage(req.flash('errors') , 'warning' , res);
       }
       const {address,iconAddress,email,iconEmail,telephone,iconTelephone} = req.body;
       let contentObj = {
@@ -43,19 +40,12 @@ module.exports = new class contactPagesController extends controller {
       let newContactPage = new this.models.contactPage({...contentObj});
       newContactPage.save(err => {
         if(err) {
-          this.error('Error in save contactPage in set method at contactPageController.js' , 500 , next);
-          return res.json({
-            data : ['ذخیره اطلاعات با مشکل مواجه شد'],
-            status : 'error'
-          })
+          return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
         }
-        return res.json({
-          data: ['اطلاعات با موفقیت ذخیره شد'],
-          status: 'success'
-        });
+        return this.izitoastMessage(['اطلاعات با موفقیت ذخیره شد'], 'warning', res);
       })
     } catch (error) {
-      next(error);
+      return this.serverError('Error in set method at sitePagesController.js', 500, error, res);
     }
   }
   async update(req , res , next) {
@@ -63,10 +53,7 @@ module.exports = new class contactPagesController extends controller {
       let result = await this.validationData(req, next);
       if (!result) {
         if (req.file) fs.unlinkSync(req.file.path);
-        return res.json({
-          data: req.flash('errors'),
-          status : 'warning'
-        });
+        return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
       const {address,iconAddress,email,iconEmail,telephone,iconTelephone} = req.body;
       let contentObj = {address, iconAddress, email, iconEmail, telephone, iconTelephone};
@@ -86,13 +73,10 @@ module.exports = new class contactPagesController extends controller {
         }
       }
       await this.models.contactPage.findByIdAndUpdate(objId , {$set : {...contentObj , ...contentObj}});
-      return res.json({
-        data : ['تغییرات با موفقیت ثبت گردید'],
-        status: 'success'
-      })
+      return this.izitoastMessage(['تغییرات با موفقیت ثبت گردید'], 'success', res);
       
     } catch (error) {
-      next(error);
+      return this.serverError('Error in update method at contactPagesController', 500 , error , res);
     }
   }
 

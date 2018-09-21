@@ -21,16 +21,15 @@ module.exports = class controller {
     );
   };
   async recaptchaValidation(req , res , next) {
-    return new Promise((resolve, reject) => {
-      this.recaptcha.verify(req, (error, data) => {
-        if (error) {
-          req.flash('errors', 'گزینه امنیتی مربوط به شناسایی روبات خاموش است');
-          this.back(req, res);
-        } else {
-          resolve(true);
-        } 
-      })
-    })
+    try {
+      if (!req.body.recaptcha) {
+        return false;
+      } else {
+        return true;
+      }
+    } catch (error) {
+      return this.serverError('Error in recaptchaValidation Method at controller.js', 500, error, res);
+    }
   };
   async validationData(req , res , next) {
     try {
@@ -45,7 +44,7 @@ module.exports = class controller {
         return true;
       }
     } catch (error) {
-      this.error('Error in ValidationData in Controller.js' , 422 , next);
+      return this.serverError('Error in validationData Method at controller.js', 500, error, res);
     }
   }
   async isMongoId(paramId , next) {
@@ -56,7 +55,7 @@ module.exports = class controller {
         return true;
       }
     } catch (error) {
-      this.error('Error in validate mongoid in controller.js' , 500 , next);
+      return this.serverError('Error in isMongoId Method at controller.js', 500, error, res);
     }
   }
   addressImage(image) {
@@ -69,6 +68,20 @@ module.exports = class controller {
       messages
     }
   }
+
+
+  izitoastMessage(msg,method,res) {
+    try {
+      res.json({
+      data   : {msg,method},
+      status : 'userError'
+      });
+    } catch (error) {
+      return this.serverError('Error in izitoastMessage Method at controller.js', 500, error, res);
+    }
+  }
+
+
   async back(req , res) {
     return res.redirect(req.header('Referer') || '/');
   }
@@ -80,6 +93,17 @@ module.exports = class controller {
     } catch (error) {
       next(error);
     } 
+  }
+  serverError(msg,statusCode, error, res) {
+    res.json({
+      data   : {
+        msg,
+        statusCode,
+        stack : error.stack,
+        debug : config.debug
+      },
+      status : 'serverError'
+    })
   }
   getUrlImage(dir) {
     return dir.substring(8);

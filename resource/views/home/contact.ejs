@@ -1,6 +1,6 @@
 <%- include(viewPath('home/layout/header'))  %>
 <section class="contact-page grid-y">
-  <header>
+  <header style="background-image : url('<%= contactPage.imageUrl.destination %>');">
     <div class="overlay"></div>
   </header>
   <div class="contact grid align-center">
@@ -10,7 +10,7 @@
           <h6>نظرات خود را با ما در میان بگذارید</h6>
         </div>
         <content class="wrap100 grid-y">
-          <form action="/contact" method="POST">
+          <form class="contactPage">
             <div class="row grid-x align-middle align-justify">
               <input type="text" name="fullName" placeholder="نام">
               <input type="text" name="email" placeholder="ایمیل">
@@ -22,7 +22,7 @@
               <textarea name="description" cols="30" rows="10" placeholder="توضیحات"></textarea>
             </div>
             <div class="row grid align-left">
-              <%- recaptcha %>
+              <div id="html_element"></div>
             </div>
             <div class="row grid-x align-middle align-justify">
               <button class="btn btn-primary grid align-center-middle" type="submit">
@@ -32,6 +32,27 @@
           </form>
         </content>
       </div>
+      <% if(contactPage !== 'undefined') { %>
+      <div class="info-us grid-y">
+        <div class="wrap100 header grid align-middle">
+          <h6>راه های تماس با ما</h6>
+        </div>
+        <content class="wrap100 grid-y">
+          <div class="row grid-x-no">
+            <i class="<%= contactPage.iconAddress %>"></i>
+            <span><%= contactPage.address %></span>
+          </div>
+          <div class="row grid-x-no">
+            <i class="<%= contactPage.iconEmail %>"></i>
+            <span><%= contactPage.email %></span>
+          </div>
+          <div class="row grid-x-no">
+            <i class="<%= contactPage.iconTelephone %>"></i>
+            <span><%= contactPage.telephone %></span>
+          </div>
+        </content>
+      </div>
+      <% } else { %>
       <div class="info-us grid-y">
         <div class="wrap100 header grid align-middle">
           <h6>راه های تماس با ما</h6>
@@ -39,21 +60,21 @@
         <content class="wrap100 grid-y">
           <div class="row grid-x-no">
             <i class="fas fa-map-marker-alt"></i>
-            <span>تهران ، خیابان جمهوری ، ساختمان آلومینیوم</span>
+            <span></span>
           </div>
           <div class="row grid-x-no">
             <i class="fas fa-envelope-open"></i>
-            <span>info@diataco.com</span>
+            <span></span>
           </div>
           <div class="row grid-x-no">
             <i class="fas fa-phone-square"></i>
-            <span>+21884425</span>
+            <span></span>
           </div>
         </content>
-      </div>
+      </div>  
+      <% } %>
     </div>
   </div>
-  
 </section>
 
 <%- include(viewPath('home/layout/footer')) %>

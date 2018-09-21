@@ -24,18 +24,5 @@ $('.contactPageSetting').submit((e) => {
 });
 
 
-const Fetch = (url,method,body) => {
-  fetch(url, {method,body})
-  .then(res => {
-    return res.json();
-  }).then(res => {
-    let messages = res.data;
-    if (typeof messages !== 'undefined') {
-      messages.map(message => {
-        izitoast(res.status, message);
-      });
-    }
-  }).catch(err => {
-    console.log(err);
-  })
-}
+
+
