@@ -19,7 +19,7 @@ $('.contactPageSetting').submit((e) => {
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
 
-  // Fetch('/admin/site-setting/pages/contact','POST',formData);
+   //çFetch('/admin/site-setting/pages/contact','POST',formData);
   Fetch('/admin/site-setting/pages/contact', 'PUT', formData);
 });
 
