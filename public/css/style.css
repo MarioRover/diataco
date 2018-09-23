@@ -1067,7 +1067,6 @@ main {
 /* ///////////// SEO Page //////////////////// */
 .seo-page .header-slider {
   height: 40em;
-  background-image: url('./../img/Media-Header1.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1302,4 +1301,10 @@ main {
 .login-admin .right .group .checkbox label {
   position: inherit;
   margin-left: 10px;
+}
+.title{
+  width: 90px;
+  margin-top: 20px;
+  border-top: 2px solid #222;
+
 }
