@@ -50,7 +50,8 @@ td[class^="col"] {
 [ Ver1 ]*/
 .table100.ver1 td {
   font-size: 12px;
-  color: #808080;
+  color: #3c3c3c;
+  font-family: 'IRANYekan';
   line-height: 1.4;
   overflow: hidden;
 }

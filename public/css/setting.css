@@ -428,9 +428,9 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  font-family: iransans;
+  font-family: 'IRANYekan';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   color: inherit;
   text-rendering: optimizeLegibility;
 }
