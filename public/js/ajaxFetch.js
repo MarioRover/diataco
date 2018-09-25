@@ -64,6 +64,21 @@ const Fetch2 = (url,method,body) => {
         window.location = res.data.url;
       }, 3000);
     }
+    if(res.status == 'deleteObj') {
+      switch (res.data.actionDel) {
+        case 'row':
+          rowDelete(res.data.objId);
+          break;
+        default:
+          break;
+      }
+      let messages = res.data.msg;
+      if (typeof messages !== 'undefined') {
+        messages.map(message => {
+          izitoast(res.data.method, message);
+        });
+      }
+    }
   }).catch(err => {
     console.log(err);
   })
@@ -91,4 +106,7 @@ function guidGenerator() {
   };
   return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
-
+const rowDelete = (objId) => {
+  let row = $(`tr td button[value=${objId}]`).parents('tr');
+  $(row).remove();
+}

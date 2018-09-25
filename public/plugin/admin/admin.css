@@ -321,3 +321,57 @@ span.digit {
 .input-group .image {
   width: 60%;
 }
+/* ////////Table////////// */
+table {
+  width: 90%;
+  border-spacing: 2px;
+  background-color: #2c3845;
+  border-radius: 7px;
+}
+th,td {
+  padding: 10px;
+  color: #fff;
+  font-size: 14px;
+  text-align: right;
+}
+td {
+  border: 1px solid #28333f;
+  font-size: 13px;
+}
+th {
+  background-color: #202932;
+  font-weight: bold;
+}
+tbody tr:nth-child(2n) {
+  background-color: #242e39;
+}
+td.col1 {
+  width: 1%;
+}
+td.col2 {
+  width: 30%;
+}
+td.col3 {
+  width: 14%;
+}
+table .button,
+table button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 27px;
+  height: 27px;
+  margin: 3px;
+  border-radius: 5px;
+  background-color: #4fabcd;
+  cursor: pointer;
+}
+table button:hover,
+table .button:hover {
+  background-color: #377b95;
+}
+table button i {
+  color: #fff;
+  font-size: 16px;
+}

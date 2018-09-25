@@ -19,9 +19,23 @@ $('.contactPageSetting').submit((e) => {
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
 
-   //çFetch('/admin/site-setting/pages/contact','POST',formData);
+   //Fetch('/admin/site-setting/pages/contact','POST',formData);
   Fetch('/admin/site-setting/pages/contact', 'PUT', formData);
 });
+/////////Messsages////////////
+let messages = $('.deleteMessage');
+let formData = new FormData();
+$.each(messages, function (indexInArray, message) {
+    $(message).click(function (e) {
+      e.preventDefault();
+      let messageId = $(message).attr('value');
+      let body = {
+        message : messageId
+      };
+      Fetch2('/admin/messages', 'DELETE', body);
+    });
+});
+
 
 
 

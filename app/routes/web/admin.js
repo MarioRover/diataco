@@ -32,7 +32,7 @@ router.get('/logout' ,(req , res) => {
 router.get('/dashboard', redirectIfAuthenticated.adminLogin, adminController.index);
 router.get('/messages', redirectIfAuthenticated.adminLogin, messagesController.index);
 router.get('/messages/:id', redirectIfAuthenticated.adminLogin, messagesController.viewMessage);
-router.delete('/messages/:id', redirectIfAuthenticated.adminLogin, messagesController.destroy);
+router.delete('/messages', redirectIfAuthenticated.adminLogin, messagesController.destroy);
 // Site Sittings
 router.get('/site-setting/pages', redirectIfAuthenticated.adminLogin, sitePagesController.index);
 // Contact Page

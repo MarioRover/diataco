@@ -62,12 +62,6 @@ module.exports = class controller {
     return this.getUrlImage(`${image.destination}/${image.filename}`);
   }
   // Method Helper
-  izitoast(method , messages) {
-    return {
-      method,
-      messages
-    }
-  }
 
 
   izitoastMessage(msg,method,res) {
@@ -103,6 +97,17 @@ module.exports = class controller {
         debug : config.debug
       },
       status : 'serverError'
+    })
+  }
+  deleteObj(msg, method, objId , actionDel , res) {
+    res.json({
+      data: {
+        msg,
+        method,
+        objId,
+        actionDel
+      },
+      status: 'deleteObj'
     })
   }
   getUrlImage(dir) {

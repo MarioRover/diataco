@@ -746,9 +746,3 @@ textarea:focus {
 .pr-5 {
   padding-right: 5em;
 }
-th,td {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
