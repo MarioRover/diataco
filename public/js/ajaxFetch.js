@@ -1,15 +1,13 @@
-const Fetch = (url,method,body) => {
+const Fetch = (url,method,body) => {  
   fetch(url, {method,body})
   .then(res => {
     return res.json();
   }).then(res => {
-    if(res.status == 'userError') {
-      let messages = res.data.msg;
-      if (typeof messages !== 'undefined') {
-        messages.map(message => {
-          izitoast(res.data.method, message);
-        });
-      }
+    let messages = res.data.msg;
+    if (typeof messages !== 'undefined') {
+      messages.map(message => {
+        izitoast(res.data.method, message);
+      });
     }
     if(res.status == 'serverError') {
       if (res.data.debug) {
@@ -19,6 +17,11 @@ const Fetch = (url,method,body) => {
         window.location = '/error';
       } else {
         window.location = 'errors/errorPage';
+      }
+    }
+    if(res.status == 'transData') {
+      if (typeof res.data.transfer.imageUrl !== 'undefined') {
+        setImageUrl(res.data.transfer.imageUrl);
       }
     }
   }).catch(err => {

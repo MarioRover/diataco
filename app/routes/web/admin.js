@@ -7,9 +7,14 @@ const loginAdmins = require('app/http/controllers/admin/auth/loginAdmins');
 const messagesController = require('app/http/controllers/admin/messagesController');
 const sitePagesController = require('app/http/controllers/admin/siteSittings/pages/sitePagesController');
 const contactPagesController = require('app/http/controllers/admin/siteSittings/pages/contactPagesController');
+const homePagesController = require('app/http/controllers/admin/siteSittings/pages/homePagesController');
 // Validators
 const loginAdminsValidation = require('app/http/validators/loginAdminsValidation');
 const contactPagesValidation = require('app/http/validators/contactPagesValidation');
+const homePagesAboutValidation = require('app/http/validators/homePageValidation/aboutValidation');
+const homePagesParallaxValidation = require('app/http/validators/homePageValidation/parallaxValidation');
+const homePagesHomeSliderValidation = require('app/http/validators/homePageValidation/homeSliderValidation');
+const homePagesAbilityValidation = require('app/http/validators/homePageValidation/abilityValidation');
 // Middleware
 const redirectIfAuthenticated = require('app/http/middleware/redirectIfAuthenticated');
 const convertFileToField = require('app/http/middleware/convertFileToField')
@@ -51,5 +56,32 @@ router.put('/site-setting/pages/contact',
   contactPagesValidation.handle(),
   contactPagesController.update
 );
-
+// Home Page
+router.get('/site-setting/pages/home', redirectIfAuthenticated.adminLogin, homePagesController.index);
+router.put('/site-setting/pages/home/about',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('aboutUsphoto'),
+  convertFileToField.handle,
+  homePagesAboutValidation.handle(),
+  homePagesController.updateAbout
+);
+router.put('/site-setting/pages/home/parallax',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('parallaxphoto'),
+  convertFileToField.handle,
+  homePagesParallaxValidation.handle(),
+  homePagesController.updateParallax
+);
+router.put('/site-setting/pages/home/homeslider',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('homeSliderphoto'),
+  convertFileToField.handle,
+  homePagesHomeSliderValidation.handle(),
+  homePagesController.updateHomeSlider
+);
+router.put('/site-setting/pages/home/ability',
+  redirectIfAuthenticated.adminLogin,
+  homePagesAbilityValidation.handle(),
+  homePagesController.updateAbility
+);
 module.exports = router;

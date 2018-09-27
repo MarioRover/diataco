@@ -3,7 +3,7 @@ const {check} = require('express-validator/check');
 const path = require('path');
 const isEmail = require('validator/lib/isEmail');
 
-module.exports = new class contactValidation extends validator {
+module.exports = new class homeValidation extends validator {
   handle() {
     return [
       check('address')

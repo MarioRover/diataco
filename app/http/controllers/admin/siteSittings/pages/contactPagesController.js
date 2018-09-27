@@ -42,7 +42,7 @@ module.exports = new class contactPagesController extends controller {
         if(err) {
           return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
         }
-        return this.izitoastMessage(['اطلاعات با موفقیت ذخیره شد'], 'warning', res);
+        return this.izitoastMessage(['اطلاعات با موفقیت ذخیره شد'], 'success', res);
       })
     } catch (error) {
       return this.serverError('Error in set method at sitePagesController.js', 500, error, res);
@@ -73,11 +73,14 @@ module.exports = new class contactPagesController extends controller {
         }
       }
       await this.models.contactPage.findByIdAndUpdate(objId , {$set : {...contentObj , ...contentObj}});
-      return this.izitoastMessage(['تغییرات با موفقیت ثبت گردید'], 'success', res);
+      let newDB = await this.refreshDB(this.models.contactPage);
+      let imageUrl = newDB.imageUrl.destination;
+      return this.transDataWithMessage(['تغییرات با موفقیت ثبت گردید'], 'success', imageUrl , res);
       
     } catch (error) {
       return this.serverError('Error in update method at contactPagesController', 500 , error , res);
     }
   }
 
+  
 }

@@ -1,25 +1,30 @@
 const autoBind = require('auto-bind');
-const Recaptcha = require('express-recaptcha').Recaptcha;
 const {validationResult} = require('express-validator/check');
 const isMongoId = require('validator/lib/isMongoId');
 // Models
 const Messages = require('app/models/messages');
 const Admins = require('app/models/admin');
 const contactPage = require('app/models/contactPage');
+const homePage = require('app/models/homePageSetting/homePage');
+const aboutUs = require('app/models/homePageSetting/aboutUs');
+const parallax = require('app/models/homePageSetting/parallax');
+const homeSlider = require('app/models/homePageSetting/homeSlider');
+const ability = require('app/models/homePageSetting/ability');
 
 module.exports = class controller {
   constructor() {
     autoBind(this);
-    this.recaptchaConfig();
-    this.models = {Admins , Messages , contactPage};
+    this.models = {
+      Admins,
+      Messages,
+      contactPage,
+      homePage,
+      aboutUs,
+      parallax,
+      homeSlider,
+      ability
+    };
   }
-  async recaptchaConfig() {
-    this.recaptcha = new Recaptcha(
-      config.service.recaptcha.site_key,
-      config.service.recaptcha.secret_key,
-      {...config.service.recaptcha.options}
-    );
-  };
   async recaptchaValidation(req , res , next) {
     try {
       if (!req.body.recaptcha) {
@@ -60,6 +65,10 @@ module.exports = class controller {
   }
   addressImage(image) {
     return this.getUrlImage(`${image.destination}/${image.filename}`);
+  }
+  async refreshDB(DB) {
+    let newDB = await DB.find({});
+    return newDB[0];
   }
   // Method Helper
 
@@ -110,6 +119,24 @@ module.exports = class controller {
       status: 'deleteObj'
     })
   }
+
+  async checkObj(obj) {
+    return Object.keys(obj).length !== 0;
+  }
+
+  transDataWithMessage(msg , method , transfer , res) {
+    res.json({
+      data : {
+        msg,
+        method,
+        transfer : {
+          imageUrl : transfer
+        }
+      },
+      status: 'transData'
+    })
+  }
+  
   getUrlImage(dir) {
     return dir.substring(8);
   }
