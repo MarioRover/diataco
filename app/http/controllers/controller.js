@@ -69,8 +69,6 @@ module.exports = class controller {
     return newDB[0];
   }
   // Method Helper
-
-
   izitoastMessage(msg,method,res) {
     try {
       res.json({
@@ -81,8 +79,6 @@ module.exports = class controller {
       return this.serverError('Error in izitoastMessage Method at controller.js', 500, error, res);
     }
   }
-
-
   async back(req , res) {
     return res.redirect(req.header('Referer') || '/');
   }

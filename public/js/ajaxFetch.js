@@ -3,12 +3,6 @@ const Fetch = (url,method,body) => {
   .then(res => {
     return res.json();
   }).then(res => {
-    let messages = res.data.msg;
-    if (typeof messages !== 'undefined') {
-      messages.map(message => {
-        izitoast(res.data.method, message);
-      });
-    }
     if(res.status == 'serverError') {
       if (res.data.debug) {
         window.localStorage.setItem('message', res.data.msg);
@@ -16,13 +10,19 @@ const Fetch = (url,method,body) => {
         window.localStorage.setItem('stack', res.data.stack);
         window.location = '/error';
       } else {
-        window.location = 'errors/errorPage';
+        window.location = 'errors/stack';
       }
     }
     if(res.status == 'transData') {
       if (typeof res.data.transfer.imageUrl !== 'undefined') {
         setImageUrl(res.data.transfer.imageUrl);
       }
+    }
+    let messages = res.data.msg;
+    if (typeof messages !== 'undefined') {
+      messages.map(message => {
+        izitoast(res.data.method, message);
+      });
     }
   }).catch(err => {
     console.log(err);

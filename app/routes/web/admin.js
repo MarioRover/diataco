@@ -33,7 +33,14 @@ router.get('/logout' ,(req , res) => {
   req.logout();
   res.clearCookie('remember_token');
   res.redirect('/');
-})
+});
+router.get('/profile/edit', redirectIfAuthenticated.adminLogin, adminController.showProfileEdit);
+router.put('/profile/edit', 
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  adminController.profileEdit
+);
 router.get('/dashboard', redirectIfAuthenticated.adminLogin, adminController.index);
 router.get('/messages', redirectIfAuthenticated.adminLogin, messagesController.index);
 router.get('/messages/:id', redirectIfAuthenticated.adminLogin, messagesController.viewMessage);

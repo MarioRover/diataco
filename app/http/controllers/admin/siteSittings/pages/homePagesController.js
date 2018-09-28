@@ -4,6 +4,7 @@ const fs = require('fs');
 module.exports = new class homePagesController extends controller {
   async index(req, res, next) {
     try {
+      let user = req.user;
       let aboutUs = await this.models.aboutUs.find({});
       let parallax = await this.models.parallax.find({});
       let homeSlider = await this.models.homeSlider.find({});
@@ -31,21 +32,12 @@ module.exports = new class homePagesController extends controller {
       res.render('admin/siteSetting/pages/home', {
         title: 'تنظیمات سایت',
         activeRow: 'site-pages',
-        aboutUs, parallax, homeSlider, ability
+        aboutUs, parallax, homeSlider, ability,user
       });
     } catch (error) {
       return this.serverError('Error in Index method at sitePagesController.js', 500, error, res);
     }
   };
-
-  async getFiles() {
-    if (homePage[0].homeSliderImageUrl.originalname == homeSliderphoto[0].originalname) {
-      console.log('equal1');
-    } else {
-      console.log('not equl1');
-    }
-  }
-
 
   async updateAbout(req , res , next) {
     try {
@@ -88,7 +80,7 @@ module.exports = new class homePagesController extends controller {
           if (aboutUs[0].aboutUsImageUrl.originalname === req.file.originalname) {
             await fs.unlinkSync(req.file.path);
           } else {
-            await fs.unlinkSync(aboutUs[0].aboutUsImageUrl.path);
+            if (await fs.existsSync(aboutUs[0].aboutUsImageUrl.path)) await fs.unlinkSync(aboutUs[0].aboutUsImageUrl.path);
             contentObj['aboutUsImageUrl'] = {
               destination: await this.addressImage(req.file),
               originalname: req.file.originalname,
@@ -152,7 +144,7 @@ module.exports = new class homePagesController extends controller {
           if (parallax[0].parallaxImageUrl.originalname === req.file.originalname) {
             await fs.unlinkSync(req.file.path);
           } else {
-            await fs.unlinkSync(parallax[0].parallaxImageUrl.path);
+            if (await fs.existsSync(parallax[0].parallaxImageUrl.path)) await fs.unlinkSync(parallax[0].parallaxImageUrl.path);
             contentObj['parallaxImageUrl'] = {
               destination: await this.addressImage(req.file),
               originalname: req.file.originalname,
@@ -224,8 +216,8 @@ module.exports = new class homePagesController extends controller {
         if (req.file) {
           if (homeSlider[0].homeSliderImageUrl.originalname === req.file.originalname) {
             await fs.unlinkSync(req.file.path);
-          } else {
-            await fs.unlinkSync(homeSlider[0].homeSliderImageUrl.path);
+          } else {;
+            if (await fs.existsSync(homeSlider[0].homeSliderImageUrl.path)) await fs.unlinkSync(homeSlider[0].homeSliderImageUrl.path);
             contentObj['homeSliderImageUrl'] = {
               destination: await this.addressImage(req.file),
               originalname: req.file.originalname,

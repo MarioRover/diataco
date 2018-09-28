@@ -10,9 +10,9 @@
       <div class="line-space"></div>
       <div class="row user coll-tab grid-x-no align-middle">
         <div class="photo grid align-center-middle">
-          <img src="/img/IMG_6456.JPG" alt="Hossein Akbari">
+          <img src="<%= user.profileImg.destination %>">
         </div>
-        <span class="user-info">حسین اکبری</span>
+        <span class="user-info"><%= user.name %> <%= user.family %></span>
         <div class="caret"></div>
       </div>
       <div class="collapse userColl">
@@ -20,7 +20,7 @@
           <i class="fas fa-user"></i>
           <span>پروفایل</span>
         </a>
-        <a class="row grid-x-no align-middle">
+        <a href="/admin/profile/edit" class="row grid-x-no align-middle profileEdit">
           <i class="fas fa-user-edit"></i>
           <span>تغییر پروفایل</span>
         </a>

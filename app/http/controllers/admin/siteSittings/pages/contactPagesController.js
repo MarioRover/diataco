@@ -5,6 +5,7 @@ module.exports = new class contactPagesController extends controller {
 
   async index(req, res, next) {
     try {
+      let user = req.user;
       let contactPage = await this.models.contactPage.find({});
       if (contactPage == '') {
         contactPage = 'undefined';
@@ -14,7 +15,7 @@ module.exports = new class contactPagesController extends controller {
       res.render('admin/siteSetting/pages/contact', {
         title: 'تنظیمات سایت',
         activeRow: 'site-pages',
-        contactPage
+        contactPage,user
       });
     } catch (error) {
       return this.serverError('Error in Index method at sitePagesController.js', 500, error, res);

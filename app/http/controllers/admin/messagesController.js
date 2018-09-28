@@ -3,6 +3,7 @@ const controller = require('../controller');
 module.exports = new class messagesController extends controller {
   async index(req, res , next) {
     try {
+      let user = req.user;
       let messages = await this.models.Messages.find({}).sort({
         createdDate: -1,
         createdTime: -1
@@ -10,7 +11,7 @@ module.exports = new class messagesController extends controller {
       res.render('admin/messages', {
         title: 'پیام های دریافتی',
         activeRow: 'messages',
-        messages
+        messages,user
       });
     } catch (error) {
       this.error('Error in Index method at messageController.js' , 500 , next);
