@@ -4,16 +4,10 @@ const fs = require('fs');
 module.exports = new class homePagesController extends controller {
   async index(req, res, next) {
     try {
-      let homePage = await this.models.homePage.find({});
       let aboutUs = await this.models.aboutUs.find({});
       let parallax = await this.models.parallax.find({});
       let homeSlider = await this.models.homeSlider.find({});
       let ability = await this.models.ability.find({});
-      if (homePage == '') {
-        homePage = 'undefined';
-      } else {
-        homePage = homePage[0];
-      }
       if (aboutUs == '') {
         aboutUs = 'undefined';
       } else {
@@ -37,7 +31,7 @@ module.exports = new class homePagesController extends controller {
       res.render('admin/siteSetting/pages/home', {
         title: 'تنظیمات سایت',
         activeRow: 'site-pages',
-        homePage, aboutUs, parallax, homeSlider, ability
+        aboutUs, parallax, homeSlider, ability
       });
     } catch (error) {
       return this.serverError('Error in Index method at sitePagesController.js', 500, error, res);

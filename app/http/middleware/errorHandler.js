@@ -17,7 +17,7 @@ class errorHandler {
       layout: 'home/master'
     }
     if(config.debug) {
-      res.render('errors/stack' , {
+      res.render('errors/error' , {
         ...layouts,
         message,
         stack,

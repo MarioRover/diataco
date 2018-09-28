@@ -1139,18 +1139,46 @@ main {
   color: #333;
   font-weight: 300;
 }
-#canvas {
+.error-page {
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
-  background-image: url('/img/404.png');
   background-attachment: fixed;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.error-page.page404 {
+  background-image: url('/img/404.png');
+}
+.error-page.page500 {
+  
+}
+.page-server-error {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 42%;
+}
+.page-server-error h4 {
+  color: #333;
+  font-size: 4em;
+  text-align: center;
+}
+.page-server-error p {
+  color: #333;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 14px;
+  text-align: center;
+}
+.page-server-error .btn {
+  width: 8em;
+  height: 3em;
+  margin: auto;
 }
 /* ///////// Error Stack /////////// */
 .error-stack {

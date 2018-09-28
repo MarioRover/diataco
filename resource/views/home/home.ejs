@@ -3,19 +3,19 @@
 <link rel="stylesheet" href="/plugin/home/owlcarousel/owl.carousel.min.css">
 <link rel="stylesheet" href="/plugin/home/owlcarousel/owl.theme.default.min.css">
 <%- include(viewPath('home/layout/header'))  %>
-<section class="homeSlider grid align-center-middle">
+<section class="homeSlider grid align-center-middle" style="background-image : url('<%= homeSlider.homeSliderImageUrl.destination %>')">
     <div class="grid align-center-middle">
     <div class="grid-y align-center-middle item-1">
-        <i class="fa fa-desktop-alt"></i>
-        <h3>اگر میخواهید یک وب سایت معمولی داشته باشید، ما اصلاً گزینه خوبی نیستیم!</h3><br>
+        <i class="<%= homeSlider.homeSlidericonItem1 %>"></i>
+        <h3><%= homeSlider.homeSlideritem1 %></h3><br>
     </div>
     <div class="grid-y align-center-middle item-2">
-        <i class="fal fa-mobile"></i>
-        <h3>اگر میخواهید یک وب سایت معمولی داشته باشید، ما اصلاً گزینه خوبی نیستیم!</h3><br>
+        <i class="<%= homeSlider.homeSlidericonItem2 %>"></i>
+        <h3><%= homeSlider.homeSlideritem2 %></h3><br>
     </div>
     <div class="grid-y align-center-middle item-3">
-        <i class="fab fa-google"></i>
-        <h3>اگر میخواهید یک وب سایت معمولی داشته باشید، ما اصلاً گزینه خوبی نیستیم!</h3><br>
+        <i class="<%= homeSlider.homeSlidericonItem3 %>"></i>
+        <h3><%= homeSlider.homeSlideritem3 %></h3><br>
     </div>
   </div>
 </section>
@@ -23,11 +23,9 @@
     <div class="container" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
         <div class="wrap grid align-center align-middle grid-y">
             <img class="logo" src="/img/artakhe-logo.png">
-            <h3>اگر میخواهید یک وب سایت معمولی داشته باشید، ما اصلاً گزینه خوبی نیستیم!</h3>
-            <p class="align-center">وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین
-                سلیقه آنان طراحی و پیاده سازی کنیم. ما تمامی ساعات حضور در دفتر کوچکمان را با عشق و علاقه سپری میکنیم تا
-                مشتریان ما در استفاده از وب سایت خود تجربه بهتری داشته باشند.</p>
-            <img src="/img/home-1.png">
+            <h3><%= aboutUs.aboutUsheader %></h3>
+            <p class="align-center"><%= aboutUs.aboutUsheaderDesc %></p>
+            <img src="<%= aboutUs.aboutUsImageUrl.destination %>">
         </div>
     </div>
 </section>
@@ -35,68 +33,54 @@
     <div class="container" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
         <div class="ability-wrap grid-x align-around">
         <div class="item grid-x-no">
-            <i class="fal fa-sliders-h"></i>
+            <i class="%= ability.abilityIconitem1 %>"></i>
             <div class="content">
-                <h4>بهترین ایده</h4>
-                <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-                    و پیاده سازی کنیم.
-                </p>
+                <h4><%= ability.abilityitem1 %></h4>
+                <p><%= ability.abilityDescitem1 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="fal fa-mobile"></i>
+            <i class="%= ability.abilityIconitem2 %>"></i>
             <div class="content">
-                <h4>بهترین ایده</h4>
-                <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-                    و پیاده سازی کنیم.
-                </p>
+                <h4><%= ability.abilityitem2 %></h4>
+                <p><%= ability.abilityDescitem2 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="fab fa-react"></i>
+            <i class="%= ability.abilityIconitem3 %>"></i>
             <div class="content">
-                <h4>بهترین ایده</h4>
-                <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-                    و پیاده سازی کنیم.
-                </p>
+                <h4><%= ability.abilityitem3 %></h4>
+                <p><%= ability.abilityDescitem3 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="fab fa-node-js"></i>
+            <i class="%= ability.abilityIconitem4 %>"></i>
             <div class="content">
-                <h4>بهترین ایده</h4>
-                <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-                    و پیاده سازی کنیم.
-                </p>
+                <h4><%= ability.abilityitem4 %></h4>
+                <p><%= ability.abilityDescitem4 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="fal fa-rocket"></i>
+            <i class="%= ability.abilityIconitem5 %>"></i>
             <div class="content">
-                <h4>بهترین ایده</h4>
-                <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-                    و پیاده سازی کنیم.
-                </p>
+                <h4><%= ability.abilityitem5 %></h4>
+                <p><%= ability.abilityDescitem5 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="fal fa-recycle"></i>
+            <i class="%= ability.abilityIconitem6 %>"></i>
             <div class="content">
-                <h4>بهترین ایده</h4>
-                <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-                    و پیاده سازی کنیم.
-                </p>
+                <h4><%= ability.abilityitem6 %></h4>
+                <p><%= ability.abilityDescitem6 %></p>
             </div>
-        </div>
         </div>
     </div>
     
 </section>
-<section class="parallax para1">
+<section class="parallax para1 style="background-image:url('<%=parallax.parallaxImageUrl.destination %>')">
     <div class="overlay grid-y align-center-middle" >
-        <h4 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"> به وب سایت ما خوش آمدید</h4>
-        <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی و پیاده
-            سازی کنیم</p>
+        <h4 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"><%= parallax.headerParallax %></h4>
+        <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"><%= parallax.descParallax %></p>
     </div>
 </section>
 <section class="wrapper products-tab grid align-center-middle ">

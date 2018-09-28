@@ -5,7 +5,6 @@ const isMongoId = require('validator/lib/isMongoId');
 const Messages = require('app/models/messages');
 const Admins = require('app/models/admin');
 const contactPage = require('app/models/contactPage');
-const homePage = require('app/models/homePageSetting/homePage');
 const aboutUs = require('app/models/homePageSetting/aboutUs');
 const parallax = require('app/models/homePageSetting/parallax');
 const homeSlider = require('app/models/homePageSetting/homeSlider');
@@ -18,7 +17,6 @@ module.exports = class controller {
       Admins,
       Messages,
       contactPage,
-      homePage,
       aboutUs,
       parallax,
       homeSlider,
