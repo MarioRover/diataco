@@ -139,7 +139,7 @@ $('.AbilitySetting').submit((e) => {
   Fetch2('/admin/site-setting/pages/home/ability', 'PUT', body);
 });
 
-
+/////////Profile////////////
 $('.ProfileEdit').submit((e) => {
   e.preventDefault();
   let name = $('input[name = "name"]');
@@ -155,5 +155,37 @@ $('.ProfileEdit').submit((e) => {
 
   Fetch('/admin/profile/edit', 'PUT', formData);
 });
+///////////Blog Category//////////////
+$('.CategoryBlogCreate').submit((e) => {
+  e.preventDefault();
+  let name = $('input[name = "name"]');
+  let slug = $('input[name = "slug"]');
+  let photo = $('input[name = "photo"]');
+  let photoVal = $('input[name = "photo"]');
 
+  let formData = new FormData();
+  formData.append('name', name.val());
+  formData.append('slug', slug.val());
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
 
+  Fetch('/admin/blogs/categories/add', 'POST', formData);
+});
+
+$('.UpdateCategory').submit((e) => {
+  e.preventDefault();
+  let name = $('input[name = "name"]');
+  let slug = $('input[name = "slug"]');
+  let photo = $('input[name = "photo"]');
+  let photoVal = $('input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append('name', name.val());
+  formData.append('slug', slug.val());
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
+
+  let pathName = window.location.pathname.split('/');
+  let catSlug = pathName[pathName.length-1];    
+  Fetch(`/admin/blogs/categories/${catSlug}/update`, 'PUT', formData);
+});

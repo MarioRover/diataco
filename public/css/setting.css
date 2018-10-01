@@ -631,7 +631,7 @@ label {
   color: #555;
   font-size: 13px;
   pointer-events: none;
-  font-weight: 300;
+  font-weight: 400;
   -webkit-transition: 300ms ease all;
   -moz-transition: 300ms ease all;
   -ms-transition: 300ms ease all;
@@ -721,6 +721,9 @@ label {
   background-color: #6c757d;
   border-color: #6c757d;
 }
+.btn.sign span {
+  margin-left: 6px;
+}
 input,textarea {
   min-height: 34px;
   font-size: 13px;
@@ -734,6 +737,7 @@ input,textarea {
   border-radius: 3px;
   outline: none;
   resize: none;
+  font-weight: 300;
 }
 input:focus,
 textarea:focus {

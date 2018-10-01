@@ -10,7 +10,6 @@ const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const passport = require('passport');
 const Helpers = require('./helper');
-const methodOverride = require('method-override');
 //Middleware
 const rememberLogin = require('app/http/middleware/rememberLogin');
 // Application
@@ -48,7 +47,6 @@ module.exports = class Aplication {
     app.use(bodyParser.urlencoded({
       extended: true
     }));
-    app.use(methodOverride('_method'));
     app.use(validator());
     app.use(session({ ...config.session}));
     app.use(cookieParser(process.env.COOKIE_SECRETKEY));

@@ -1,0 +1,32 @@
+<%- contentFor('panel-header') %>
+<div class="grid-x-no align-middle">
+  <i class="fal fa-newspaper"></i>
+  <span class="name">وبلاگ</span>
+</div>
+<i class="arrow far fa-angle-left"></i>
+<a href="/admin/blogs/categories" class="grid-x-no align-middle">
+  <i class="fal fa-archive"></i>
+  <span class="name">دسته بندی</span>
+</a>
+<i class="arrow far fa-angle-left"></i>
+<div class="grid-x-no align-middle">
+  <span class="name">
+    <%= category.name %></span>
+</div>
+<i class="arrow far fa-angle-left"></i>
+<div class="active grid-x-no align-middle">
+  <span class="name">ساخت بلاگ</span>
+</div>
+<%- contentFor('body') %>
+<div class="blogs-categories grid align-center">
+  <div class="container grid-y">
+
+    <div class="controller grid-x">
+      <div class="mark grid-x-no align-middle">
+        <i class="fal fa-newspaper"></i>
+        <span class="name">ساخت بلاگ</span>
+      </div>
+    </div>
+
+  </div>
+</div>

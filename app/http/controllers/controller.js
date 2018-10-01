@@ -9,6 +9,7 @@ const aboutUs = require('app/models/homePageSetting/aboutUs');
 const parallax = require('app/models/homePageSetting/parallax');
 const homeSlider = require('app/models/homePageSetting/homeSlider');
 const ability = require('app/models/homePageSetting/ability');
+const blogCategory = require('app/models/blog/categories');
 
 module.exports = class controller {
   constructor() {
@@ -20,7 +21,8 @@ module.exports = class controller {
       aboutUs,
       parallax,
       homeSlider,
-      ability
+      ability,
+      blogCategory
     };
   }
   async recaptchaValidation(req , res , next) {
@@ -118,6 +120,15 @@ module.exports = class controller {
     return Object.keys(obj).length !== 0;
   }
 
+  isEmptyArray(array) {
+    if (!Array.isArray(array) || !array.length) {
+      // array does not exist, is not an array, or is empty
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   transDataWithMessage(msg , method , transfer , res) {
     res.json({
       data : {
@@ -128,6 +139,17 @@ module.exports = class controller {
         }
       },
       status: 'transData'
+    })
+  }
+
+  redirectWithMessage(msg, method, href, res) {
+    res.json({
+      data: {
+        msg,
+        method,
+        href
+      },
+      status: 'redirect'
     })
   }
   

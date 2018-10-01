@@ -8,6 +8,7 @@ const messagesController = require('app/http/controllers/admin/messagesControlle
 const sitePagesController = require('app/http/controllers/admin/siteSittings/pages/sitePagesController');
 const contactPagesController = require('app/http/controllers/admin/siteSittings/pages/contactPagesController');
 const homePagesController = require('app/http/controllers/admin/siteSittings/pages/homePagesController');
+const blogController = require('app/http/controllers/admin/blog/blogController');
 // Validators
 const loginAdminsValidation = require('app/http/validators/loginAdminsValidation');
 const contactPagesValidation = require('app/http/validators/contactPagesValidation');
@@ -15,6 +16,8 @@ const homePagesAboutValidation = require('app/http/validators/homePageValidation
 const homePagesParallaxValidation = require('app/http/validators/homePageValidation/parallaxValidation');
 const homePagesHomeSliderValidation = require('app/http/validators/homePageValidation/homeSliderValidation');
 const homePagesAbilityValidation = require('app/http/validators/homePageValidation/abilityValidation');
+const addCategoriesValidation = require('app/http/validators/blogValidation/addCategoriesValidation');
+const updateCategoriesValidation = require('app/http/validators/blogValidation/updateCategoriesValidation');
 // Middleware
 const redirectIfAuthenticated = require('app/http/middleware/redirectIfAuthenticated');
 const convertFileToField = require('app/http/middleware/convertFileToField')
@@ -91,4 +94,27 @@ router.put('/site-setting/pages/home/ability',
   homePagesAbilityValidation.handle(),
   homePagesController.updateAbility
 );
+// Blog
+router.get('/blogs/categories', redirectIfAuthenticated.adminLogin, blogController.index);
+router.get('/blogs/categories/add', redirectIfAuthenticated.adminLogin, blogController.viewCreateCategory);
+router.post('/blogs/categories/add',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  addCategoriesValidation.handle(),
+  blogController.createCategory
+);
+router.get('/blogs/categories/:category', redirectIfAuthenticated.adminLogin, blogController.viewCategory);
+router.put('/blogs/categories/:slug/update', 
+  redirectIfAuthenticated.adminLogin, 
+  upload.single('photo'),
+  convertFileToField.handle,
+  updateCategoriesValidation.handle(),
+  blogController.updateCategory,
+);
+router.get('/blogs/categories/:category/blog/add', redirectIfAuthenticated.adminLogin, blogController.createBlog);
+
+
+
+
 module.exports = router;

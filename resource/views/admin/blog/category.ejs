@@ -1,0 +1,208 @@
+<%- contentFor('panel-header') %>
+<div class="grid-x-no align-middle">
+  <i class="fal fa-newspaper"></i>
+  <span class="name">وبلاگ</span>
+</div>
+<i class="arrow far fa-angle-left"></i>
+<a href="/admin/blogs/categories" class="grid-x-no align-middle">
+  <i class="fal fa-archive"></i>
+  <span class="name">دسته بندی</span>
+</a>
+<i class="arrow far fa-angle-left"></i>
+<div class="active grid-x-no align-middle">
+  <span class="name"><%= category.name %></span>
+</div>
+<%- contentFor('body') %>
+<div class="blogs-category grid align-center">
+  <div class="container grid-y">
+    <div class="controller">
+      <div class="mark grid-x-no align-middle">
+        <i class="fal fa-archive"></i>
+        <span class="name">دسته بندی <%= category.name %></span>
+      </div>
+    </div>
+    <div class="w100 mb-3 grid align-center">
+      <div class="post-info">
+        <div class="post-box">
+          <header class="navyBlue">
+            <h4>جزئیات دسته بندی</h4>
+          </header>
+          <content>
+            <form class="UpdateCategory">
+              <div class="input-wrap grid-x">
+                <div class="grid-y input-group w100">
+                  <label for="name">نام دسته بندی</label>
+                  <input name="name" type="text" value="<%= category.name %>">
+                </div>
+              </div>
+              <div class="input-wrap grid-x">
+                <div class="grid-y input-group w100">
+                  <label for="slug">اسلاگ دسته بندی</label>
+                  <input name="slug" type="text" value="<%= category.slug %>">
+                </div>
+              </div>
+              <div class="input-wrap grid align-right">
+                <div class="grid-y input-group w100">
+                  <label for="photo">تصویر پس زمینه</label>
+                  <div class="grid align-center">
+                    <div class="image-box grid align-center-middle">
+                      <img src="<%= category.imageUrl.destination %>">
+                    </div>
+                  </div>
+                  <input class="input-en" name="photo" type="file">
+                </div>
+              </div>
+              <div class="input-wrap grid align-left">
+                <button type="submit" class="btn btn-primary grid align-center-middle">
+                  <span>بروز رسانی</span>
+                </button>
+              </div>
+            </form>
+          </content>
+        </div>
+        <div class="post-box">
+          <header class="blue">
+            <h4>اطلاعات دسته بندی</h4>
+          </header>
+          <content>
+            <div class="input-wrap chart grid-x">
+              <canvas id="myChart" class="w100" height="200"></canvas>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="text grid-x align-middle">
+                <h6>تعداد بازدید :</h6>
+                <span><%= category.viewCount %></span>
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="text grid-x align-middle">
+                <h6>تعداد بلاگ ها :</h6>
+                <span><%= category.blogCount %></span>
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="text grid-x align-middle">
+                <h6>ایجاد شده توسط :</h6>
+                <span><%= category.admin.name %> <%= category.admin.family %></span>
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="text grid-x align-middle">
+                <h6>تاریخ :</h6>
+                <span><%= category.createdDate %></span>
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="text grid-x align-middle">
+                <h6>زمان :</h6>
+                <span><%= category.createdTime %></span>
+              </div>
+            </div>
+          </content>
+        </div>
+      </div>
+    </div>
+    <div class="controller grid-x">
+      <div class="mark grid-x-no align-middle">
+        <i class="fal fa-newspaper"></i>
+        <span class="name">بلاگ های دسته بندی <%= category.name %></span>
+      </div>
+      <div class="btn-wrap grid-x-no align-middle">
+        <a href="/admin/blogs/categories/<%= category.slug %>/blog/add" class="btn sign btn-primary grid-x-no align-middle">
+          <span>اضافه کردن</span>
+          <i class="far fa-plus-circle"></i>
+        </a>
+      </div>
+    </div> 
+    <div class="table-wrap w100 grid align-center">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th><span>نام</span></th>
+            <th><span>تاریخ</span></th>
+            <th><span>زمان</span></th>
+            <th><span>موضوع</span></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td class="col1">1</td>
+            <td class="col3">reza</td>
+            <td class="col3">2018.8.21</td>
+            <td class="col3">14:37:2</td>
+            <td class="col2">ridid</td>
+            <td class="col3">
+              <div class="grid-x align-center">
+                <a href="/admin/messages/5ba4c2c6a7b4fe0abc719fe8" class="button" title="View"><i class="fal fa-eye"></i></a>
+                <button title="Delete" class="deleteMessage" value="5ba4c2c6a7b4fe0abc719fe8"><i class="fal fa-trash-alt"></i></button>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col1">2</td>
+            <td class="col3">reza</td>
+            <td class="col3">2018.8.21</td>
+            <td class="col3">14:36:50</td>
+            <td class="col2">ridid</td>
+            <td class="col3">
+              <div class="grid-x align-center">
+                <a href="/admin/messages/5ba4c2ba9a7d2e35041ffec8" class="button" title="View"><i class="fal fa-eye"></i></a>
+                <button title="Delete" class="deleteMessage" value="5ba4c2ba9a7d2e35041ffec8"><i class="fal fa-trash-alt"></i></button>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+<script>
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"],
+        datasets: [{
+          label: 'تعداد بازدید',
+          data: [20, 40, 60, 80, 20],
+          backgroundColor: [
+            'rgba(0, 204, 255, 0.4)'
+          ],
+          borderColor: [
+            'rgba(102,140,255,1)'
+          ],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+    Chart.defaults.global.defaultFontFamily = 'iransans';
+    Chart.defaults.global.defaultFontSize = 10;
+    Chart.defaults.global.defaultFontColor = '#333';
+  $("input[name='photo']").change(function() {
+    readURL(this);
+  });
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        $('.image-box img').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }  
+</script>

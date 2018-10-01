@@ -1,3 +1,7 @@
+body {
+  font-family: IRANYekan;
+  background-color: #f9f9f9;
+}
 .animation,
 .animation-transition-general,
 .carousel .carousel-indicators li,
@@ -17,8 +21,6 @@
 .admin-panel .wrap {
   position: relative;
   top: 0;
-  height: 100vh;
-  background-color: #f9f9f9;
 }
 .sidebar {
   position: fixed;
@@ -172,6 +174,8 @@
 .archiveColl.show {
   height: 143px;
 }
+/* //////////Responsive////////////// */
+
 /* ////////// Main Panel //////////// */
 .main-panel {
   position: relative;
@@ -179,6 +183,7 @@
   width: 100%;
   transition: .33s,
   cubic-bezier(.685, .0473, .346, 1);
+  background-color: #f9f9f9;
   padding: 1em 0;
 }
 .ps {
@@ -226,6 +231,13 @@
 .main-panel content {
   width: 100%;
   padding: 20px 15px;
+}
+.main-panel content .content {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px rgba(200, 200, 200, 0.8);
+  margin: 3px;
+  padding: 10px;
 }
 /* ============Message Page================ */
 .message-page table thead th {
@@ -322,7 +334,7 @@ span.digit {
 
  .input-box {
   width: 100%; 
-  margin: 2em;
+  margin: 2em 0;
   margin-bottom: 4em;
   padding: 1em;
   z-index: 3;
@@ -345,45 +357,44 @@ span.digit {
   font-size: 13px;
   font-weight: bold;
 }
- .input-box label {
+.input-wrap label {
   margin-bottom: 12px;
 }
- .input-box .input-wrap {
+.input-wrap {
   margin-bottom: 1em;
 }
- .input-box .input-wrap .input-group {
+.input-wrap .input-group {
   overflow: hidden;
   width: 50%;
 }
- .input-box .input-wrap .input-group.w100 {
+.input-wrap .input-group.w100 {
   padding: 0 !important;
 }
- .input-box .input-wrap .input-group:first-child {
+.input-wrap .input-group:first-child {
   padding-left: 1em;
 }
- .input-box .input-wrap .input-group:last-child {
+.input-wrap .input-group:last-child {
   padding-right: 1em;
 }
 .input-group .image {
   width: 60%;
 }
-.input-box .input-wrap .input-group .image-box {
-  width: 15em;
-  height: 11em;
+.input-wrap .input-group .image-box {
+  width: 18em;
+  height: 12em;
   border: 1px solid #eee;
   margin-bottom: 1em;
-  border-radius: 10px;
   overflow: hidden;
   position: relative;
 }
-.input-box .input-wrap .input-group .image-box.profile {
+.input-wrap .input-group .image-box.profile {
   border-radius: 50%;
   width: 12em;
   height: 12em;
 }
 /* ////////Table////////// */
 table {
-  width: 90%;
+  width: 100%;
   border-spacing: 2px;
   background-color: #2c3845;
   border-radius: 7px;
@@ -444,4 +455,121 @@ table button i {
   height: 2px;
   background-color: #0000ff;
   width: calc(100% - 30px);
+}
+/* ////////////Blog///////////////// */
+.page-box.red {
+  background-image: radial-gradient(ellipse 50% 70% at 50% 0, #000 20%, #d5182acc);
+}
+.controller {
+  margin-bottom: 3em;
+}
+.controller .mark,
+.controller .btn-wrap {
+  margin: 0 16px;
+}
+.controller .mark i {
+  font-size: 27px;
+  margin-left: 18px;
+  color: #363636;
+}
+.controller .mark span {
+  font-size: 13px;
+  color: #363636;
+  font-weight: 700;
+}
+.controller .btn {
+  margin: 0 3px;
+}
+/* ///////////////Pagination///////////// */
+.pagination {
+  margin: 1em 0;
+}
+.pagination .page-item {
+  padding: 10px 13px 6px 13px;
+  color: #a9d4e6;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  font-size: 13px;
+}
+.pagination .page-item:first-child {
+  border-right: 1px solid;
+}
+.pagination .page-item.active {
+  background-color: #3678b4;
+  border-color: #3678b4;
+}
+.pagination .page-item.active .page-link {
+  color: #fff;
+}
+.pagination .page-item .page-link {
+  color: #3678b4;
+}
+/* //////////folder////////////// */
+.folder {
+  margin: 10px 15px;
+  background-color: #f6f7f9;
+  color: #6b7787;
+  width: 14em;
+  height: 4.7em;
+  border-radius: 4px;
+  border: 1px solid #ffeded;
+}
+.folder i {
+  font-size: 42px;
+  margin: 0 20px;
+}
+.folder span {
+  text-align: center;
+  font-size: 12px;
+}
+.folder:hover {
+  background-color: #409ce9;
+  color: #fff;
+  border: 1px solid #0d58d3;
+}
+/* //////////////Post Info///////////////// */
+.post-info {
+  width: 100%;
+  margin-bottom: 1em;
+}
+.post-info .post-box {
+  display: flex;
+  flex-flow: column nowrap;
+  float: right;
+  box-shadow: 0 0px 6px rgba(210, 195, 195, 0.5);
+  width: 48%;
+}
+.post-info .post-box:last-child {
+  float: left;
+}
+.post-info .post-box header {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  height: 3em;
+  padding: 0 16px;
+}
+.post-info .post-box header.navyBlue {
+  background-color: #202932;
+}
+.post-info .post-box header.blue {
+  background-color: #1a3a87;
+}
+.post-info .post-box header h4 {
+  width: 100%;
+  text-align: right;
+}
+.post-info .post-box content {
+  background-color: #fff;
+}
+.input-wrap .text h6 {
+  margin-left: 16px;
+  font-size: 12px;
+}
+.input-wrap .text span {
+  font-size: 12px;
+}
+.input-wrap.chart {
+  margin-bottom: 3em;
 }

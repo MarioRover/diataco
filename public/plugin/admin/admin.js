@@ -29,4 +29,7 @@ window.addEventListener('load', function (event) {
   });
 });
 
+// width: 260 px;
+// width: calc(100 % -260 px);
+
 

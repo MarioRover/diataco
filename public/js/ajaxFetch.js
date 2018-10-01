@@ -18,6 +18,11 @@ const Fetch = (url,method,body) => {
         setImageUrl(res.data.transfer.imageUrl);
       }
     }
+    if (res.status == 'redirect') {
+      setTimeout(() => {
+        window.location = res.data.href;
+      } , 3000)
+    }
     let messages = res.data.msg;
     if (typeof messages !== 'undefined') {
       messages.map(message => {
