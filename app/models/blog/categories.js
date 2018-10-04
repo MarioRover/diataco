@@ -11,7 +11,7 @@ const categoiesBlogSchema = mongoose.Schema({
   blogCount : { type : Number , default : 0 },
   createdDate : {type : String},
   createdTime : {type : String}
-});
+} , { toJSON : { virtuals : true } });
 
 categoiesBlogSchema.plugin(mongoosePaginate);
 
@@ -20,6 +20,12 @@ categoiesBlogSchema.pre('save', function (next) {
   this.createdDate = `${d.getFullYear()}.${d.getMonth()}.${d.getDate()}`;
   this.createdTime = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
   next();
+});
+
+categoiesBlogSchema.virtual('blogs', {
+  ref: 'Blog',
+  localField: '_id',
+  foreignField: 'category'
 });
 
 module.exports = mongoose.model('CategoriesBlog', categoiesBlogSchema);

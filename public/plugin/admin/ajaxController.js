@@ -189,3 +189,70 @@ $('.UpdateCategory').submit((e) => {
   let catSlug = pathName[pathName.length-1];    
   Fetch(`/admin/blogs/categories/${catSlug}/update`, 'PUT', formData);
 });
+
+$('.CreateBlog').submit((e) => {
+  e.preventDefault();
+  let title = $('input[name = "title"]');
+  let slug = $('input[name = "slug"]');
+  let summery = $('textarea[name="summery"]');
+  let description = $('textarea[name="description"]');
+  let tags = $('input[name="tags"]');
+  let photo = $('input[name = "photo"]');
+  let photoVal = $('input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append('title', title.val());
+  formData.append('slug', slug.val());
+  formData.append('summery', summery.val());
+  formData.append('description', description.val());
+  formData.append('tags', tags.val());
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
+  console.log(tags)
+
+  let pathName = window.location.pathname.split('/');
+  let catSlug = pathName[pathName.length - 3];
+  Fetch(`/admin/blogs/categories/${catSlug}/blog/add`, 'POST', formData);
+});
+
+
+let blogs = $('.deleteBlog');
+$.each(blogs, function (indexInArray, blog) {
+  $(blog).click(function (e) {
+    e.preventDefault();
+    let blogId = $(blog).attr('value');
+    let body = {
+      blog: blogId
+    };
+    let pathName = window.location.pathname.split('/');
+    let catSlug = pathName[pathName.length - 3];
+    Fetch2(`/admin/blogs/categories/${catSlug}/blog/delete`, 'DELETE', body);
+  });
+});
+
+$('.UpdateBlog').submit((e) => {
+  e.preventDefault();
+  let title = $('input[name = "title"]');
+  let slug = $('input[name = "slug"]');
+  let summery = $('textarea[name="summery"]');
+  let description = $('textarea[name="description"]');
+  let tags = $('input[name="tags"]');
+  let photo = $('input[name = "photo"]');
+  let photoVal = $('input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append('title', title.val());
+  formData.append('slug', slug.val());
+  formData.append('summery', summery.val());
+  formData.append('description', description.val());
+  formData.append('tags', tags.val());
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
+  
+
+  let pathName = window.location.pathname.split('/');
+  let catSlug = pathName[pathName.length - 2];
+  let blogSlug = pathName[pathName.length - 1];
+  Fetch(`/admin/blogs/categories/${catSlug}/${blogSlug}`, 'PUT', formData);
+
+});

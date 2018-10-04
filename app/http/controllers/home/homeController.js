@@ -6,6 +6,13 @@ class homeController extends controller {
     let parallax = await this.models.parallax.find({});
     let homeSlider = await this.models.homeSlider.find({});
     let ability = await this.models.ability.find({});
+    let blogs = await this.models.blog.find({}).sort({
+      createdDate : -1,
+      createdTime : -1
+    }).limit(4).populate({
+      path: 'category',
+      select : 'slug'
+    });
     if (aboutUs == '') {
       aboutUs = 'undefined';
     } else {
@@ -26,10 +33,13 @@ class homeController extends controller {
     } else {
       ability = ability[0];
     }
+    if (blogs == '') {
+      blogs = 'undefined';
+    }
     try {
       res.render('home/home', {
         title: 'Diata',
-        aboutUs, parallax, homeSlider, ability
+        aboutUs, parallax, homeSlider, ability,blogs
       });
     } catch (error) {
       return this.error('Error in showPage method at homeController.js', 500, next);

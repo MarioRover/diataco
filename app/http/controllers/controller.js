@@ -10,6 +10,7 @@ const parallax = require('app/models/homePageSetting/parallax');
 const homeSlider = require('app/models/homePageSetting/homeSlider');
 const ability = require('app/models/homePageSetting/ability');
 const blogCategory = require('app/models/blog/categories');
+const blog = require('app/models/blog/blog');
 
 module.exports = class controller {
   constructor() {
@@ -22,7 +23,8 @@ module.exports = class controller {
       parallax,
       homeSlider,
       ability,
-      blogCategory
+      blogCategory,
+      blog
     };
   }
   async recaptchaValidation(req , res , next) {
@@ -155,5 +157,14 @@ module.exports = class controller {
   
   getUrlImage(dir) {
     return dir.substring(8);
+  }
+
+  async getDate() {
+    let d = new Date();
+    return `${d.getFullYear()}.${d.getMonth()}.${d.getDate()}`;
+  }
+  async getTime() {
+    let d = new Date();
+    return `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
   }
 }

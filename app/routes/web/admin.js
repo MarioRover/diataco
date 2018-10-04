@@ -18,6 +18,7 @@ const homePagesHomeSliderValidation = require('app/http/validators/homePageValid
 const homePagesAbilityValidation = require('app/http/validators/homePageValidation/abilityValidation');
 const addCategoriesValidation = require('app/http/validators/blogValidation/addCategoriesValidation');
 const updateCategoriesValidation = require('app/http/validators/blogValidation/updateCategoriesValidation');
+const createBlogValidation = require('app/http/validators/blogValidation/createBlogValidation');
 // Middleware
 const redirectIfAuthenticated = require('app/http/middleware/redirectIfAuthenticated');
 const convertFileToField = require('app/http/middleware/convertFileToField')
@@ -38,6 +39,11 @@ router.get('/logout' ,(req , res) => {
   res.redirect('/');
 });
 router.get('/profile/edit', redirectIfAuthenticated.adminLogin, adminController.showProfileEdit);
+router.post('/upload-image',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('upload'),
+  adminController.uploadImage
+);
 router.put('/profile/edit', 
   redirectIfAuthenticated.adminLogin,
   upload.single('photo'),
@@ -112,8 +118,24 @@ router.put('/blogs/categories/:slug/update',
   updateCategoriesValidation.handle(),
   blogController.updateCategory,
 );
-router.get('/blogs/categories/:category/blog/add', redirectIfAuthenticated.adminLogin, blogController.createBlog);
-
+//////////////// Blog ///////////////////////
+router.get('/blogs/categories/:category/blog/add', redirectIfAuthenticated.adminLogin, blogController.viewCreateBlog);
+router.post('/blogs/categories/:category/blog/add', 
+redirectIfAuthenticated.adminLogin, 
+  upload.single('photo'),
+  convertFileToField.handle,
+  createBlogValidation.handle(),
+  blogController.createBlog
+);
+router.delete('/blogs/categories/:category/blog/delete', redirectIfAuthenticated.adminLogin, blogController.deleteBlog);
+router.get('/blogs/categories/:category/:blog', redirectIfAuthenticated.adminLogin, blogController.viewBlog);
+router.put('/blogs/categories/:category/:blog', 
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  createBlogValidation.handle(),
+  blogController.updateBlog
+);
 
 
 

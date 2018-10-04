@@ -1,0 +1,173 @@
+<%- contentFor('panel-header') %>
+<div class="grid-x-no align-middle">
+  <i class="fal fa-newspaper"></i>
+  <span class="name">وبلاگ</span>
+</div>
+<i class="arrow far fa-angle-left"></i>
+<a href="/admin/blogs/categories" class="grid-x-no align-middle">
+  <i class="fal fa-archive"></i>
+  <span class="name">دسته بندی</span>
+</a>
+<i class="arrow far fa-angle-left"></i>
+<a href="/admin/blogs/categories/<%= blog.category.slug %>" class="grid-x-no align-middle">
+  <span class="name"><%= blog.category.name %></span>
+</a>
+<i class="arrow far fa-angle-left"></i>
+<div class="active grid-x-no align-middle">
+  <span class="name"><%= blog.title %></span>
+</div>
+<%- contentFor('body') %>
+<div class="blogs-categories grid align-center">
+  <div class="container grid-y">
+
+    <div class="controller grid-y">
+      <div class="mark grid-x-no align-middle">
+        <i class="fal fa-newspaper"></i>
+        <span class="name"><%= blog.title %></span>
+      </div>
+    </div>
+    <div class="post-info grid-y">
+
+      <div class="post-box w100">
+        <header class="blue">
+          <h4>اطلاعات بلاگ</h4>
+        </header>
+        <content>
+          <div class="input-wrap chart grid-x">
+            <canvas id="myChart" class="w100" height="200"></canvas>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="text grid-x align-middle">
+              <h6>تعداد بازدید :</h6>
+              <span><%= blog.viewCount %></span>
+            </div>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="text grid-x align-middle">
+              <h6>تعداد نظرات :</h6>
+              <span><%= blog.commentCount %></span>
+            </div>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="text grid-x align-middle">
+              <h6>ایجاد شده توسط :</h6>
+              <span><%= blog.admin.name %> <%= blog.admin.family %></span>
+            </div>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="text grid-x align-middle">
+              <h6>تاریخ ثبت :</h6>
+              <span><%= blog.createdDate %></span>
+            </div>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="text grid-x align-middle">
+              <h6>زمان ثبت :</h6>
+              <span><%= blog.createdTime %></span>
+            </div>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="text grid-x align-middle">
+              <h6>آخرین بروز رسانی</h6>
+              <span>؟</span>
+            </div>
+          </div>
+        </content>
+      </div>
+      <div class="post-box w100">
+        <header class="navyBlue">
+          <h4>جزئیات بلاگ</h4>
+        </header>
+        <content>
+          <form class="UpdateBlog">
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="title">تیتر بلاگ</label>
+                <input name="title" type="text" value="<%= blog.title %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="slug">اسلاگ بلاگ</label>
+                <input name="slug" type="text" value="<%= blog.slug %>">
+              </div>
+            </div>
+            <div class="input-wrap grid">
+              <div class="grid-y input-group w100">
+                <label for="tags">تگ های بلاگ</label>
+                <input name="tags" type="text" value="<%= blog.tags %>">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <div class="grid-y input-group">
+                <label for="photo">تصویر پس زمینه</label>
+                <div class="grid align-center">
+                  <div class="image-box grid align-center-middle">
+                    <img src="<%= blog.imageUrl.destination %>" alt="<%= blog.imageUrl.destination %>">
+                  </div>
+                </div>
+                <input class="input-en" name="photo" type="file">
+              </div>
+            </div>
+            <div class="input-wrap grid align-right">
+              <div class="grid-y input-group w100">
+                <label for="summery">خلاصه بلاگ</label>
+                <textarea name="summery" cols="30" rows="7"><%= blog.summery %></textarea>
+              </div>
+            </div>
+            <div class="input-wrap grid align-right">
+              <div class="grid-y input-group w100">
+                <label for="description">متن بلگ</label>
+                <textarea name="description" id="editor1" cols="30" rows="10"><%= blog.description %></textarea>
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <button type="submit" class="btn btn-primary grid align-center-middle">
+                <span>ثبت اطلاعات</span>
+              </button>
+            </div>
+          </form>
+        </content>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+<script>
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"],
+        datasets: [{
+          label: 'تعداد بازدید',
+          data: [20, 40, 60, 80, 20],
+          backgroundColor: [
+            'rgba(0, 204, 255, 0.4)'
+          ],
+          borderColor: [
+            'rgba(102,140,255,1)'
+          ],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+    Chart.defaults.global.defaultFontFamily = 'iransans';
+    Chart.defaults.global.defaultFontSize = 10;
+    Chart.defaults.global.defaultFontColor = '#333';
+  CKEDITOR.replace('editor1' , {
+    filebrowserUploadUrl : '/admin/upload-image'
+  });
+  $("input[name='photo']").change(function() {
+    readURL(this);
+  });
+
+</script>

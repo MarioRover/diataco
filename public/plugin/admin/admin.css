@@ -416,6 +416,12 @@ th {
 tbody tr:nth-child(2n) {
   background-color: #242e39;
 }
+td.image {
+  text-align: center;
+}
+td.image img {
+  width: 35%;
+}
 td.col1 {
   width: 1%;
 }

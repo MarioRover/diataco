@@ -114,7 +114,3 @@ function guidGenerator() {
   };
   return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
-const rowDelete = (objId) => {
-  let row = $(`tr td button[value=${objId}]`).parents('tr');
-  $(row).remove();
-}

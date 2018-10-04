@@ -60,6 +60,15 @@ class adminController extends controller {
       return this.serverError('Error in profileEdit method at adminController', 500, error, res);
     }
   }
+
+  async uploadImage(req, res, next) {
+    let image = req.file;
+    res.json({
+      'uploaded': 1,
+      'filename': image.originalname,
+      'url': `${image.destination}/${image.filename}`.substring(8)
+    })
+  }
     
 }
 

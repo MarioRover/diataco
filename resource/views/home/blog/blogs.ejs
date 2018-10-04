@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="/plugin/Hoverbox/css/set1.css">
+<%- include(viewPath('home/layout/header')) %>
+
+<section class="seo-page w100 grid-y">
+  <div class="header-slider w100" style="background-image: url('./../img/blog.jpg')">
+    <div class="overlay grid align-center-middle">
+      <div class="container">
+        <h2>Blog</h2>
+      </div>
+    </div>
+  </div>
+  <section class="wrapper grid grid-y align-center-middle">
+    <h3>دسته بندی وبلاگ</h3>
+    <span class="title"></span>
+    <br>
+    <div class="container grid-x align-center-middle">
+
+      <% if(categories !== 'undefined') { %>
+        <% categories.blogs.forEach(blog => { %>
+          <a href="/blog/<%= categories.slug %>/<%= blog.slug %>" class="item blog-card spring-fever" style="background: url('<%= blog.imageUrl.destination %>') no-repeat;">
+            <div class="title-content">
+              <h3><%= blog.title %></h3>
+              <hr>
+            </div>
+            <div class="card-info">
+              <%= blog.summery.slice(1,130) %> ...
+            </div>
+            <div class="utility-info">
+              <ul class="utility-list grid-x align-justify">
+                <li class="grid-x-no align-center">
+                  <i class="fas fa-calendar"></i>
+                  <span>
+                    <%= blog.createdDate %></span>
+                </li>
+                <li class="grid-x-no align-center">
+                  <i class="fas fa-comment-dots"></i>
+                  <span>
+                    <%= blog.commentCount %></span>
+                </li>
+              </ul>
+            </div>
+            <div class="gradient-overlay"></div>
+            <div class="color-overlay"></div>
+          </a>
+        <% }) %>
+      <% } %>
+
+      
+
+    </div>
+  </section>
+
+  <%- include(viewPath('home/layout/footer')) %>

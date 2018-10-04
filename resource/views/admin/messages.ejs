@@ -38,7 +38,12 @@
     </tbody>
   </table>
 </div>
-
+<script>
+  const rowDelete = (objId) => {
+    let row = $(`tr td button[value=${objId}]`).parents('tr');
+    $(row).remove();
+  }
+</script>
 
 
 

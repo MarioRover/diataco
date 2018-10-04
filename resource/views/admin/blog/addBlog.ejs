@@ -9,10 +9,9 @@
   <span class="name">دسته بندی</span>
 </a>
 <i class="arrow far fa-angle-left"></i>
-<div class="grid-x-no align-middle">
-  <span class="name">
-    <%= category.name %></span>
-</div>
+<a href="/admin/blogs/categories/<%= category.slug %>" class="grid-x-no align-middle">
+  <span class="name"><%= category.name %></span>
+</a>
 <i class="arrow far fa-angle-left"></i>
 <div class="active grid-x-no align-middle">
   <span class="name">ساخت بلاگ</span>
@@ -21,12 +20,67 @@
 <div class="blogs-categories grid align-center">
   <div class="container grid-y">
 
-    <div class="controller grid-x">
+    <div class="controller grid-y">
       <div class="mark grid-x-no align-middle">
         <i class="fal fa-newspaper"></i>
         <span class="name">ساخت بلاگ</span>
+      </div>
+      <div class="input-box">
+        <form class="CreateBlog">
+          <div class="input-wrap grid-x">
+            <div class="grid-y input-group">
+              <label for="title">تیتر بلاگ</label>
+              <input name="title" type="text">
+            </div>
+            <div class="grid-y input-group">
+              <label for="slug">اسلاگ بلاگ</label>
+              <input name="slug" type="text">
+            </div>
+          </div>
+          <div class="input-wrap grid align-left">
+            <div class="grid-y input-group">
+              <label for="tags">تگ های بلاگ</label>
+              <input name="tags" type="text">
+            </div>
+            <div class="grid-y input-group">
+              <label for="photo">تصویر پس زمینه</label>
+              <div class="grid align-center">
+                <div class="image-box grid align-center-middle">
+                  <img src="">
+                </div>
+              </div>
+              <input class="input-en" name="photo" type="file">
+            </div>
+          </div>
+           <div class="input-wrap grid align-right">
+            <div class="grid-y input-group w100">
+              <label for="summery">خلاصه بلاگ</label>
+              <textarea name="summery" cols="30" rows="7"></textarea>
+            </div>
+          </div>
+          <div class="input-wrap grid align-right">
+            <div class="grid-y input-group w100">
+              <label for="description">متن بلگ</label>
+              <textarea name="description" id="editor1" cols="30" rows="10"></textarea>
+            </div>
+          </div>
+          <div class="input-wrap grid align-left">
+            <button type="submit" class="btn btn-primary grid align-center-middle">
+              <span>ثبت اطلاعات</span>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 
   </div>
 </div>
+<script>
+  CKEDITOR.replace('editor1' , {
+    filebrowserUploadUrl : '/admin/upload-image'
+  });
+  $("input[name='photo']").change(function() {
+    readURL(this);
+  });
+
+</script>

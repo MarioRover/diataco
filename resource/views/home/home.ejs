@@ -176,97 +176,38 @@
         </div>
         <!-- <div class="owl-carousel owl-theme"> -->
         <div class="grid-x">    
-            <div class="item blog-card spring-fever">
-                <div class="title-content">
-                    <h3>تیتر خبر</h3>
-                    <hr/>
-                    <div class="intro">خلاصه اولیه خبر</div>
-                </div>
-                <div class="card-info">
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                </div>
-                <div class="utility-info">
-                    <ul class="utility-list">
-                        <li><i class="fal fa-calendar"></i>03.12.2015</li>
-                        <li><i class="fal fa-comment"></i>12</li>
-                    </ul>
-                </div>
-                <div class="gradient-overlay"></div>
-                <div class="color-overlay"></div>
-            </div>
-            <div class="item blog-card spring-fever">
-                <div class="title-content">
-                    <h3>تیتر خبر</h3>
-                    <hr/>
-                    <div class="intro">خلاصه اولیه خبر</div>
-                </div>
-                <div class="card-info">
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                </div>
-                <div class="utility-info">
-                    <ul class="utility-list">
-                        <li><i class="fal fa-calendar"></i>03.12.2015</li>
-                        <li><i class="fal fa-comment"></i>12</li>
-                    </ul>
-                </div>
-                <div class="gradient-overlay"></div>
-                <div class="color-overlay"></div>
-            </div>
-            <div class="item blog-card spring-fever">
-                <div class="title-content">
-                    <h3>تیتر خبر</h3>
-                    <hr/>
-                    <div class="intro">خلاصه اولیه خبر</div>
-                </div>
-                <div class="card-info">
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                </div>
-                <div class="utility-info">
-                    <ul class="utility-list">
-                        <li><i class="fal fa-calendar"></i>03.12.2015</li>
-                        <li><i class="fal fa-comment"></i>12</li>
-                    </ul>
-                </div>
-                <div class="gradient-overlay"></div>
-                <div class="color-overlay"></div>
-            </div>
-            <div class="item blog-card spring-fever">
-                <div class="title-content">
-                    <h3>تیتر خبر</h3>
-                    <hr/>
-                    <div class="intro">خلاصه اولیه خبر</div>
-                </div>
-                <div class="card-info">
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                </div>
-                <div class="utility-info">
-                    <ul class="utility-list">
-                        <li><i class="fal fa-calendar"></i>03.12.2015</li>
-                        <li><i class="fal fa-comment"></i>12</li>
-                    </ul>
-                </div>
-                <div class="gradient-overlay"></div>
-                <div class="color-overlay"></div>
-            </div>
+            <% if(blogs !== 'undefined') { %>
+                <% blogs.forEach(blog => { %>
+                    <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>" class="item blog-card spring-fever" style="background: url('<%= blog.imageUrl.destination %>') no-repeat;">
+                        <div class="title-content">
+                            <h3>
+                                <%= blog.title %>
+                            </h3>
+                            <hr>
+                        </div>
+                        <div class="card-info">
+                            <%= blog.summery.slice(1,130) %> ...
+                        </div>
+                        <div class="utility-info">
+                            <ul class="utility-list grid-x align-justify">
+                                <li class="grid-x-no align-center">
+                                    <i class="fas fa-calendar"></i>
+                                    <span><%= blog.createdDate %></span>
+                                </li>
+                                <li class="grid-x-no align-center">
+                                    <i class="fas fa-comment-dots"></i>
+                                    <span><%= blog.commentCount %></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="gradient-overlay"></div>
+                        <div class="color-overlay"></div>
+                    </a>
+                <% }) %>
+            <% } %>
         </div>
         <div class="grid align-center-middle view-all-news">
-            <a>مشاهده تمامی اخبار</a>
+            <a href="">مشاهده تمامی اخبار</a>
         </div>
     </div>
 </section>

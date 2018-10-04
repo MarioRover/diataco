@@ -29,6 +29,15 @@ window.addEventListener('load', function (event) {
   });
 });
 
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('.image-box img').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 // width: 260 px;
 // width: calc(100 % -260 px);
 

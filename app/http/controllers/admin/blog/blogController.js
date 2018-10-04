@@ -11,7 +11,7 @@ module.exports = new class blogController extends controller {
           createdDate: -1,
           createdTime: -1
         },
-        limit : 2
+        limit : 10
       })
       let user = req.user;
       if(categories == '') {
@@ -90,7 +90,21 @@ module.exports = new class blogController extends controller {
   async viewCategory(req , res , next) {
     try {
       let user = req.user;
-      let category = await this.models.blogCategory.find({slug : req.params.category}).populate('admin').exec();
+      let category = await this.models.blogCategory.find({slug : req.params.category})
+      .populate({
+        path: 'admin',
+        select : 'name , family'
+      }).populate({
+        path: 'blogs',
+        populate : {
+          path : 'admin',
+          select : 'name , family'
+        },
+        sort: {
+          createdDate: -1,
+          createdTime: -1
+        }
+      }).exec();
       if (this.isEmptyArray(category)) return this.error('Error in find category in viewCategory.js', 404, next);
       res.render('admin/blog/category', {
         title: 'ساخت دسته بندی وبلاگ جدید',
@@ -173,7 +187,7 @@ module.exports = new class blogController extends controller {
     }
   }
 
-  async createBlog(req , res , next) {
+  async viewCreateBlog(req , res , next) {
     try {
       let category = await this.models.blogCategory.find({ slug: req.params.category });
       if (this.isEmptyArray(category)) return this.error('Error in find category in viewCategory.js', 404, next);
@@ -187,6 +201,153 @@ module.exports = new class blogController extends controller {
       return this.error('Error in index method of blogController.js', 500, next);
     }
   }
+
+  async createBlog(req, res, next) {
+    try {
+      let result = await this.validationData(req, next);
+      if (!result) {
+        if (req.file) fs.unlinkSync(req.file.path);
+        return this.izitoastMessage(req.flash('errors'), 'warning', res);
+      }
+      const {title,slug,summery,description,tags} = req.body;
+      const blogPhoto = req.file;
+      // check slug
+      let blogDuplicate = {
+        slug : await this.models.blog.find({ slug: slug } , (error , blog) => {
+          if (error) return this.serverError('جستجو اطلاعات با مشکل مواجه شد', 500, error, res);
+          return blog;
+        })
+      }
+      let message = [];
+      if (!this.isEmptyArray(blogDuplicate.slug)) message.push('اسلاگ بلاگ وارد شده قبلا ثبت شده است');
+      if (!this.isEmptyArray(message)) {
+        if (req.file) fs.unlinkSync(req.file.path);
+        return this.izitoastMessage(message , 'warning', res);
+      } else {
+        let category = await this.models.blogCategory.find({slug : req.params.category} , (error , category) =>  {
+        if (error) return this.serverError('جستجو اطلاعات با مشکل مواجه شد', 500, error, res);
+          return category;
+        });
+        let contentObj = {
+          title, slug, summery, description, tags,
+          admin: req.user._id,
+          category: category[0]._id
+        };
+        contentObj['imageUrl'] = {
+          destination: this.addressImage(blogPhoto),
+          originalname: blogPhoto.originalname,
+          path: blogPhoto.path
+        }
+        let newBlog = new this.models.blog({ ...contentObj });
+        newBlog.save(err => {
+          if (err) {
+            return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
+          }
+            return this.redirectWithMessage(['بلاگ با موفقیت ثبت گردید'], 'success', `/admin/blogs/categories/${req.params.category}`, res);
+        });
+      }  
+    } catch (error) {
+      return this.serverError('Error in saveBlog method of blogController.js', 500, error, res);
+    }
+  }
+
+  async deleteBlog(req , res , next) {
+    try {
+      let result = await this.isMongoId(req.body.blog, next);
+      if (!result) {
+        return this.serverError('Error in validate mongoid in messageController.js', 403, error, res);
+      }
+      let blog = await this.models.blog.findById(req.body.blog, (error, blog) => {
+        if (error) return this.serverError('Error in find message in deleteBlog method at blogController.js', 500, error, res);
+        if (!blog) return this.serverError('not found message in deleteBlog method at blogController.js', 404, error, res);
+        return blog;
+      });
+      await fs.unlinkSync(blog.imageUrl.path);
+      blog.remove();
+      return this.deleteObj(['پیام شما با موفقیت حذف گردید'], 'success', req.body.blog, 'row', res);
+    } catch (error) {
+      return this.serverError('Error in deleteBlog method at blogController.js', 500, error, res);
+    }
+  }
+
+  async viewBlog(req , res , next) {
+    try {
+      let blog = await this.models.blog.find({ slug: req.params.blog }).populate({
+        path : 'admin',
+        select : 'name , family'
+      }).populate({
+        path : 'category',
+        select : 'name , slug'
+      }).exec();
+      if (blog[0].category.slug !== req.params.category) return this.error('Error in find category in viewBlog.js', 404, next);
+      if (this.isEmptyArray(blog)) return this.error('Error in find blog in viewBlog.js', 404, next);
+      let user = req.user;
+      res.render('admin/blog/blog', {
+        title: 'ساخت وبلاگ جدید',
+        activeRow: 'blog',
+        user , blog : blog[0]
+      });
+    } catch (error) {
+      return this.error('Error in index method of blogController.js', 500, next);
+    }
+  }
+
+  async updateBlog(req , res , next) {
+    try {
+      let result = await this.validationData(req, next);
+      if (!result) {
+        if (req.file) fs.unlinkSync(req.file.path);
+        return this.izitoastMessage(req.flash('errors'), 'warning', res);
+      }
+      const {title,slug,summery,description,tags} = req.body;
+      const blogPhoto = req.file;
+      let thisBlog = await this.models.blog.find({ slug: req.params.blog } , (error , blog) => {
+        if (error) return this.serverError('جستجو اطلاعات با مشکل مواجه شد', 500, error, res);
+        return blog;
+      });
+      // check slug
+      let blogDuplicate = {
+        slug : await this.models.blog.find({ slug: slug } , (error , blog) => {
+          if (error) return this.serverError('جستجو اطلاعات با مشکل مواجه شد', 500, error, res);
+          return blog;
+        })
+      }
+      let message = [];
+      if (!this.isEmptyArray(blogDuplicate.slug)) {
+        if (String(blogDuplicate.slug[0]._id) !== String(thisBlog[0]._id)) {
+          message.push('اسلاگ بلاگ وارد شده قبلا ثبت شده است');
+        }
+      }
+      if (!this.isEmptyArray(message)) {
+        if (req.file) fs.unlinkSync(req.file.path);
+        return this.izitoastMessage(message , 'warning', res);
+      } else {
+        let contentObj = {
+          title, slug, summery, description, tags,
+          updatedBy : req.user._id
+        };
+
+        if (req.file) {
+          if (thisBlog[0].imageUrl.originalname === req.file.originalname) {
+            await fs.unlinkSync(req.file.path);
+          } else {
+            if (await fs.existsSync(thisBlog[0].imageUrl.path)) await fs.unlinkSync(thisBlog[0].imageUrl.path);
+            contentObj["imageUrl"] = { destination: this.addressImage(blogPhoto), originalname: blogPhoto.originalname, path: blogPhoto.path };
+          }
+        }
+
+        contentObj["updatedDate"] = await this.getDate();
+        contentObj["updatedTime"] = await this.getTime();
+        await this.models.blog.findByIdAndUpdate(thisBlog[0]._id, {
+          $set: { ...contentObj, ...contentObj }
+        });
+        return this.redirectWithMessage(["تغییرات با موفقیت ثیت گردید"], "success", `/admin/blogs/categories/${req.params.category}`, res);
+        
+      }  
+    } catch (error) {
+      return this.serverError('Error in saveBlog method of blogController.js', 500, error, res);
+    }
+  } 
 }
 
 
