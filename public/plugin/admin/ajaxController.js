@@ -256,3 +256,95 @@ $('.UpdateBlog').submit((e) => {
   Fetch(`/admin/blogs/categories/${catSlug}/${blogSlug}`, 'PUT', formData);
 
 });
+
+$('.AboutHeader').submit((e) => {
+  e.preventDefault();
+  let title = $('.AboutHeader input[name = "title"]');
+  let photo = $('.AboutHeader input[name = "photo"]');
+  let photoVal = $('.AboutHeader input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append('title', title.val());
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
+
+  Fetch('/admin/site-setting/pages/about/header', 'PUT', formData);
+});
+
+$('.AboutDesc1').submit((e) => {
+  e.preventDefault();
+  let desc = $('.AboutDesc1 textarea[name = "desc"]');
+  let photo = $('.AboutDesc1 input[name = "photo"]');
+  let photoVal = $('.AboutDesc1 input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append('desc', desc.val());
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
+
+  Fetch('/admin/site-setting/pages/about/description1', 'PUT', formData);
+});
+
+$('.AboutDesc2').submit((e) => {
+  e.preventDefault();
+  let desc = $('.AboutDesc2 textarea[name = "desc"]');
+  let photo = $('.AboutDesc2 input[name = "photo"]');
+  let photoVal = $('.AboutDesc2 input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append('desc', desc.val());
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
+
+  Fetch('/admin/site-setting/pages/about/description2', 'PUT', formData);
+});
+
+$('.AboutArticles').submit((e) => {
+  e.preventDefault();
+  let item1 = $('.AboutArticles input[name = "item1"]');
+  let Iconitem1 = $('.AboutArticles input[name = "Iconitem1"]');
+  let Descitem1 = $('.AboutArticles input[name = "Descitem1"]');
+
+  let item2 = $('.AboutArticles input[name = "item2"]');
+  let Iconitem2 = $('.AboutArticles input[name = "Iconitem2"]');
+  let Descitem2 = $('.AboutArticles input[name = "Descitem2"]');
+
+  let item3 = $('.AboutArticles input[name = "item3"]');
+  let Iconitem3 = $('.AboutArticles input[name = "Iconitem3"]');
+  let Descitem3 = $('.AboutArticles input[name = "Descitem3"]');
+
+  let item4 = $('.AboutArticles input[name = "item4"]');
+  let Iconitem4 = $('.AboutArticles input[name = "Iconitem4"]');
+  let Descitem4 = $('.AboutArticles input[name = "Descitem4"]');
+
+  let item5 = $('.AboutArticles input[name = "item5"]');
+  let Iconitem5 = $('.AboutArticles input[name = "Iconitem5"]');
+  let Descitem5 = $('.AboutArticles input[name = "Descitem5"]');
+
+  let item6 = $('.AboutArticles input[name = "item6"]');
+  let Iconitem6 = $('.AboutArticles input[name = "Iconitem6"]');
+  let Descitem6 = $('.AboutArticles input[name = "Descitem6"]');
+  
+  const body = {
+    item1 : item1.val(),Iconitem1 : Iconitem1.val(),Descitem1 : Descitem1.val(),
+    item2 : item2.val(),Iconitem2 : Iconitem2.val(),Descitem2 : Descitem2.val(),
+    item3 : item3.val(),Iconitem3 : Iconitem3.val(),Descitem3 : Descitem3.val(),
+    item4 : item4.val(),Iconitem4 : Iconitem4.val(),Descitem4 : Descitem4.val(),
+    item5 : item5.val(),Iconitem5 : Iconitem5.val(),Descitem5 : Descitem5.val(),
+    item6 : item6.val(),Iconitem6 : Iconitem6.val(),Descitem6 : Descitem6.val()
+  }
+  
+  Fetch2('/admin/site-setting/pages/about/articles', 'PUT', body);
+});
+
+$('.AboutParallax').submit((e) => {
+  e.preventDefault();
+  let photo = $('.AboutParallax input[name = "photo"]');
+  let photoVal = $('.AboutParallax input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
+
+  Fetch('/admin/site-setting/pages/about/parallax', 'PUT', formData);
+});

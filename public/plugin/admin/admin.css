@@ -459,7 +459,7 @@ table button i {
   content: '';
   margin: 16px 0;
   height: 2px;
-  background-color: #0000ff;
+  background-color: #eee;
   width: calc(100% - 30px);
 }
 /* ////////////Blog///////////////// */
@@ -542,6 +542,7 @@ table button i {
 .post-info .post-box {
   display: flex;
   flex-flow: column nowrap;
+  margin-bottom: 2em;
   float: right;
   box-shadow: 0 0px 6px rgba(210, 195, 195, 0.5);
   width: 48%;

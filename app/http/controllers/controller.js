@@ -11,6 +11,7 @@ const homeSlider = require('app/models/homePageSetting/homeSlider');
 const ability = require('app/models/homePageSetting/ability');
 const blogCategory = require('app/models/blog/categories');
 const blog = require('app/models/blog/blog');
+const aboutPage = require('app/models/aboutPage');
 
 module.exports = class controller {
   constructor() {
@@ -24,7 +25,8 @@ module.exports = class controller {
       homeSlider,
       ability,
       blogCategory,
-      blog
+      blog,
+      aboutPage
     };
   }
   async recaptchaValidation(req , res , next) {

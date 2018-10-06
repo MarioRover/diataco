@@ -8,6 +8,7 @@ const messagesController = require('app/http/controllers/admin/messagesControlle
 const sitePagesController = require('app/http/controllers/admin/siteSittings/pages/sitePagesController');
 const contactPagesController = require('app/http/controllers/admin/siteSittings/pages/contactPagesController');
 const homePagesController = require('app/http/controllers/admin/siteSittings/pages/homePagesController');
+const aboutPagesController = require('app/http/controllers/admin/siteSittings/pages/aboutPagesController');
 const blogController = require('app/http/controllers/admin/blog/blogController');
 // Validators
 const loginAdminsValidation = require('app/http/validators/loginAdminsValidation');
@@ -19,6 +20,11 @@ const homePagesAbilityValidation = require('app/http/validators/homePageValidati
 const addCategoriesValidation = require('app/http/validators/blogValidation/addCategoriesValidation');
 const updateCategoriesValidation = require('app/http/validators/blogValidation/updateCategoriesValidation');
 const createBlogValidation = require('app/http/validators/blogValidation/createBlogValidation');
+const aboutHeader = require('app/http/validators/aboutPageValidation/aboutHeader');
+const aboutDesc1 = require('app/http/validators/aboutPageValidation/aboutDesc1');
+const aboutDesc2 = require('app/http/validators/aboutPageValidation/aboutDesc2');
+const aboutArticles = require('app/http/validators/aboutPageValidation/aboutArticles');
+const aboutParallax = require('app/http/validators/aboutPageValidation/aboutParallax');
 // Middleware
 const redirectIfAuthenticated = require('app/http/middleware/redirectIfAuthenticated');
 const convertFileToField = require('app/http/middleware/convertFileToField')
@@ -71,6 +77,41 @@ router.put('/site-setting/pages/contact',
   convertFileToField.handle,
   contactPagesValidation.handle(),
   contactPagesController.update
+);
+// About Page
+router.get('/site-setting/pages/about', redirectIfAuthenticated.adminLogin, aboutPagesController.index);
+router.put('/site-setting/pages/about/header',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  aboutHeader.handle(),
+  aboutPagesController.header
+  );
+router.put('/site-setting/pages/about/description1', 
+  upload.single('photo'),
+  convertFileToField.handle,
+  aboutDesc1.handle(),
+  redirectIfAuthenticated.adminLogin, 
+  aboutPagesController.description1
+);
+router.put('/site-setting/pages/about/description2',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  aboutDesc2.handle(),
+  aboutPagesController.description2
+);
+router.put('/site-setting/pages/about/articles',
+  redirectIfAuthenticated.adminLogin,
+  aboutArticles.handle(),
+  aboutPagesController.articles
+  );
+router.put('/site-setting/pages/about/parallax',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  aboutParallax.handle(),
+  aboutPagesController.parallax
 );
 // Home Page
 router.get('/site-setting/pages/home', redirectIfAuthenticated.adminLogin, homePagesController.index);

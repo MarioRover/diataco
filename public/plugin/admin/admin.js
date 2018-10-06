@@ -38,6 +38,16 @@ function readURL(input) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+function readURL2(input , boxNumber) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $(`.image-box.box${boxNumber} img`).attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 // width: 260 px;
 // width: calc(100 % -260 px);
 
