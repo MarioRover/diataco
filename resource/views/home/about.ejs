@@ -104,42 +104,33 @@
 <section class="wrapper business parallax grid-y align-center-middle">
 <% } %>  
     <div id="wrapper-box" class="container grid-x align-center-middle">
-        <div id="card">
-          <div id="front">
-            <div id="top-pic"></div>
-            <div id="avatar" class="grid align-center-middle">
-                <img src="/img/avatar.png">
-            </div>
-            <div id="info-box">
-                <div class="info">
-                    <h3 class="mb-1">مسعود خانی</h3>
-                    <small>طراح و برنامه نویس سایت و موبایل</small>
-                </div>
-            </div>
-            <div id="social-bar"><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-              <a href="#" target="_blank"><i class="fab fa-github"> </i></a>
-              <a href="#" target="_blank"><i class="fab fa-codepen"> </i></a>
-              <a class="more-info" href="javascript:void"><i class="fa fa-user"></i></a></div>
-            </div>
-        </div>
-        <div id="card">
+      <% if(webUsers !== 'undefined') { %>
+        <% webUsers.forEach(user => { %>
+          <div id="card">
             <div id="front">
-                <div id="top-pic"></div>
-                <div id="avatar" class="grid align-center-middle">
-                    <img src="/img/IMG_6456.JPG">
+              <div id="top-pic" style="background-image: url('<%= user.backgroundUrl.destination %>')"></div>
+              <div id="avatar" class="grid align-center-middle">
+                <img src="<%= user.imageUrl.destination %>">
+              </div>
+              <div id="info-box">
+                <div class="info">
+                  <h3 class="mb-1"><%= user.name %></h3>
+                  <small><%= user.job %></small>
                 </div>
-                <div id="info-box">
-                    <div class="info">
-                        <h3 class="mb-1">حسین اکبری</h3>
-                        <small>طراح و برنامه نویس سایت و موبایل</small>
-                    </div>
-                </div>
-                <div id="social-bar"><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-github"> </i></a>
-                    <a href="#" target="_blank"><i class="fab fa-codepen"> </i></a>
-                    <a class="more-info" href="javascript:void"><i class="fa fa-user"></i></a></div>
+              </div>
+              <div id="social-bar">
+                <% if(user.telegram !== '') { %><a href="<%= user.telegram %>" target="_blank"><i class="fab fa-telegram"></i></a><% } %>
+                <% if(user.whatsapp !== '') { %><a href="<%= user.whatsapp %>" target="_blank"><i class="fab fa-whatsapp"></i></i></a><% } %>
+                <% if(user.website !== '') { %><a href="<%= user.website %>" target="_blank"><i class="fab fa-chrome"></i></a><% } %>
+                <% if(user.email !== '') { %><a href="<%= user.email %>" target="_blank"><i class="far fa-envelope"></i></a><% } %>
+                <% if(user.instagram !== '') { %><a href="<%= user.instagram %>" target="_blank"><i class="fab fa-instagram"></i></a><% } %>
+                <% if(user.facebook !== '') { %><a href="<%= user.facebook %>" target="_blank"><i class="fab fa-facebook-square"></i></a><% } %>
+              </div>
             </div>
-        </div>
+          </div>
+        <% }) %>  
+      <% } %>  
+        
     </div>
 </section>
 </section>

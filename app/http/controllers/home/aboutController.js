@@ -4,6 +4,10 @@ module.exports = new class aboutController extends controller {
   async showPage(req, res, next) {
     try {
       let aboutPage = await this.models.aboutPage.find({});
+      let webUsers = await this.models.webUsers.find({});
+      if (this.isEmptyArray(webUsers)) {
+        webUsers = 'undefined';
+      }
       if (this.isEmptyArray(aboutPage)) {
         aboutPage = 'undefined';
       } else {
@@ -11,10 +15,10 @@ module.exports = new class aboutController extends controller {
       }
       res.render('home/about', {
         title: 'درباره ما',
-        aboutPage
+        aboutPage,webUsers
       });
     } catch (error) {
-      next(error);
+      this.error('Error in showPage method at aboutController.js', 500, next);
     }
   }
 }

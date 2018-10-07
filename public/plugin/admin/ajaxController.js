@@ -348,3 +348,122 @@ $('.AboutParallax').submit((e) => {
 
   Fetch('/admin/site-setting/pages/about/parallax', 'PUT', formData);
 });
+
+/////////////Users///////////////
+$(".NewUser").submit(e => {
+  e.preventDefault();
+  let name = $('.NewUser input[name = "name"]');
+  let job = $('.NewUser input[name = "job"]');
+  let telegram = $('.NewUser input[name = "telegram"]');
+  let whatsapp = $('.NewUser input[name = "whatsapp"]');
+  let website = $('.NewUser input[name = "website"]');
+  let email = $('.NewUser input[name = "email"]');
+  let instagram = $('.NewUser input[name = "instagram"]');
+  let facebook = $('.NewUser input[name = "facebook"]');
+  let photo = $('.NewUser input[name = "photo"]');
+  let photoVal = $('.NewUser input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append("name", name.val());
+  formData.append("job", job.val());
+  formData.append("telegram", telegram.val());
+  formData.append("whatsapp", whatsapp.val());
+  formData.append("website", website.val());
+  formData.append("email", email.val());
+  formData.append("instagram", instagram.val());
+  formData.append("facebook", facebook.val());
+
+  formData.append("photo", photo[0].files[0]);
+  formData.append("photoVal", photoVal.val());
+
+  Fetch("/admin/users/add", "POST", formData);
+});
+
+let boxChecks = $('.user-box input.box-check');
+let userIds = [];
+$.each(boxChecks, function (indexInArray, box) {
+  $(box).click(function (e) {
+    if ($(box).is(':checked')) {
+      userIds.push(box.value);
+    } else {
+      userIds.pop(box.value);
+    }
+  });
+});
+
+
+$(".RemoveUser").click(function (e) {
+  e.preventDefault();
+  iziToast.question({
+    timeout: 20000,
+    close: false,
+    overlay: true,
+    displayMode: 'once',
+    id: 'question',
+    zindex: 999,
+    title: 'اخطار',
+    rtl: true,
+    message: 'آیا از حذف کاربر مورد نظر مطمئن هستید ؟',
+    position: 'center',
+    buttons: [
+      ['<button><b>بله</b></button>', function (instance, toast) {
+        instance.hide({
+          transitionOut: 'fadeOut'
+        }, toast, 'button');
+        Fetch2("/admin/users/delete", "DELETE", userIds);
+
+      }, true],
+      ['<button>خیر</button>', function (instance, toast) {
+        instance.hide({
+          transitionOut: 'fadeOut'
+        }, toast, 'button');
+      }],
+    ]
+  });
+});
+
+$(".UserBackground").submit(e => {
+  e.preventDefault();
+  let photo = $('.UserBackground input[name = "photo"]');
+  let photoVal = $('.UserBackground input[name = "photo"]');
+
+  let formData = new FormData();
+
+  formData.append("photo", photo[0].files[0]);
+  formData.append("photoVal", photoVal.val());
+
+  let pathName = window.location.pathname.split('/');
+  let catSlug = pathName[pathName.length - 1];
+  Fetch(`/admin/users/${catSlug}/background`, "PUT", formData);
+});
+
+$(".UpdateUser").submit(e => {
+  e.preventDefault();
+  let name = $('.UpdateUser input[name = "name"]');
+  let job = $('.UpdateUser input[name = "job"]');
+  let telegram = $('.UpdateUser input[name = "telegram"]');
+  let whatsapp = $('.UpdateUser input[name = "whatsapp"]');
+  let website = $('.UpdateUser input[name = "website"]');
+  let email = $('.UpdateUser input[name = "email"]');
+  let instagram = $('.UpdateUser input[name = "instagram"]');
+  let facebook = $('.UpdateUser input[name = "facebook"]');
+  let photo = $('.UpdateUser input[name = "photo"]');
+  let photoVal = $('.UpdateUser input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append("name", name.val());
+  formData.append("job", job.val());
+  formData.append("telegram", telegram.val());
+  formData.append("whatsapp", whatsapp.val());
+  formData.append("website", website.val());
+  formData.append("email", email.val());
+  formData.append("instagram", instagram.val());
+  formData.append("facebook", facebook.val());
+
+  formData.append("photo", photo[0].files[0]);
+  formData.append("photoVal", photoVal.val());
+
+  let pathName = window.location.pathname.split('/');
+  let catSlug = pathName[pathName.length - 1];
+  Fetch(`/admin/users/${catSlug}/update`, "PUT", formData);
+});

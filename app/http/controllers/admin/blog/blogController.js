@@ -239,8 +239,8 @@ module.exports = new class blogController extends controller {
           path: blogPhoto.path
         }
         let newBlog = new this.models.blog({ ...contentObj });
-        newBlog.save(err => {
-          if (err) {
+        newBlog.save(error => {
+          if (error) {
             return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
           }
             return this.redirectWithMessage(['بلاگ با موفقیت ثبت گردید'], 'success', `/admin/blogs/categories/${req.params.category}`, res);

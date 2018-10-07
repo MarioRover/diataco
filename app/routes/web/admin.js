@@ -10,6 +10,7 @@ const contactPagesController = require('app/http/controllers/admin/siteSittings/
 const homePagesController = require('app/http/controllers/admin/siteSittings/pages/homePagesController');
 const aboutPagesController = require('app/http/controllers/admin/siteSittings/pages/aboutPagesController');
 const blogController = require('app/http/controllers/admin/blog/blogController');
+const usersController = require('app/http/controllers/admin/usersController');
 // Validators
 const loginAdminsValidation = require('app/http/validators/loginAdminsValidation');
 const contactPagesValidation = require('app/http/validators/contactPagesValidation');
@@ -25,6 +26,8 @@ const aboutDesc1 = require('app/http/validators/aboutPageValidation/aboutDesc1')
 const aboutDesc2 = require('app/http/validators/aboutPageValidation/aboutDesc2');
 const aboutArticles = require('app/http/validators/aboutPageValidation/aboutArticles');
 const aboutParallax = require('app/http/validators/aboutPageValidation/aboutParallax');
+const usersValidation = require('app/http/validators/usersValidation');
+const usersBackgroundValidation = require('app/http/validators/usersBackgroundValidation');
 // Middleware
 const redirectIfAuthenticated = require('app/http/middleware/redirectIfAuthenticated');
 const convertFileToField = require('app/http/middleware/convertFileToField')
@@ -177,7 +180,30 @@ router.put('/blogs/categories/:category/:blog',
   createBlogValidation.handle(),
   blogController.updateBlog
 );
-
-
-
+////////////// Users ////////////////////
+router.get('/users', redirectIfAuthenticated.adminLogin, usersController.index);
+router.get('/users/add', redirectIfAuthenticated.adminLogin, usersController.showAddUser);
+router.post('/users/add', 
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  usersValidation.handle(),
+  usersController.createUser
+);
+router.put('/users/:user/background',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  usersBackgroundValidation.handle(),
+  usersController.setBackground
+);
+router.get('/users/:user', redirectIfAuthenticated.adminLogin, usersController.showUpdateUser);
+router.put('/users/:user/update',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  usersValidation.handle(),
+  usersController.updateUser
+);
+router.delete('/users/delete', redirectIfAuthenticated.adminLogin, usersController.removeUser);
 module.exports = router;

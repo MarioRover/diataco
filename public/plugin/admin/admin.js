@@ -48,7 +48,4 @@ function readURL2(input , boxNumber) {
     reader.readAsDataURL(input.files[0]);
   }
 }
-// width: 260 px;
-// width: calc(100 % -260 px);
-
 

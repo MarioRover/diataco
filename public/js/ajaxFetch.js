@@ -77,6 +77,9 @@ const Fetch2 = (url,method,body) => {
         case 'row':
           rowDelete(res.data.objId);
           break;
+        case 'box':
+          boxDelete(res.data.objId);
+          break;
         default:
           break;
       }

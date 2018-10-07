@@ -768,7 +768,7 @@ main {
 #card {
   width: 300px;
   height: 400px;
-  margin: 0 auto;
+  margin: 2em;
   position: relative;
   z-index: 1;
   -webkit-perspective: 600px;
@@ -827,9 +827,9 @@ main {
 #card #front #top-pic {
   height: 50%;
   width: 100%;
-  background-image: url('/img/sidebar-wallpaper.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
-  background-position-y: -8em;
 }
 #card #front #avatar {
   width: 114px;
@@ -872,7 +872,7 @@ main {
   display: inline-block;
   color: #888;
   text-decoration: none;
-  padding: 5px;
+  padding: 3px;
   line-height: 18px;
   border-radius: 5px;
 }
