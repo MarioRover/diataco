@@ -24,13 +24,14 @@ module.exports = new class messagesController extends controller {
       if(! result ) {
         return this.error('Error in validate mongoid in messageController.js', 404, next);
       }
+      let user = req.user;
       await this.models.Messages.findById(req.params.id , (err , message) => {
         if (err) return this.error(err.msg, 404, next);
         if (!message) return this.error('Error in find mongoid in messageController.js', 404, next);
         res.render('admin/message', {
           title: 'پیام های دریافتی',
           activeRow: 'messages',
-          message
+          message,user
         });
       });
       

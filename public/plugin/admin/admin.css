@@ -403,7 +403,8 @@ th,td {
   padding: 10px;
   color: #fff;
   font-size: 14px;
-  text-align: right;
+  text-align: justify;
+  line-height: 24px;
 }
 td {
   border: 1px solid #28333f;
@@ -422,13 +423,13 @@ td.image {
 td.image img {
   width: 35%;
 }
-td.col1 {
+td.col1,th.col1 {
   width: 1%;
 }
-td.col2 {
+td.col2,th.col2 {
   width: 30%;
 }
-td.col3 {
+td.col3,th.col3 {
   width: 14%;
 }
 table .button,
