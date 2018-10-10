@@ -8,8 +8,7 @@ module.exports = new class blogController extends controller {
       let categories = await this.models.blogCategory.paginate({} , {
         page,
         sort : {
-          createdDate: -1,
-          createdTime: -1
+          createdAt: -1
         },
         limit : 10
       })
@@ -105,6 +104,7 @@ module.exports = new class blogController extends controller {
           createdTime: -1
         }
       }).exec();
+      // return res.json(category[0].blogs.length);
       if (this.isEmptyArray(category)) return this.error('Error in find category in viewCategory.js', 404, next);
       res.render('admin/blog/category', {
         title: 'ساخت دسته بندی وبلاگ جدید',
@@ -184,6 +184,22 @@ module.exports = new class blogController extends controller {
 
     } catch (error) {
       return this.serverError('Error in updateCategory method of blogController.js', 500, error, res);
+    }
+  }
+
+  async removeCategory(req, res, next) {
+    try {
+      req.body.forEach(async category => {
+        let cat = await this.models.blogCategory.findById(category).populate('blogs').exec();
+        cat.blogs.forEach(async blog => {
+          await this.models.blog.findByIdAndDelete(blog._id);
+          await fs.unlinkSync(blog.imageUrl.path);
+        });
+        await this.models.blogCategory.findByIdAndDelete(cat._id);
+      });
+      return this.deleteObj(['دسته بندی مورد نظر با موفقیت حذف گردید'], 'success', req.body, 'box', res);
+    } catch (error) {
+      this.error('Error in removeCategory method at blogController.js', 500, next);
     }
   }
 
@@ -278,6 +294,9 @@ module.exports = new class blogController extends controller {
       }).populate({
         path : 'category',
         select : 'name , slug'
+      }).populate({
+         path: 'updatedBy',
+         select: 'name , family'
       }).exec();
       if (blog[0].category.slug !== req.params.category) return this.error('Error in find category in viewBlog.js', 404, next);
       if (this.isEmptyArray(blog)) return this.error('Error in find blog in viewBlog.js', 404, next);
@@ -335,9 +354,7 @@ module.exports = new class blogController extends controller {
             contentObj["imageUrl"] = { destination: this.addressImage(blogPhoto), originalname: blogPhoto.originalname, path: blogPhoto.path };
           }
         }
-
-        contentObj["updatedDate"] = await this.getDate();
-        contentObj["updatedTime"] = await this.getTime();
+        
         await this.models.blog.findByIdAndUpdate(thisBlog[0]._id, {
           $set: { ...contentObj, ...contentObj }
         });

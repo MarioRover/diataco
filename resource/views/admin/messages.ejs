@@ -17,14 +17,14 @@
       </tr>
     </thead>
     <tbody>
-      <% if(messages.length > 0) {
+      <% if(messages.docs.length > 0) {
         let i = 0;
-          messages.forEach(message => { i+=1 %>
+          messages.docs.forEach(message => { i+=1 %>
           <tr>
             <td class="col1"><%= i %></td>
             <td class="col3"><%= message.fullName %></td>
-            <td class="col3"><%= message.createdDate %></td>
-            <td class="col3"><%= message.createdTime %></td>
+            <td class="col3"><%= date(message.createdAt).format('jYYYY/jM/jD') %></td>
+            <td class="col3"><%= date(message.createdAt).format(' HH:mm:ss') %></td>
             <td class="col2"><%= message.subject.split(1,20) %></td>
             <td class="col3">
               <div class="grid-x align-center">
@@ -38,6 +38,7 @@
     </tbody>
   </table>
 </div>
+<%- include(viewPath('layout/pagination') , { pagination : messages }) -%>
 <script>
   const rowDelete = (objId) => {
     let row = $(`tr td button[value=${objId}]`).parents('tr');

@@ -25,6 +25,8 @@ module.exports = new class blogController extends controller {
       if (categories == '') {
         categories = 'undefined';
       }
+       categories[0].viewCount += 1;
+       categories[0].save();
       res.render('home/blog/blogs', {
         title : categories[0].name,
         categories : categories[0]
@@ -48,6 +50,8 @@ module.exports = new class blogController extends controller {
         path: 'updatedBy'
       }).exec();
       if(this.isEmptyArray(blog)) return this.error('Error in find blog in viewBlog.js', 404, next);
+      blog[0].viewCount += 1;
+      blog[0].save();
       return res.json(blog[0]);
       // res.render('home/blog/blogs', {
       //   title : categories[0].name,

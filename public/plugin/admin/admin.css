@@ -302,6 +302,11 @@ span.digit {
 .page-box:hover h4 {
   font-size: 18px;
 }
+.page-box .count {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff
+}
 .page-box::before,
 .page-box::after {
   content: '';
@@ -330,6 +335,9 @@ span.digit {
   75% {
     clip: rect(0px, 200px, 200px, 198px);
   }
+}
+.dashboard .page-box {
+  background: rgba(0, 0, 0, 0) linear-gradient(to right, rgb(55, 59, 68), rgb(66, 134, 244)) repeat scroll 0% 0%;
 }
 
  .input-box {
@@ -513,24 +521,15 @@ table button i {
   color: #3678b4;
 }
 /* //////////folder////////////// */
-.folder {
-  margin: 10px 15px;
-  background-color: #f6f7f9;
-  color: #6b7787;
-  width: 14em;
-  height: 4.7em;
-  border-radius: 4px;
-  border: 1px solid #ffeded;
-}
-.folder i {
+.user-box.folder i {
   font-size: 42px;
   margin: 0 20px;
 }
-.folder span {
+.user-box.folder span {
   text-align: center;
   font-size: 12px;
 }
-.folder:hover {
+.user-box.folder:hover {
   background-color: #409ce9;
   color: #fff;
   border: 1px solid #0d58d3;
@@ -617,7 +616,8 @@ table button i {
   font-size: 11px;
   color: #a89191;
 }
-.user-box .box-check {
+.user-box .box-check,
+.folder-box .box-check {
   position: absolute;
   top: -10px;
   right: -20px;

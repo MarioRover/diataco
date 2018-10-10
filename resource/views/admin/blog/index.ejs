@@ -22,7 +22,7 @@
           <span>اضافه کردن</span>
           <i class="far fa-plus-circle"></i>
         </a>
-        <a class="btn sign btn-danger grid-x-no align-middle">
+        <a class="btn sign btn-danger grid-x-no align-middle RemoveFolder">
           <span>حذف کردن</span>
           <i class="far fa-minus-circle"></i>
         </a>
@@ -31,12 +31,13 @@
     <div class="content grid-x">
       <% if(categories !== 'undefined' && categories.docs.length !== 0) { %>
        <% categories.docs.forEach(category => { %>
-        <a href="/admin/blogs/categories/<%= category.slug %>" class="grid align-left">
-          <div class="folder grid-x align-middle">
+        <div class="user-box folder">
+          <a href="/admin/blogs/categories/<%= category.slug %>" class="box-wrap grid-x align-middle">
             <i class="fas fa-folder"></i>
             <span><%= category.name %></span>
-          </div>
-        </a>
+          </a>
+          <input type="checkbox" name="select" class="box-check" value="<%= category._id %>">
+        </div>
        <% }) %> 
       <% } else { %>
         <p>دسته بندی وجود ندارد</p>
@@ -47,5 +48,12 @@
   </div>
 </div>
 
+<script>
+  const boxDelete = (boxs) => {
+    boxs.forEach(box => {
+      $(`input[value="${box}"]`).parent().remove();
+    })
+  }
+</script>
 
 

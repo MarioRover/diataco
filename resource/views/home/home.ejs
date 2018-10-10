@@ -33,42 +33,42 @@
     <div class="container" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
         <div class="ability-wrap grid-x align-around">
         <div class="item grid-x-no">
-            <i class="%= ability.abilityIconitem1 %>"></i>
+            <i class="<%= ability.abilityIconitem1 %>"></i>
             <div class="content">
                 <h4><%= ability.abilityitem1 %></h4>
                 <p><%= ability.abilityDescitem1 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="%= ability.abilityIconitem2 %>"></i>
+            <i class="<%= ability.abilityIconitem2 %>"></i>
             <div class="content">
                 <h4><%= ability.abilityitem2 %></h4>
                 <p><%= ability.abilityDescitem2 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="%= ability.abilityIconitem3 %>"></i>
+            <i class="<%= ability.abilityIconitem3 %>"></i>
             <div class="content">
                 <h4><%= ability.abilityitem3 %></h4>
                 <p><%= ability.abilityDescitem3 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="%= ability.abilityIconitem4 %>"></i>
+            <i class="<%= ability.abilityIconitem4 %>"></i>
             <div class="content">
                 <h4><%= ability.abilityitem4 %></h4>
                 <p><%= ability.abilityDescitem4 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="%= ability.abilityIconitem5 %>"></i>
+            <i class="<%= ability.abilityIconitem5 %>"></i>
             <div class="content">
                 <h4><%= ability.abilityitem5 %></h4>
                 <p><%= ability.abilityDescitem5 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="%= ability.abilityIconitem6 %>"></i>
+            <i class="<%= ability.abilityIconitem6 %>"></i>
             <div class="content">
                 <h4><%= ability.abilityitem6 %></h4>
                 <p><%= ability.abilityDescitem6 %></p>
@@ -192,7 +192,7 @@
                             <ul class="utility-list grid-x align-justify">
                                 <li class="grid-x-no align-center">
                                     <i class="fas fa-calendar"></i>
-                                    <span><%= blog.createdDate %></span>
+                                    <span><%= date(blog.createdAt).format('jD jMMM jYYYY') %></span>
                                 </li>
                                 <li class="grid-x-no align-center">
                                     <i class="fas fa-comment-dots"></i>

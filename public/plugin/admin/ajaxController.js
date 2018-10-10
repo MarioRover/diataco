@@ -422,6 +422,37 @@ $(".RemoveUser").click(function (e) {
   });
 });
 
+$(".RemoveFolder").click(function (e) {
+  e.preventDefault();
+  iziToast.question({
+    timeout: 20000,
+    close: false,
+    overlay: true,
+    displayMode: 'once',
+    id: 'question',
+    zindex: 999,
+    title: 'اخطار',
+    rtl: true,
+    message: 'آیا از حذف دسته بندی مورد نظر مطمئن هستید ؟',
+    position: 'center',
+    buttons: [
+      ['<button><b>بله</b></button>', function (instance, toast) {
+        instance.hide({
+          transitionOut: 'fadeOut'
+        }, toast, 'button');
+        Fetch2("/admin/blogs/categories", "DELETE", userIds);
+
+      }, true],
+      ['<button>خیر</button>', function (instance, toast) {
+        instance.hide({
+          transitionOut: 'fadeOut'
+        }, toast, 'button');
+      }],
+    ]
+  });
+});
+
+
 $(".UserBackground").submit(e => {
   e.preventDefault();
   let photo = $('.UserBackground input[name = "photo"]');

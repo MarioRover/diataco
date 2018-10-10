@@ -28,11 +28,12 @@ module.exports = new class contactController extends controller {
       if(!result) {
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       } else {
+        this.escapeAndTrim(req, 'fullName email subject description');
         let {fullName , email , subject , description} = req.body;
         let newMessage = new this.models.Messages({fullName,email,subject,description});
         await newMessage.save((error) => {
           if (error) return this.serverError('Error in save Message at contactController.js', 500, error, res);
-          return this.izitoastMessage(['پیام شما با موفقیت ارسال گردید'], 'success', res);
+          return this.redirectWithMessage(['پیام شما با موفقیت ارسال گردید'], 'success', '/' , res);
         });
       }
     } catch (error) {

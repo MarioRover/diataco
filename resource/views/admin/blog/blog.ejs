@@ -57,21 +57,26 @@
           <div class="input-wrap grid-x">
             <div class="text grid-x align-middle">
               <h6>تاریخ ثبت :</h6>
-              <span><%= blog.createdDate %></span>
+              <span><%= date(blog.createdAt).format('jYYYY/jM/jD') %></span>
             </div>
           </div>
           <div class="input-wrap grid-x">
             <div class="text grid-x align-middle">
               <h6>زمان ثبت :</h6>
-              <span><%= blog.createdTime %></span>
+              <span><%= date(blog.createdAt).format(' HH:mm:ss') %></span>
             </div>
           </div>
+         <% if(typeof blog.updatedBy !== 'undefined') { %>
           <div class="input-wrap grid-x">
             <div class="text grid-x align-middle">
               <h6>آخرین بروز رسانی</h6>
-              <span>؟</span>
+              <span>
+                <%= date(blog.updatedAt).fromNow() %> توسط
+                <%= blog.updatedBy.name %>
+                <%= blog.updatedBy.family %></span>
             </div>
           </div>
+         <% } %>
         </content>
       </div>
       <div class="post-box w100">
@@ -163,11 +168,11 @@
     Chart.defaults.global.defaultFontFamily = 'iransans';
     Chart.defaults.global.defaultFontSize = 10;
     Chart.defaults.global.defaultFontColor = '#333';
-  CKEDITOR.replace('editor1' , {
-    filebrowserUploadUrl : '/admin/upload-image'
-  });
-  $("input[name='photo']").change(function() {
-    readURL(this);
-  });
+    CKEDITOR.replace('editor1' , {
+      filebrowserUploadUrl : '/admin/upload-image'
+    });
+    $("input[name='photo']").change(function() {
+      readURL(this);
+    });
 
 </script>

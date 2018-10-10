@@ -47,8 +47,7 @@
   </div>
 </div>
 <script>
-  const setImageUrl = (imgUrl) => {
-    let image = $('.image-box img');
-    $(image).attr('src', `${imgUrl}`);
-  }
+  $("input[name='photo']").change(function() {
+    readURL(this);
+  });
 </script>

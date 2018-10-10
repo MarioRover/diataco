@@ -29,8 +29,7 @@
               <ul class="utility-list grid-x align-justify">
                 <li class="grid-x-no align-center">
                   <i class="fas fa-calendar"></i>
-                  <span>
-                    <%= blog.createdDate %></span>
+                  <span><%= date(blog.createdAt).format('jD jMMM jYYYY') %></span>
                 </li>
                 <li class="grid-x-no align-center">
                   <i class="fas fa-comment-dots"></i>

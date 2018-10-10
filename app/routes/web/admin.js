@@ -47,16 +47,17 @@ router.get('/logout' ,(req , res) => {
   res.clearCookie('remember_token');
   res.redirect('/');
 });
-router.get('/profile/edit', redirectIfAuthenticated.adminLogin, adminController.showProfileEdit);
 router.post('/upload-image',
-  redirectIfAuthenticated.adminLogin,
-  upload.single('upload'),
-  adminController.uploadImage
+redirectIfAuthenticated.adminLogin,
+upload.single('upload'),
+adminController.uploadImage
 );
+router.get('/profile/edit', redirectIfAuthenticated.adminLogin, adminController.showProfileEdit);
 router.put('/profile/edit', 
   redirectIfAuthenticated.adminLogin,
   upload.single('photo'),
   convertFileToField.handle,
+  usersBackgroundValidation.handle(),
   adminController.profileEdit
 );
 router.get('/dashboard', redirectIfAuthenticated.adminLogin, adminController.index);
@@ -144,9 +145,10 @@ router.put('/site-setting/pages/home/ability',
   homePagesAbilityValidation.handle(),
   homePagesController.updateAbility
 );
-// Blog
+/////// Category
 router.get('/blogs/categories', redirectIfAuthenticated.adminLogin, blogController.index);
 router.get('/blogs/categories/add', redirectIfAuthenticated.adminLogin, blogController.viewCreateCategory);
+router.delete('/blogs/categories', redirectIfAuthenticated.adminLogin, blogController.removeCategory);
 router.post('/blogs/categories/add',
   redirectIfAuthenticated.adminLogin,
   upload.single('photo'),

@@ -45,12 +45,6 @@ const Fetch2 = (url,method,body) => {
     return res.json();
   }).then(res => {
     if (res.status == 'userError') {
-      let messages = res.data.msg;
-      if (typeof messages !== 'undefined') {
-        messages.map(message => {
-          izitoast(res.data.method, message);
-        });
-      }
       if (typeof res.data.redirect !== 'undefined') {
         setTimeout(() => {
           window.location = res.data.redirect;
@@ -69,7 +63,7 @@ const Fetch2 = (url,method,body) => {
     }
     if(res.status == 'redirect') {
       setTimeout(() => {
-        window.location = res.data.url;
+        window.location = res.data.href;
       }, 3000);
     }
     if(res.status == 'deleteObj') {
@@ -83,12 +77,12 @@ const Fetch2 = (url,method,body) => {
         default:
           break;
       }
-      let messages = res.data.msg;
-      if (typeof messages !== 'undefined') {
-        messages.map(message => {
-          izitoast(res.data.method, message);
-        });
-      }
+    }
+    let messages = res.data.msg;
+    if (typeof messages !== 'undefined') {
+      messages.map(message => {
+        izitoast(res.data.method, message);
+      });
     }
   }).catch(err => {
     console.log(err);

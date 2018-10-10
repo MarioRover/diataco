@@ -520,9 +520,8 @@ main {
 .view-all-news a{
   color: #333;
   padding: 12px;
-  background-color: #fff;
+  background-color: #f4a73e;
   font-size: 14px;
-  font-weight: 200;
   display: block;
   width: 200px;
   text-align: center;
@@ -532,12 +531,6 @@ main {
   -ms-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
 } 
-.view-all-news a:hover{
-  background: none;
-  border: 1px solid;
-  color: #fff;
-}
-
 .blog-card {
   width: 292px;
   height: 390px;

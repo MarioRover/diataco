@@ -77,7 +77,7 @@
             <div class="input-wrap grid-x">
               <div class="text grid-x align-middle">
                 <h6>تعداد بلاگ ها :</h6>
-                <span><%= category.blogCount %></span>
+                <span><%= category.blogs.length %></span>
               </div>
             </div>
             <div class="input-wrap grid-x">
@@ -89,13 +89,13 @@
             <div class="input-wrap grid-x">
               <div class="text grid-x align-middle">
                 <h6>تاریخ :</h6>
-                <span><%= category.createdDate %></span>
+                <span><%= date(category.createdAt).format('jYYYY/jM/jD') %></span>
               </div>
             </div>
             <div class="input-wrap grid-x">
               <div class="text grid-x align-middle">
                 <h6>زمان :</h6>
-                <span><%= category.createdTime %></span>
+                <span><%= date(category.createdAt).format(' HH:mm:ss') %></span>
               </div>
             </div>
           </content>
@@ -133,7 +133,7 @@
           <tr>
             <td class="col1"><%= i %></td>
             <td class="col3"><%= blog.title %></td>
-            <td class="col3"><%= blog.createdDate %></td>
+            <td class="col3"><%= date(blog.createdAt).format('jYYYY/jM/jD') %></td>
             <td class="col3"><%= blog.admin.name %> <%= blog.admin.family %></td>
             <td class="col2 image">
               <img src="<%= blog.imageUrl.destination %>" alt="<%= blog.imageUrl.destination %>">

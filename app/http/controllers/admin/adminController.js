@@ -2,12 +2,13 @@ const controller = require('./../controller');
 const fs = require('fs');
 
 class adminController extends controller {
-  index(req, res) {
+  async index(req, res) {
+    let messages = await this.models.Messages.find({});
     let user = req.user;    
     res.render('admin/dashboard' , {
       title : 'پنل مدیریت',
       activeRow: 'dashbaord',
-      user
+      user,messages
     });
   }
 
@@ -22,6 +23,11 @@ class adminController extends controller {
 
   async profileEdit(req , res , next) {
     try {
+      let result = await this.validationData(req, next);
+      if (!result) {
+        if (req.file) fs.unlinkSync(req.file.path);
+        return this.izitoastMessage(req.flash('errors'), 'warning', res);
+      }
       const {name , family} = req.body;
       let contentObj = {name , family};
       let objId = req.user._id;
@@ -35,10 +41,7 @@ class adminController extends controller {
         if (admin.profileImg.originalname === req.file.originalname) {
           await fs.unlinkSync(req.file.path);
         } else {
-          console.log('here');
-          if (admin.profileImg.destination !== '/uploads/images/2018/9/28/IMG_6456.JPG') {
-            await fs.unlinkSync(admin.profileImg.path);
-          }
+          if (await fs.existsSync(admin.profileImg.path)) await fs.unlinkSync(admin.profileImg.path);
           contentObj['profileImg'] = {
             destination: await this.addressImage(req.file),
             originalname: req.file.originalname,
@@ -52,9 +55,7 @@ class adminController extends controller {
           ...contentObj
         }
       });
-      let newAdmin = await this.models.Admins.findById(admin._id);
-      let imageUrl = newAdmin.profileImg.destination;
-      return this.transDataWithMessage(['تغییرات با موفقیت ثبت گردید'], 'success', imageUrl, res);
+      return this.redirectWithMessage(['تغییرات با موفقیت ثبت گردید'], 'success', '/admin/dashboard' , res);
 
     } catch (error) {
       return this.serverError('Error in profileEdit method at adminController', 500, error, res);

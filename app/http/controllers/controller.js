@@ -171,4 +171,11 @@ module.exports = class controller {
     let d = new Date();
     return `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
   }
+
+  escapeAndTrim(req, items) {
+    items.split(' ').forEach(item => {
+      req.sanitize(item).escape();
+      req.sanitize(item).trim();
+    });
+  }
 }

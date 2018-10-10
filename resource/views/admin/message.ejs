@@ -33,13 +33,13 @@
     <tr>
       <th class="col3">تاریخ ارسال</th>
       <td>
-        <%= message.createdDate %>
+        <%= date(message.createdAt).format('jYYYY/jM/jD') %>
       </td>
     </tr>
     <tr>
       <th class="col3">زمان ارسال</th>
       <td>
-        <%= message.createdTime %>
+        <%= date(message.createdAt).format(' HH:mm:ss') %>
       </td>
     </tr>
   </table>

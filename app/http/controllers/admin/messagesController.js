@@ -4,10 +4,14 @@ module.exports = new class messagesController extends controller {
   async index(req, res , next) {
     try {
       let user = req.user;
-      let messages = await this.models.Messages.find({}).sort({
-        createdDate: -1,
-        createdTime: -1
-      }).exec();
+      let page = req.query.page || 1;
+      let messages = await this.models.Messages.paginate({} , {
+        page , 
+        sort : {
+          createdAt: -1
+        },
+        limit : 10
+      });
       res.render('admin/messages', {
         title: 'پیام های دریافتی',
         activeRow: 'messages',
