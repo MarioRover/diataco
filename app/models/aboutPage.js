@@ -33,17 +33,6 @@ const aboutPageSchema = new Schema({
   Descitem6 : {type : String},
 
   parallaxImageUrl  : {type : Object},
-
-  createdDate : {type : String},
-  createdTime : {type : String}
-});
-
-aboutPageSchema.pre('save', function (next) {
-  let d = new Date();
-  this.createdDate = `${d.getFullYear()}.${d.getMonth()}.${d.getDate()}`;
-  this.createdTime = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
-  next();
-});
-
+} , {timestamps : true});
 
 module.exports = mongoose.model('AboutPage', aboutPageSchema);

@@ -12,7 +12,7 @@ const contactValidation = require('app/http/validators/contactValidation');
 // Home Routes
 router.get('/' , homeController.showPage);
 // Seo Router
-router.get('/seo', seoController.showPage);
+router.get('/seo', seoController.index);
 // Blog Router
 router.get('/blog', blogController.index);
 router.get('/blog/:category', blogController.showBlogs);

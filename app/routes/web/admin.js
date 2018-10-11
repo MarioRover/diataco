@@ -11,6 +11,7 @@ const homePagesController = require('app/http/controllers/admin/siteSittings/pag
 const aboutPagesController = require('app/http/controllers/admin/siteSittings/pages/aboutPagesController');
 const blogController = require('app/http/controllers/admin/blog/blogController');
 const usersController = require('app/http/controllers/admin/usersController');
+const seoPagesController = require('app/http/controllers/admin/siteSittings/pages/seoPagesController');
 // Validators
 const loginAdminsValidation = require('app/http/validators/loginAdminsValidation');
 const contactPagesValidation = require('app/http/validators/contactPagesValidation');
@@ -26,6 +27,12 @@ const aboutDesc1 = require('app/http/validators/aboutPageValidation/aboutDesc1')
 const aboutDesc2 = require('app/http/validators/aboutPageValidation/aboutDesc2');
 const aboutArticles = require('app/http/validators/aboutPageValidation/aboutArticles');
 const aboutParallax = require('app/http/validators/aboutPageValidation/aboutParallax');
+
+const seoHeaderValidation = require('app/http/validators/seoPageValidation/seoHeader');
+const seoDesc1Validation = require('app/http/validators/seoPageValidation/seoDesc1');
+const seoDesc2Validation = require('app/http/validators/seoPageValidation/seoDesc2');
+const seoParallaxValidation = require('app/http/validators/seoPageValidation/seoParallax');
+
 const usersValidation = require('app/http/validators/usersValidation');
 const usersBackgroundValidation = require('app/http/validators/usersBackgroundValidation');
 // Middleware
@@ -145,7 +152,49 @@ router.put('/site-setting/pages/home/ability',
   homePagesAbilityValidation.handle(),
   homePagesController.updateAbility
 );
-/////// Category
+
+
+
+
+
+
+// /////////// Seo Page
+router.get('/site-setting/pages/seo', redirectIfAuthenticated.adminLogin, seoPagesController.index);
+router.put('/site-setting/pages/seo/header', 
+  redirectIfAuthenticated.adminLogin, 
+  upload.single('photo'),
+  convertFileToField.handle,
+  seoHeaderValidation.handle(),
+  seoPagesController.header
+);
+router.put('/site-setting/pages/seo/description1',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  seoDesc1Validation.handle(),
+  seoPagesController.description1
+);
+router.put('/site-setting/pages/seo/description2',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  seoDesc2Validation.handle(),
+  seoPagesController.description2
+);
+router.put('/site-setting/pages/seo/articles',
+  redirectIfAuthenticated.adminLogin,
+  aboutArticles.handle(),
+  seoPagesController.articles
+);
+router.put('/site-setting/pages/seo/parallax',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  seoParallaxValidation.handle(),
+  seoPagesController.parallax
+);
+
+/////// Category Blog
 router.get('/blogs/categories', redirectIfAuthenticated.adminLogin, blogController.index);
 router.get('/blogs/categories/add', redirectIfAuthenticated.adminLogin, blogController.viewCreateCategory);
 router.delete('/blogs/categories', redirectIfAuthenticated.adminLogin, blogController.removeCategory);

@@ -256,7 +256,7 @@ $('.UpdateBlog').submit((e) => {
   Fetch(`/admin/blogs/categories/${catSlug}/${blogSlug}`, 'PUT', formData);
 
 });
-
+///////////About Page///////////////
 $('.AboutHeader').submit((e) => {
   e.preventDefault();
   let title = $('.AboutHeader input[name = "title"]');
@@ -347,6 +347,111 @@ $('.AboutParallax').submit((e) => {
   formData.append('photoVal', photoVal.val());
 
   Fetch('/admin/site-setting/pages/about/parallax', 'PUT', formData);
+});
+
+///////////SEO Page///////////////
+$('.SEOHeader').submit((e) => {
+  e.preventDefault();
+  let title = $('.SEOHeader input[name = "title"]');
+  let photo = $('.SEOHeader input[name = "photo"]');
+  let photoVal = $('.SEOHeader input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append('title', title.val());
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
+
+  Fetch('/admin/site-setting/pages/seo/header', 'PUT', formData);
+});
+
+$('.SEODesc1').submit((e) => {
+  e.preventDefault();
+  let desc = $('.SEODesc1 textarea[name = "desc"]');
+  let photo = $('.SEODesc1 input[name = "photo"]');
+  let photoVal = $('.SEODesc1 input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append('desc', desc.val());
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
+
+  Fetch('/admin/site-setting/pages/seo/description1', 'PUT', formData);
+});
+
+$('.SEODesc2').submit((e) => {
+  e.preventDefault();
+  let desc = $('.SEODesc2 textarea[name = "desc"]');
+  let photo = $('.SEODesc2 input[name = "photo"]');
+  let photoVal = $('.SEODesc2 input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append('desc', desc.val());
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
+
+  Fetch('/admin/site-setting/pages/seo/description2', 'PUT', formData);
+});
+
+$('.SEOArticles').submit((e) => {
+  e.preventDefault();
+  let item1 = $('.SEOArticles input[name = "item1"]');
+  let Iconitem1 = $('.SEOArticles input[name = "Iconitem1"]');
+  let Descitem1 = $('.SEOArticles input[name = "Descitem1"]');
+
+  let item2 = $('.SEOArticles input[name = "item2"]');
+  let Iconitem2 = $('.SEOArticles input[name = "Iconitem2"]');
+  let Descitem2 = $('.SEOArticles input[name = "Descitem2"]');
+
+  let item3 = $('.SEOArticles input[name = "item3"]');
+  let Iconitem3 = $('.SEOArticles input[name = "Iconitem3"]');
+  let Descitem3 = $('.SEOArticles input[name = "Descitem3"]');
+
+  let item4 = $('.SEOArticles input[name = "item4"]');
+  let Iconitem4 = $('.SEOArticles input[name = "Iconitem4"]');
+  let Descitem4 = $('.SEOArticles input[name = "Descitem4"]');
+
+  let item5 = $('.SEOArticles input[name = "item5"]');
+  let Iconitem5 = $('.SEOArticles input[name = "Iconitem5"]');
+  let Descitem5 = $('.SEOArticles input[name = "Descitem5"]');
+
+  let item6 = $('.SEOArticles input[name = "item6"]');
+  let Iconitem6 = $('.SEOArticles input[name = "Iconitem6"]');
+  let Descitem6 = $('.SEOArticles input[name = "Descitem6"]');
+
+  const body = {
+    item1: item1.val(),
+    Iconitem1: Iconitem1.val(),
+    Descitem1: Descitem1.val(),
+    item2: item2.val(),
+    Iconitem2: Iconitem2.val(),
+    Descitem2: Descitem2.val(),
+    item3: item3.val(),
+    Iconitem3: Iconitem3.val(),
+    Descitem3: Descitem3.val(),
+    item4: item4.val(),
+    Iconitem4: Iconitem4.val(),
+    Descitem4: Descitem4.val(),
+    item5: item5.val(),
+    Iconitem5: Iconitem5.val(),
+    Descitem5: Descitem5.val(),
+    item6: item6.val(),
+    Iconitem6: Iconitem6.val(),
+    Descitem6: Descitem6.val()
+  }
+
+  Fetch2('/admin/site-setting/pages/seo/articles', 'PUT', body);
+});
+
+$('.SEOParallax').submit((e) => {
+  e.preventDefault();
+  let photo = $('.SEOParallax input[name = "photo"]');
+  let photoVal = $('.SEOParallax input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
+
+  Fetch('/admin/site-setting/pages/seo/parallax', 'PUT', formData);
 });
 
 /////////////Users///////////////

@@ -13,6 +13,7 @@ const blogCategory = require('app/models/blog/categories');
 const blog = require('app/models/blog/blog');
 const aboutPage = require('app/models/aboutPage');
 const webUsers = require('app/models/webUsers');
+const seoPage = require('app/models/seoPage');
 
 module.exports = class controller {
   constructor() {
@@ -28,7 +29,8 @@ module.exports = class controller {
       blogCategory,
       blog,
       aboutPage,
-      webUsers
+      webUsers,
+      seoPage
     };
   }
   async recaptchaValidation(req , res , next) {
