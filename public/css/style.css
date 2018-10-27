@@ -708,34 +708,25 @@ main {
   transition: 0.5s;
 }
 .card .info h3 {
-  margin: 0px;
-  font-weight: 200
+  font-weight: 700;
+  font-size: 22px;
 }
-.card .info p {
-  letter-spacing: 1px;
-  font-weight: 200;
-  font-size: 15px;
-  margin-top: 8px;
-  margin-bottom: 5px
-}
-.card .info button {
+.card .info a {
   padding: 0.6rem;
-  outline: none;
-  border: none;
   border-radius: 3px;
-  background: white;
-  color: black;
-  font-weight: bold;
+  background: #f7f7f7;
+  color: #333;
   cursor: pointer;
   transition: 0.4s ease;
   font-weight: 300;
   font-size: 13px
 }
-.card .info button:hover {
-  background: #a3e05c;
-  color: black;
+.card .info a:hover {
+  background: #d1c2c2;
 }
-  
+.card .info a:first-child {
+  margin-left: 5px;
+}
 /* Business Card*/
 .business{
   background-image:url(/img/blur2.jpg);

@@ -14,6 +14,10 @@ class homeController extends controller {
         path: 'category',
         select: 'slug'
       });
+      let websites = await this.models.websites.find({}).limit(8).sort({createdAt :-1}).exec();
+      if(this.isEmptyArray(websites)) {
+        websites = 'undefined';
+      }
       if (aboutUs == '') {
         aboutUs = 'undefined';
       } else {
@@ -39,7 +43,7 @@ class homeController extends controller {
       }
       res.render('home/home', {
         title: 'Diata',
-        aboutUs, parallax, homeSlider, ability,blogs
+        aboutUs, parallax, homeSlider, ability,blogs,websites
       });
     } catch (error) {
       return this.error('Error in showPage method at homeController.js', 500, next);

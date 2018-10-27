@@ -12,6 +12,8 @@ const aboutPagesController = require('app/http/controllers/admin/siteSittings/pa
 const blogController = require('app/http/controllers/admin/blog/blogController');
 const usersController = require('app/http/controllers/admin/usersController');
 const seoPagesController = require('app/http/controllers/admin/siteSittings/pages/seoPagesController');
+const websiteController = require('app/http/controllers/admin/websiteController');
+const applicationController = require('app/http/controllers/admin/applicationController');
 // Validators
 const loginAdminsValidation = require('app/http/validators/loginAdminsValidation');
 const contactPagesValidation = require('app/http/validators/contactPagesValidation');
@@ -27,6 +29,8 @@ const aboutDesc1 = require('app/http/validators/aboutPageValidation/aboutDesc1')
 const aboutDesc2 = require('app/http/validators/aboutPageValidation/aboutDesc2');
 const aboutArticles = require('app/http/validators/aboutPageValidation/aboutArticles');
 const aboutParallax = require('app/http/validators/aboutPageValidation/aboutParallax');
+const websitesValidation = require('app/http/validators/websitesValidation');
+const applicationValidation = require('app/http/validators/applicationValidation');
 
 const seoHeaderValidation = require('app/http/validators/seoPageValidation/seoHeader');
 const seoDesc1Validation = require('app/http/validators/seoPageValidation/seoDesc1');
@@ -152,12 +156,6 @@ router.put('/site-setting/pages/home/ability',
   homePagesAbilityValidation.handle(),
   homePagesController.updateAbility
 );
-
-
-
-
-
-
 // /////////// Seo Page
 router.get('/site-setting/pages/seo', redirectIfAuthenticated.adminLogin, seoPagesController.index);
 router.put('/site-setting/pages/seo/header', 
@@ -258,3 +256,58 @@ router.put('/users/:user/update',
 );
 router.delete('/users/delete', redirectIfAuthenticated.adminLogin, usersController.removeUser);
 module.exports = router;
+///////////////// WebSites //////////////////////////
+router.get('/websites', redirectIfAuthenticated.adminLogin, websiteController.index);
+router.delete('/websites', redirectIfAuthenticated.adminLogin, websiteController.removeWebsite);
+router.get('/websites/add', redirectIfAuthenticated.adminLogin, websiteController.indexAdd);
+router.post('/websites/add',
+  redirectIfAuthenticated.adminLogin,
+  upload.fields([
+    {name : 'logo' , maxCount : 1},
+    {name : 'previewImage' , maxCount : 1},
+    {name : 'images' , maxCount : 6},
+  ]),
+  convertFileToField.handle,
+  websitesValidation.handle(),
+  websiteController.addWebsite
+);
+router.get('/websites/:website', redirectIfAuthenticated.adminLogin, websiteController.website);
+router.put('/websites/:website',
+  redirectIfAuthenticated.adminLogin,
+  upload.fields([
+    {name : 'logo' , maxCount : 1},
+    {name : 'previewImage' , maxCount : 1},
+    {name : 'images' , maxCount : 6},
+  ]),
+  convertFileToField.handle,
+  websitesValidation.handle(),
+  websiteController.updateWebsite
+);
+router.delete('/gallery', redirectIfAuthenticated.adminLogin, adminController.gallery);
+/////////////// Applications ////////////////////
+router.get('/applications', redirectIfAuthenticated.adminLogin, applicationController.index);
+router.delete('/applications', redirectIfAuthenticated.adminLogin, applicationController.removeApplication);
+router.get('/applications/add', redirectIfAuthenticated.adminLogin, applicationController.indexAdd);
+router.post('/applications/add',
+  redirectIfAuthenticated.adminLogin,
+  upload.fields([
+    {name : 'logo' , maxCount : 1},
+    {name : 'previewImage' , maxCount : 1},
+    {name : 'images' , maxCount : 6},
+  ]),
+  convertFileToField.handle,
+  applicationValidation.handle(),
+  applicationController.addApplication
+);
+router.get('/applications/:application', redirectIfAuthenticated.adminLogin, applicationController.application);
+router.put('/applications/:application',
+  redirectIfAuthenticated.adminLogin,
+  upload.fields([
+    {name : 'logo' , maxCount : 1},
+    {name : 'previewImage' , maxCount : 1},
+    {name : 'images' , maxCount : 6},
+  ]),
+  convertFileToField.handle,
+  applicationValidation.handle(),
+  applicationController.updateApplication
+);

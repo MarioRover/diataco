@@ -603,3 +603,199 @@ $(".UpdateUser").submit(e => {
   let catSlug = pathName[pathName.length - 1];
   Fetch(`/admin/users/${catSlug}/update`, "PUT", formData);
 });
+
+/////////////Website/////////////////
+$(".websites").submit(e => {
+  e.preventDefault();
+  let name = $('.websites input[name = "name"]');
+  let link = $('.websites input[name = "link"]');
+  let slug = $('.websites input[name = "slug"]');
+  let desc = $('.websites textarea[name = "description"]');
+
+  let logo = $('.websites input[name = "logo"]');
+  let logoVal = $('.websites input[name = "logo"]');
+  let previewImage = $('.websites input[name = "previewImage"]');
+  let previewImageVal = $('.websites input[name = "previewImage"]');
+  let imagesVal = $('.gallery-box .box-wrap .box').length;
+
+  let formData = new FormData();
+  formData.append("name", name.val());
+  formData.append("link", link.val());
+  formData.append("slug", slug.val());
+  formData.append("desc", desc.val());
+  formData.append("logo", logo[0].files[0]);
+  formData.append("logoVal", logoVal.val());
+  formData.append("previewImage", previewImage[0].files[0]);
+  formData.append("previewImageVal", previewImageVal.val());
+  formData.append("imagesVal", imagesVal);
+  $.each(boxsData, function (indexInArray, boxData) {
+    formData.append(`images`, boxData);
+  });
+  
+  Fetch(`/admin/websites/add`, "POST", formData);
+});
+let websites = $('.deleteWebsite');
+$.each(websites, function (indexInArray, website) {
+  $(website).click(function (e) {
+    e.preventDefault();
+    let websiteId = $(website).attr('value');
+    let body = {
+      website: websiteId
+    };
+    iziToast.question({
+      timeout: 20000,
+      close: false,
+      overlay: true,
+      displayMode: 'once',
+      id: 'question',
+      zindex: 999,
+      title: 'اخطار',
+      rtl: true,
+      message: 'آیا از حذف وب سایت مورد نظر مطمئن هستید ؟',
+      position: 'center',
+      buttons: [
+        ['<button><b>بله</b></button>', function (instance, toast) {
+          instance.hide({
+            transitionOut: 'fadeOut'
+          }, toast, 'button');
+          Fetch2('/admin/websites', 'DELETE', body);
+        }, true],
+        ['<button>خیر</button>', function (instance, toast) {
+          instance.hide({
+            transitionOut: 'fadeOut'
+          }, toast, 'button');
+        }],
+      ]
+    });
+    
+  });
+});
+
+$(".UpdateWebsites").submit(e => {
+  e.preventDefault();
+  let name = $('.UpdateWebsites input[name = "name"]');
+  let link = $('.UpdateWebsites input[name = "link"]');
+  let slug = $('.UpdateWebsites input[name = "slug"]');
+  let desc = $('.UpdateWebsites textarea[name = "description"]');
+
+  let logo = $('.UpdateWebsites input[name = "logo"]');
+  let logoVal = $('.UpdateWebsites input[name = "logo"]');
+  let previewImage = $('.UpdateWebsites input[name = "previewImage"]');
+  let previewImageVal = $('.UpdateWebsites input[name = "previewImage"]');
+  let imagesVal = $('.gallery-box .box-wrap .box').length;
+
+  let formData = new FormData();
+  formData.append("name", name.val());
+  formData.append("link", link.val());
+  formData.append("slug", slug.val());
+  formData.append("desc", desc.val());
+  formData.append("logo", logo[0].files[0]);
+  formData.append("logoVal", logoVal.val());
+  formData.append("previewImage", previewImage[0].files[0]);
+  formData.append("previewImageVal", previewImageVal.val());
+  formData.append("imagesVal", imagesVal);
+  $.each(boxsData, function (indexInArray, boxData) {
+    formData.append(`images`, boxData);
+  });
+
+  let pathName = window.location.pathname.split('/');
+  let catSlug = pathName[pathName.length - 1];
+  Fetch(`/admin/websites/${catSlug}`, "PUT", formData);
+});
+///////////Application////////////////
+$(".applications").submit(e => {
+  e.preventDefault();
+  let name = $('.applications input[name = "name"]');
+  let link = $('.applications input[name = "link"]');
+  let slug = $('.applications input[name = "slug"]');
+  let desc = $('.applications textarea[name = "description"]');
+
+  let logo = $('.applications input[name = "logo"]');
+  let logoVal = $('.applications input[name = "logo"]');
+  let previewImage = $('.applications input[name = "previewImage"]');
+  let previewImageVal = $('.applications input[name = "previewImage"]');
+  let imagesVal = $('.gallery-box .box-wrap .box').length;
+
+  let formData = new FormData();
+  formData.append("name", name.val());
+  formData.append("link", link.val());
+  formData.append("slug", slug.val());
+  formData.append("desc", desc.val());
+  formData.append("logo", logo[0].files[0]);
+  formData.append("logoVal", logoVal.val());
+  formData.append("previewImage", previewImage[0].files[0]);
+  formData.append("previewImageVal", previewImageVal.val());
+  formData.append("imagesVal", imagesVal);
+  $.each(boxsData, function (indexInArray, boxData) {
+    formData.append(`images`, boxData);
+  });
+
+  Fetch(`/admin/applications/add`, "POST", formData);
+});
+let applications = $('.deleteApplication');
+$.each(applications, function (indexInArray, application) {
+  $(application).click(function (e) {
+    e.preventDefault();
+    let applicationId = $(application).attr('value');
+    let body = {
+      application: applicationId
+    };
+    iziToast.question({
+      timeout: 20000,
+      close: false,
+      overlay: true,
+      displayMode: 'once',
+      id: 'question',
+      zindex: 999,
+      title: 'اخطار',
+      rtl: true,
+      message: 'آیا از حذف اپلیکیشن مورد نظر مطمئن هستید ؟',
+      position: 'center',
+      buttons: [
+        ['<button><b>بله</b></button>', function (instance, toast) {
+          instance.hide({
+            transitionOut: 'fadeOut'
+          }, toast, 'button');
+          Fetch2('/admin/applications', 'DELETE', body);
+        }, true],
+        ['<button>خیر</button>', function (instance, toast) {
+          instance.hide({
+            transitionOut: 'fadeOut'
+          }, toast, 'button');
+        }],
+      ]
+    });
+
+  });
+});
+$(".UpdateApplications").submit(e => {
+  e.preventDefault();
+  let name = $('.UpdateApplications input[name = "name"]');
+  let link = $('.UpdateApplications input[name = "link"]');
+  let slug = $('.UpdateApplications input[name = "slug"]');
+  let desc = $('.UpdateApplications textarea[name = "description"]');
+
+  let logo = $('.UpdateApplications input[name = "logo"]');
+  let logoVal = $('.UpdateApplications input[name = "logo"]');
+  let previewImage = $('.UpdateApplications input[name = "previewImage"]');
+  let previewImageVal = $('.UpdateApplications input[name = "previewImage"]');
+  let imagesVal = $('.gallery-box .box-wrap .box').length;
+
+  let formData = new FormData();
+  formData.append("name", name.val());
+  formData.append("link", link.val());
+  formData.append("slug", slug.val());
+  formData.append("desc", desc.val());
+  formData.append("logo", logo[0].files[0]);
+  formData.append("logoVal", logoVal.val());
+  formData.append("previewImage", previewImage[0].files[0]);
+  formData.append("previewImageVal", previewImageVal.val());
+  formData.append("imagesVal", imagesVal);
+  $.each(boxsData, function (indexInArray, boxData) {
+    formData.append(`images`, boxData);
+  });
+
+  let pathName = window.location.pathname.split('/');
+  let catSlug = pathName[pathName.length - 1];
+  Fetch(`/admin/applications/${catSlug}`, "PUT", formData);
+});

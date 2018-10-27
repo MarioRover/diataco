@@ -61,3 +61,48 @@ $('.count').each(function () {
     }
   });
 });
+/////////////////Gallery//////////////////
+  let button = $(".gallery .insert-image button");
+  let image = $(".gallery .input-group .image-box img");
+  let boxsData = {};
+  let images = $('input[name = "images"]');
+  let number = $('.gallery-box .box').length + 1;
+  
+
+  $(".gallery input[name='images']").change(function () {
+    $(button).css('display', 'block');
+  });
+
+  $(".gallery .insert-image").click(function (e) {
+    e.preventDefault();
+    let boxs = $(".gallery-box .box");
+    if (boxs.length > 5) {
+      return izitoast('Error', ['تعداد عکس های وارد شده نمی تواند بیش از حد مجاز باشد']);
+    }
+    let box = $(`<div class="box"><img number="${number}" src="${image.attr('src')}" alt=""><div class="close grid align-center-middle btn-danger" data=""><i class="far fa-times-circle"></i></div></div>`);
+    $('.gallery-box .box-wrap').append(box);
+    boxsData[number] = images[0].files[0];
+    number++;
+    let closes = $('.gallery-box .box .close');
+    $.each(closes, function (indexInArray, close) {
+      $(close).click(function (e) {
+        e.preventDefault();
+        let id = $(this).siblings('img').attr('number');
+        delete boxsData[`${id}`];
+        $(this).parent().remove();
+      });
+    });
+  });
+  let closes = $('.gallery-box .box .close');
+  $.each(closes, function (indexInArray, close) {
+    $(close).click(function (e) {
+      e.preventDefault();
+      let pathName = window.location.pathname.split('/');
+      let product = pathName[pathName.length - 2];
+      let slug = pathName[pathName.length - 1];
+      let body = {box : $(this).attr('data')};
+      $(this).parent().remove();
+      Fetch2(`/admin/gallery?product=${product}&slug=${slug}`, 'DELETE', body);
+    });
+  });
+  

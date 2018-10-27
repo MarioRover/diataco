@@ -3,7 +3,7 @@
   <div class="header-slider w100">
     <div class="overlay grid align-center-middle">
       <div class="container">
-        <h2 style="">Website</h2>
+        <h2>Website</h2>
       </div>
     </div>
   </div>
@@ -33,65 +33,22 @@
             <h3>نمونه کار های شرکت ما</h3>
             </div>
             <br>
-
-                    <div class="product-wrap grid-x align-around">
-                        <!-- <div class="owl-carousel owl-theme"> -->
-                        <div class="grid-x">
-                            <div class="item card">
-                                <img src="/img/diata-website.jpg">
-                                <div class="info">
-                                <h3>نام پروژه</h3>
-                                <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                                <button>لینک وبسایت</button>
-                                <button>جزییات</button>
-                                </div>
-                            </div>
-                            <div class="item card">
-                                <img src="/img/diata-website.jpg">
-                                <div class="info">
-                                <h3>نام پروژه</h3>
-                                <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                                <button>لینک وبسایت</button>
-                                <button>جزییات</button>
-                                </div>
-                            </div>
-                            <div class="item card">
-                                <img src="/img/diata-website.jpg">
-                                <div class="info">
-                                <h3>نام پروژه</h3>
-                                <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                                <button>لینک وبسایت</button>
-                                <button>جزییات</button>
-                                </div>
-                            </div>
-                            <div class="item card">
-                                <img src="/img/diata-website.jpg">
-                                <div class="info">
-                                <h3>نام پروژه</h3>
-                                <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                                <button>لینک وبسایت</button>
-                                <button>جزییات</button>
-                                </div>
-                            </div>
-                            <div class="item card">
-                                <img src="/img/diata-website.jpg">
-                                <div class="info">
-                                <h3>نام پروژه</h3>
-                                <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                                <button>لینک وبسایت</button>
-                                <button>جزییات</button>
-                                </div>
-                            </div>
-                            <div class="item card">
-                                <img src="/img/diata-website.jpg">
-                                <div class="info">
-                                <h3>نام پروژه</h3>
-                                <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                                <button>لینک وبسایت</button>
-                                <button>جزییات</button>
+            <div class="product-wrap grid-x align-around">
+                <!-- <div class="owl-carousel owl-theme"> -->
+                <div class="grid-x">
+                    <% websites.forEach(website => { %>
+                        <div class="item card">
+                            <img src="<%= website.previewImage.destination %>">
+                            <div class="info grid-y">
+                                <h3><%= website.name %></h3>
+                                <div class="grid-x-no">
+                                    <a href="<%= website.link %>" target="_blank">لینک وبسایت</a>
+                                    <a href="<%= website.slug %>" target="_blank">جزییات</a>
                                 </div>
                             </div>
                         </div>
+                    <% }) %>
+                </div>
             </div>
         </div>
     </section>

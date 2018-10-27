@@ -70,6 +70,42 @@ class adminController extends controller {
       'url': `${image.destination}/${image.filename}`.substring(8)
     })
   }
+
+  async gallery(req, res, next) {
+    try {
+      let product = req.query.product;
+      let slug = req.query.slug;
+      let box = req.body.box;
+      if(product == 'websites') {
+        let website = await this.models.websites.findOne({slug : slug} , (error , website) => {
+          if (error) return this.serverError('Error in find website in gallery method at adminController.js', 500, error, res);
+          if (!website) return this.serverError('Error in find website in gallery method at adminController.js', 404, error, res);
+          for(let i=1 ; i<=6 ; i++) {
+            if(website[`image${i}`].path == box) {
+              website[`image${i}`] = '';
+              fs.unlinkSync(box);
+              website.save();
+            } 
+          }
+        })
+      }
+      if(product == 'applications') {
+        let application = await this.models.applications.findOne({slug : slug} , (error , application) => {
+          if (error) return this.serverError('Error in find application in gallery method at adminController.js', 500, error, res);
+          if (!application) return this.serverError('Error in find application in gallery method at adminController.js', 404, error, res);
+          for(let i=1 ; i<=6 ; i++) {
+            if(application[`image${i}`].path == box) {
+              application[`image${i}`] = '';
+              fs.unlinkSync(box);
+              application.save();
+            } 
+          }
+        })
+      }
+    } catch (error) {
+      return this.serverError('Error in gallery method at adminController', 500, error, res);
+    }
+  }
     
 }
 

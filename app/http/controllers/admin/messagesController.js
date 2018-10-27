@@ -50,8 +50,8 @@ module.exports = new class messagesController extends controller {
       if (!result) {
         return this.serverError('Error in validate mongoid in messageController.js', 403, error, res);
       }
-      await this.models.Messages.findById(req.body.message, (err, message) => {
-        if (err) return this.serverError('Error in find message in destroy method at messageController.js', 500, err, res);
+      await this.models.Messages.findById(req.body.message, (error, message) => {
+        if (error) return this.serverError('Error in find message in destroy method at messageController.js', 500, error, res);
         if (!message) return this.serverError('not found message in destroy method at messageController.js', 404, error, res);
         message.remove();
         return this.deleteObj(['پیام شما با موفقیت حذف گردید'], 'success', req.body.message , 'row' , res);

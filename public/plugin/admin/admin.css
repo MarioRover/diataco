@@ -633,3 +633,28 @@ table button i {
   height: 100%;;
   padding: 0 18px;
 }
+.gallery-box .box {
+  width: 8em;
+  height: 8em;
+  border: 1px solid #eee;
+  margin: 2px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+.gallery-box .box img {
+  width: 100%;
+}
+.gallery-box .box .close {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+}
+.gallery-box .box:hover .close {
+  display: flex;
+}

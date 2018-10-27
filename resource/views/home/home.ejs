@@ -103,65 +103,24 @@
                 <div class="product-wrap grid-x align-around">
                     <!-- <div class="owl-carousel owl-theme"> -->
                     <div class="grid-x">
+                        <% websites.forEach(website => { %>
                         <div class="item card">
-                            <img src="/img/diata-website.jpg">
-                            <div class="info">
-                            <h3>نام پروژه</h3>
-                            <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                            <button>لینک وبسایت</button>
-                            <button>جزییات</button>
+                            <img src="<%= website.previewImage.destination %>">
+                            <div class="info grid-y">
+                                <h3>
+                                    <%= website.name %>
+                                </h3>
+                                <div class="grid-x-no">
+                                    <a href="<%= website.link %>" target="_blank">لینک وبسایت</a>
+                                    <a href="<%= website.slug %>" target="_blank">جزییات</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="item card">
-                            <img src="/img/diata-website.jpg">
-                            <div class="info">
-                            <h3>نام پروژه</h3>
-                            <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                            <button>لینک وبسایت</button>
-                            <button>جزییات</button>
-                            </div>
-                        </div>
-                        <div class="item card">
-                            <img src="/img/diata-website.jpg">
-                            <div class="info">
-                            <h3>نام پروژه</h3>
-                            <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                            <button>لینک وبسایت</button>
-                            <button>جزییات</button>
-                            </div>
-                        </div>
-                        <div class="item card">
-                            <img src="/img/diata-website.jpg">
-                            <div class="info">
-                            <h3>نام پروژه</h3>
-                            <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                            <button>لینک وبسایت</button>
-                            <button>جزییات</button>
-                            </div>
-                        </div>
-                        <div class="item card">
-                            <img src="/img/diata-website.jpg">
-                            <div class="info">
-                            <h3>نام پروژه</h3>
-                            <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                            <button>لینک وبسایت</button>
-                            <button>جزییات</button>
-                            </div>
-                        </div>
-                        <div class="item card">
-                            <img src="/img/diata-website.jpg">
-                            <div class="info">
-                            <h3>نام پروژه</h3>
-                            <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                            <button>لینک وبسایت</button>
-                            <button>جزییات</button>
-                            </div>
-                        </div>
+                        <% }) %>
                     </div>
                 </div>
             </div>
             <h4 class="tab-content-wrap">اپلیکشن ها</h4>
-            <h4 class="tab-content-wrap">بهینه سازی</h4>
         </div>
     </div>
 </section>

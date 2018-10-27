@@ -104,7 +104,6 @@ module.exports = new class blogController extends controller {
           createdTime: -1
         }
       }).exec();
-      // return res.json(category[0].blogs.length);
       if (this.isEmptyArray(category)) return this.error('Error in find category in viewCategory.js', 404, next);
       res.render('admin/blog/category', {
         title: 'ساخت دسته بندی وبلاگ جدید',

@@ -1,0 +1,214 @@
+<%- contentFor('panel-header') %>
+<div class="grid-x-no align-middle">
+  <i class="fal fa-mobile"></i>
+  <span class="name">وب سایت</span>
+</div>
+<i class="arrow far fa-angle-left"></i>
+<div class="active grid-x-no align-middle">
+  <span class="name"><%= application.name %></span>
+</div>
+<%- contentFor('body') %>
+<div class="blogs-categories grid align-center">
+  <div class="container grid-y">
+
+    <div class="controller grid-y">
+      <div class="mark grid-x-no align-middle">
+        <i class="fal fa-mobile"></i>
+        <span class="name"><%= application.name %></span>
+      </div>
+    </div>
+    <div class="post-info grid-y">
+
+      <div class="post-box w100">
+        <header class="blue">
+          <h4>اطلاعات اپلیکیشن</h4>
+        </header>
+        <content>
+          <div class="input-wrap chart grid-x">
+            <canvas id="myChart" class="w100" height="200"></canvas>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="text grid-x align-middle">
+              <h6>تعداد بازدید :</h6>
+              <span><%= application.viewCount %></span>
+            </div>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="text grid-x align-middle">
+              <h6>تعداد نظرات :</h6>
+              <span><%= application.commentCount %></span>
+            </div>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="text grid-x align-middle">
+              <h6>ایجاد شده توسط :</h6>
+              <span><%= application.admin.name %> <%= application.admin.family %></span>
+            </div>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="text grid-x align-middle">
+              <h6>تاریخ ثبت :</h6>
+              <span><%= date(application.createdAt).format('jYYYY/jM/jD') %></span>
+            </div>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="text grid-x align-middle">
+              <h6>زمان ثبت :</h6>
+              <span><%= date(application.createdAt).format(' HH:mm:ss') %></span>
+            </div>
+          </div>
+         <% if(typeof application.updatedBy !== 'undefined') { %>
+          <div class="input-wrap grid-x">
+            <div class="text grid-x align-middle">
+              <h6>آخرین بروز رسانی</h6>
+              <span>
+                <%= date(application.updatedAt).fromNow() %> توسط
+                <%= application.updatedBy.name %>
+                <%= application.updatedBy.family %></span>
+            </div>
+          </div>
+         <% } %>
+        </content>
+      </div>
+      <div class="post-box w100">
+        <header class="navyBlue">
+          <h4>جزئیات اپلیکیشن</h4>
+        </header>
+        <content>
+          <form class="UpdateApplications">
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="name">نام اپلیکیشن</label>
+                <input name="name" type="text" value="<%= application.name %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="link">لینک اپلیکیشن</label>
+                <input name="link" type="text" class="input-en" value="<%= application.link %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="slug">اسلاگ اپلیکیشن</label>
+                <input name="slug" type="text" value="<%= application.slug %>">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <div class="grid-y input-group">
+                <label for="logo">لوگو اپلیکیشن</label>
+                <div class="grid align-center">
+                  <div class="image-box box1 grid align-center-middle">
+                    <img src="<%= application.logo.destination %>">
+                  </div>
+                </div>
+                <input class="input-en" name="logo" type="file">
+              </div>
+
+              <div class="grid-y input-group">
+                <label for="previewImage">تصویر پیش نمایش اپلیکیشن</label>
+                <div class="grid align-center">
+                  <div class="image-box box2 grid align-center-middle">
+                    <img src="<%= application.previewImage.destination %>">
+                  </div>
+                </div>
+                <input class="input-en" name="previewImage" type="file">
+              </div>
+
+            </div>
+            <div class="input-wrap grid align-right">
+              <div class="grid-y input-group w100">
+                <label for="description">توضیحات اپلیکیشن</label>
+                <textarea name="description" id="editor1" cols="30" rows="10">
+                  <%= application.desc %>
+                </textarea>
+              </div>
+            </div>
+            <div class="input-wrap grid align-left gallery">
+
+              <div class="grid-y input-group">
+                <label for="images">انتخاب عکس</label>
+                <div class="grid align-center">
+                  <div class="image-box box3 grid align-center-middle">
+                    <img src="">
+                  </div>
+                </div>
+                <div class="grid-x-no align-center mb-1 insert-image">
+                  <button class="btn btn-primary grid align-center-middle" style="display : none">
+                    <span>اضافه کردن</span>
+                  </button>
+                </div>
+                <input class="input-en" name="images" type="file">
+              </div>
+
+              <div class="grid-y input-group gallery-box">
+                <label>عکس های انتخاب شده</label>
+                <div class="grid-x box-wrap">
+                  <% for(let i = 1 ; i <= 6 ; i++) { %>
+                    <% if(application[`image${i}`] !== '' ) { %>
+                      <div class="box">
+                        <img number="<%= i %>" src="<%= application[`image${i}`].destination %>">
+                        <div class="close grid align-center-middle btn-danger" data="<%= application[`image${i}`].path %>"><i class="far fa-times-circle"></i></div>
+                      </div>
+                    <% } %>
+                  <% } %>
+                </div>
+              </div>
+
+            </div>
+            <div class="input-wrap grid align-left">
+              <button type="submit" class="btn btn-primary grid align-center-middle">
+                <span>بروز رسانی اطلاعات</span>
+              </button>
+            </div>
+          </form>
+        </content>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+<script>
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"],
+        datasets: [{
+          label: 'تعداد بازدید',
+          data: [20, 40, 60, 80, 20],
+          backgroundColor: [
+            'rgba(0, 204, 255, 0.4)'
+          ],
+          borderColor: [
+            'rgba(102,140,255,1)'
+          ],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+    Chart.defaults.global.defaultFontFamily = 'iransans';
+    Chart.defaults.global.defaultFontSize = 10;
+    Chart.defaults.global.defaultFontColor = '#333';
+    CKEDITOR.replace('editor1' , {
+      filebrowserUploadUrl : '/admin/upload-image'
+    });
+    $(".UpdateApplications input[name='logo']").change(function () {
+      readURL2(this, "1");
+    });
+    $(".UpdateApplications input[name='previewImage']").change(function () {
+      readURL2(this, "2");
+    });
+    $(".UpdateApplications input[name='images']").change(function () {
+      readURL2(this, "3");
+    });
+
+</script>
