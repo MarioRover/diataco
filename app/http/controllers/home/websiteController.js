@@ -1,6 +1,6 @@
 const controller = require('../controller');
 
-class aboutUs extends controller {
+module.exports = new class websiteController extends controller {
   async showPage(req, res, next) {
     try {
       let websites = await this.models.websites.find({}).limit(8).sort({createdAt :-1}).exec();
@@ -12,8 +12,22 @@ class aboutUs extends controller {
         websites
       });
     } catch (error) {
-      next(error);
+      return this.error('Error in showPage method in websiteController',500,next);
+    }
+  }
+
+  async website(req, res, next) {
+    try {
+      let website = await this.models.websites.find({slug : req.params.website} , (error , website) => {
+        if (error) return this.error('Error in find website in websiteController', 500, next);
+        if (this.isEmptyArray(website)) return this.error('Error in find website in websiteController', 404, next);
+      })
+      res.render('home/website/website', {
+        title: 'وب سایت',
+        website : website[0]
+      });
+    } catch (error) {
+      return this.error('Error in website method in websiteController', 500, next);
     }
   }
 }
-module.exports = new aboutUs();

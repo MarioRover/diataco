@@ -13,9 +13,9 @@ router.use('/admin', adminRouter);
 // Home Router
 router.use('/', homeRouter);
 // Application
-router.use('/application', applicationRouter);
+router.use('/applications', applicationRouter);
 // Website
-router.use('/website', websiteRouter);
+router.use('/websites', websiteRouter);
 // Error Pages
 router.get('/error' , (req , res , next) => {
   res.render('errors/stack' , {

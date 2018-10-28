@@ -1048,7 +1048,7 @@ main {
   }
 }
 /* ///////////// SEO Page //////////////////// */
-.seo-page .header-slider {
+.header-slider {
   height: 40em;
   background-size: cover;
   background-position: center;
@@ -1056,7 +1056,7 @@ main {
   box-shadow: 0 10px 20px rgba(26, 26, 26, 0.5);
   z-index: 2;
 }
-.seo-page .header-slider .overlay {
+.header-slider .overlay {
   background-color: rgba(0, 0, 0, 0.6);
 }
 .seo-page .about-seo {
@@ -1064,11 +1064,37 @@ main {
   color: #555;
   background-color: #fff;
 }
-.seo-page .header-slider .overlay h2 {
+.header-slider .overlay h2 {
   color: #fff;
   text-align: center;
   font-family: Nunito;
   font-size: 8em;
+}
+.header-slider .overlay .desc .name {
+  margin-bottom: 10px;
+}
+.header-slider .overlay .desc .logo img {
+  width: 8em;
+}
+.header-slider .overlay .desc h4 {
+  color: #fff;
+  text-align: center;
+  font-size: 26px;
+}
+.header-slider .overlay .desc .deliver span:first-child {
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  margin-left: 10px;
+}
+.header-slider .overlay .desc .deliver a {
+  color: #fff;
+  font-weight: 400;
+  direction: ltr;
+  font-size: 15px;
+  background-color: #1804dd;
+  padding: 4px 9px;
+  border-radius: 7px;
 }
 .seo-page .border .container {
   border-bottom: 1px solid #e6e6e6;
@@ -1317,5 +1343,19 @@ main {
   width: 90px;
   margin-top: 20px;
   border-top: 2px solid #222;
-
+}
+/* /////////////Website////////////// */
+.website .wrap {
+  background-color: #000;
+  padding: 50px 0;
+}
+.website .wrap .header-section h3 {
+  color: #fff;
+}
+.website .wrap .desc {
+  color: #fff;
+}
+.website .wrap .desc p {
+  font-size: 14px;
+  line-height: 30px;
 }
