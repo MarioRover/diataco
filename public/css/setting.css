@@ -737,7 +737,7 @@ input,textarea {
   border-radius: 3px;
   outline: none;
   resize: none;
-  font-weight: 300;
+  font-weight: 400;
 }
 input:focus,
 textarea:focus {

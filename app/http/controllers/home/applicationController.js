@@ -4,12 +4,18 @@ module.exports = new class applicationController extends controller {
   async showPage(req, res, next) {
     try {
       let applications = await this.models.applications.find({}).limit(8).sort({createdAt :-1}).exec();
+      let siteInfo = await this.models.siteInfo.find({});
+      if (this.isEmptyArray(siteInfo)) {
+        siteInfo = 'undefined';
+      } else {
+        siteInfo = siteInfo[0]
+      }
       if(this.isEmptyArray(applications)) {
         applications = 'undefined';
       }
       res.render('home/application/index', {
         title: 'وب سایت',
-        applications
+        applications,siteInfo
       });
     } catch (error) {
       return this.error('Error in showPage method in applicationController', 500, next);
@@ -22,9 +28,15 @@ module.exports = new class applicationController extends controller {
         if (error) return this.error('Error in find website in applicationController', 500, next);
         if (this.isEmptyArray(application)) return this.error('Error in find website in applicationController', 404, next);
       })
+      let siteInfo = await this.models.siteInfo.find({});
+      if (this.isEmptyArray(siteInfo)) {
+        siteInfo = 'undefined';
+      } else {
+        siteInfo = siteInfo[0]
+      }
       res.render('home/application/application', {
         title: 'وب سایت',
-        application : application[0]
+        application : application[0],siteInfo
       });
     } catch (error) {
       return this.error('Error in application method in applicationController', 500, next);

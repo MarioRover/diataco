@@ -486,7 +486,7 @@ table button i {
 }
 .controller .mark,
 .controller .btn-wrap {
-  margin: 0 16px;
+  margin: 5px 16px;
 }
 .controller .mark i {
   font-size: 27px;
@@ -495,7 +495,11 @@ table button i {
 }
 .controller .mark span {
   font-size: 13px;
+  margin-left: 5px;
   color: #363636;
+  font-weight: 400;
+}
+.controller .mark span.name {
   font-weight: 700;
 }
 .controller .btn {

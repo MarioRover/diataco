@@ -14,6 +14,7 @@ const usersController = require('app/http/controllers/admin/usersController');
 const seoPagesController = require('app/http/controllers/admin/siteSittings/pages/seoPagesController');
 const websiteController = require('app/http/controllers/admin/websiteController');
 const applicationController = require('app/http/controllers/admin/applicationController');
+const siteInfoController = require('app/http/controllers/admin/siteSittings/siteInfoController');
 // Validators
 const loginAdminsValidation = require('app/http/validators/loginAdminsValidation');
 const contactPagesValidation = require('app/http/validators/contactPagesValidation');
@@ -31,12 +32,11 @@ const aboutArticles = require('app/http/validators/aboutPageValidation/aboutArti
 const aboutParallax = require('app/http/validators/aboutPageValidation/aboutParallax');
 const websitesValidation = require('app/http/validators/websitesValidation');
 const applicationValidation = require('app/http/validators/applicationValidation');
-
+const siteInfoValidation = require('app/http/validators/siteInfoValidation');
 const seoHeaderValidation = require('app/http/validators/seoPageValidation/seoHeader');
 const seoDesc1Validation = require('app/http/validators/seoPageValidation/seoDesc1');
 const seoDesc2Validation = require('app/http/validators/seoPageValidation/seoDesc2');
 const seoParallaxValidation = require('app/http/validators/seoPageValidation/seoParallax');
-
 const usersValidation = require('app/http/validators/usersValidation');
 const usersBackgroundValidation = require('app/http/validators/usersBackgroundValidation');
 // Middleware
@@ -310,4 +310,20 @@ router.put('/applications/:application',
   convertFileToField.handle,
   applicationValidation.handle(),
   applicationController.updateApplication
+);
+// //////////SiteInfo/////////////
+router.get('/site-info', redirectIfAuthenticated.adminLogin, siteInfoController.index);
+router.post('/site-info',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('logo'),
+  convertFileToField.handle,
+  siteInfoValidation.handle(),
+  siteInfoController.insertInfo
+);
+router.put('/site-info',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('logo'),
+  convertFileToField.handle,
+  siteInfoValidation.handle(),
+  siteInfoController.insertInfo
 );

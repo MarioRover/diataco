@@ -4,6 +4,12 @@ module.exports = new class contactController extends controller {
   async index(req, res, next) {
     try {
       let contactPage = await this.models.contactPage.find({});
+      let siteInfo = await this.models.siteInfo.find({});
+      if (this.isEmptyArray(siteInfo)) {
+        siteInfo = 'undefined';
+      } else {
+        siteInfo = siteInfo[0]
+      }
       if (contactPage == '') {
         contactPage = 'undefined';
       } else {
@@ -11,7 +17,7 @@ module.exports = new class contactController extends controller {
       }
       res.render('home/contact', {
         title: 'درباره ما',
-        contactPage
+        contactPage,siteInfo
       });
     } catch (error) {
       this.error('Error in index Method at contactController.js' , 500 , next);

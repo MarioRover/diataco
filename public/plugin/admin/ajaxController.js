@@ -799,3 +799,32 @@ $(".UpdateApplications").submit(e => {
   let catSlug = pathName[pathName.length - 1];
   Fetch(`/admin/applications/${catSlug}`, "PUT", formData);
 });
+
+$(".SiteInfo").submit(e => {
+  e.preventDefault();
+  let method = $('.SiteInfo input[name = "method"]');
+  let nameEn = $('.SiteInfo input[name = "nameEn"]');
+  let nameFa = $('.SiteInfo input[name = "nameFa"]');
+  let telegram = $('.SiteInfo input[name = "telegram"]');
+  let whatsapp = $('.SiteInfo input[name = "whatsapp"]');
+  let instagram = $('.SiteInfo input[name = "instagram"]');
+  let facebook = $('.SiteInfo input[name = "facebook"]');
+  let linkedin = $('.SiteInfo input[name = "linkedin"]');
+  let version = $('.SiteInfo input[name = "version"]');
+  let logo = $('.SiteInfo input[name = "logo"]');
+  let logoVal = $('.SiteInfo input[name = "logo"]');
+
+  let formData = new FormData();
+  formData.append("nameEn", nameEn.val());
+  formData.append("nameFa", nameFa.val());
+  formData.append("telegram", telegram.val());
+  formData.append("whatsapp", whatsapp.val());
+  formData.append("instagram", instagram.val());
+  formData.append("facebook", facebook.val());
+  formData.append("linkedin", linkedin.val());
+  formData.append("version", version.val());
+  formData.append("logo", logo[0].files[0]);
+  formData.append("logoVal", logoVal.val());
+
+  Fetch(`/admin/site-info`, `${method.val()}`, formData);
+});

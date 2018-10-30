@@ -41,8 +41,8 @@ module.exports = new class seoPagesController extends controller {
           }
         }
         let newSeoPage = new this.models.seoPage({ ...contentObj});
-        await newSeoPage.save(err => {
-          if (err) {
+        await newSeoPage.save(error => {
+          if (error) {
             return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
           }
         });
