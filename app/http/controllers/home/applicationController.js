@@ -35,7 +35,7 @@ module.exports = new class applicationController extends controller {
         siteInfo = siteInfo[0]
       }
       res.render('home/application/application', {
-        title: 'وب سایت',
+        title: 'اپلیکیشن',
         application : application[0],siteInfo
       });
     } catch (error) {

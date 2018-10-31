@@ -33,42 +33,42 @@
     <div class="container" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
         <div class="ability-wrap grid-x align-around">
         <div class="item grid-x-no">
-            <i class="<%= ability.abilityIconitem1 %>"></i>
+            <img src="/img/Ability/LastTechno.png" alt="">
             <div class="content">
                 <h4><%= ability.abilityitem1 %></h4>
                 <p><%= ability.abilityDescitem1 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="<%= ability.abilityIconitem2 %>"></i>
+            <img src="/img/Ability/Responsivi.png" alt="">
             <div class="content">
                 <h4><%= ability.abilityitem2 %></h4>
                 <p><%= ability.abilityDescitem2 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="<%= ability.abilityIconitem3 %>"></i>
+            <img src="/img/Ability/idea.png" alt="">
             <div class="content">
                 <h4><%= ability.abilityitem3 %></h4>
                 <p><%= ability.abilityDescitem3 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="<%= ability.abilityIconitem4 %>"></i>
+            <img src="/img/Ability/Seo.png" alt="">
             <div class="content">
                 <h4><%= ability.abilityitem4 %></h4>
                 <p><%= ability.abilityDescitem4 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="<%= ability.abilityIconitem5 %>"></i>
+            <img src="/img/Ability/Design.png" alt="">
             <div class="content">
                 <h4><%= ability.abilityitem5 %></h4>
                 <p><%= ability.abilityDescitem5 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="<%= ability.abilityIconitem6 %>"></i>
+            <img src="/img/Ability/Fast.png" alt="">
             <div class="content">
                 <h4><%= ability.abilityitem6 %></h4>
                 <p><%= ability.abilityDescitem6 %></p>
@@ -107,12 +107,12 @@
                         <div class="item card">
                             <img src="<%= website.previewImage.destination %>">
                             <div class="info grid-y">
-                                <h3>
+                                <h3 class="EN mb-1">
                                     <%= website.name %>
                                 </h3>
                                 <div class="grid-x-no">
-                                    <a href="<%= website.link %>" target="_blank">لینک وبسایت</a>
-                                    <a href="<%= website.slug %>" target="_blank">جزییات</a>
+                                    <a href="http://<%= website.link %>" target="_blank">لینک وبسایت</a>
+                                    <a href="/websites/<%= website.slug %>" target="_blank">جزییات</a>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +120,27 @@
                     </div>
                 </div>
             </div>
-            <h4 class="tab-content-wrap">اپلیکشن ها</h4>
+            <div class="tab-content-wrap">
+                <div class="product-wrap grid-x align-around">
+                    <!-- <div class="owl-carousel owl-theme"> -->
+                    <div class="grid-x">
+                        <% applications.forEach(app => { %>
+                        <div class="item card">
+                            <img src="<%= app.previewImage.destination %>">
+                            <div class="info grid-y">
+                                <h3 class="EN mb-1">
+                                    <%= app.name %>
+                                </h3>
+                                <div class="grid-x-no">
+                                    <a href="http://<%= app.link %>" target="_blank">لینک وبسایت</a>
+                                    <a href="/applications/<%= app.slug %>" target="_blank">جزییات</a>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

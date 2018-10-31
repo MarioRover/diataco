@@ -407,7 +407,7 @@ div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,th,td {
 }
 p {
   font-size: inherit;
-  line-height: 1.5;
+  line-height: 28px;
   text-rendering: optimizeLegibility;
 }
 em,i {
@@ -760,4 +760,10 @@ textarea:focus {
 }
 .pr-5 {
   padding-right: 5em;
+}
+.EN {
+  font-family: "OpenSans",Helvetica,Roboto,Arial,sans-serif;
+}
+.FA {
+  font-family: "iransans", sans-serif;
 }

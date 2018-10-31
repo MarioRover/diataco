@@ -38,7 +38,7 @@ $('.adminLogin').submit((e) => {
     remember,
     recaptcha
   };
-  Fetch2('/admin', 'POST', body);
+  Fetch2('/admin/login', 'POST', body);
 });
 
 

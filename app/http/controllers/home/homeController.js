@@ -15,6 +15,7 @@ class homeController extends controller {
         select: 'slug'
       });
       let websites = await this.models.websites.find({}).limit(8).sort({createdAt :-1}).exec();
+      let applications = await this.models.applications.find({}).limit(8).sort({createdAt :-1}).exec();
       let siteInfo = await this.models.siteInfo.find({});
       if (this.isEmptyArray(siteInfo)) {
         siteInfo = 'undefined';
@@ -46,7 +47,7 @@ class homeController extends controller {
       }
       res.render('home/home', {
         title: 'Diata',
-        aboutUs, parallax, homeSlider, ability, blogs, websites, siteInfo
+        aboutUs, parallax, homeSlider, ability, blogs, websites, applications, siteInfo
       });
     } catch (error) {
       return this.error('Error in showPage method at homeController.js', 500, next);

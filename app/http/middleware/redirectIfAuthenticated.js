@@ -1,6 +1,6 @@
 const middleware = require('./middleware');
 
-class redirectIfAuthenticated extends middleware {
+module.exports = new class redirectIfAuthenticated extends middleware {
   adminLogin(req , res , next) {
     if (!req.isAuthenticated()) {
       res.redirect('/admin');
@@ -12,9 +12,16 @@ class redirectIfAuthenticated extends middleware {
     if(req.isAuthenticated()) {
       res.redirect('/admin/dashboard');
     } else {
+      let error = new Error('صفحه مورد نظر یافت نشد');
+      error.statusCode = 404;
+      throw error;
+    }
+  }
+  loginRouter(req, res, next) {
+    if (req.isAuthenticated()) {
+      res.redirect('/admin/dashboard');
+    } else {
       next();
     }
   }
 }
-
-module.exports = new redirectIfAuthenticated();

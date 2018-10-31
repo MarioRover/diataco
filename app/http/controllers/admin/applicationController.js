@@ -22,7 +22,7 @@ module.exports = new class applicationController extends controller {
          applications = 'undefined';
        }
        res.render('admin/application/index', {
-         title: 'وب سایت',
+         title: 'اپلیکیشن',
          activeRow: 'applications',
          user,
          applications
@@ -36,7 +36,7 @@ module.exports = new class applicationController extends controller {
     try {
       let user = req.user;
       res.render('admin/application/add', {
-        title: 'وب سایت',
+        title: 'اپلیکیشن',
         activeRow: 'applications',
         user
       });

@@ -50,9 +50,9 @@ router.use((req, res, next) => {
   next();
 });
 // Routes
-router.get('/', redirectIfAuthenticated.adminDashboard , loginAdmins.index);
+router.get('/', redirectIfAuthenticated.adminDashboard, adminController.index);
 // router.post('/', loginAdminsValidation.handle() ,loginAdmins.registerProccess);
-router.post('/', loginAdminsValidation.handle() , loginAdmins.loginProccess);
+router.post('/login', loginAdminsValidation.handle() , loginAdmins.loginProccess);
 router.get('/logout' ,(req , res) => {
   req.logout();
   res.clearCookie('remember_token');

@@ -62,6 +62,9 @@ main {
   margin: 0 1em;
   font-weight: 300;
 }
+.navbar a img {
+  width: 30px;
+}
 .navbar a:hover,
 .mobile-nav ul li:hover a {
   color: rgba(255,255,255,0.7);
@@ -288,14 +291,11 @@ main {
   overflow: hidden;
   margin-bottom: 2em;
 }
-.item i {
-  font-size: 30px;
-}
 .item img {
   width: 7em;
 }
 .item .content {
-  margin: 0 1em;
+  margin: 10px;
 }
 .item .content h4,
 .seo-page .seo-desc .decription h4 {
@@ -332,6 +332,7 @@ main {
   }
   .item img {
     width: 7em;
+    height: 4em;
   }
 }
 /* /////////////Product Tab/////////// */
@@ -411,7 +412,7 @@ main {
 }
 .footer-top .logo img {
   width: 5em;
-  height: 4.5em;
+  height: 100%;
 }
 .footer-top .brand h4 {
   color: #fff;
@@ -442,6 +443,7 @@ main {
   padding: 10px;
   background-color: #000;
   color: #ddd;
+  position: relative;
 }
 .footer-2 p{
   width: 100%;
@@ -450,6 +452,19 @@ main {
 }
 .footer-2 p:first-child {
   padding-bottom: 10px;
+}
+.footer-2 p.version {
+  font-size: 12px;
+  position: absolute;
+  left: 50%;
+  color: rgba(255, 255, 255, .4);
+  margin-left: auto;
+  margin-right: auto;
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%);
+  
 }
 @media print, screen and (min-width: 480px) {
   .footer-2 p:first-child {
@@ -712,17 +727,24 @@ main {
   font-size: 22px;
 }
 .card .info a {
-  padding: 0.6rem;
-  border-radius: 3px;
-  background: #f7f7f7;
-  color: #333;
-  cursor: pointer;
+  padding: 0.4rem;
   transition: 0.4s ease;
-  font-weight: 300;
-  font-size: 13px
+  font-weight: 400;
+  font-size: 13px;
+  background: -webkit-linear-gradient(#42a1ec, #0070c9);
+  background: linear-gradient(#42a1ec, #0070c9);
+  border-color: #07c;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
 }
 .card .info a:hover {
-  background: #d1c2c2;
+  background: -webkit-linear-gradient(#51a9ee, #147bcd);
+  background: linear-gradient(#51a9ee, #147bcd);
+  border-color: #1482d0;
+  text-decoration: none;
 }
 .card .info a:first-child {
   margin-left: 5px;
@@ -1026,6 +1048,10 @@ main {
   color: #fff;
   font-weight: 300;
 }
+.contact-page .contact .info-us .row img {
+  width: 2em;
+  margin-left: 10px;
+}
 .contact-page .contact .call-us .header h6 {
   color: #333;
 }
@@ -1075,6 +1101,7 @@ main {
 }
 .header-slider .overlay .desc .logo img {
   width: 8em;
+  height: 100%;
 }
 .header-slider .overlay .desc h4 {
   color: #fff;
@@ -1357,5 +1384,4 @@ main {
 }
 .website .wrap .desc p {
   font-size: 14px;
-  line-height: 30px;
 }
