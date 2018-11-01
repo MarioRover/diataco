@@ -51,7 +51,7 @@ router.use((req, res, next) => {
 });
 // Routes
 router.get('/', redirectIfAuthenticated.adminDashboard, adminController.index);
-// router.post('/', loginAdminsValidation.handle() ,loginAdmins.registerProccess);
+// router.post('/login', loginAdminsValidation.handle() ,loginAdmins.registerProccess);
 router.post('/login', loginAdminsValidation.handle() , loginAdmins.loginProccess);
 router.get('/logout' ,(req , res) => {
   req.logout();

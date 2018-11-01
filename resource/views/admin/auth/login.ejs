@@ -1,39 +1,44 @@
-
+<link rel="stylesheet" href="/plugin/particle2/particle.css">
+<div id="particles-js"></div>
 <section class="login-admin grid align-center-middle">
+  
   <div class="login-wrap grid-x-no">
-    <div class="right grid align-center">
-      <form class="adminLogin">
-        <div class="group">
-          <input type="email" name="email" class="input-en w100" placeholder="ایمیل">
-        </div>
-        <div class="group">
-          <input type="password" name="password" class="input-en w100" placeholder="رمز عبور">
-        </div>
-        <div class="recaptcha grid align-center">
-          <div id="html_element"></div>
-        </div>
-        <div class="group">
-          <div class="checkbox grid-x-no align-middle">
-            <label for="remember">من را به یاد بسپار</label>
-            <input type="checkbox" name="remember">
-          </div>
-        </div>
-        <div class="btn-wrap wrap100 grid align-left">
-          <button type="submit" class="btn grid align-center-middle">
-            <span>ورود</span>
-          </button>
-        </div>
-      </form>
-    </div>
-
-    <div class="left grid align-middle">
-      <div class="wrap100 grid-y">
-        <div class="icon grid align-center">
-          <img src="/img/rocket.png" alt="rocket">
-        </div>
-        <p>این بخش مخصوص ورود ادمین  سایت دیاتا می باشد</p>
+    <form class="adminLogin w100">
+      <div class="logo grid align-center-middle mb-1">
+        <img src="<%= siteInfo.logo.destination %>" alt="<%= siteInfo.nameEn %>">
       </div>
-    </div>
-    
+      <div class="input-wrap grid-x mb-1">
+        <div class="grid-y input-group w100">
+          <label for="email">ایمیل</label>
+          <input class="EN input-en" name="email" type="text">
+        </div>
+      </div>
+      <div class="input-wrap grid-x mb-1">
+        <div class="grid-y input-group w100">  
+          <label for="password">رمز عبور</label>
+          <input class="EN input-en" name="password" type="password">
+        </div>
+      </div>
+      <div class="input-wrap grid-x mb-1">
+        <div class="grid-x-no align-middle align-left input-group w100">
+          <input type="checkbox" name="remember">
+          <label>من را به یاد بسپار</label>
+        </div>
+      </div>
+      <div class="input-wrap grid align-center-middle mb-1">
+        <div id="html_element"></div>
+      </div>
+      <div class="input-wrap grid-y align-center-middle mb-1">
+        <button class="btn btn-primary grid align-center-middle w100" type="submit">
+          <span>ورود</span>
+        </button>
+        <div class="grid align-left w100">
+          <a class="reset" href="#">رمز عبور خود را فراموش کردید ؟</a>
+        </div>
+      </div>
+
+    </form>
   </div>
 </section>
+<script src="/plugin/particles/particles.min.js"></script>
+<script src="/plugin/particle2/particlesRun.js"></script>
