@@ -1,4 +1,5 @@
 const middleware = require('./middleware');
+const Admins = require('app/models/admin');
 
 module.exports = new class redirectIfAuthenticated extends middleware {
   adminLogin(req , res , next) {
@@ -8,6 +9,7 @@ module.exports = new class redirectIfAuthenticated extends middleware {
       next();
     }
   }
+
   adminDashboard(req , res , next) {
     if(req.isAuthenticated()) {
       res.redirect('/admin/dashboard');
@@ -17,6 +19,7 @@ module.exports = new class redirectIfAuthenticated extends middleware {
       throw error;
     }
   }
+  
   loginRouter(req, res, next) {
     if (req.isAuthenticated()) {
       res.redirect('/admin/dashboard');

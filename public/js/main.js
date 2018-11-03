@@ -13,7 +13,7 @@ $(document).ready(function () {
   });
 });
 ///////////////Tab of Products/////////////////////
-let tabNavs = $('.tab-nav .tabnav-item .tabnav-link');
+let tabNavs = $('.tab-nav .tabnav-item');
 let tabContent = $('.products-tab .tab-content .tab-content-wrap');
 
 $.each(tabNavs , (tabIndex , tabNav) => {

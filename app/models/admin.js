@@ -8,7 +8,7 @@ const adminSchema = mongoose.Schema({
   email    : { type : String , unique : true  ,required : true },
   password : { type : String ,  required : true },
   profileImg    : { type : Object},
-  rememberToken : { type : String , default : null }
+  rememberToken : { type : String , default : '' }
 }, { timestamps : true });
 
 adminSchema.pre('save', function (next) {
@@ -32,8 +32,8 @@ adminSchema.methods.comparePassword = function (password) {
 }
 adminSchema.methods.setRememberToken = function (res) {
   const token = uniqueString();
-  res.cookie('remember_token', token, {
-    maxAge: 60 * 60 * 24 * 30,
+  res.cookie('remember_diata_web', token, {
+    maxAge: 1000 * 60 * 60 * 24 * 30 ,
     httpOnly: true,
     signed: true
   });

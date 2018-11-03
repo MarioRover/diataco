@@ -55,7 +55,7 @@ router.get('/', redirectIfAuthenticated.adminDashboard, adminController.index);
 router.post('/login', loginAdminsValidation.handle() , loginAdmins.loginProccess);
 router.get('/logout' ,(req , res) => {
   req.logout();
-  res.clearCookie('remember_token');
+  res.clearCookie('remember_diata_web');
   res.redirect('/');
 });
 router.post('/upload-image',

@@ -74,7 +74,6 @@ module.exports = class Aplication {
     });
   }
   setRouters() {
-
     app.use(apiLimiter , require('app/routes/api'));
     app.use(require('app/routes/web'));
   }
