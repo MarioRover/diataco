@@ -13,6 +13,10 @@ const categoiesBlogSchema = new Schema({
 
 categoiesBlogSchema.plugin(mongoosePaginate);
 
+categoiesBlogSchema.methods.path = function () {
+  return `/blog/${this.slug}`;
+}
+
 categoiesBlogSchema.virtual('blogs', {
   ref: 'Blog',
   localField: '_id',

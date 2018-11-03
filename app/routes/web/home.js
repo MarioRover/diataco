@@ -25,5 +25,9 @@ router.get('/about', aboutController.showPage);
 
 
 
-
+// Sitemap & RSS
+router.get('/sitemap.xml' , homeController.sitemap);
+router.get('/feed/websites' , homeController.feedWebsites);
+router.get('/feed/applications', homeController.feedApplications);
+router.get('/feed/blogs', homeController.feedBlogs);
 module.exports = router;

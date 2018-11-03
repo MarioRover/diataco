@@ -9,5 +9,6 @@ module.exports = {
   layout,
   session,
   service,
-  debug: true
+  debug: true,
+  siteurl: process.env.WEBSITE_URL
 }

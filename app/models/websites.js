@@ -23,4 +23,8 @@ const websitesSchema = new Schema({
 } , {timestamps : true});
 websitesSchema.plugin(mongoosePaginate);
 
+websitesSchema.methods.path = function() {
+  return `/websites/${this.slug}`;
+}
+
 module.exports = mongoose.model('Websites', websitesSchema);

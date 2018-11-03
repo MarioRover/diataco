@@ -23,4 +23,8 @@ const applicationsSchema = new Schema({
 } , {timestamps : true});
 applicationsSchema.plugin(mongoosePaginate);
 
+applicationsSchema.methods.path = function () {
+  return `/applications/${this.slug}`;
+}
+
 module.exports = mongoose.model('Applications', applicationsSchema);
