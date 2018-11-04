@@ -39,6 +39,7 @@ const seoDesc2Validation = require('app/http/validators/seoPageValidation/seoDes
 const seoParallaxValidation = require('app/http/validators/seoPageValidation/seoParallax');
 const usersValidation = require('app/http/validators/usersValidation');
 const usersBackgroundValidation = require('app/http/validators/usersBackgroundValidation');
+const profileValidation = require('app/http/validators/profileValidation');
 // Middleware
 const redirectIfAuthenticated = require('app/http/middleware/redirectIfAuthenticated');
 const convertFileToField = require('app/http/middleware/convertFileToField')
@@ -68,7 +69,7 @@ router.put('/profile/edit',
   redirectIfAuthenticated.adminLogin,
   upload.single('photo'),
   convertFileToField.handle,
-  usersBackgroundValidation.handle(),
+  profileValidation.handle(),
   adminController.profileEdit
 );
 router.get('/dashboard', redirectIfAuthenticated.adminLogin, adminController.index);

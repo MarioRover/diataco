@@ -26,6 +26,16 @@
             <input name="family" type="text" value="<%= user.family %>">
           </div>
         </div>
+        <div class="input-wrap grid-x">
+          <div class="grid-y input-group">
+            <label for="newPass">رمز عبور جدید</label>
+            <input name="newPass" type="password" autocomplete="off">
+          </div>
+          <div class="grid-y input-group">
+            <label for="replayNewPass">تکرار رمز عبور جدید</label>
+            <input name="replayNewPass" type="password" autocomplete="off">
+          </div>
+        </div>
         <div class="input-wrap grid align-right">
           <div class="grid-y input-group">
             <label for="photo">تصویر پروفایل</label>
@@ -39,7 +49,7 @@
         </div>
         <div class="input-wrap grid align-left">
           <button type="submit" class="btn btn-primary grid align-center-middle">
-            <span>ثبت اطلاعات</span>
+            <span>بروزرسانی اطلاعات</span>
           </button>
         </div>
       </form>

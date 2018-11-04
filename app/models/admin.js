@@ -30,6 +30,13 @@ adminSchema.pre('save', function (next) {
 adminSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 }
+adminSchema.methods.updatePassword = function (newPass) {
+  let salt = bcrypt.genSaltSync(15);
+  let hash = bcrypt.hashSync(newPass, salt);
+  this.update({ password : hash } , error => {
+    if(error) console.log(error);
+  });
+}
 adminSchema.methods.setRememberToken = function (res) {
   const token = uniqueString();
   res.cookie('remember_diata_web', token, {

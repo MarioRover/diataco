@@ -28,15 +28,20 @@ class adminController extends controller {
         if (req.file) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
-      const {name , family} = req.body;
+      const {name,family,newPass,replayNewPass} = req.body;
       let contentObj = {name , family};
+      
+      if(newPass !== '' || replayNewPass !== '') {
+        if (newPass == '') return this.izitoastMessage(['فیلد رمز عبور جدید نمی تواند خالی باشد'], 'warning' , res);
+        if (replayNewPass == '') return this.izitoastMessage(['فیلد تکرار رمز عبور جدید نمی تواند خالی باشد'], 'warning', res);
+        if (newPass !== replayNewPass) return this.izitoastMessage(['فیلد های رمز عبور جدید باهم دیگر تطابق ندارند'], 'warning', res);
+        if(newPass.length < 8) return this.izitoastMessage(['رمز عبور جدید نمی تواند کمتر از 8 کارکتر باشد'], 'warning', res);
+        req.user.updatePassword(newPass);
+      }
+
+
       let objId = req.user._id;
-      let admin = {};
-      await this.models.Admins.findById(req.user._id , (err , user) => {
-        if (err) return this.serverError('Error in find user at adminController', 500, error, res);
-        if(!user) return this.serverError('Error in find user at adminController', 500, error, res);
-        admin = user;      
-      });
+      let admin = req.user;
       if (req.file) {
         if (admin.profileImg.originalname === req.file.originalname) {
           await fs.unlinkSync(req.file.path);
@@ -51,9 +56,7 @@ class adminController extends controller {
       }
 
       await this.models.Admins.findByIdAndUpdate(objId, {
-        $set: { ...contentObj,
-          ...contentObj
-        }
+        $set: { ...contentObj,...contentObj }
       });
       return this.redirectWithMessage(['تغییرات با موفقیت ثبت گردید'], 'success', '/admin/dashboard' , res);
 

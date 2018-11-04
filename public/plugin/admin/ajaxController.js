@@ -146,12 +146,16 @@ $('.ProfileEdit').submit((e) => {
   let family = $('input[name = "family"]');
   let photo = $('input[name = "photo"]');
   let photoVal = $('input[name = "photo"]');
+  let newPass = $('input[name = "newPass"]');
+  let replayNewPass = $('input[name = "replayNewPass"]');
 
   let formData = new FormData();
   formData.append('name', name.val());
   formData.append('family', family.val());
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
+  formData.append('newPass', newPass.val());
+  formData.append('replayNewPass', replayNewPass.val());
 
   Fetch('/admin/profile/edit', 'PUT', formData);
 });
