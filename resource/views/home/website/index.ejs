@@ -1,28 +1,21 @@
 <%- include(viewPath('home/layout/header')) %>
 <section class="seo-page w100 grid-y">
-  <div class="header-slider w100">
+  <% if(typeof websitePage.background !== 'undefined') { %>
+  <div class="header-slider w100" style="background-image: url('<%= websitePage.background.destination %>')">
+  <% } else { %>  
+  <div class="header-slider w100">  
+  <% } %>
     <div class="overlay grid align-center-middle">
       <div class="container">
-        <h2>Website</h2>
+        <h2><%= websitePage.title %></h2>
       </div>
     </div>
   </div>
   <div class="seo-desc wrapper grid align-center">
   <div class="container">
-    <div class="wrap w100 grid-x">
-      <div class="image">
-        <img src="/img/seo-assesment-2-2.png" alt="SEO">
-      </div>
-      <div class="decription pr-5 grid-y">
-        <h4 class="mb-1">سئو چیست ؟</h4>
-        <P>
-          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
-          روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود
-          ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا
-          با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در
-          این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل
-          حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-        </P>
+    <div class="wrap w100">
+      <div class="decription">
+        <%- websitePage.desc %>
       </div>
     </div>
   </div>

@@ -17,6 +17,8 @@ const seoPage = require('app/models/seoPage');
 const websites = require('app/models/websites');
 const applications = require('app/models/applications');
 const siteInfo = require('app/models/siteInfo');
+const websitePage = require('app/models/websitePage');
+const applicationPage = require('app/models/applicationPage');
 
 module.exports = class controller {
   constructor() {
@@ -36,7 +38,9 @@ module.exports = class controller {
       seoPage,
       websites,
       applications,
-      siteInfo
+      siteInfo,
+      websitePage,
+      applicationPage
     };
   }
   async recaptchaValidation(req , res , next) {

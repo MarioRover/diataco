@@ -5,17 +5,23 @@ module.exports = new class applicationController extends controller {
     try {
       let applications = await this.models.applications.find({}).limit(8).sort({createdAt :-1}).exec();
       let siteInfo = await this.models.siteInfo.find({});
+      let appPage = await this.models.applicationPage.find({});
       if (this.isEmptyArray(siteInfo)) {
         siteInfo = 'undefined';
       } else {
         siteInfo = siteInfo[0]
+      }
+      if (this.isEmptyArray(appPage)) {
+        appPage = 'undefined';
+      } else {
+        appPage = appPage[0]
       }
       if(this.isEmptyArray(applications)) {
         applications = 'undefined';
       }
       res.render('home/application/index', {
         title: 'وب سایت',
-        applications,siteInfo
+        applications,siteInfo,appPage
       });
     } catch (error) {
       return this.error('Error in showPage method in applicationController', 500, next);

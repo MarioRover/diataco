@@ -15,6 +15,8 @@ const seoPagesController = require('app/http/controllers/admin/siteSittings/page
 const websiteController = require('app/http/controllers/admin/websiteController');
 const applicationController = require('app/http/controllers/admin/applicationController');
 const siteInfoController = require('app/http/controllers/admin/siteSittings/siteInfoController');
+const websitesPagesController = require('app/http/controllers/admin/siteSittings/pages/websitesPagesController');
+const appPagesController = require('app/http/controllers/admin/siteSittings/pages/appPagesController');
 // Validators
 const loginAdminsValidation = require('app/http/validators/loginAdminsValidation');
 const contactPagesValidation = require('app/http/validators/contactPagesValidation');
@@ -40,6 +42,8 @@ const seoParallaxValidation = require('app/http/validators/seoPageValidation/seo
 const usersValidation = require('app/http/validators/usersValidation');
 const usersBackgroundValidation = require('app/http/validators/usersBackgroundValidation');
 const profileValidation = require('app/http/validators/profileValidation');
+const websitePageValidation = require('app/http/validators/websitePageValidation');
+const appPageValidation = require('app/http/validators/appPageValidation');
 // Middleware
 const redirectIfAuthenticated = require('app/http/middleware/redirectIfAuthenticated');
 const convertFileToField = require('app/http/middleware/convertFileToField')
@@ -192,6 +196,44 @@ router.put('/site-setting/pages/seo/parallax',
   seoParallaxValidation.handle(),
   seoPagesController.parallax
 );
+
+
+
+
+///////// Website Page
+router.get('/site-setting/pages/websites', redirectIfAuthenticated.adminLogin, websitesPagesController.index);
+router.post('/site-setting/pages/websites',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('background'),
+  convertFileToField.handle,
+  websitePageValidation.handle(),
+  websitesPagesController.update
+);
+router.put('/site-setting/pages/websites',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('background'),
+  convertFileToField.handle,
+  websitePageValidation.handle(),
+  websitesPagesController.update
+);
+///////// Application Page
+router.get('/site-setting/pages/applications', redirectIfAuthenticated.adminLogin, appPagesController.index);
+router.post('/site-setting/pages/applications',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('background'),
+  convertFileToField.handle,
+  appPageValidation.handle(),
+  appPagesController.update
+);
+router.put('/site-setting/pages/applications',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('background'),
+  convertFileToField.handle,
+  appPageValidation.handle(),
+  appPagesController.update
+);
+
+
 
 /////// Category Blog
 router.get('/blogs/categories', redirectIfAuthenticated.adminLogin, blogController.index);

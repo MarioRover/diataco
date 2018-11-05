@@ -350,8 +350,12 @@
 </div>
 
 <script>
-  CKEDITOR.replace('desc1');
-  CKEDITOR.replace('desc2');
+  CKEDITOR.replace('desc1' , {
+    filebrowserUploadUrl : '/admin/upload-image'
+  });
+  CKEDITOR.replace('desc2' , {
+    filebrowserUploadUrl : '/admin/upload-image'
+  });
   $(".AboutHeader input[name='photo']").change(function() {
     readURL2(this , "1");
   });

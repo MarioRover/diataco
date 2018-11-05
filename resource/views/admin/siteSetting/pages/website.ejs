@@ -1,0 +1,78 @@
+<%- contentFor('panel-header') %>
+<div class="grid-x-no align-middle">
+  <i class="fas fa-cog"></i>
+  <span>تنظیمات سایت</span>
+</div>
+<i class="arrow far fa-angle-left"></i>
+<a href="/admin/site-setting/pages" class="grid-x-no align-middle">
+  <i class="fal fa-tv"></i>
+  <span>صفحات سایت</span>
+</a>
+<i class="arrow far fa-angle-left"></i>
+<a href="/admin/site-setting/pages/websites" class="active grid-x-no align-middle">
+  <span>وب سایت</span>
+</a>
+<%- contentFor('body') %>
+<div class="site-pages w100 grid align-center">
+  <div class="container grid-y">
+    <div class="post-info">
+
+      <div class="post-box w100">
+        <header class="navyBlue">
+          <h4>Website pages</h4>
+        </header>
+        <content>
+          <form class="WebsitePage">
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="title">تیتر صفحه وب سایت</label>
+                <input name="title" type="text" value="<%= websitePage.title %>">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left mb-1">
+              <div class="grid-y input-group">
+                <label for="photo"> تصویر پس زمینه صفحه وب سایت</label>
+                <div class="grid align-center">
+                  <div class="image-box box1 grid align-center-middle">
+                    <% if(typeof websitePage.background !== 'undefined') { %>
+                    <img src="<%= websitePage.background.destination %>" alt="">
+                    <% } else { %>
+                    <img src="">
+                    <% } %>
+                  </div>
+                </div>
+                <input class="input-en" name="photo" type="file">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="desc">متن صفحه وب سایت</label>
+                <textarea name="desc" id="desc1" cols="30" rows="10"><%= websitePage.desc %></textarea>
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <button type="submit" class="btn btn-primary grid align-center-middle">
+                <span>بروزرسانی اطلاعات</span>
+                <% if(typeof websitePage.background !== 'undefined') { %>
+                <input type="hidden" name="method" value="PUT">
+                <% } else { %>
+                <input type="hidden" name="method" value="POST">
+                <% } %>
+              </button>
+            </div>
+          </form>
+        </content>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  CKEDITOR.replace('desc1' , {
+    filebrowserUploadUrl : '/admin/upload-image'
+  });
+  $(".WebsitePage input[name='photo']").change(function () {
+    readURL2(this, "1");
+  });
+</script>

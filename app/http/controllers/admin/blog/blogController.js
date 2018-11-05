@@ -177,9 +177,6 @@ module.exports = new class blogController extends controller {
 
 
       }
-      
-
-
 
     } catch (error) {
       return this.serverError('Error in updateCategory method of blogController.js', 500, error, res);

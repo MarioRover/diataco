@@ -5,17 +5,23 @@ module.exports = new class websiteController extends controller {
     try {
       let websites = await this.models.websites.find({}).limit(8).sort({createdAt :-1}).exec();
       let siteInfo = await this.models.siteInfo.find({});
+      let websitePage = await this.models.websitePage.find({});
       if (this.isEmptyArray(siteInfo)) {
         siteInfo = 'undefined';
       } else {
         siteInfo = siteInfo[0]
+      }
+      if (this.isEmptyArray(websitePage)) {
+        websitePage = 'undefined';
+      } else {
+        websitePage = websitePage[0]
       }
       if(this.isEmptyArray(websites)) {
         websites = 'undefined';
       }
       res.render('home/website', {
         title: 'وب سایت',
-        websites,siteInfo
+        websites,siteInfo,websitePage
       });
     } catch (error) {
       return this.error('Error in showPage method in websiteController',500,next);

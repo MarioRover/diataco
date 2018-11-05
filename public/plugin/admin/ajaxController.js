@@ -199,20 +199,19 @@ $('.CreateBlog').submit((e) => {
   let title = $('input[name = "title"]');
   let slug = $('input[name = "slug"]');
   let summery = $('textarea[name="summery"]');
-  let description = $('textarea[name="description"]');
   let tags = $('input[name="tags"]');
   let photo = $('input[name = "photo"]');
   let photoVal = $('input[name = "photo"]');
+  let data = CKEDITOR.instances.editor1.getData();
 
   let formData = new FormData();
   formData.append('title', title.val());
   formData.append('slug', slug.val());
   formData.append('summery', summery.val());
-  formData.append('description', description.val());
+  formData.append('description', data);
   formData.append('tags', tags.val());
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
-  console.log(tags)
 
   let pathName = window.location.pathname.split('/');
   let catSlug = pathName[pathName.length - 3];
@@ -239,16 +238,16 @@ $('.UpdateBlog').submit((e) => {
   let title = $('input[name = "title"]');
   let slug = $('input[name = "slug"]');
   let summery = $('textarea[name="summery"]');
-  let description = $('textarea[name="description"]');
   let tags = $('input[name="tags"]');
   let photo = $('input[name = "photo"]');
   let photoVal = $('input[name = "photo"]');
+  let data = CKEDITOR.instances.editor1.getData();
 
   let formData = new FormData();
   formData.append('title', title.val());
   formData.append('slug', slug.val());
   formData.append('summery', summery.val());
-  formData.append('description', description.val());
+  formData.append('description', data);
   formData.append('tags', tags.val());
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
@@ -277,12 +276,12 @@ $('.AboutHeader').submit((e) => {
 
 $('.AboutDesc1').submit((e) => {
   e.preventDefault();
-  let desc = $('.AboutDesc1 textarea[name = "desc"]');
   let photo = $('.AboutDesc1 input[name = "photo"]');
   let photoVal = $('.AboutDesc1 input[name = "photo"]');
+  let data = CKEDITOR.instances.desc1.getData();
 
   let formData = new FormData();
-  formData.append('desc', desc.val());
+  formData.append('desc', data);
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
 
@@ -291,12 +290,12 @@ $('.AboutDesc1').submit((e) => {
 
 $('.AboutDesc2').submit((e) => {
   e.preventDefault();
-  let desc = $('.AboutDesc2 textarea[name = "desc"]');
   let photo = $('.AboutDesc2 input[name = "photo"]');
   let photoVal = $('.AboutDesc2 input[name = "photo"]');
+  let data = CKEDITOR.instances.desc2.getData();
 
   let formData = new FormData();
-  formData.append('desc', desc.val());
+  formData.append('desc', data);
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
 
@@ -370,12 +369,12 @@ $('.SEOHeader').submit((e) => {
 
 $('.SEODesc1').submit((e) => {
   e.preventDefault();
-  let desc = $('.SEODesc1 textarea[name = "desc"]');
   let photo = $('.SEODesc1 input[name = "photo"]');
   let photoVal = $('.SEODesc1 input[name = "photo"]');
+  let data = CKEDITOR.instances.desc1.getData();
 
   let formData = new FormData();
-  formData.append('desc', desc.val());
+  formData.append('desc', data);
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
 
@@ -384,12 +383,12 @@ $('.SEODesc1').submit((e) => {
 
 $('.SEODesc2').submit((e) => {
   e.preventDefault();
-  let desc = $('.SEODesc2 textarea[name = "desc"]');
   let photo = $('.SEODesc2 input[name = "photo"]');
   let photoVal = $('.SEODesc2 input[name = "photo"]');
+  let data = CKEDITOR.instances.desc2.getData();
 
   let formData = new FormData();
-  formData.append('desc', desc.val());
+  formData.append('desc', data);
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
 
@@ -614,7 +613,7 @@ $(".websites").submit(e => {
   let name = $('.websites input[name = "name"]');
   let link = $('.websites input[name = "link"]');
   let slug = $('.websites input[name = "slug"]');
-  let desc = $('.websites textarea[name = "description"]');
+  let data = CKEDITOR.instances.editor1.getData();
 
   let logo = $('.websites input[name = "logo"]');
   let logoVal = $('.websites input[name = "logo"]');
@@ -626,7 +625,7 @@ $(".websites").submit(e => {
   formData.append("name", name.val());
   formData.append("link", link.val());
   formData.append("slug", slug.val());
-  formData.append("desc", desc.val());
+  formData.append("desc", data);
   formData.append("logo", logo[0].files[0]);
   formData.append("logoVal", logoVal.val());
   formData.append("previewImage", previewImage[0].files[0]);
@@ -680,7 +679,7 @@ $(".UpdateWebsites").submit(e => {
   let name = $('.UpdateWebsites input[name = "name"]');
   let link = $('.UpdateWebsites input[name = "link"]');
   let slug = $('.UpdateWebsites input[name = "slug"]');
-  let desc = $('.UpdateWebsites textarea[name = "description"]');
+  let data = CKEDITOR.instances.editor1.getData();
 
   let logo = $('.UpdateWebsites input[name = "logo"]');
   let logoVal = $('.UpdateWebsites input[name = "logo"]');
@@ -692,7 +691,7 @@ $(".UpdateWebsites").submit(e => {
   formData.append("name", name.val());
   formData.append("link", link.val());
   formData.append("slug", slug.val());
-  formData.append("desc", desc.val());
+  formData.append("desc", data);
   formData.append("logo", logo[0].files[0]);
   formData.append("logoVal", logoVal.val());
   formData.append("previewImage", previewImage[0].files[0]);
@@ -712,8 +711,7 @@ $(".applications").submit(e => {
   let name = $('.applications input[name = "name"]');
   let link = $('.applications input[name = "link"]');
   let slug = $('.applications input[name = "slug"]');
-  let desc = $('.applications textarea[name = "description"]');
-
+  let data = CKEDITOR.instances.editor1.getData();
   let logo = $('.applications input[name = "logo"]');
   let logoVal = $('.applications input[name = "logo"]');
   let previewImage = $('.applications input[name = "previewImage"]');
@@ -724,7 +722,7 @@ $(".applications").submit(e => {
   formData.append("name", name.val());
   formData.append("link", link.val());
   formData.append("slug", slug.val());
-  formData.append("desc", desc.val());
+  formData.append("desc", data);
   formData.append("logo", logo[0].files[0]);
   formData.append("logoVal", logoVal.val());
   formData.append("previewImage", previewImage[0].files[0]);
@@ -777,8 +775,7 @@ $(".UpdateApplications").submit(e => {
   let name = $('.UpdateApplications input[name = "name"]');
   let link = $('.UpdateApplications input[name = "link"]');
   let slug = $('.UpdateApplications input[name = "slug"]');
-  let desc = $('.UpdateApplications textarea[name = "description"]');
-
+  let data = CKEDITOR.instances.editor1.getData();
   let logo = $('.UpdateApplications input[name = "logo"]');
   let logoVal = $('.UpdateApplications input[name = "logo"]');
   let previewImage = $('.UpdateApplications input[name = "previewImage"]');
@@ -789,7 +786,7 @@ $(".UpdateApplications").submit(e => {
   formData.append("name", name.val());
   formData.append("link", link.val());
   formData.append("slug", slug.val());
-  formData.append("desc", desc.val());
+  formData.append("desc", data);
   formData.append("logo", logo[0].files[0]);
   formData.append("logoVal", logoVal.val());
   formData.append("previewImage", previewImage[0].files[0]);
@@ -831,4 +828,38 @@ $(".SiteInfo").submit(e => {
   formData.append("logoVal", logoVal.val());
 
   Fetch(`/admin/site-info`, `${method.val()}`, formData);
+});
+
+$(".WebsitePage").submit(e => {
+  e.preventDefault();
+  let method = $('.WebsitePage input[name = "method"]');
+  let title = $('.WebsitePage input[name = "title"]');
+  let background = $('.WebsitePage input[name = "photo"]');
+  let backgroundVal = $('.WebsitePage input[name = "photo"]');
+  let data = CKEDITOR.instances.desc1.getData();
+  
+  let formData = new FormData();
+  formData.append("title", title.val());
+  formData.append("desc", data);
+  formData.append("background", background[0].files[0]);
+  formData.append("backgroundVal", backgroundVal.val());
+
+  Fetch(`/admin/site-setting/pages/websites`, `${method.val()}`, formData);
+});
+
+$(".AppPage").submit(e => {
+  e.preventDefault();
+  let method = $('.AppPage input[name = "method"]');
+  let title = $('.AppPage input[name = "title"]');
+  let background = $('.AppPage input[name = "photo"]');
+  let backgroundVal = $('.AppPage input[name = "photo"]');
+  let data = CKEDITOR.instances.desc1.getData();
+
+  let formData = new FormData();
+  formData.append("title", title.val());
+  formData.append("desc", data);
+  formData.append("background", background[0].files[0]);
+  formData.append("backgroundVal", backgroundVal.val());
+
+  Fetch(`/admin/site-setting/pages/applications`, `${method.val()}`, formData);
 });
