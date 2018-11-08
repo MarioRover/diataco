@@ -13,7 +13,7 @@ const passport = require('passport');
 const rateLimit = require("express-rate-limit");
 const apiLimiter = new rateLimit({
   windowMs : 1000*60*15,
-  max : 100,
+  max : 50,
   handler : function(req , res) {
     res.json({
       data : 'درخواست شما زیاد بوده ، لطفا 5 دقیقه دیگر دوباره تلاش کنید',
@@ -45,6 +45,7 @@ module.exports = class Aplication {
   setConfig() {
     // Passport
     require('app/passport/passport-admin');
+    require('app/passport/passport-jwt');
     // security
     app.enable('trust proxy');
     app.use(helmet());

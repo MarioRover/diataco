@@ -10,5 +10,8 @@ module.exports = {
   session,
   service,
   debug: true,
-  siteurl: process.env.WEBSITE_URL
+  siteurl: process.env.WEBSITE_URL,
+  jwt : {
+    secret_key : 'GGK$%#125)0(KJUA%&#250ASX'
+  }
 }
