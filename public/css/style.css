@@ -291,9 +291,6 @@ main {
   overflow: hidden;
   margin-bottom: 2em;
 }
-.item img {
-  width: 7em;
-}
 .item .content {
   margin: 10px;
 }
@@ -303,37 +300,42 @@ main {
   margin-bottom: 7px;
   color: #383838;
   font-weight: bold;
+  font-family: 'iransans';
 }
 .item .content p,
 .seo-page .seo-desc .decription p {
   font-size: 13px;
   line-height: 24px;
-  text-align: right;
+  text-align: justify;
   font-weight: normal;
   color: #6e6e6e;
 }
+.item .icon img {
+  width: 13em;
+}
+
 /* ////////Responsive//////// */
 @media print, screen and (min-width: 400px) {
-  .item img {
+  /* .item img {
     width: 5em;
-  }
+  } */
 }
 @media print, screen and (min-width: 500px) {
   .item {
     width: 85%;
   }
-  .item img {
+  /* .item img {
     width: 3.5em;
-  }
+  } */
 }
 @media print, screen and (min-width: 780px) {
   .item {
     width: 20em;
   }
-  .item img {
+  /* .item img {
     width: 7em;
     height: 4em;
-  }
+  } */
 }
 /* /////////////Product Tab/////////// */
 .products-tab {
@@ -603,6 +605,7 @@ main {
 }
 
 .blog-card h3 {
+  font-family: 'iransans';
   font-size: 18px;
   font-weight: normal;
   color: #fff;
@@ -723,6 +726,7 @@ main {
   transition: 0.5s;
 }
 .card .info h3 {
+  font-family: 'iransans';
   font-weight: 700;
   font-size: 22px;
 }
@@ -1093,20 +1097,19 @@ main {
 .header-slider .overlay h2 {
   color: #fff;
   text-align: center;
-  font-family: Nunito;
+  font-family: 'iransans';
   font-size: 8em;
 }
 .header-slider .overlay .desc .name {
+  font-family: 'iransans';
+  color: #fff;
+  text-align: center;
+  font-size: 26px;
   margin-bottom: 10px;
 }
 .header-slider .overlay .desc .logo img {
   width: 8em;
   height: 100%;
-}
-.header-slider .overlay .desc h4 {
-  color: #fff;
-  text-align: center;
-  font-size: 26px;
 }
 .header-slider .overlay .desc .deliver span:first-child {
   color: #fff;
@@ -1115,13 +1118,10 @@ main {
   margin-left: 10px;
 }
 .header-slider .overlay .desc .deliver a {
-  color: #fff;
-  font-weight: 400;
-  direction: ltr;
-  font-size: 15px;
-  background-color: #1804dd;
-  padding: 4px 9px;
-  border-radius: 7px;
+  margin: 5px;
+}
+.header-slider .overlay .desc .deliver a img {
+  width: 10em;
 }
 .seo-page .border .container {
   border-bottom: 1px solid #e6e6e6;

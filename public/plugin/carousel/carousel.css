@@ -25,6 +25,11 @@
   width: 13em;
   height: 8em;
 }
+.pics-thumbs .item.app {
+  border-radius: 17px;
+  width: auto;
+  height: auto;
+}
 .owl-carousel .owl-nav button.owl-next,
 .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel button.owl-dot {

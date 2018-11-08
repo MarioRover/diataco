@@ -711,6 +711,12 @@ $(".applications").submit(e => {
   let name = $('.applications input[name = "name"]');
   let link = $('.applications input[name = "link"]');
   let slug = $('.applications input[name = "slug"]');
+
+  let appstore = $('.applications input[name = "appstore"]');
+  let sibapp = $('.applications input[name = "sibapp"]');
+  let googleplay = $('.applications input[name = "googleplay"]');
+  let cafebazar = $('.applications input[name = "cafebazar"]');
+
   let data = CKEDITOR.instances.editor1.getData();
   let logo = $('.applications input[name = "logo"]');
   let logoVal = $('.applications input[name = "logo"]');
@@ -722,6 +728,12 @@ $(".applications").submit(e => {
   formData.append("name", name.val());
   formData.append("link", link.val());
   formData.append("slug", slug.val());
+
+  formData.append("appstore", appstore.val());
+  formData.append("sibapp", sibapp.val());
+  formData.append("googleplay", googleplay.val());
+  formData.append("cafebazar", cafebazar.val());
+
   formData.append("desc", data);
   formData.append("logo", logo[0].files[0]);
   formData.append("logoVal", logoVal.val());
@@ -775,6 +787,10 @@ $(".UpdateApplications").submit(e => {
   let name = $('.UpdateApplications input[name = "name"]');
   let link = $('.UpdateApplications input[name = "link"]');
   let slug = $('.UpdateApplications input[name = "slug"]');
+  let appstore = $('.UpdateApplications input[name = "appstore"]');
+  let sibapp = $('.UpdateApplications input[name = "sibapp"]');
+  let googleplay = $('.UpdateApplications input[name = "googleplay"]');
+  let cafebazar = $('.UpdateApplications input[name = "cafebazar"]');
   let data = CKEDITOR.instances.editor1.getData();
   let logo = $('.UpdateApplications input[name = "logo"]');
   let logoVal = $('.UpdateApplications input[name = "logo"]');
@@ -787,6 +803,10 @@ $(".UpdateApplications").submit(e => {
   formData.append("link", link.val());
   formData.append("slug", slug.val());
   formData.append("desc", data);
+  formData.append("appstore", appstore.val());
+  formData.append("sibapp", sibapp.val());
+  formData.append("googleplay", googleplay.val());
+  formData.append("cafebazar", cafebazar.val());
   formData.append("logo", logo[0].files[0]);
   formData.append("logoVal", logoVal.val());
   formData.append("previewImage", previewImage[0].files[0]);

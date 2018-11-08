@@ -3,7 +3,11 @@
 <link rel="stylesheet" href="/plugin/carousel/carousel.css">
 <%- include(viewPath('home/layout/header')) %>
 <section class="website w100 grid-y">
-  <div class="header-slider w100" style="background-image: url('./../img/blog.jpg')">
+  <% if(typeof application.previewImage !== 'undefined') { %>
+  <div class="header-slider w100" style="background-image: url('<%= application.previewImage.destination %>')">
+  <% } else { %>
+  <div class="header-slider w100">
+  <% } %>
     <div class="overlay grid align-center-middle">
       <div class="container">
         <div class="grid-y desc align-center">
@@ -11,8 +15,27 @@
             <img src="<%= application.logo.destination %>">
           </div>
           <h4 class="name"><%= application.name %></h4>
-          <div class="deliver grid align-center">
-            <a href="http://<%= application.link %>" target="_blank"><%= application.link %></a>
+          <div class="deliver grid-y align-center-middle">
+            <% if(application.appstore !== '') { %>
+              <a href="<%= application.appstore %>" target="_blank">
+                <img src="/img/button/get-on-appstore.png" alt="App Store">
+              </a> 
+            <% } %>
+            <% if(application.sibapp !== '') { %>
+              <a href="<%= application.sibapp %>" target="_blank">
+                <img src="/img/button/download-on-sibapp.png" alt="App Store">
+              </a>
+            <% } %>
+            <% if(application.googleplay !== '') { %>
+              <a href="<%= application.googleplay %>" target="_blank">
+                <img src="/img/button/get-it-on-google-play.png" alt="App Store">
+              </a>
+            <% } %>
+            <% if(application.cafebazar !== '') { %>
+              <a href="<%= application.cafebazar %>" target="_blank">
+                <img src="/img/button/get-from-cafe-bazar.png" alt="App Store">
+              </a>
+            <% } %>
           </div>
         </div>
       </div>
@@ -24,30 +47,19 @@
         <h3>تصاویر اپلیکیشن</h3>
       </div>
       <div class="carousel mb-3">
-          <div class="view grid align-center">
-          <% for(let i = 1 ; i <= 6 ; i++) { %>
-            <% if(application[`image${i}`] !== '' ) { %>
-              <div class="myslides" style="display: none;">
-                <a href="<%= application[`image${i}`].destination %>" target="_blank">
-                  <img src="<%= application[`image${i}`].destination %>">
-                </a>
-              </div>
-            <% } %>
-          <% } %>  
-          </div>
-          <div class="thumbs">
+        <div class="thumbs">
             <div class="owl-carousel owl-theme pics-thumbs">
 
               <% for(let i = 1 ; i <= 6 ; i++) { %>
                 <% if(application[`image${i}`] !== '' ) { %>
-                  <div class="item">
+                  <div class="item app">
                     <img class="demo active" src="<%= application[`image${i}`].destination %>" id="ember<%= i %>">
                   </div>
                 <% } %>
               <% } %>
              
             </div>
-          </div>
+        </div>
       </div>
       <div class="header-section mb-3">
         <h3>جزئیات اپلیکیشن</h3>
@@ -60,5 +72,4 @@
 </section>
 <script src="/plugin/home/owlcarousel/owl.carousel.min.js"></script>
 <script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
-<script src="/plugin/carousel/carousel.js"></script>
 <%- include(viewPath('home/layout/footer')) %>

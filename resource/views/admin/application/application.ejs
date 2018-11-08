@@ -82,14 +82,28 @@
                 <input name="name" type="text" value="<%= application.name %>">
               </div>
               <div class="grid-y input-group">
-                <label for="link">لینک اپلیکیشن</label>
-                <input name="link" type="text" class="input-en" value="<%= application.link %>">
+                <label for="slug">اسلاگ اپلیکیشن</label>
+                <input name="slug" type="text" value="<%= application.slug %>">
               </div>
             </div>
             <div class="input-wrap grid-x">
               <div class="grid-y input-group">
-                <label for="slug">اسلاگ اپلیکیشن</label>
-                <input name="slug" type="text" value="<%= application.slug %>">
+                <label for="appstore">لینک App Store</label>
+                <input class="input-en EN" name="appstore" type="text" value="<%= application.appstore %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="sibapp">لینک Sibapp</label>
+                <input class="input-en EN" name="sibapp" type="text" value="<%= application.sibapp %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="googleplay">لینک Google Play</label>
+                <input class="input-en EN" name="googleplay" type="text" value="<%= application.googleplay %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="cafebazar">لینک Cafe Bazar</label>
+                <input class="input-en EN" name="cafebazar" type="text" value="<%= application.cafebazar %>">
               </div>
             </div>
             <div class="input-wrap grid align-left">

@@ -9,26 +9,41 @@
       </a>
       <div class="social grid align-center wrap100">
         <div class="grid-x-no align-middle">
-          <a href="<%= siteInfo.telegram %>" title="Telegram" target="_blank">
-          <div class="box grid align-center-middle">
-            <i class="fab fa-telegram-plane"></i>
-          </div>
-        </a>
-        <a href="<%= siteInfo.whatsapp %>" title="WhatsApp" target="_blank">
-          <div class="box grid align-center-middle">
-            <i class="fab fa-whatsapp"></i>
-          </div>
-        </a>
-        <a href="<%= siteInfo.instagram %>" title="Instagram" target="_blank">
-          <div class="box grid align-center-middle">
-            <i class="fab fa-instagram"></i>
-          </div>
-        </a>
-        <a href="<%= siteInfo.linkedin %>" title="Linkedin" target="_blank">
-          <div class="box grid align-center-middle">
-            <i class="fab fa-linkedin"></i>
-          </div>
-        </a>
+          <% if(siteInfo.telegram !== '') { %>
+            <a href="<%= siteInfo.telegram %>" title="Telegram" target="_blank">
+              <div class="box grid align-center-middle">
+                <i class="fab fa-telegram-plane"></i>
+              </div>
+            </a>
+          <% } %>  
+          <% if(siteInfo.whatsapp !== '') { %>
+            <a href="<%= siteInfo.whatsapp %>" title="WhatsApp" target="_blank">
+              <div class="box grid align-center-middle">
+                <i class="fab fa-whatsapp"></i>
+              </div>
+            </a>
+          <% } %>  
+          <% if(siteInfo.instagram !== '') { %>
+            <a href="<%= siteInfo.instagram %>" title="Instagram" target="_blank">
+              <div class="box grid align-center-middle">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </a>
+          <% } %> 
+          <% if(siteInfo.linkedin !== '') { %>
+            <a href="<%= siteInfo.linkedin %>" title="Linkedin" target="_blank">
+              <div class="box grid align-center-middle">
+                <i class="fab fa-linkedin"></i>
+              </div>
+            </a>
+          <% } %> 
+          <% if(siteInfo.facebook !== '') { %>
+            <a href="<%= siteInfo.facebook %>" title="Facebook" target="_blank">
+              <div class="box grid align-center-middle">
+                <i class="fab fa-facebook"></i>
+              </div>
+            </a>
+          <% } %>
         </div>
       </div>
       <div class="wrap100 info grid align-center">
