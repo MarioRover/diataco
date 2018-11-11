@@ -834,6 +834,10 @@ $(".SiteInfo").submit(e => {
   let version = $('.SiteInfo input[name = "version"]');
   let logo = $('.SiteInfo input[name = "logo"]');
   let logoVal = $('.SiteInfo input[name = "logo"]');
+  let debug = false;
+  if ($('.SiteInfo input[name = "debug"]').is(':checked')) {
+    debug = true;
+  }
 
   let formData = new FormData();
   formData.append("nameEn", nameEn.val());
@@ -846,6 +850,7 @@ $(".SiteInfo").submit(e => {
   formData.append("version", version.val());
   formData.append("logo", logo[0].files[0]);
   formData.append("logoVal", logoVal.val());
+  formData.append("debug", debug);
 
   Fetch(`/admin/site-info`, `${method.val()}`, formData);
 });

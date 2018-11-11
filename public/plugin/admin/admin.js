@@ -105,4 +105,13 @@ $('.count').each(function () {
       Fetch2(`/admin/gallery?product=${product}&slug=${slug}`, 'DELETE', body);
     });
   });
-  
+  // Checkbox
+  let checkbox = $('.input-wrap .input-group.checkbox input[type="checkbox"]')
+  $('.input-wrap .input-group.checkbox span').click(function (e) {
+    e.preventDefault();
+    if ($(checkbox).is(':checked')) {
+      $(checkbox).prop('checked', false);
+    } else {
+      $(checkbox).prop('checked', true);
+    }
+  });

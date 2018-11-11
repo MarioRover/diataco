@@ -406,6 +406,16 @@ span.digit {
   width: 12em;
   height: 12em;
 }
+.input-wrap .input-group.checkbox span {
+  margin: 0;
+  cursor: pointer;
+  color: #555;
+  font-size: 13px;
+  font-weight: 400;
+}
+.input-wrap .input-group.checkbox input[type="checkbox"] {
+  margin-left: 10px;
+}
 /* ////////Table////////// */
 table {
   width: 100%;

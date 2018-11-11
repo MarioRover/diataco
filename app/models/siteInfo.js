@@ -11,7 +11,8 @@ const siteInfoSchema = new Schema({
   instagram   : {type : String , default : ''},
   facebook    : {type : String , default : ''},
   linkedin    : {type : String , default : ''},
-  version     : {type : String , default : ''}
+  version     : {type : String , default : ''},
+  debug       : {type : Boolean , default : false}
 } , {timestamps : true});
 
 

@@ -190,4 +190,9 @@ module.exports = class controller {
       req.sanitize(item).trim();
     });
   }
+
+  async debug() {
+    let info = await this.models.siteInfo.find({});
+    return info[0].debug;
+  }
 }

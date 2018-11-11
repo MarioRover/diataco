@@ -32,9 +32,9 @@ module.exports = new class siteInfoController extends controller {
         if (req.file) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
-      const {nameEn,nameFa,telegram,whatsapp,instagram,facebook,linkedin,version} = req.body;
+      const {nameEn,nameFa,telegram,whatsapp,instagram,facebook,linkedin,version,debug} = req.body;
       const logo = req.file;
-      let contentObj = {nameEn,nameFa,telegram,whatsapp,instagram,facebook,linkedin,version,updateBy : req.user._id};
+      let contentObj = {nameEn,nameFa,telegram,whatsapp,instagram,facebook,linkedin,version,debug,updateBy : req.user._id};
 
       let siteInfo = await this.models.siteInfo.find({});
       if(this.isEmptyArray(siteInfo)) {

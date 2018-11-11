@@ -72,6 +72,12 @@
                 <input name="version" type="text" class="input-en" value="<%= siteInfo.version %>">
               </div>
             </div>
+            <div class="input-wrap grid-x mb-3">
+              <div class="grid-x-no align-middle input-group checkbox">
+                <input name="debug" type="checkbox" <%= siteInfo.debug ? 'checked' : '' %> >
+                <span for="debug">فعال سازی سیستم Debug</span>
+              </div>
+            </div>
             <div class="input-wrap grid align-left">
               <div class="grid-y input-group">
                 <label for="logo">تصویر لوگوی وب سایت</label>
