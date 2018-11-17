@@ -58,3 +58,4 @@ $('.count').each(function () {
     }
   });
 });
+////////////Responsivi///////////////

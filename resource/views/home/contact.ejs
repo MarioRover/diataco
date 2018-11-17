@@ -4,16 +4,16 @@
     <div class="overlay"></div>
   </header>
   <div class="contact grid align-center">
-    <div class="contact-wrap grid-x">
-      <div class="call-us">
+    <div class="contact-wrap grid-y-no">
+      <div class="call-us w100">
         <div class="wrap100 header grid align-middle">
           <h6>نظرات خود را با ما در میان بگذارید</h6>
         </div>
         <content class="wrap100 grid-y">
           <form class="contactPage">
             <div class="row grid-x align-middle align-justify">
-              <input type="text" name="fullName" placeholder="نام">
-              <input type="text" name="email" placeholder="ایمیل">
+              <input class="w100" type="text" name="fullName" placeholder="نام">
+              <input class="w100" type="text" name="email" placeholder="ایمیل">
             </div>
             <div class="row grid-x align-middle align-justify">
               <input type="text" name="subject" placeholder="موضوع" maxlength="30">
@@ -33,7 +33,7 @@
         </content>
       </div>
       <% if(contactPage !== 'undefined') { %>
-      <div class="info-us grid-y">
+      <div class="info-us grid-y w100">
         <div class="wrap100 header grid align-middle">
           <h6>راه های تماس با ما</h6>
         </div>
@@ -53,7 +53,7 @@
         </content>
       </div>
       <% } else { %>
-      <div class="info-us grid-y">
+      <div class="info-us grid-y w100">
         <div class="wrap100 header grid align-middle">
           <h6>راه های تماس با ما</h6>
         </div>

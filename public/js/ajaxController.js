@@ -1,4 +1,5 @@
 
+
 getToken().then(token => {token});
 $('.contactPage').submit((e) => {
   e.preventDefault();

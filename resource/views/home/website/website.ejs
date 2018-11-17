@@ -28,7 +28,7 @@
           <% for(let i = 1 ; i <= 6 ; i++) { %>
             <% if(website[`image${i}`] !== '' ) { %>
               <div class="myslides" style="display: none;">
-                <a href="<%= website[`image${i}`].destination %>" target="_blank">
+                <a href="<%= website[`image${i}`].destination %>">
                   <img src="<%= website[`image${i}`].destination %>">
                 </a>
               </div>
@@ -59,6 +59,6 @@
   </div>
 </section>
 <script src="/plugin/home/owlcarousel/owl.carousel.min.js"></script>
-<script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
+<script src="/plugin/home/owlcarousel/owl.carousel.run2.js"></script>
 <script src="/plugin/carousel/carousel.js"></script>
 <%- include(viewPath('home/layout/footer')) %>

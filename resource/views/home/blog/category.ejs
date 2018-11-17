@@ -1,5 +1,4 @@
 
-<link rel="stylesheet" href="/plugin/Hoverbox/css/set1.css">
 <%- include(viewPath('home/layout/header')) %>
 
 <section class="seo-page w100 grid-y">
@@ -11,24 +10,46 @@
     </div>
   </div>
 <section class="wrapper grid grid-y align-center-middle">
-  <h3 >دسته بندی وبلاگ</h3>
-  <span class="title"></span>
-  <br>
+    <div class="header-section mb-2">
+        <h3>دسته بندی وبلاگ</h3>
+    </div>
     <div class="container grid-x align-center-middle">
-    
-        <% if(categories !== 'undefined') { %>
-            <% categories.forEach(category => { %>
-                <figure class="effect-layla">
-                    <img src="<%= category.imageUrl.destination %>" alt="<%= category.imageUrl.destination %>">
-                    <figcaption class="grid align-center-middle">
-                        <h2><%= category.name %></h2>
-                        <a href="/blog/<%= category.slug %>">View more</a>
-                    </figcaption>
-                </figure>
-            <% }) %>
-        <% } %>        
 
+        <% if(categories !== 'undefined') { %>
+            <div class="owl-carousel owl-theme">
+                <% categories.forEach(category => { %>
+                    <div class="item card-portlet">
+                        <a href="/blog/<%= category.slug %>" class="wrap grid align-bottom" style="background-image: url('<%= category.imageUrl.destination %>')">
+                            <div class="tag">   
+                                <span><%= category.name %></span>
+                            </div>
+                            <div class="body grid-y">
+                                <span><%= date(category.createdAt).format('jD jMMMM jYYYY') %></span>
+                                <h2><%= category.desc %></h2>
+                            </div>
+                        </a>
+                    </div>
+                <% }) %>
+            </div>
+            <div class="carousel grid-x">
+                <% categories.forEach(category => { %>
+                    <div class="item card-portlet">
+                        <a href="/blog/<%= category.slug %>" class="wrap grid align-bottom" style="background-image: url('<%= category.imageUrl.destination %>')">
+                            <div class="tag">   
+                                <span><%= category.name %></span>
+                            </div>
+                            <div class="body grid-y">
+                                <span><%= date(category.createdAt).format('jD jMMMM jYYYY') %></span>
+                                <h2><%= category.desc %></h2>
+                            </div>
+                        </a>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>         
     </div>
 </section>
 
 <%- include(viewPath('home/layout/footer')) %>
+<script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
+

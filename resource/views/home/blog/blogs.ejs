@@ -10,38 +10,54 @@
     </div>
   </div>
   <section class="wrapper grid grid-y align-center-middle">
-    <h3>دسته بندی وبلاگ</h3>
-    <span class="title"></span>
-    <br>
+    <div class="header-section mb-2">
+      <h3>وبلاگ ها</h3>
+    </div>
     <div class="container grid-x align-center-middle">
 
       <% if(categories !== 'undefined') { %>
-        <% categories.blogs.forEach(blog => { %>
-          <a href="/blog/<%= categories.slug %>/<%= blog.slug %>" class="item blog-card spring-fever" style="background: url('<%= blog.imageUrl.destination %>') no-repeat;">
-            <div class="title-content">
-              <h3><%= blog.title %></h3>
-              <hr>
-            </div>
-            <div class="card-info">
-              <%= blog.summery.slice(1,130) %> ...
-            </div>
-            <div class="utility-info">
-              <ul class="utility-list grid-x align-justify">
-                <li class="grid-x-no align-center">
-                  <i class="fas fa-calendar"></i>
-                  <span><%= date(blog.createdAt).format('jD jMMM jYYYY') %></span>
-                </li>
-                <li class="grid-x-no align-center">
-                  <i class="fas fa-comment-dots"></i>
+        <div class="owl-carousel owl-theme">
+          <% categories.blogs.forEach(blog => { %>
+            <div class="blog-card grid-y">
+              <a href="/blog/<%= categories.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.imageUrl.destination %>')"></a>
+              <div class="body grid-y">
+                <div class="date grid align-left mb-1">
                   <span>
-                    <%= blog.commentCount %></span>
-                </li>
-              </ul>
+                    <%= date(blog.createdAt).format('jD jMMMM jYYYY') %></span>
+                </div>
+                <h4 class="mb-1">
+                  <%= blog.title %>
+                </h4>
+                <p class="mb-2">
+                  <%= blog.summery.slice(1,130) %> ...</p>
+                <div class="link grid align-left">
+                  <a href="/blog/<%= categories.slug %>/<%= blog.slug %>">بیشتر بخوانید</a>
+                </div>
+              </div>
             </div>
-            <div class="gradient-overlay"></div>
-            <div class="color-overlay"></div>
-          </a>
-        <% }) %>
+          <% }) %>
+        </div>
+        <div class="carousel grid-x">
+          <% categories.blogs.forEach(blog => { %>
+            <div class="blog-card grid-y">
+              <a href="/blog/<%= categories.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.imageUrl.destination %>')"></a>
+              <div class="body grid-y">
+                <div class="date grid align-left mb-1">
+                  <span>
+                    <%= date(blog.createdAt).format('jD jMMMM jYYYY') %></span>
+                </div>
+                <h4 class="mb-1">
+                  <%= blog.title %>
+                </h4>
+                <p class="mb-2">
+                  <%= blog.summery.slice(1,130) %> ...</p>
+                <div class="link grid align-left">
+                  <a href="/blog/<%= categories.slug %>/<%= blog.slug %>">بیشتر بخوانید</a>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
       <% } %>
 
       
@@ -50,3 +66,4 @@
   </section>
 
   <%- include(viewPath('home/layout/footer')) %>
+<script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>

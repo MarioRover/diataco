@@ -6,11 +6,14 @@ module.exports = new class updateCategoriesValidation extends validator {
   handle() {
     return [
       check('name')
-      .not().isEmpty()
-      .withMessage('فیلد نام دسته بندی نمی تواند خالی باشد'),
+        .not().isEmpty()
+        .withMessage('فیلد نام دسته بندی نمی تواند خالی باشد'),
       check('slug')
-      .not().isEmpty()
-      .withMessage('فیلد اسلاگ نمی تواند خالی باشد'),
+        .not().isEmpty()
+        .withMessage('فیلد اسلاگ نمی تواند خالی باشد'),
+      check('desc')
+        .not().isEmpty()
+        .withMessage('فیلد خلاصه دسته بندی نمی تواند خالی باشد'),
       check('photoVal')
       .custom(async (value, {req}) => {
         if(value) {

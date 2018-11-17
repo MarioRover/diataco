@@ -49,8 +49,8 @@ module.exports = class Aplication {
     // security
     app.enable('trust proxy');
     app.use(helmet());
-    app.use(express.static(config.layout.public_dir));
     // Layout & Views Config
+    app.use(express.static(config.layout.public_dir));
     app.set('view engine', config.layout.view_engine);
     app.set('views', config.layout.view_dir);
     app.use(config.layout.ejs.expressLayouts);

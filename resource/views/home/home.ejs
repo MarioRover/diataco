@@ -1,7 +1,5 @@
 <link rel="stylesheet" href="/plugin/home/homeSlider/css/homeSlider.css">
 <link rel="stylesheet" href="/css/aos.css">
-<link rel="stylesheet" href="/plugin/home/owlcarousel/owl.carousel.min.css">
-<link rel="stylesheet" href="/plugin/home/owlcarousel/owl.theme.default.min.css">
 <%- include(viewPath('home/layout/header'))  %>
 <section class="homeSlider grid align-center-middle" style="background-image : url('<%= homeSlider.homeSliderImageUrl.destination %>')">
     <div class="grid align-center-middle">
@@ -113,10 +111,9 @@
         <div class="tab-content container">
             <div class="tab-content-wrap active">
                 <div class="product-wrap grid-x align-around">
-                    <!-- <div class="owl-carousel owl-theme"> -->
-                    <div class="grid-x">
+                    <div class="owl-carousel owl-theme">
                         <% websites.forEach(website => { %>
-                        <div class="item card">
+                        <div class="item card" onclick="">
                             <img src="<%= website.previewImage.destination %>">
                             <div class="info grid-y">
                                 <h3 class="EN mb-1">
@@ -124,7 +121,23 @@
                                 </h3>
                                 <div class="grid-x-no">
                                     <a href="http://<%= website.link %>" target="_blank">لینک وبسایت</a>
-                                    <a href="/websites/<%= website.slug %>" target="_blank">جزییات</a>
+                                    <a href="/websites/<%= website.slug %>">جزییات</a>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                    </div>
+                    <div class="carousel grid-x">
+                        <% websites.forEach(website => { %>
+                        <div class="item card" onclick="">
+                            <img src="<%= website.previewImage.destination %>">
+                            <div class="info grid-y">
+                                <h3 class="EN mb-1">
+                                    <%= website.name %>
+                                </h3>
+                                <div class="grid-x-no">
+                                    <a href="http://<%= website.link %>" target="_blank">لینک وبسایت</a>
+                                    <a href="/websites/<%= website.slug %>">جزییات</a>
                                 </div>
                             </div>
                         </div>
@@ -134,21 +147,36 @@
             </div>
             <div class="tab-content-wrap">
                 <div class="product-wrap grid-x align-around">
-                    <!-- <div class="owl-carousel owl-theme"> -->
-                    <div class="grid-x">
+                    <div class="owl-carousel owl-theme">
                         <% applications.forEach(app => { %>
-                        <div class="item card">
-                            <img src="<%= app.previewImage.destination %>">
-                            <div class="info grid-y">
-                                <h3 class="EN mb-1">
-                                    <%= app.name %>
-                                </h3>
-                                <div class="grid-x-no">
-                                    <a href="http://<%= app.link %>" target="_blank">لینک وبسایت</a>
-                                    <a href="/applications/<%= app.slug %>" target="_blank">جزییات</a>
+                            <div class="item card" onclick="">
+                                <img src="<%= app.previewImage.destination %>">
+                                <div class="info grid-y">
+                                    <h3 class="EN mb-1">
+                                        <%= app.name %>
+                                    </h3>
+                                    <div class="grid-x-no">
+                                        <a href="http://<%= app.link %>" target="_blank">لینک وبسایت</a>
+                                        <a href="/applications/<%= app.slug %>">جزییات</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <% }) %>
+                    </div>
+                    <div class="carousel grid-x">
+                        <% applications.forEach(app => { %>
+                            <div class="item card" onclick="">
+                                <img src="<%= app.previewImage.destination %>">
+                                <div class="info grid-y">
+                                    <h3 class="EN mb-1">
+                                        <%= app.name %>
+                                    </h3>
+                                    <div class="grid-x-no">
+                                        <a href="http://<%= app.link %>" target="_blank">لینک وبسایت</a>
+                                        <a href="/applications/<%= app.slug %>">جزییات</a>
+                                    </div>
+                                </div>
+                            </div>
                         <% }) %>
                     </div>
                 </div>
@@ -165,45 +193,58 @@
         <div class="header-section mb-2">
             <h3>خبرنامه شرکت ما</h3>
         </div>
-        <!-- <div class="owl-carousel owl-theme"> -->
-        <div class="grid-x">    
+        <div class="grid align-around">
             <% if(blogs !== 'undefined') { %>
+                <div class="owl-carousel owl-theme">
                 <% blogs.forEach(blog => { %>
-                    <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>" class="item blog-card spring-fever" style="background: url('<%= blog.imageUrl.destination %>') no-repeat;">
-                        <div class="title-content">
-                            <h3>
-                                <%= blog.title %>
-                            </h3>
-                            <hr>
+                    <div class="blog-card grid-y">
+                    <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.imageUrl.destination %>')"></a>
+                    <div class="body grid-y">
+                        <div class="date grid align-left mb-1">
+                        <span>
+                            <%= date(blog.createdAt).format('jD jMMMM jYYYY') %></span>
                         </div>
-                        <div class="card-info">
-                            <%= blog.summery.slice(1,130) %> ...
+                        <h4 class="mb-1">
+                        <%= blog.title %>
+                        </h4>
+                        <p class="mb-2">
+                        <%= blog.summery.slice(1,130) %> ...</p>
+                        <div class="link grid align-left">
+                        <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>">بیشتر بخوانید</a>
                         </div>
-                        <div class="utility-info">
-                            <ul class="utility-list grid-x align-justify">
-                                <li class="grid-x-no align-center">
-                                    <i class="fas fa-calendar"></i>
-                                    <span><%= date(blog.createdAt).format('jD jMMM jYYYY') %></span>
-                                </li>
-                                <li class="grid-x-no align-center">
-                                    <i class="fas fa-comment-dots"></i>
-                                    <span><%= blog.commentCount %></span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="gradient-overlay"></div>
-                        <div class="color-overlay"></div>
-                    </a>
+                    </div>
+                    </div>
                 <% }) %>
+                </div>
+                <div class="carousel grid-x">
+                <% blogs.forEach(blog => { %>
+                    <div class="blog-card grid-y">
+                    <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.imageUrl.destination %>')"></a>
+                    <div class="body grid-y">
+                        <div class="date grid align-left mb-1">
+                        <span>
+                            <%= date(blog.createdAt).format('jD jMMMM jYYYY') %></span>
+                        </div>
+                        <h4 class="mb-1">
+                        <%= blog.title %>
+                        </h4>
+                        <p class="mb-2">
+                        <%= blog.summery.slice(1,130) %> ...</p>
+                        <div class="link grid align-left">
+                        <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>">بیشتر بخوانید</a>
+                        </div>
+                    </div>
+                    </div>
+                <% }) %>
+                </div>
             <% } %>
-        </div>
+        </div>    
         <div class="grid align-center-middle view-all-news">
             <a href="">مشاهده تمامی اخبار</a>
         </div>
     </div>
 </section>
 <%- include(viewPath('home/layout/footer')) %>
-<script src="/plugin/home/owlcarousel/owl.carousel.min.js"></script>
 <script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
 <script src="./plugin/particles/particles.min.js"></script>
 <script src="./plugin/particles/particlesRun.js"></script>

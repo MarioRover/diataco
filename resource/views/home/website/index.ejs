@@ -27,24 +27,42 @@
             </div>
             <br>
             <div class="product-wrap grid-x align-around">
-                <!-- <div class="owl-carousel owl-theme"> -->
-                <div class="grid-x">
+                <div class="owl-carousel owl-theme">
                     <% websites.forEach(website => { %>
-                        <div class="item card">
-                            <img src="<%= website.previewImage.destination %>">
-                            <div class="info grid-y">
-                                <h3><%= website.name %></h3>
-                                <div class="grid-x-no">
-                                    <a href="<%= website.link %>" target="_blank">لینک وبسایت</a>
-                                    <a href="/websites/<%= website.slug %>">جزییات</a>
-                                </div>
+                    <div class="item card" onclick="">
+                        <img src="<%= website.previewImage.destination %>">
+                        <div class="info grid-y">
+                            <h3 class="EN mb-1">
+                                <%= website.name %>
+                            </h3>
+                            <div class="grid-x-no">
+                                <a href="http://<%= website.link %>" target="_blank">لینک وبسایت</a>
+                                <a href="/websites/<%= website.slug %>">جزییات</a>
                             </div>
                         </div>
+                    </div>
+                    <% }) %>
+                </div>
+                <div class="carousel grid-x">
+                    <% websites.forEach(website => { %>
+                    <div class="item card" onclick="">
+                        <img src="<%= website.previewImage.destination %>">
+                        <div class="info grid-y">
+                            <h3 class="EN mb-1">
+                                <%= website.name %>
+                            </h3>
+                            <div class="grid-x-no">
+                                <a href="http://<%= website.link %>" target="_blank">لینک وبسایت</a>
+                                <a href="/websites/<%= website.slug %>">جزییات</a>
+                            </div>
+                        </div>
+                    </div>
                     <% }) %>
                 </div>
             </div>
         </div>
     </section>
 </section>
+<script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
 
 <%- include(viewPath('home/layout/footer')) %>

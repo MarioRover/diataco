@@ -5,6 +5,7 @@ const mongoosePaginate = require('mongoose-paginate');
 const categoiesBlogSchema = new Schema({
   admin : { type : Schema.Types.ObjectId , ref : 'Admin' },
   name  : { type : String },
+  desc  : { type : String},
   imageUrl : { type : Object },
   slug : { type : String },
   viewCount : { type : Number , default : 0 },

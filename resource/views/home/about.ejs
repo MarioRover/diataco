@@ -43,95 +43,115 @@
       <div class="grid-x align-around">
         <div class="item grid-x-no">
           <div class="icon grid align-justify align-top">
-            <img src="<%= aboutPage.Iconitem1 %>" alt="">
+            <img src="/img/Ability/LastTechno.png" alt="">
           </div>
           <div class="content">
-            <h4><%= aboutPage.item1 %></h4>
-            <p><%= aboutPage.Descitem1 %></p>
+            <h4>
+              <%= aboutPage.item1 %>
+            </h4>
+            <p>
+              <%= aboutPage.Descitem1 %>
+            </p>
           </div>
         </div>
         <div class="item grid-x-no">
           <div class="icon grid align-justify align-top">
-            <img src="<%= aboutPage.Iconitem2 %>" alt="">
+            <img src="/img/Ability/LastTechno.png" alt="">
           </div>
           <div class="content">
-            <h4><%= aboutPage.item2 %></h4>
-            <p><%= aboutPage.Descitem2 %></p>
+            <h4>
+              <%= aboutPage.item2 %>
+            </h4>
+            <p>
+              <%= aboutPage.Descitem2 %>
+            </p>
           </div>
         </div>
         <div class="item grid-x-no">
           <div class="icon grid align-justify align-top">
-            <img src="<%= aboutPage.Iconitem3 %>" alt="">
+            <img src="/img/Ability/LastTechno.png" alt="">
           </div>
           <div class="content">
-            <h4><%= aboutPage.item3 %></h4>
-            <p><%= aboutPage.Descitem3 %></p>
+            <h4>
+              <%= aboutPage.item3 %>
+            </h4>
+            <p>
+              <%= aboutPage.Descitem3 %>
+            </p>
           </div>
         </div>
         <div class="item grid-x-no">
           <div class="icon grid align-justify align-top">
-            <img src="<%= aboutPage.Iconitem4 %>" alt="">
+            <img src="/img/Ability/LastTechno.png" alt="">
           </div>
           <div class="content">
-            <h4><%= aboutPage.item4 %></h4>
-            <p><%= aboutPage.Descitem4 %></p>
+            <h4>
+              <%= aboutPage.item4 %>
+            </h4>
+            <p>
+              <%= aboutPage.Descitem4 %>
+            </p>
           </div>
         </div>
         <div class="item grid-x-no">
           <div class="icon grid align-justify align-top">
-            <img src="<%= aboutPage.Iconitem5 %>" alt="">
+            <img src="/img/Ability/LastTechno.png" alt="">
           </div>
           <div class="content">
-            <h4><%= aboutPage.item5 %></h4>
-            <p><%= aboutPage.Descitem5 %></p>
+            <h4>
+              <%= aboutPage.item5 %>
+            </h4>
+            <p>
+              <%= aboutPage.Descitem5 %>
+            </p>
           </div>
         </div>
         <div class="item grid-x-no">
           <div class="icon grid align-justify align-top">
-            <img src="<%= aboutPage.Iconitem6 %>" alt="">
+            <img src="/img/Ability/LastTechno.png" alt="">
           </div>
           <div class="content">
-            <h4><%= aboutPage.item6 %></h4>
-            <p><%= aboutPage.Descitem6 %></p>
+            <h4>
+              <%= aboutPage.item6 %>
+            </h4>
+            <p>
+              <%= aboutPage.Descitem6 %>
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-<% if(typeof aboutPage.parallaxImageUrl !== 'undefined' ) { %>
-<section class="wrapper business parallax grid-y align-center-middle" style="background-image: url('<%= aboutPage.parallaxImageUrl.destination %>')">
-<% } else { %>
-<section class="wrapper business parallax grid-y align-center-middle">
-<% } %>  
+  
+  <section class="wrapper business parallax grid-y align-center-middle" style="background-image: url('<%= aboutPage.parallaxImageUrl.destination %>')">
     <div id="wrapper-box" class="container grid-x align-center-middle">
-      <% if(webUsers !== 'undefined') { %>
-        <% webUsers.forEach(user => { %>
-          <div id="card">
-            <div id="front">
-              <div id="top-pic" style="background-image: url('<%= user.backgroundUrl.destination %>')"></div>
-              <div id="avatar" class="grid align-center-middle">
-                <img src="<%= user.imageUrl.destination %>">
-              </div>
-              <div id="info-box">
-                <div class="info">
-                  <h3 class="mb-1"><%= user.name %></h3>
-                  <small><%= user.job %></small>
+        <% if(webUsers !== 'undefined') { %>
+          <% webUsers.forEach(user => { %>
+            <div id="card">
+              <div id="front">
+                <div id="top-pic" style="background-image: url('<%= user.backgroundUrl.destination %>')"></div>
+                <div id="avatar" class="grid align-center-middle">
+                  <img src="<%= user.imageUrl.destination %>">
+                </div>
+                <div id="info-box">
+                  <div class="info">
+                    <h3 class="mb-1"><%= user.name %></h3>
+                    <small><%= user.job %></small>
+                  </div>
+                </div>
+                <div id="social-bar">
+                  <% if(user.telegram !== '') { %><a href="<%= user.telegram %>" target="_blank"><i class="fab fa-telegram"></i></a><% } %>
+                  <% if(user.whatsapp !== '') { %><a href="<%= user.whatsapp %>" target="_blank"><i class="fab fa-whatsapp"></i></i></a><% } %>
+                  <% if(user.website !== '') { %><a href="<%= user.website %>" target="_blank"><i class="fab fa-chrome"></i></a><% } %>
+                  <% if(user.email !== '') { %><a href="<%= user.email %>" target="_blank"><i class="far fa-envelope"></i></a><% } %>
+                  <% if(user.instagram !== '') { %><a href="<%= user.instagram %>" target="_blank"><i class="fab fa-instagram"></i></a><% } %>
+                  <% if(user.facebook !== '') { %><a href="<%= user.facebook %>" target="_blank"><i class="fab fa-facebook-square"></i></a><% } %>
                 </div>
               </div>
-              <div id="social-bar">
-                <% if(user.telegram !== '') { %><a href="<%= user.telegram %>" target="_blank"><i class="fab fa-telegram"></i></a><% } %>
-                <% if(user.whatsapp !== '') { %><a href="<%= user.whatsapp %>" target="_blank"><i class="fab fa-whatsapp"></i></i></a><% } %>
-                <% if(user.website !== '') { %><a href="<%= user.website %>" target="_blank"><i class="fab fa-chrome"></i></a><% } %>
-                <% if(user.email !== '') { %><a href="<%= user.email %>" target="_blank"><i class="far fa-envelope"></i></a><% } %>
-                <% if(user.instagram !== '') { %><a href="<%= user.instagram %>" target="_blank"><i class="fab fa-instagram"></i></a><% } %>
-                <% if(user.facebook !== '') { %><a href="<%= user.facebook %>" target="_blank"><i class="fab fa-facebook-square"></i></a><% } %>
-              </div>
             </div>
-          </div>
-        <% }) %>  
-      <% } %>  
-        
+          <% }) %>  
+        <% } %>  
+          
     </div>
-</section>
-</section>
-<%- include(viewPath('home/layout/footer')) %>
+  </section>
+  <%- include(viewPath('home/layout/footer')) %>

@@ -1,4 +1,3 @@
-
 main {
   position: relative;
   z-index: 2;
@@ -394,6 +393,9 @@ main {
 .products-tab .tab-content .tab-content-wrap.active {
   display: block;
 }
+.carousel.off {
+  display: none;
+}
 
 /* ///////////Footer//////////// */
 .footer{
@@ -457,16 +459,8 @@ main {
 }
 .footer-2 p.version {
   font-size: 12px;
-  position: absolute;
-  left: 50%;
   color: rgba(255, 255, 255, .4);
-  margin-left: auto;
-  margin-right: auto;
-  -ms-transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  transform: translateX(-50%);
-  
+  margin-bottom: 10px;
 }
 @media print, screen and (min-width: 480px) {
   .footer-2 p:first-child {
@@ -477,6 +471,16 @@ main {
   }
   .footer-top .info p {
     width: 60%;
+  }
+  .footer-2 p.version {
+    position: absolute;
+    left: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
   }
 }
 /* /////////Parallax/////////////// */
@@ -548,76 +552,104 @@ main {
   -ms-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
 } 
-.blog-card {
-  width: 292px;
-  height: 390px;
-  position: relative;
+/* Blog Category Card */
+.card-portlet {
+  -webkit-box-shadow: 0px 0px 13px 0px rgba(82, 63, 105, 0.05);
+  box-shadow: 0px 0px 13px 0px rgba(82, 63, 105, 0.05);
+  background-color: #ffffff;
   margin: 10px;
+  border-radius: 4px;
+  width: 21em;
+  height: 22em;
   overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  font-family: iransans;
 }
-.blog-card.spring-fever {
-  background: url('/img/sample-card2.jpg') no-repeat;
-}
-.blog-card .color-overlay {
-  /* Rectangle 11: */
-  background: rgba(84, 104, 110, 0.4);
-  width: 350px;
-  height: 500px;
-  position: absolute;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  transition: background 0.3s cubic-bezier(0.33, 0.66, 0.66, 1);
-}
-.blog-card .gradient-overlay {
-  /* bg-gradient: */
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 21%);
-  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 21%);
-  background-image: -o-linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 21%);
-  background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 21%);
-  width: 350px;
-  height: 500px;
-  position: absolute;
-  top: 350px;
-  left: 0;
-  z-index: 15;
-}
-.blog-card:hover .card-info {
-  opacity: 1;
-  bottom: 120px;
-}
-.blog-card:hover .color-overlay {
-  background: rgba(84, 104, 110, 0.8);
-}
-
-.title-content {
-  text-align: center;
-  margin: 70px 0 0 0;
-  position: absolute;
-  z-index: 20;
+.card-portlet .wrap {
   width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2.5rem;
+  position: relative;
+}
+.card-portlet .wrap::before {
+  content: ' ';
+  position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.3;
+  z-index: 0;
+}
+.card-portlet .tag {
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 0.5rem 0.7rem;
+  z-index: 1;
+  position: absolute;
+  right: 3em;
+  top: 4em;
+  font-size: 13px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.card-portlet .body {
+  color: #fff;
+  z-index: 1;
+  position: relative;
+}
+.card-portlet .body span {
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+.card-portlet .body h2 {
+  font-size: 18px;
+  font-weight: 700;
 }
 
-.blog-card h3 {
-  font-family: 'iransans';
+.blog-card {
+  width: 20em;
+  height: 29em;
+  margin: 10px;
+  -webkit-box-shadow: 0px 0px 13px 0px rgba(82, 63, 105, 0.05);
+  box-shadow: 0px 0px 13px 0px rgba(82, 63, 105, 0.05);
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.blog-card .head {
+  width: 100%;
+  height: 14em;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.blog-card .body {
+  width: 100%;
+  padding: 15px;
+}
+.blog-card .body .date {
+  font-size: 12px;
+  color: #918ea7;
+}
+.blog-card .body h4 {
   font-size: 18px;
-  font-weight: normal;
-  color: #fff;
-  margin-bottom: 0;
+  color: #304099;
 }
-.blog-card hr {
-  width: 60%;
-  height: 2px;
-  margin: 20px auto;
-  border: 0;
-  background: #f4a73e;
+.blog-card .body p {
+  font-size: 13px;
+  color: #918ea7;
 }
+.blog-card .body .link {
+  color: #536be2;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+
 .intro {
   width: 170px;
   margin: 0 auto;
@@ -778,7 +810,7 @@ main {
 #card {
   width: 300px;
   height: 400px;
-  margin: 2em;
+  margin: 1em;
   position: relative;
   z-index: 1;
   -webkit-perspective: 600px;
@@ -1002,13 +1034,12 @@ main {
 }
 .contact-page .contact {
   width: 100%;
-  height: 30em;
+  height: 49em;
   background-color: #f7f7f7;
   position: relative;
 }
 .contact-page .contact .contact-wrap {
-  width: 52em;
-  height: 38em;
+  width: 95%;
   position: absolute;
   top: -12em;
   box-shadow: 0 10px 8px rgba(26, 26, 26, 0.5);
@@ -1060,21 +1091,43 @@ main {
   color: #333;
 }
 .contact-page .contact .call-us content .row {
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
-.contact-page .contact .call-us content .row input,
-.contact-page .contact .call-us content .row textarea {
-  width: 17em;
-}
+
 .contact-page .contact .call-us content .row textarea,
 .contact-page .contact .call-us content .row input[name="subject"] {
-  width: 100% !important;
+  width: 100%;
+}
+.contact-page .contact .call-us content .row:first-child input:first-child {
+  margin-bottom: 1em;
 }
 /* /////////////////////////////////////// */
 /* ////////Responsive//////// */
-@media print, screen and (min-width: 780px) {
+@media print, screen and (min-width: 768px) {
   #card {
     margin-bottom: 0;
+  }
+  .contact-page .contact .call-us content .row:first-child input {
+    width: 49% !important;
+  }
+  .contact-page .contact .call-us content .row:first-child input:first-child {
+    margin-bottom: 2px;
+  }
+}
+@media print, screen and (min-width: 850px) {
+  .contact-page .contact .contact-wrap {
+    width: 52em;
+    height: 38em;
+    flex-flow: row wrap;
+  }
+  .contact-page .contact .call-us {
+    width: 60% !important;
+  }
+  .contact-page .contact .info-us {
+    width: 40% !important;
+  }
+  .contact-page .contact {
+    height: 30em;
   }
 }
 /* ///////////// SEO Page //////////////////// */

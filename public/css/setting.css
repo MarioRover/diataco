@@ -605,10 +605,13 @@ figure {
 }
 .wrap100,
 .w100{
-  width: 100%;
+  width: 100% !important;
 }
 .w90 {
   width: 90%;
+}
+.w50 {
+  width: 50% !important;
 }
 /* /////////// Input /////////////// */
 .group {

@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 // Controllers
 const homeController = require('app/http/controllers/home/homeController');
 const seoController = require('app/http/controllers/home/seoController');
@@ -30,4 +29,5 @@ router.get('/sitemap.xml' , homeController.sitemap);
 router.get('/feed/websites' , homeController.feedWebsites);
 router.get('/feed/applications', homeController.feedApplications);
 router.get('/feed/blogs', homeController.feedBlogs);
+
 module.exports = router;

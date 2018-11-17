@@ -46,8 +46,8 @@ module.exports = new class blogController extends controller {
         if (req.file) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
-      const {name,slug} = req.body;
-      let contentObj = {name , slug , admin : req.user._id};
+      const {name,slug,desc} = req.body;
+      let contentObj = {name , slug , desc , admin : req.user._id};
       const categoryPhoto = req.file;
       // check slug
       let categoryDuplicate = {
@@ -123,8 +123,8 @@ module.exports = new class blogController extends controller {
         if (req.file) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
-      const {name,slug} = req.body;
-      let contentObj = {name , slug};
+      const {name,slug,desc} = req.body;
+      let contentObj = {name , slug , desc};
       const categoryPhoto = req.file;
       let thisCategory = await this.models.blogCategory.find({ slug: req.params.slug } , (error , category) => {
         if (error) return this.serverError('جستجو اطلاعات با مشکل مواجه شد', 500, error, res);

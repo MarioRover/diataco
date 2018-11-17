@@ -52,7 +52,7 @@
 
               <% for(let i = 1 ; i <= 6 ; i++) { %>
                 <% if(application[`image${i}`] !== '' ) { %>
-                  <div class="item app">
+                  <div class="item app" onclick="">
                     <img class="demo active" src="<%= application[`image${i}`].destination %>" id="ember<%= i %>">
                   </div>
                 <% } %>
@@ -71,5 +71,5 @@
   </div>
 </section>
 <script src="/plugin/home/owlcarousel/owl.carousel.min.js"></script>
-<script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
+<script src="/plugin/home/owlcarousel/owl.carousel.run2.js"></script>
 <%- include(viewPath('home/layout/footer')) %>

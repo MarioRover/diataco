@@ -164,12 +164,14 @@ $('.CategoryBlogCreate').submit((e) => {
   e.preventDefault();
   let name = $('input[name = "name"]');
   let slug = $('input[name = "slug"]');
+  let desc = $('input[name = "desc"]');
   let photo = $('input[name = "photo"]');
   let photoVal = $('input[name = "photo"]');
 
   let formData = new FormData();
   formData.append('name', name.val());
   formData.append('slug', slug.val());
+  formData.append('desc', desc.val());
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
 
@@ -180,12 +182,14 @@ $('.UpdateCategory').submit((e) => {
   e.preventDefault();
   let name = $('input[name = "name"]');
   let slug = $('input[name = "slug"]');
+  let desc = $('input[name = "desc"]');
   let photo = $('input[name = "photo"]');
   let photoVal = $('input[name = "photo"]');
 
   let formData = new FormData();
   formData.append('name', name.val());
   formData.append('slug', slug.val());
+  formData.append('desc', desc.val());
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
 
