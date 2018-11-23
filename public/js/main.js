@@ -13,7 +13,7 @@ $(document).ready(function () {
   });
 });
 ///////////////Tab of Products/////////////////////
-let tabNavs = $('.tab-nav .tabnav-item .tabnav-link');
+let tabNavs = $('.tab-nav .tabnav-item');
 let tabContent = $('.products-tab .tab-content .tab-content-wrap');
 
 $.each(tabNavs , (tabIndex , tabNav) => {
@@ -46,4 +46,16 @@ window.addEventListener('load', function (event) {
     $(textarea).val('');
   });
 });
-
+// ///////////Counter/////////////
+$('.count').each(function () {
+  $(this).prop('Counter', 0).animate({
+    Counter: $(this).text()
+  }, {
+    duration: 4000,
+    easing: 'swing',
+    step: function (now) {
+      $(this).text(Math.ceil(now));
+    }
+  });
+});
+////////////Responsivi///////////////

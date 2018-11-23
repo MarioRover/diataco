@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-
 // Controllers
 const homeController = require('app/http/controllers/home/homeController');
 const seoController = require('app/http/controllers/home/seoController');
-const weblogController = require('app/http/controllers/home/weblogController');
+const blogController = require('app/http/controllers/home/blogController');
 const contactController = require('app/http/controllers/home/contactController');
 const aboutController = require('app/http/controllers/home/aboutController');
 // Validations
@@ -12,9 +11,11 @@ const contactValidation = require('app/http/validators/contactValidation');
 // Home Routes
 router.get('/' , homeController.showPage);
 // Seo Router
-router.get('/seo', seoController.showPage);
-// Web Log Router
-router.get('/weblog', weblogController.showPage);
+router.get('/seo', seoController.index);
+// Blog Router
+router.get('/blog', blogController.index);
+router.get('/blog/:category', blogController.showBlogs);
+router.get('/blog/:category/:blog', blogController.showBlog);
 // Contact Us Router
 router.get('/contact', contactController.index);
 router.post('/contact', contactValidation.handle() ,contactController.getMessage);
@@ -23,5 +24,10 @@ router.get('/about', aboutController.showPage);
 
 
 
+// Sitemap & RSS
+router.get('/sitemap.xml' , homeController.sitemap);
+router.get('/feed/websites' , homeController.feedWebsites);
+router.get('/feed/applications', homeController.feedApplications);
+router.get('/feed/blogs', homeController.feedBlogs);
 
 module.exports = router;

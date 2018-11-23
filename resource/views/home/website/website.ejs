@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/plugin/home/owlcarousel/owl.carousel.min.css">
+<link rel="stylesheet" href="/plugin/home/owlcarousel/owl.theme.default.min.css">
+<link rel="stylesheet" href="/plugin/carousel/carousel.css">
+<%- include(viewPath('home/layout/header')) %>
+<section class="website w100 grid-y">
+  <div class="header-slider w100" style="background-image: url('./../img/blog.jpg')">
+    <div class="overlay grid align-center-middle">
+      <div class="container">
+        <div class="grid-y desc align-center">
+          <div class="logo grid-x align-center mb-1">
+            <img src="<%= website.logo.destination %>">
+          </div>
+          <h4 class="name"><%= website.name %></h4>
+          <div class="deliver grid align-center">
+            <a href="http://<%= website.link %>" target="_blank" class="EN"><%= website.link %></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap grid align-center">
+    <div class="container">
+      <div class="header-section mb-3">
+        <h3>تصاویر وب سایت</h3>
+      </div>
+      <div class="carousel mb-3">
+          <div class="view grid align-center">
+          <% for(let i = 1 ; i <= 6 ; i++) { %>
+            <% if(website[`image${i}`] !== '' ) { %>
+              <div class="myslides" style="display: none;">
+                <a href="<%= website[`image${i}`].destination %>">
+                  <img src="<%= website[`image${i}`].destination %>">
+                </a>
+              </div>
+            <% } %>
+          <% } %>  
+          </div>
+          <div class="thumbs">
+            <div class="owl-carousel owl-theme pics-thumbs">
+
+              <% for(let i = 1 ; i <= 6 ; i++) { %>
+                <% if(website[`image${i}`] !== '' ) { %>
+                  <div class="item">
+                    <img class="demo active" src="<%= website[`image${i}`].destination %>" id="ember<%= i %>">
+                  </div>
+                <% } %>
+              <% } %>
+             
+            </div>
+          </div>
+      </div>
+      <div class="header-section mb-3">
+        <h3>جزئیات وب سایت</h3>
+      </div>
+      <div class="desc">
+        <%- website.desc %>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/plugin/home/owlcarousel/owl.carousel.min.js"></script>
+<script src="/plugin/home/owlcarousel/owl.carousel.run2.js"></script>
+<script src="/plugin/carousel/carousel.js"></script>
+<%- include(viewPath('home/layout/footer')) %>

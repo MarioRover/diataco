@@ -1,0 +1,68 @@
+<%- contentFor('panel-header') %>
+<div class="grid-x-no align-middle">
+  <i class="fal fa-newspaper"></i>
+  <span class="name">وبلاگ</span>
+</div>
+<i class="arrow far fa-angle-left"></i>
+<a href="/admin/blogs/categories" class="grid-x-no align-middle">
+  <i class="fal fa-archive"></i>
+  <span class="name">دسته بندی</span>
+</a>
+<i class="arrow far fa-angle-left"></i>
+<div class="active grid-x-no align-middle">
+  <span class="name">دسته بندی جدید</span>
+</div>
+<%- contentFor('body') %>
+<div class="blogs-categories grid align-center">
+  <div class="container grid-y">
+
+    <div class="input-box">
+      <div class="flag grid align-center-middle">
+        <span>دسته بندی جدید</span>
+      </div>
+      <form class="CategoryBlogCreate">
+
+        <div class="input-wrap grid-x">
+          <div class="grid-y input-group">
+            <label for="name">نام دسته بندی</label>
+            <input name="name" type="text" value="">
+          </div>
+          <div class="grid-y input-group">
+            <label for="slug">اسلاگ</label>
+            <input name="slug" type="text" value="">
+          </div>
+        </div>
+
+        <div class="input-wrap grid-x">
+          <div class="grid-y input-group w100">
+            <label for="desc">خلاصه دسته بندی</label>
+            <input name="desc" type="text" value="">
+          </div>
+        </div>
+
+        <div class="input-wrap grid align-right">
+          <div class="grid-y input-group">
+            <label for="photo">تصویر پس زمینه</label>
+            <div class="grid align-center">
+              <div class="image-box grid align-center-middle">
+                <img src="">
+              </div>
+            </div>
+            <input class="input-en" name="photo" type="file">
+          </div>
+        </div>
+        <div class="input-wrap grid align-left">
+          <button type="submit" class="btn btn-primary grid align-center-middle">
+            <span>ثبت اطلاعات</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+<script>
+  $("input[name='photo']").change(function() {
+    readURL(this);
+  });
+</script>

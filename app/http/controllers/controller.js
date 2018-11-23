@@ -1,31 +1,62 @@
 const autoBind = require('auto-bind');
-const Recaptcha = require('express-recaptcha').Recaptcha;
 const {validationResult} = require('express-validator/check');
 const isMongoId = require('validator/lib/isMongoId');
+const axios = require('axios');
+const isEmpty = require('is-empty');
 // Models
 const Messages = require('app/models/messages');
 const Admins = require('app/models/admin');
 const contactPage = require('app/models/contactPage');
+const aboutUs = require('app/models/homePageSetting/aboutUs');
+const parallax = require('app/models/homePageSetting/parallax');
+const homeSlider = require('app/models/homePageSetting/homeSlider');
+const ability = require('app/models/homePageSetting/ability');
+const blogCategory = require('app/models/blog/categories');
+const blog = require('app/models/blog/blog');
+const aboutPage = require('app/models/aboutPage');
+const webUsers = require('app/models/webUsers');
+const seoPage = require('app/models/seoPage');
+const websites = require('app/models/websites');
+const applications = require('app/models/applications');
+const siteInfo = require('app/models/siteInfo');
+const websitePage = require('app/models/websitePage');
+const applicationPage = require('app/models/applicationPage');
 
 module.exports = class controller {
   constructor() {
     autoBind(this);
-    this.recaptchaConfig();
-    this.models = {Admins , Messages , contactPage};
+    this.models = {
+      Admins,
+      Messages,
+      contactPage,
+      aboutUs,
+      parallax,
+      homeSlider,
+      ability,
+      blogCategory,
+      blog,
+      aboutPage,
+      webUsers,
+      seoPage,
+      websites,
+      applications,
+      siteInfo,
+      websitePage,
+      applicationPage
+    };
   }
-  async recaptchaConfig() {
-    this.recaptcha = new Recaptcha(
-      config.service.recaptcha.site_key,
-      config.service.recaptcha.secret_key,
-      {...config.service.recaptcha.options}
-    );
-  };
   async recaptchaValidation(req , res , next) {
     try {
-      if (!req.body.recaptcha) {
-        return false;
+      let data = await axios({
+        method: 'post',
+        url: `https://www.google.com/recaptcha/api/siteverify?secret=6LdaoHsUAAAAAHVeocw621OviWryuD1lu_IdzpPs&response=${req.body.recaptcha}`,
+      })
+      if(!isEmpty(data.data['error-codes']) && data.data['error-codes'] == 'timeout-or-duplicate') {
+          return true;
+      } else if(data.data.success) {
+          return true;
       } else {
-        return true;
+          return false
       }
     } catch (error) {
       return this.serverError('Error in recaptchaValidation Method at controller.js', 500, error, res);
@@ -61,15 +92,11 @@ module.exports = class controller {
   addressImage(image) {
     return this.getUrlImage(`${image.destination}/${image.filename}`);
   }
-  // Method Helper
-  izitoast(method , messages) {
-    return {
-      method,
-      messages
-    }
+  async refreshDB(DB) {
+    let newDB = await DB.find({});
+    return newDB[0];
   }
-
-
+  // Method Helper
   izitoastMessage(msg,method,res) {
     try {
       res.json({
@@ -80,8 +107,6 @@ module.exports = class controller {
       return this.serverError('Error in izitoastMessage Method at controller.js', 500, error, res);
     }
   }
-
-
   async back(req , res) {
     return res.redirect(req.header('Referer') || '/');
   }
@@ -105,7 +130,77 @@ module.exports = class controller {
       status : 'serverError'
     })
   }
+  deleteObj(msg, method, objId , actionDel , res) {
+    res.json({
+      data: {
+        msg,
+        method,
+        objId,
+        actionDel
+      },
+      status: 'deleteObj'
+    })
+  }
+
+  async checkObj(obj) {
+    return Object.keys(obj).length !== 0;
+  }
+
+  isEmptyArray(array) {
+    if (!Array.isArray(array) || !array.length) {
+      // array does not exist, is not an array, or is empty
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  transDataWithMessage(msg , method , transfer , res) {
+    res.json({
+      data : {
+        msg,
+        method,
+        transfer : {
+          imageUrl : transfer
+        }
+      },
+      status: 'transData'
+    })
+  }
+
+  redirectWithMessage(msg, method, href, res) {
+    res.json({
+      data: {
+        msg,
+        method,
+        href
+      },
+      status: 'redirect'
+    })
+  }
+  
   getUrlImage(dir) {
     return dir.substring(8);
+  }
+
+  async getDate() {
+    let d = new Date();
+    return `${d.getFullYear()}.${d.getMonth()}.${d.getDate()}`;
+  }
+  async getTime() {
+    let d = new Date();
+    return `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+  }
+
+  escapeAndTrim(req, items) {
+    items.split(' ').forEach(item => {
+      req.sanitize(item).escape();
+      req.sanitize(item).trim();
+    });
+  }
+
+  async debug() {
+    let info = await this.models.siteInfo.find({});
+    return info[0].debug;
   }
 }

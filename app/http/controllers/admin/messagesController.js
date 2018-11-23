@@ -3,12 +3,19 @@ const controller = require('../controller');
 module.exports = new class messagesController extends controller {
   async index(req, res , next) {
     try {
-      let messages = await this.models.Messages.find({});
+      let user = req.user;
+      let page = req.query.page || 1;
+      let messages = await this.models.Messages.paginate({} , {
+        page , 
+        sort : {
+          createdAt: -1
+        },
+        limit : 10
+      });
       res.render('admin/messages', {
         title: 'پیام های دریافتی',
         activeRow: 'messages',
-        messages,
-        izitoast: this.izitoast('success', req.flash('iziMsg'))
+        messages,user
       });
     } catch (error) {
       this.error('Error in Index method at messageController.js' , 500 , next);
@@ -21,13 +28,14 @@ module.exports = new class messagesController extends controller {
       if(! result ) {
         return this.error('Error in validate mongoid in messageController.js', 404, next);
       }
+      let user = req.user;
       await this.models.Messages.findById(req.params.id , (err , message) => {
         if (err) return this.error(err.msg, 404, next);
         if (!message) return this.error('Error in find mongoid in messageController.js', 404, next);
         res.render('admin/message', {
           title: 'پیام های دریافتی',
           activeRow: 'messages',
-          message
+          message,user
         });
       });
       
@@ -38,20 +46,19 @@ module.exports = new class messagesController extends controller {
 
   async destroy(req , res , next) {
     try {
-      let result = await this.isMongoId(req.params.id, next);
+      let result = await this.isMongoId(req.body.message, next);
       if (!result) {
-        return this.error('Error in validate mongoid in messageController.js', 404, next);
+        return this.serverError('Error in validate mongoid in messageController.js', 403, error, res);
       }
-      await this.models.Messages.findById(req.params.id, (err, message) => {
-        if (err) return this.error(err.msg, 404, next);
-        if (!message) return this.error('Error in find mongoid in messageController.js', 404, next);
+      await this.models.Messages.findById(req.body.message, (error, message) => {
+        if (error) return this.serverError('Error in find message in destroy method at messageController.js', 500, error, res);
+        if (!message) return this.serverError('not found message in destroy method at messageController.js', 404, error, res);
         message.remove();
-        req.flash('iziMsg' , ['پیام شما با موفقیت حذف شد']);
-        return this.back(req,res);
+        return this.deleteObj(['پیام شما با موفقیت حذف گردید'], 'success', req.body.message , 'row' , res);
       });
 
     } catch (error) {
-      this.error('Error in destroy method at messageController.js', 500, next);
+      return this.serverError('Error in destroy method at messageController.js', 500, error, res);
     }
   }
     

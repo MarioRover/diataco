@@ -1,20 +1,14 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;   
+const mongoosePaginate = require('mongoose-paginate');
 
 const messagesSchema = new Schema({
   fullName    : {type : String},
   email       : {type : String},
   subject     : {type : String},
-  description : {type : String},
-  createdDate : {type : String},
-  createdTime : {type : String}
-});
-messagesSchema.pre('save' , function(next) {
-  let d = new Date();
-  this.createdDate = `${d.getFullYear()}.${d.getMonth()}.${d.getDate()}`;
-  this.createdTime = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
-  next();
-});
+  description : {type : String}
+} , { timestamps : true });
+messagesSchema.plugin(mongoosePaginate);
 
 
 module.exports = mongoose.model('Messages', messagesSchema);

@@ -5,5 +5,6 @@ const router = express.Router();
 const applicationController = require('app/http/controllers/home/applicationController');
 // Routes
 router.get('/', applicationController.showPage);
+router.get('/:application', applicationController.application);
 
 module.exports = router;

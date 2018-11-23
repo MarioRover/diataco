@@ -16,8 +16,9 @@ class errorHandler {
     const layouts = {
       layout: 'home/master'
     }
-    if(config.debug) {
-      res.render('errors/stack' , {
+    const debug = await config.debug;
+    if(debug) {
+      res.render('errors/error' , {
         ...layouts,
         message,
         stack,

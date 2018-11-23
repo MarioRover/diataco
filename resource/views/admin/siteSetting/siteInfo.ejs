@@ -1,0 +1,119 @@
+<%- contentFor('panel-header') %>
+<div class="grid-x-no align-middle">
+  <i class="fas fa-cog"></i>
+  <span>تنظیمات سایت</span>
+</div>
+<i class="arrow far fa-angle-left"></i>
+<a href="/admin/site-info" class="active grid-x-no align-middle">
+  <i class="fas fa-info-circle"></i>
+  <span>اطلاعات سایت</span>
+</a>
+<%- contentFor('body') %>
+<div class="blogs-categories grid align-center">
+  <div class="container grid-y">
+
+    <div class="controller grid-y">
+      <div class="mark grid-x-no align-middle">
+        <i class="fas fa-info-circle"></i>
+        <span class="name">اطلاعات سایت</span>
+      </div>
+      <div class="mark grid-x-no align-middle">
+        <i class="fab fa-creative-commons-by"></i>
+        <span class="name">آخرین بروزرسانی : </span>
+        <span><%= siteInfo.updateBy.name %> <%= siteInfo.updateBy.family %></span>
+        <span><%= date(siteInfo.createdAt).format('jYYYY/jM/jD') %></span>
+      </div>
+    </div>
+    <div class="post-info grid-y">
+
+      <div class="post-box w100">
+        <header class="navyBlue">
+          <h4>اطلاعات وب سایت</h4>
+        </header>
+        <content>
+          <form class="SiteInfo">
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="nameEn">نام وب سایت لاتین</label>
+                <input name="nameEn" type="text" value="<%= siteInfo.nameEn %>" class="input-en">
+              </div>
+              <div class="grid-y input-group">
+                <label for="nameFa">نام وب سایت فارسی</label>
+                <input name="nameFa" type="text" value="<%= siteInfo.nameFa %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="telegram">لینک Telegram</label>
+                <input name="telegram" type="text" value="<%= siteInfo.telegram %>" class="input-en">
+              </div>
+              <div class="grid-y input-group">
+                <label for="whatsapp">لینک Whatsapp</label>
+                <input name="whatsapp" type="text" class="input-en" value="<%= siteInfo.whatsapp %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="instagram">لینک Instagram</label>
+                <input name="instagram" type="text" value="<%= siteInfo.instagram %>" class="input-en">
+              </div>
+              <div class="grid-y input-group">
+                <label for="facebook">لینک Facebook</label>
+                <input name="facebook" type="text" class="input-en" value="<%= siteInfo.facebook %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="linkedin">لینک Linkedin</label>
+                <input name="linkedin" type="text" value="<%= siteInfo.linkedin %>" class="input-en">
+              </div>
+              <div class="grid-y input-group">
+                <label for="version">Version</label>
+                <input name="version" type="text" class="input-en" value="<%= siteInfo.version %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x mb-3">
+              <div class="grid-x-no align-middle input-group checkbox">
+                <input name="debug" type="checkbox" <%= siteInfo.debug ? 'checked' : '' %> >
+                <span for="debug">فعال سازی سیستم Debug</span>
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <div class="grid-y input-group">
+                <label for="logo">تصویر لوگوی وب سایت</label>
+                <div class="grid align-center">
+                  <div class="image-box box1 grid align-center-middle">
+                  <% if(typeof siteInfo.logo !== 'undefined') { %>
+                  <img src="<%= siteInfo.logo.destination %>" alt="">
+                  <% } else { %>
+                  <img src="">
+                  <% } %>
+                  </div>
+                </div>
+                <input class="input-en" name="logo" type="file">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <button type="submit" class="btn btn-primary grid align-center-middle">
+                <span>بروز رسانی اطلاعات</span>
+                <% if(typeof siteInfo.logo !== 'undefined') { %>
+                <input type="hidden" name="method" value="PUT">
+                <% } else { %>
+                <input type="hidden" name="method" value="POST">
+                <% } %>
+              </button>
+            </div>
+          </form>
+        </content>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+
+<script>
+  $(".SiteInfo input[name='logo']").change(function () {
+    readURL2(this, "1");
+  });
+</script>

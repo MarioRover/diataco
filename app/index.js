@@ -1,6 +1,7 @@
 // Module
 const express = require('express');
 const app = express();
+const helmet = require('helmet');
 const http = require('http');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -9,8 +10,18 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const passport = require('passport');
+const rateLimit = require("express-rate-limit");
+const apiLimiter = new rateLimit({
+  windowMs : 1000*60*15,
+  max : 50,
+  handler : function(req , res) {
+    res.json({
+      data : 'درخواست شما زیاد بوده ، لطفا 5 دقیقه دیگر دوباره تلاش کنید',
+      status : 'error'
+    })
+  }
+})
 const Helpers = require('./helper');
-const methodOverride = require('method-override');
 //Middleware
 const rememberLogin = require('app/http/middleware/rememberLogin');
 // Application
@@ -23,7 +34,7 @@ module.exports = class Aplication {
   }
   setupExpress() {
     const server = http.createServer(app);
-    server.listen(config.port , () => {console.log(`Listening on Port 3000`)});
+    server.listen(config.port , () => {console.log(`Listening on Port ${config.port}`)});
   }
   setMongoConnection() {
     mongoose.Promise = global.Promise;
@@ -34,9 +45,12 @@ module.exports = class Aplication {
   setConfig() {
     // Passport
     require('app/passport/passport-admin');
-    //
-    app.use(express.static(config.layout.public_dir));
+    require('app/passport/passport-jwt');
+    // security
+    app.enable('trust proxy');
+    app.use(helmet());
     // Layout & Views Config
+    app.use(express.static(config.layout.public_dir));
     app.set('view engine', config.layout.view_engine);
     app.set('views', config.layout.view_dir);
     app.use(config.layout.ejs.expressLayouts);
@@ -48,7 +62,6 @@ module.exports = class Aplication {
     app.use(bodyParser.urlencoded({
       extended: true
     }));
-    app.use(methodOverride('_method'));
     app.use(validator());
     app.use(session({ ...config.session}));
     app.use(cookieParser(process.env.COOKIE_SECRETKEY));
@@ -58,11 +71,11 @@ module.exports = class Aplication {
     app.use(rememberLogin.handle);
     app.use((req, res, next) => {
       app.locals = new Helpers(req, res).getObjects();
-      next();
+      next(); 
     });
   }
   setRouters() {
-    app.use(require('app/routes/api'));
+    app.use(apiLimiter , require('app/routes/api'));
     app.use(require('app/routes/web'));
   }
 }

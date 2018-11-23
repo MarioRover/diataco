@@ -1,0 +1,63 @@
+<%- contentFor('panel-header') %>
+<a class="active grid-x-no align-middle">
+  <i class="fas fa-user"></i>
+  <span>پروفایل</span>
+</a>
+<i class="arrow far fa-angle-left"></i>
+<a href="/admin/profile/edit" class="grid-x-no align-middle">
+  <i class="fas fa-user-edit"></i>
+  <span>تغییر پروفایل</span>
+</a>
+<%- contentFor('body') %>
+<div class="edit-profile w100 grid align-center">
+  <div class="container grid align-center">
+    <div class="input-box">
+      <div class="flag grid align-center-middle">
+        <span>اطلاعات کاربر</span>
+      </div>
+      <form class="ProfileEdit">
+        <div class="input-wrap grid-x">
+          <div class="grid-y input-group">
+            <label for="name">نام</label>
+            <input name="name" type="text" value="<%= user.name %>">
+          </div>
+          <div class="grid-y input-group">
+            <label for="family">نام خانوادگی</label>
+            <input name="family" type="text" value="<%= user.family %>">
+          </div>
+        </div>
+        <div class="input-wrap grid-x">
+          <div class="grid-y input-group">
+            <label for="newPass">رمز عبور جدید</label>
+            <input name="newPass" type="password" autocomplete="off">
+          </div>
+          <div class="grid-y input-group">
+            <label for="replayNewPass">تکرار رمز عبور جدید</label>
+            <input name="replayNewPass" type="password" autocomplete="off">
+          </div>
+        </div>
+        <div class="input-wrap grid align-right">
+          <div class="grid-y input-group">
+            <label for="photo">تصویر پروفایل</label>
+            <div class="grid align-center">
+              <div class="image-box profile grid align-center-middle">
+                <img src="<%= user.profileImg.destination %>">
+              </div>
+            </div>
+            <input class="input-en" name="photo" type="file">
+          </div>
+        </div>
+        <div class="input-wrap grid align-left">
+          <button type="submit" class="btn btn-primary grid align-center-middle">
+            <span>بروزرسانی اطلاعات</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  $("input[name='photo']").change(function() {
+    readURL(this);
+  });
+</script>

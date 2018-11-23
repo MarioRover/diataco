@@ -2,33 +2,48 @@
   <div class="footer-top wrap100 grid align-center-middle">
     <div class="container grid-y">
       <div class="logo wrap100 grid align-center">
-        <img src="/img/artakhe-logo.png" alt="diata">
+        <img src="<%= siteInfo.logo.destination %>" alt="<%= siteInfo.nameEn %>">
       </div>
       <a class="brand wrap100" href="/">
-        <h4>diata</h4>
+        <h4><%= siteInfo.nameEn %></h4>
       </a>
       <div class="social grid align-center wrap100">
         <div class="grid-x-no align-middle">
-          <a href="#" title="Telegram" target="_blank">
-          <div class="box grid align-center-middle">
-            <i class="fab fa-telegram-plane"></i>
-          </div>
-        </a>
-        <a href="#" title="WhatsApp" target="_blank">
-          <div class="box grid align-center-middle">
-            <i class="fab fa-whatsapp"></i>
-          </div>
-        </a>
-        <a href="#" title="Instagram" target="_blank">
-          <div class="box grid align-center-middle">
-            <i class="fab fa-instagram"></i>
-          </div>
-        </a>
-        <a href="#" title="Linkedin" target="_blank">
-          <div class="box grid align-center-middle">
-            <i class="fab fa-linkedin"></i>
-          </div>
-        </a>
+          <% if(siteInfo.telegram !== '') { %>
+            <a href="<%= siteInfo.telegram %>" title="Telegram" target="_blank">
+              <div class="box grid align-center-middle">
+                <i class="fab fa-telegram-plane"></i>
+              </div>
+            </a>
+          <% } %>  
+          <% if(siteInfo.whatsapp !== '') { %>
+            <a href="<%= siteInfo.whatsapp %>" title="WhatsApp" target="_blank">
+              <div class="box grid align-center-middle">
+                <i class="fab fa-whatsapp"></i>
+              </div>
+            </a>
+          <% } %>  
+          <% if(siteInfo.instagram !== '') { %>
+            <a href="<%= siteInfo.instagram %>" title="Instagram" target="_blank">
+              <div class="box grid align-center-middle">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </a>
+          <% } %> 
+          <% if(siteInfo.linkedin !== '') { %>
+            <a href="<%= siteInfo.linkedin %>" title="Linkedin" target="_blank">
+              <div class="box grid align-center-middle">
+                <i class="fab fa-linkedin"></i>
+              </div>
+            </a>
+          <% } %> 
+          <% if(siteInfo.facebook !== '') { %>
+            <a href="<%= siteInfo.facebook %>" title="Facebook" target="_blank">
+              <div class="box grid align-center-middle">
+                <i class="fab fa-facebook"></i>
+              </div>
+            </a>
+          <% } %>
         </div>
       </div>
       <div class="wrap100 info grid align-center">
@@ -41,6 +56,7 @@
   <div class="wrap footer-2 grid align-center">
     <div class="container grid-x align-justify">
       <p>طراحی و پیاده سازی با <i class="fa fa-heart"></i> توسط <a>دیاتا</a></p>
+      <p class="version EN">Version:<%= siteInfo.version %></p>
       <p>تمامی حقوق این وب سایت متعلق به شرکت است</p>
     </div>
   </div>

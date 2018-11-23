@@ -4,9 +4,16 @@ const passport = require('passport');
 class loginAdmins extends controller {
   async index(req , res , next) {
     try {
+      let siteInfo = await this.models.siteInfo.find({});
+      if (this.isEmptyArray(siteInfo)) {
+        siteInfo = 'undefined';
+      } else {
+        siteInfo = siteInfo[0]
+      }
       res.render('admin/auth/login' , {
         layout : 'home/master',
-        title : 'ورود'
+        title : 'ورود',
+        siteInfo
       })
     } catch (error) {
       this.error('Error in render login page (index method)' , 500 , next);
@@ -17,7 +24,7 @@ class loginAdmins extends controller {
     try {
       let recaptcha = await this.recaptchaValidation(req, res, next);
       if (!recaptcha) {
-        return this.izitoastMessage(['گزینه امنیتی مربوط به شناسایی ربات خاموش است'], 'warning', res);
+        return this.izitoastMessage(['شناسایی ربات : لطفا صفحه را بارگیری مجدد کنید'], 'warning', res);
       }
       let result = await this.validationData(req, next);
       if (! result) {
@@ -34,7 +41,7 @@ class loginAdmins extends controller {
     try {
       let recaptcha = await this.recaptchaValidation(req, res, next);
       if (!recaptcha) {
-        return this.izitoastMessage(['گزینه امنیتی مربوط به شناسایی ربات خاموش است'], 'warning', res);
+        return this.izitoastMessage(['شناسایی ربات : لطفا صفحه را بارگیری مجدد کنید'], 'warning', res);
       }
       let result = await this.validationData(req, next);
       if(!result) {

@@ -4,59 +4,47 @@
   <span class="name">پیام های دریافتی</span>
 </a>
 <%- contentFor('body') %>
-<link rel="stylesheet" href="/plugin/Table-Highlight/Table-Highlight.css">
-<div class="table w100 grid align-center">
-  <b class="table100 ver1">
-    <table data-vertable="ver1" class="w100 grid-y">
-      <thead>
-        <tr class="row100 head grid-x-no">
-          <th class="column100 col3 column1" data-column="column1"></th>
-          <th class="column100 col10 column2" data-column="column2">
-            <span>نام</span>
-          </th>
-          <th class="column100 col10 column3" data-column="column4">
-            <span>تاریخ</span>
-          </th>
-          <th class="column100 col10 column4" data-column="column4">
-            <span>زمان</span>
-          </th>
-           <th class="column100 col20 column5" data-column="column3">
-            <span>موضوع</span>
-          </th>
-          <th class="column100 col20 column6" data-column="column5"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if(messages.length > 0) { %>
-          <% messages.forEach(message => { %>
-            <tr class="row100 grid-x-no">
-              <td class="column100 col3 column1" data-column="column1">
-                <input type="checkbox">
-              </td>
-              <td class="column100 col10 column2" data-column="column2"><span><%= message.fullName %></span></td>
-              <td class="column100 col10 column3" data-column="column4"><span class="digit"><%= message.createdDate %></span></td>
-              <td class="column100 col10 column4" data-column="column4"><span class="digit"><%= message.createdTime %></span></td>
-              <td class="column100 col20 column5" data-column="column3"><span><%= message.subject %></span></td>
-              <td class="column100 col20 column6" data-column="column5">
-                <a href="/admin/messages/<%= message._id %>" title="مشاهده" class="btn view grid align-center-middle">
-                  <div class="grid-x-no align-center-middle">
-                    <i class="fal fa-eye"></i>
-                  </div>
-                </a>
-                <form action="/admin/messages/<%= message._id %>?_method=DELETE" method="post" class="btn delete grid align-center-middle">
-                  <button type="submit" title="حذف" class="grid-x-no align-center-middle">
-                    <i class="fal fa-trash-alt"></i>
-                  </button>
-                </form>
-              </td>
-            </tr>
-          <% }) %>    
-        <% } %>  
-      </tbody>
-    </table>
-  </div>
+<div class="table-wrap w100 grid align-center">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th><span>نام</span></th>
+        <th><span>تاریخ</span></th>
+        <th><span>زمان</span></th>
+        <th><span>موضوع</span></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if(messages.docs.length > 0) {
+        let i = 0;
+          messages.docs.forEach(message => { i+=1 %>
+          <tr>
+            <td class="col1"><%= i %></td>
+            <td class="col3"><%= message.fullName %></td>
+            <td class="col3"><%= date(message.createdAt).format('jYYYY/jM/jD') %></td>
+            <td class="col3"><%= date(message.createdAt).format(' HH:mm:ss') %></td>
+            <td class="col2"><%= message.subject.split(1,20) %></td>
+            <td class="col3">
+              <div class="grid-x align-center">
+                <a href="/admin/messages/<%= message._id %>" class="button" title="View"><i class="fal fa-eye"></i></a>
+                <button title="Delete" class="deleteMessage" value="<%= message._id %>"><i class="fal fa-trash-alt"></i></button>
+              </div>
+            </td>
+          </tr>
+          <% }) 
+        } %>
+    </tbody>
+  </table>
 </div>
-
+<%- include(viewPath('layout/pagination') , { pagination : messages }) -%>
+<script>
+  const rowDelete = (objId) => {
+    let row = $(`tr td button[value=${objId}]`).parents('tr');
+    $(row).remove();
+  }
+</script>
 
 
 

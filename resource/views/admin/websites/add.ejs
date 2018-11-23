@@ -1,0 +1,114 @@
+<%- contentFor('panel-header') %>
+<a href="/admin/websites" class="grid-x-no align-middle">
+  <i class="far fa-window-alt"></i>
+  <span class="name">وب سایت</span>
+</a>
+<i class="arrow far fa-angle-left"></i>
+<div class="active grid-x-no align-middle">
+  <span class="name">ایجاد وب سایت جدید</span>
+</div>
+<%- contentFor('body') %>
+<div class="websites-container grid align-center">
+  <div class="container grid-y">
+
+    <div class="controller grid-y">
+      <div class="mark grid-x-no align-middle">
+        <i class="far fa-window-alt"></i>
+        <span class="name">ایجاد وب سایت جدید</span>
+      </div>
+      <div class="input-box">
+        <form class="websites">
+          <div class="input-wrap grid-x">
+            <div class="grid-y input-group">
+              <label for="name">نام وب سایت</label>
+              <input name="name" type="text">
+            </div>
+            <div class="grid-y input-group">
+              <label for="link">لینک وب سایت</label>
+              <input name="link" type="text" class="input-en">
+            </div>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="grid-y input-group">
+              <label for="slug">اسلاگ وب سایت</label>
+              <input name="slug" type="text">
+            </div>
+          </div>
+          <div class="input-wrap grid align-left">
+            <div class="grid-y input-group">
+              <label for="logo">لوگو وب سایت</label>
+              <div class="grid align-center">
+                <div class="image-box box1 grid align-center-middle">
+                  <img src="">
+                </div>
+              </div>
+              <input class="input-en" name="logo" type="file">
+            </div>
+            
+            <div class="grid-y input-group">
+              <label for="previewImage">تصویر پیش نمایش وب سایت</label>
+              <div class="grid align-center">
+                <div class="image-box box2 grid align-center-middle">
+                  <img src="">
+                </div>
+              </div>
+              <input class="input-en" name="previewImage" type="file">
+            </div>
+
+          </div>
+          <div class="input-wrap grid align-right">
+            <div class="grid-y input-group w100">
+              <label for="description">توضیحات وب سایت</label>
+              <textarea name="description" id="editor1" cols="30" rows="10"></textarea>
+            </div>
+          </div>
+          <div class="input-wrap grid align-left gallery">
+
+            <div class="grid-y input-group">
+              <label for="images">انتخاب عکس</label>
+              <div class="grid align-center">
+                <div class="image-box box3 grid align-center-middle">
+                  <img src="">
+                </div>
+              </div>
+              <div class="grid-x-no align-center mb-1 insert-image">
+                <button class="btn btn-primary grid align-center-middle" style="display : none">
+                  <span>اضافه کردن</span>
+                </button>
+              </div>
+              <input class="input-en" name="images" type="file">
+            </div>
+
+            <div class="grid-y input-group gallery-box">
+              <label>عکس های انتخاب شده</label>
+              <div class="grid-x box-wrap"></div>
+            </div>
+
+          </div>
+          <div class="input-wrap grid align-left">
+            <button type="submit" class="btn btn-primary grid align-center-middle">
+              <span>ثبت اطلاعات</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+  CKEDITOR.replace('editor1' , {
+    filebrowserUploadUrl : '/admin/upload-image'
+  });
+  $(".websites input[name='logo']").change(function () {
+    readURL2(this, "1");
+  });
+  $(".websites input[name='previewImage']").change(function () {
+    readURL2(this, "2");
+  });
+  $(".websites input[name='images']").change(function () {
+    readURL2(this, "3");
+  });
+
+
+</script>

@@ -1,0 +1,59 @@
+<%- contentFor('panel-header') %>
+<div class="grid-x-no align-middle">
+  <i class="fal fa-newspaper"></i>
+  <span class="name">وبلاگ</span>
+</div>
+<i class="arrow far fa-angle-left"></i>
+<a href="/admin/blogs/categories" class="active grid-x-no align-middle">
+  <i class="fal fa-archive"></i>
+  <span class="name">دسته بندی</span>
+</a>
+<%- contentFor('body') %>
+<div class="blogs-categories grid align-center">
+  <div class="container grid-y">
+
+    <div class="controller grid-x">
+      <div class="mark grid-x-no align-middle">
+        <i class="fal fa-archive"></i>
+        <span class="name">دسته بندی وبلاگ</span>
+      </div>
+      <div class="btn-wrap grid-x-no align-middle">
+        <a href="/admin/blogs/categories/add" class="btn sign btn-primary grid-x-no align-middle">
+          <span>اضافه کردن</span>
+          <i class="far fa-plus-circle"></i>
+        </a>
+        <a class="btn sign btn-danger grid-x-no align-middle RemoveFolder">
+          <span>حذف کردن</span>
+          <i class="far fa-minus-circle"></i>
+        </a>
+      </div>
+    </div>
+    <div class="content grid-x">
+      <% if(categories !== 'undefined' && categories.docs.length !== 0) { %>
+       <% categories.docs.forEach(category => { %>
+        <div class="user-box folder">
+          <a href="/admin/blogs/categories/<%= category.slug %>" class="box-wrap grid-x align-middle">
+            <i class="fas fa-folder"></i>
+            <span><%= category.name %></span>
+          </a>
+          <input type="checkbox" name="select" class="box-check" value="<%= category._id %>">
+        </div>
+       <% }) %> 
+      <% } else { %>
+        <p>دسته بندی وجود ندارد</p>
+      <% } %>  
+    </div>
+    <%- include(viewPath('layout/pagination') , { pagination : categories }) -%>
+    
+  </div>
+</div>
+
+<script>
+  const boxDelete = (boxs) => {
+    boxs.forEach(box => {
+      $(`input[value="${box}"]`).parent().remove();
+    })
+  }
+</script>
+
+

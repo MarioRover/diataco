@@ -1,9 +1,13 @@
 <%- include(viewPath('home/layout/header')) %>
 <section class="seo-page w100 grid-y">
+  <% if(typeof aboutPage.headerImageUrl !== 'undefined' ) { %>
+  <div class="header-slider w100" style="background-image: url('<%= aboutPage.headerImageUrl.destination %>')">
+  <% } else { %>
   <div class="header-slider w100">
+  <% }%>  
     <div class="overlay grid align-center-middle">
       <div class="container">
-        <h2>ABOUT US</h2>
+        <h2><%= aboutPage.headerTitle %></h2>
       </div>
     </div>
   </div>
@@ -11,23 +15,10 @@
     <div class="container">
       <div class="wrap w100 grid-x">
         <div class="decription pl-5 grid-y">
-          <h4 class="mb-1">سئو چیست ؟</h4>
-          <P>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون
-            بلکه
-            روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با
-            هدف بهبود
-            ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را
-            می طلبد تا
-            با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی
-            ایجاد کرد. در
-            این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان
-            مورد نیاز شامل
-            حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-          </P>
+          <%- aboutPage.desc1Desc %>
         </div>
         <div class="image">
-          <img src="/img/seo-assesment-2-2.png" alt="SEO">
+          <img src="<%= aboutPage.desc1ImageUrl.destination %>" alt="SEO">
         </div>
       </div>
     </div>
@@ -39,23 +30,10 @@
     <div class="container">
       <div class="wrap w100 grid-x">
         <div class="image">
-          <img src="/img/seo-assesment-2-2.png" alt="SEO">
+          <img src="<%= aboutPage.desc2ImageUrl.destination %>" alt="SEO">
         </div>
         <div class="decription pr-5 grid-y">
-          <h4 class="mb-1">سئو چیست ؟</h4>
-          <P>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون
-            بلکه
-            روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با
-            هدف بهبود
-            ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را
-            می طلبد تا
-            با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی
-            ایجاد کرد. در
-            این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان
-            مورد نیاز شامل
-            حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-          </P>
+          <%- aboutPage.desc2Desc %>
         </div>
       </div>
     </div>
@@ -64,113 +42,116 @@
     <div class="container">
       <div class="grid-x align-around">
         <div class="item grid-x-no">
-          <div>
-            <img src="/img/seo-icons/hp2-service-icon-1.png" alt="">
+          <div class="icon grid align-justify align-top">
+            <img src="/img/Ability/LastTechno.png" alt="">
           </div>
           <div class="content">
-            <h4>تحلیل و تجزیه Big Data</h4>
-            <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-              و پیاده سازی کنیم.
+            <h4>
+              <%= aboutPage.item1 %>
+            </h4>
+            <p>
+              <%= aboutPage.Descitem1 %>
             </p>
           </div>
         </div>
         <div class="item grid-x-no">
-          <div>
-            <img src="/img/seo-icons/hp2-service-icon-2.png" alt="">
+          <div class="icon grid align-justify align-top">
+            <img src="/img/Ability/LastTechno.png" alt="">
           </div>
           <div class="content">
-            <h4>SEO برای موبایل</h4>
-            <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-              و پیاده سازی کنیم.
+            <h4>
+              <%= aboutPage.item2 %>
+            </h4>
+            <p>
+              <%= aboutPage.Descitem2 %>
             </p>
           </div>
         </div>
         <div class="item grid-x-no">
-          <div>
-            <img src="/img/seo-icons/hp2-service-icon-3.png" alt="">
+          <div class="icon grid align-justify align-top">
+            <img src="/img/Ability/LastTechno.png" alt="">
           </div>
           <div class="content">
-            <h4>نظارت بر شبکه های اجتماعی</h4>
-            <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-              و پیاده سازی کنیم.
+            <h4>
+              <%= aboutPage.item3 %>
+            </h4>
+            <p>
+              <%= aboutPage.Descitem3 %>
             </p>
           </div>
         </div>
         <div class="item grid-x-no">
-          <div>
-            <img src="/img/seo-icons/hp2-service-icon-4.png" alt="">
+          <div class="icon grid align-justify align-top">
+            <img src="/img/Ability/LastTechno.png" alt="">
           </div>
           <div class="content">
-            <h4>استفاده از بهترین کلمات کلیدی</h4>
-            <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-              و پیاده سازی کنیم.
+            <h4>
+              <%= aboutPage.item4 %>
+            </h4>
+            <p>
+              <%= aboutPage.Descitem4 %>
             </p>
           </div>
         </div>
         <div class="item grid-x-no">
-          <div>
-            <img src="/img/seo-icons/hp2-service-icon-5.png" alt="">
+          <div class="icon grid align-justify align-top">
+            <img src="/img/Ability/LastTechno.png" alt="">
           </div>
           <div class="content">
-            <h4>بهترین تبدیل</h4>
-            <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-              و پیاده سازی کنیم.
+            <h4>
+              <%= aboutPage.item5 %>
+            </h4>
+            <p>
+              <%= aboutPage.Descitem5 %>
             </p>
           </div>
         </div>
         <div class="item grid-x-no">
-          <div>
-            <img src="/img/seo-icons/hp2-service-icon-6.png" alt="">
+          <div class="icon grid align-justify align-top">
+            <img src="/img/Ability/LastTechno.png" alt="">
           </div>
           <div class="content">
-            <h4>بهینه سازی سرعت</h4>
-            <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-              و پیاده سازی کنیم.
+            <h4>
+              <%= aboutPage.item6 %>
+            </h4>
+            <p>
+              <%= aboutPage.Descitem6 %>
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <section class="wrapper business parallax grid-y align-center-middle">
+  
+  <section class="wrapper business parallax grid-y align-center-middle" style="background-image: url('<%= aboutPage.parallaxImageUrl.destination %>')">
     <div id="wrapper-box" class="container grid-x align-center-middle">
-        <div id="card">
-          <div id="front">
-            <div id="top-pic"></div>
-            <div id="avatar" class="grid align-center-middle">
-                <img src="/img/avatar.png">
-            </div>
-            <div id="info-box">
-                <div class="info">
-                    <h3 class="mb-1">مسعود خانی</h3>
-                    <small>طراح و برنامه نویس سایت و موبایل</small>
-                </div>
-            </div>
-            <div id="social-bar"><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-              <a href="#" target="_blank"><i class="fab fa-github"> </i></a>
-              <a href="#" target="_blank"><i class="fab fa-codepen"> </i></a>
-              <a class="more-info" href="javascript:void"><i class="fa fa-user"></i></a></div>
-            </div>
-        </div>
-        <div id="card">
-            <div id="front">
-                <div id="top-pic"></div>
+        <% if(webUsers !== 'undefined') { %>
+          <% webUsers.forEach(user => { %>
+            <div id="card">
+              <div id="front">
+                <div id="top-pic" style="background-image: url('<%= user.backgroundUrl.destination %>')"></div>
                 <div id="avatar" class="grid align-center-middle">
-                    <img src="/img/IMG_6456.JPG">
+                  <img src="<%= user.imageUrl.destination %>">
                 </div>
                 <div id="info-box">
-                    <div class="info">
-                        <h3 class="mb-1">حسین اکبری</h3>
-                        <small>طراح و برنامه نویس سایت و موبایل</small>
-                    </div>
+                  <div class="info">
+                    <h3 class="mb-1"><%= user.name %></h3>
+                    <small><%= user.job %></small>
+                  </div>
                 </div>
-                <div id="social-bar"><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-github"> </i></a>
-                    <a href="#" target="_blank"><i class="fab fa-codepen"> </i></a>
-                    <a class="more-info" href="javascript:void"><i class="fa fa-user"></i></a></div>
+                <div id="social-bar">
+                  <% if(user.telegram !== '') { %><a href="<%= user.telegram %>" target="_blank"><i class="fab fa-telegram"></i></a><% } %>
+                  <% if(user.whatsapp !== '') { %><a href="<%= user.whatsapp %>" target="_blank"><i class="fab fa-whatsapp"></i></i></a><% } %>
+                  <% if(user.website !== '') { %><a href="<%= user.website %>" target="_blank"><i class="fab fa-chrome"></i></a><% } %>
+                  <% if(user.email !== '') { %><a href="<%= user.email %>" target="_blank"><i class="far fa-envelope"></i></a><% } %>
+                  <% if(user.instagram !== '') { %><a href="<%= user.instagram %>" target="_blank"><i class="fab fa-instagram"></i></a><% } %>
+                  <% if(user.facebook !== '') { %><a href="<%= user.facebook %>" target="_blank"><i class="fab fa-facebook-square"></i></a><% } %>
+                </div>
+              </div>
             </div>
-        </div>
+          <% }) %>  
+        <% } %>  
+          
     </div>
-</section>
-</section>
-<%- include(viewPath('home/layout/footer')) %>
+  </section>
+  <%- include(viewPath('home/layout/footer')) %>

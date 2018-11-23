@@ -1,0 +1,60 @@
+<%- include(viewPath('home/layout/header')) %>
+<section class="seo-page w100 grid-y">
+  <% if(typeof websitePage.background !== 'undefined') { %>
+  <div class="header-slider w100" style="background-image: url('<%= websitePage.background.destination %>')">
+  <% } else { %>  
+  <div class="header-slider w100">  
+  <% } %>
+    <div class="overlay grid align-center-middle">
+      <div class="container">
+        <h2><%= websitePage.title %></h2>
+      </div>
+    </div>
+  </div>
+  <div class="seo-desc wrapper grid align-center">
+  <div class="container">
+    <div class="wrap w100">
+      <div class="decription">
+        <%- websitePage.desc %>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="wrapper products-tab grid align-center-middle ">
+    <div class="container" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+        <div class="header-section grid align-center-middle">
+            <h3>نمونه کار های شرکت ما</h3>
+        </div>
+            <br>
+            <div class="product-wrap grid-x align-around">
+                <div class="owl-carousel owl-theme">
+                    <% websites.forEach(website => { %>
+                    <a href="/websites/<%= website.slug %>" class="card-web">
+                        <img src="<%= website.previewImage.destination %>">
+                        <div class="body">
+                            <h3 class="EN">
+                                <%= website.name %>
+                            </h3>
+                        </div>
+                    </a>
+                    <% }) %>
+                </div>
+                <div class="carousel grid-x">
+                    <% websites.forEach(website => { %>
+                    <a href="/websites/<%= website.slug %>" class="card-web">
+                        <img src="<%= website.previewImage.destination %>">
+                        <div class="body">
+                            <h3 class="EN">
+                                <%= website.name %>
+                            </h3>
+                        </div>
+                    </a>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+<script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
+
+<%- include(viewPath('home/layout/footer')) %>

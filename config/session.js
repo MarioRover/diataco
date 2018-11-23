@@ -3,6 +3,7 @@ const mongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 
 module.exports = {
+  name : 'session_diata',
   secret: process.env.SESSION_SECRETKEY,
   resave: true,
   cookie: {

@@ -6,29 +6,43 @@
 <i class="arrow far fa-angle-left"></i>
 <span><%= message.subject %></span>
 <%- contentFor('body') %>
-<link rel="stylesheet" href="/plugin/Table-Highlight/Table-Highlight.css">
-<div class="message-page grid align-center">
-  <div class="container grid align-center">
-     <table class="grid-x-no">
-      <thead class="grid-y">
-        <th><span>نام فرستنده</span></th>
-        <th><span>ایمیل</span></th>
-        <th><span>زمان</span></th>
-        <th><span>ساعت</span></th>
-        <th><span>موضوع</span></th>
-        <th><span>متن پیام</span></th>
-      </thead>
-      <tbody class="grid-y">
-        <td><span><%= message.fullName %></span></td>
-        <td><span><%= message.email %></span></td>
-        <td><span class="digit"><%= message.createdDate %></span></td>
-        <td><span class="digit"><%= message.createdTime %></span></td>
-        <td><span><%= message.subject %></span></td>
-        <td><span><%= message.description %></span></td>
-      </tbody>
-    </table>
-  </div>
- 
+<div class="table-wrap w100 grid align-center">
+  <table>
+    <tr>
+      <th class="col3">نام</th>
+      <td><%= message.fullName %></td>
+    </tr>
+    <tr>
+      <th class="col3">ایمیل</th>
+      <td>
+        <%= message.email %>
+      </td>
+    </tr>
+    <tr>
+      <th class="col3">موضوع</th>
+      <td>
+        <%= message.subject %>
+      </td>
+    </tr>
+    <tr>
+      <th class="col3">متن پیام</th>
+      <td>
+        <%= message.description %>
+      </td>
+    </tr>
+    <tr>
+      <th class="col3">تاریخ ارسال</th>
+      <td>
+        <%= date(message.createdAt).format('jYYYY/jM/jD') %>
+      </td>
+    </tr>
+    <tr>
+      <th class="col3">زمان ارسال</th>
+      <td>
+        <%= date(message.createdAt).format(' HH:mm:ss') %>
+      </td>
+    </tr>
+  </table>
 </div>
 
 

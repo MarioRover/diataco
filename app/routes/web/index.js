@@ -6,16 +6,19 @@ const adminRouter = require('./admin');
 const homeRouter = require('./home');
 const applicationRouter = require('./application');
 const websiteRouter = require('./website');
+const loginRouter = require('./login');
 
 const errorHandler = require('app/http/middleware/errorHandler');
+// Login Router
+router.use(`/${config.service.adminRoute}`, loginRouter);
 // Admin Router
-router.use('/admin', adminRouter);
+router.use(`/admin`, adminRouter);
 // Home Router
 router.use('/', homeRouter);
 // Application
-router.use('/application', applicationRouter);
+router.use('/applications', applicationRouter);
 // Website
-router.use('/website', websiteRouter);
+router.use('/websites', websiteRouter);
 // Error Pages
 router.get('/error' , (req , res , next) => {
   res.render('errors/stack' , {

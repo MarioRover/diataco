@@ -50,51 +50,46 @@
   url('../fonts/iransans/ttf/IRANSansWeb.ttf') format('ttf');
   font-weight: normal;
 }
-/* ///////////Vazir/////////// */
-@font-face {
-  font-family: Vazir;
-  src: url('../fonts/vazir/Vazir.eot');
-  src: url('../fonts/vazir/Vazir.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/vazir/Vazir.woff') format('woff'),
-  url('../fonts/vazir/Vazir.ttf') format('truetype');
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: Vazir;
-  src: url('../fonts/vazir/Vazir-Bold.eot');
-  src: url('../fonts/vazir/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/vazir/Vazir-Bold.woff') format('woff'),
-  url('../fonts/vazir/Vazir-Bold.ttf') format('truetype');
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: Vazir;
-  src: url('../fonts/vazir/Vazir-Light.eot');
-  src: url('../fonts/vazir/Vazir-Light.eot?#iefix') format('embedded-opentype'), 
-  url('../fonts/vazir/Vazir-Light.woff') format('woff'), 
-  url('../fonts/vazir/Vazir-Light.ttf') format('truetype');
-  font-weight: 300;
-}
-@font-face {
-  font-family: Nunito;
-  src : url('../fonts/nunito/XRXW3I6Li01BKofAjsOUYevI.woff2') format('woff2');
-  font-weight: 700;
-}
 /* ///////////// Iran Yekan /////////////////// */
 @font-face {
-  font-family: IRANYekan;
+  font-family: 'IRANYekan';
   src: url('../fonts/iranYekan/IRANYekan-Light.woff2') format('woff2');
   font-weight: 300;
 }
 @font-face {
-  font-family: IRANYekan;
+  font-family: 'IRANYekan';
   src: url('../fonts/iranYekan/IRANYekan-Medium.woff2') format('woff2');
   font-weight: 400;
 }
 @font-face {
-  font-family: IRANYekan;
+  font-family: 'IRANYekan';
   src: url('../fonts/iranYekan/IRANYekan-Bold.woff2') format('woff2');
   font-weight: 700;
+}
+/* Open Sans */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans/open-sans.regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans/open-sans.semibold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+  unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans/open-sans.bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Orbitron';
+  src: url('../fonts/orbitron/orbitron.woff2') format('woff2');
+  font-weight: 400;
 }

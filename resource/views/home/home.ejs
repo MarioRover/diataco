@@ -1,21 +1,19 @@
 <link rel="stylesheet" href="/plugin/home/homeSlider/css/homeSlider.css">
 <link rel="stylesheet" href="/css/aos.css">
-<link rel="stylesheet" href="/plugin/home/owlcarousel/owl.carousel.min.css">
-<link rel="stylesheet" href="/plugin/home/owlcarousel/owl.theme.default.min.css">
 <%- include(viewPath('home/layout/header'))  %>
-<section class="homeSlider grid align-center-middle">
+<section class="homeSlider grid align-center-middle" style="background-image : url('<%= homeSlider.homeSliderImageUrl.destination %>')">
     <div class="grid align-center-middle">
     <div class="grid-y align-center-middle item-1">
-        <i class="fa fa-desktop-alt"></i>
-        <h3>اگر میخواهید یک وب سایت معمولی داشته باشید، ما اصلاً گزینه خوبی نیستیم!</h3><br>
+        <i class="<%= homeSlider.homeSlidericonItem1 %>"></i>
+        <h3><%= homeSlider.homeSlideritem1 %></h3><br>
     </div>
     <div class="grid-y align-center-middle item-2">
-        <i class="fal fa-mobile"></i>
-        <h3>اگر میخواهید یک وب سایت معمولی داشته باشید، ما اصلاً گزینه خوبی نیستیم!</h3><br>
+        <i class="<%= homeSlider.homeSlidericonItem2 %>"></i>
+        <h3><%= homeSlider.homeSlideritem2 %></h3><br>
     </div>
     <div class="grid-y align-center-middle item-3">
-        <i class="fab fa-google"></i>
-        <h3>اگر میخواهید یک وب سایت معمولی داشته باشید، ما اصلاً گزینه خوبی نیستیم!</h3><br>
+        <i class="<%= homeSlider.homeSlidericonItem3 %>"></i>
+        <h3><%= homeSlider.homeSlideritem3 %></h3><br>
     </div>
   </div>
 </section>
@@ -23,11 +21,9 @@
     <div class="container" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
         <div class="wrap grid align-center align-middle grid-y">
             <img class="logo" src="/img/artakhe-logo.png">
-            <h3>اگر میخواهید یک وب سایت معمولی داشته باشید، ما اصلاً گزینه خوبی نیستیم!</h3>
-            <p class="align-center">وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین
-                سلیقه آنان طراحی و پیاده سازی کنیم. ما تمامی ساعات حضور در دفتر کوچکمان را با عشق و علاقه سپری میکنیم تا
-                مشتریان ما در استفاده از وب سایت خود تجربه بهتری داشته باشند.</p>
-            <img src="/img/home-1.png">
+            <h3><%= aboutUs.aboutUsheader %></h3>
+            <p class="align-center"><%= aboutUs.aboutUsheaderDesc %></p>
+            <img src="<%= aboutUs.aboutUsImageUrl.destination %>">
         </div>
     </div>
 </section>
@@ -35,68 +31,66 @@
     <div class="container" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
         <div class="ability-wrap grid-x align-around">
         <div class="item grid-x-no">
-            <i class="fal fa-sliders-h"></i>
+            <div class="icon grid align-justify align-top">
+                <img src="/img/Ability/LastTechno.png" alt="">
+            </div>
             <div class="content">
-                <h4>بهترین ایده</h4>
-                <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-                    و پیاده سازی کنیم.
-                </p>
+                <h4><%= ability.abilityitem1 %></h4>
+                <p><%= ability.abilityDescitem1 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="fal fa-mobile"></i>
+            <div class="icon grid align-justify align-top">
+                <img src="/img/Ability/Responsivi.png" alt="">
+            </div>
             <div class="content">
-                <h4>بهترین ایده</h4>
-                <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-                    و پیاده سازی کنیم.
-                </p>
+                <h4><%= ability.abilityitem2 %></h4>
+                <p><%= ability.abilityDescitem2 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="fab fa-react"></i>
+            <div class="icon grid align-justify align-top">
+                <img src="/img/Ability/idea.png" alt="">
+            </div>
             <div class="content">
-                <h4>بهترین ایده</h4>
-                <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-                    و پیاده سازی کنیم.
-                </p>
+                <h4><%= ability.abilityitem3 %></h4>
+                <p><%= ability.abilityDescitem3 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="fab fa-node-js"></i>
+            <div class="icon grid align-justify align-top">
+                <img src="/img/Ability/Seo.png" alt="">
+            </div>
             <div class="content">
-                <h4>بهترین ایده</h4>
-                <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-                    و پیاده سازی کنیم.
-                </p>
+                <h4><%= ability.abilityitem4 %></h4>
+                <p><%= ability.abilityDescitem4 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="fal fa-rocket"></i>
+            <div class="icon grid align-justify align-top">
+                <img src="/img/Ability/Design.png" alt="">
+            </div>
             <div class="content">
-                <h4>بهترین ایده</h4>
-                <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-                    و پیاده سازی کنیم.
-                </p>
+                <h4><%= ability.abilityitem5 %></h4>
+                <p><%= ability.abilityDescitem5 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
-            <i class="fal fa-recycle"></i>
-            <div class="content">
-                <h4>بهترین ایده</h4>
-                <p>وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی
-                    و پیاده سازی کنیم.
-                </p>
+            <div class="icon grid align-justify align-top">
+                <img src="/img/Ability/Fast.png" alt="">
             </div>
-        </div>
+            <div class="content">
+                <h4><%= ability.abilityitem6 %></h4>
+                <p><%= ability.abilityDescitem6 %></p>
+            </div>
         </div>
     </div>
     
 </section>
-<section class="parallax para1">
+<section class="parallax para1 style="background-image:url('<%=parallax.parallaxImageUrl.destination %>')">
     <div class="overlay grid-y align-center-middle" >
-        <h4 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"> به وب سایت ما خوش آمدید</h4>
-        <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">وظیفه ما این است که وب سایت های مشتریان خود را متناسب با امکانات مورد نیاز و همچنین سلیقه آنان طراحی و پیاده
-            سازی کنیم</p>
+        <h4 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"><%= parallax.headerParallax %></h4>
+        <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"><%= parallax.descParallax %></p>
     </div>
 </section>
 <section class="wrapper products-tab grid align-center-middle ">
@@ -117,67 +111,52 @@
         <div class="tab-content container">
             <div class="tab-content-wrap active">
                 <div class="product-wrap grid-x align-around">
-                    <!-- <div class="owl-carousel owl-theme"> -->
-                    <div class="grid-x">
-                        <div class="item card">
-                            <img src="/img/diata-website.jpg">
-                            <div class="info">
-                            <h3>نام پروژه</h3>
-                            <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                            <button>لینک وبسایت</button>
-                            <button>جزییات</button>
-                            </div>
-                        </div>
-                        <div class="item card">
-                            <img src="/img/diata-website.jpg">
-                            <div class="info">
-                            <h3>نام پروژه</h3>
-                            <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                            <button>لینک وبسایت</button>
-                            <button>جزییات</button>
-                            </div>
-                        </div>
-                        <div class="item card">
-                            <img src="/img/diata-website.jpg">
-                            <div class="info">
-                            <h3>نام پروژه</h3>
-                            <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                            <button>لینک وبسایت</button>
-                            <button>جزییات</button>
-                            </div>
-                        </div>
-                        <div class="item card">
-                            <img src="/img/diata-website.jpg">
-                            <div class="info">
-                            <h3>نام پروژه</h3>
-                            <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                            <button>لینک وبسایت</button>
-                            <button>جزییات</button>
-                            </div>
-                        </div>
-                        <div class="item card">
-                            <img src="/img/diata-website.jpg">
-                            <div class="info">
-                            <h3>نام پروژه</h3>
-                            <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                            <button>لینک وبسایت</button>
-                            <button>جزییات</button>
-                            </div>
-                        </div>
-                        <div class="item card">
-                            <img src="/img/diata-website.jpg">
-                            <div class="info">
-                            <h3>نام پروژه</h3>
-                            <p>خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه خلاصه پروژه</p>
-                            <button>لینک وبسایت</button>
-                            <button>جزییات</button>
-                            </div>
-                        </div>
+                    <div class="owl-carousel owl-theme">
+                        <% websites.forEach(website => { %>
+                            <a href="/websites/<%= website.slug %>" class="card-web">
+                                <img src="<%= website.previewImage.destination %>">
+                                <div class="body">
+                                    <h3 class="EN"><%= website.name %></h3>
+                                </div>
+                            </a>
+                        <% }) %>
+                    </div>
+                    <div class="carousel grid-x">
+                        <% websites.forEach(website => { %>
+                            <a href="/websites/<%= website.slug %>" class="card-web">
+                                <img src="<%= website.previewImage.destination %>">
+                                <div class="body">
+                                    <h3 class="EN"><%= website.name %></h3>
+                                </div>
+                            </a>
+                        <% }) %>
                     </div>
                 </div>
             </div>
-            <h4 class="tab-content-wrap">اپلیکشن ها</h4>
-            <h4 class="tab-content-wrap">بهینه سازی</h4>
+            <div class="tab-content-wrap">
+                <div class="product-wrap grid-x align-around">
+                    <div class="owl-carousel owl-theme">
+                        <% applications.forEach(app => { %>
+                            <a href="/applications/<%= app.slug %>" class="card-web">
+                                <img src="<%= app.previewImage.destination %>">
+                                <div class="body">
+                                    <h3 class="EN"><%= app.name %></h3>
+                                </div>
+                            </a>
+                        <% }) %>
+                    </div>
+                    <div class="carousel grid-x">
+                        <% applications.forEach(app => { %>
+                            <a href="/applications/<%= app.slug %>" class="card-web">
+                                <img src="<%= app.previewImage.destination %>">
+                                <div class="body">
+                                    <h3 class="EN"><%= app.name %></h3>
+                                </div>
+                            </a>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -190,104 +169,60 @@
         <div class="header-section mb-2">
             <h3>خبرنامه شرکت ما</h3>
         </div>
-        <!-- <div class="owl-carousel owl-theme"> -->
-        <div class="grid-x">    
-            <div class="item blog-card spring-fever">
-                <div class="title-content">
-                    <h3>تیتر خبر</h3>
-                    <hr/>
-                    <div class="intro">خلاصه اولیه خبر</div>
+        <div class="grid align-around mb-2">
+            <% if(blogs !== 'undefined') { %>
+                <div class="owl-carousel owl-theme">
+                <% blogs.forEach(blog => { %>
+                    <div class="blog-card grid-y">
+                    <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.imageUrl.destination %>')"></a>
+                    <div class="body grid-y">
+                        <div class="date grid align-left mb-1">
+                        <span>
+                            <%= date(blog.createdAt).format('jD jMMMM jYYYY') %></span>
+                        </div>
+                        <h4 class="mb-1">
+                        <%= blog.title %>
+                        </h4>
+                        <p class="mb-2">
+                        <%= blog.summery.slice(1,130) %> ...</p>
+                        <div class="link grid align-left">
+                        <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>">بیشتر بخوانید</a>
+                        </div>
+                    </div>
+                    </div>
+                <% }) %>
                 </div>
-                <div class="card-info">
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
+                <div class="carousel grid-x">
+                <% blogs.forEach(blog => { %>
+                    <div class="blog-card grid-y">
+                    <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.imageUrl.destination %>')"></a>
+                    <div class="body grid-y">
+                        <div class="date grid align-left mb-1">
+                        <span>
+                            <%= date(blog.createdAt).format('jD jMMMM jYYYY') %></span>
+                        </div>
+                        <h4 class="mb-1">
+                        <%= blog.title %>
+                        </h4>
+                        <p class="mb-2">
+                        <%= blog.summery.slice(1,130) %> ...</p>
+                        <div class="link grid align-left">
+                        <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>">بیشتر بخوانید</a>
+                        </div>
+                    </div>
+                    </div>
+                <% }) %>
                 </div>
-                <div class="utility-info">
-                    <ul class="utility-list">
-                        <li><i class="fal fa-calendar"></i>03.12.2015</li>
-                        <li><i class="fal fa-comment"></i>12</li>
-                    </ul>
-                </div>
-                <div class="gradient-overlay"></div>
-                <div class="color-overlay"></div>
-            </div>
-            <div class="item blog-card spring-fever">
-                <div class="title-content">
-                    <h3>تیتر خبر</h3>
-                    <hr/>
-                    <div class="intro">خلاصه اولیه خبر</div>
-                </div>
-                <div class="card-info">
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                </div>
-                <div class="utility-info">
-                    <ul class="utility-list">
-                        <li><i class="fal fa-calendar"></i>03.12.2015</li>
-                        <li><i class="fal fa-comment"></i>12</li>
-                    </ul>
-                </div>
-                <div class="gradient-overlay"></div>
-                <div class="color-overlay"></div>
-            </div>
-            <div class="item blog-card spring-fever">
-                <div class="title-content">
-                    <h3>تیتر خبر</h3>
-                    <hr/>
-                    <div class="intro">خلاصه اولیه خبر</div>
-                </div>
-                <div class="card-info">
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                </div>
-                <div class="utility-info">
-                    <ul class="utility-list">
-                        <li><i class="fal fa-calendar"></i>03.12.2015</li>
-                        <li><i class="fal fa-comment"></i>12</li>
-                    </ul>
-                </div>
-                <div class="gradient-overlay"></div>
-                <div class="color-overlay"></div>
-            </div>
-            <div class="item blog-card spring-fever">
-                <div class="title-content">
-                    <h3>تیتر خبر</h3>
-                    <hr/>
-                    <div class="intro">خلاصه اولیه خبر</div>
-                </div>
-                <div class="card-info">
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                    توضیحات کوتاه خبر
-                </div>
-                <div class="utility-info">
-                    <ul class="utility-list">
-                        <li><i class="fal fa-calendar"></i>03.12.2015</li>
-                        <li><i class="fal fa-comment"></i>12</li>
-                    </ul>
-                </div>
-                <div class="gradient-overlay"></div>
-                <div class="color-overlay"></div>
-            </div>
-        </div>
-        <div class="grid align-center-middle view-all-news">
-            <a>مشاهده تمامی اخبار</a>
+            <% } %>
+        </div>    
+        <div class="grid align-center">
+            <a class="btn btn-primary grid align-center-middle" href="/blog">
+                <span>مشاهده تمامی اخبار</span>
+            </a>
         </div>
     </div>
 </section>
 <%- include(viewPath('home/layout/footer')) %>
-<script src="/plugin/home/owlcarousel/owl.carousel.min.js"></script>
 <script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
 <script src="./plugin/particles/particles.min.js"></script>
 <script src="./plugin/particles/particlesRun.js"></script>

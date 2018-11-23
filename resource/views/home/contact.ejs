@@ -4,16 +4,16 @@
     <div class="overlay"></div>
   </header>
   <div class="contact grid align-center">
-    <div class="contact-wrap grid-x">
-      <div class="call-us">
+    <div class="contact-wrap grid-y-no">
+      <div class="call-us w100">
         <div class="wrap100 header grid align-middle">
           <h6>نظرات خود را با ما در میان بگذارید</h6>
         </div>
         <content class="wrap100 grid-y">
           <form class="contactPage">
             <div class="row grid-x align-middle align-justify">
-              <input type="text" name="fullName" placeholder="نام">
-              <input type="text" name="email" placeholder="ایمیل">
+              <input class="w100" type="text" name="fullName" placeholder="نام">
+              <input class="w100" type="text" name="email" placeholder="ایمیل">
             </div>
             <div class="row grid-x align-middle align-justify">
               <input type="text" name="subject" placeholder="موضوع" maxlength="30">
@@ -21,11 +21,9 @@
             <div class="row grid-x align-middle align-justify">
               <textarea name="description" cols="30" rows="10" placeholder="توضیحات"></textarea>
             </div>
-            <div class="row grid align-left">
-              <div id="html_element"></div>
-            </div>
             <div class="row grid-x align-middle align-justify">
               <button class="btn btn-primary grid align-center-middle" type="submit">
+                <input type="hidden" name="recaptcha" value="">
                 <span>ارسال</span>
               </button>
             </div>
@@ -33,27 +31,27 @@
         </content>
       </div>
       <% if(contactPage !== 'undefined') { %>
-      <div class="info-us grid-y">
+      <div class="info-us grid-y w100">
         <div class="wrap100 header grid align-middle">
           <h6>راه های تماس با ما</h6>
         </div>
         <content class="wrap100 grid-y">
-          <div class="row grid-x-no">
-            <i class="<%= contactPage.iconAddress %>"></i>
+          <div class="row grid-x-no align-middle">
+            <img src="/img/if_cursor_1287534.png">
             <span><%= contactPage.address %></span>
           </div>
-          <div class="row grid-x-no">
-            <i class="<%= contactPage.iconEmail %>"></i>
+          <div class="row grid-x-no align-middle EN">
+            <img src="/img/if_mail_1287521.png">
             <span><%= contactPage.email %></span>
           </div>
-          <div class="row grid-x-no">
-            <i class="<%= contactPage.iconTelephone %>"></i>
+          <div class="row grid-x-no align-middle EN">
+            <img src="/img/if_phone_1287515.png">
             <span><%= contactPage.telephone %></span>
           </div>
         </content>
       </div>
       <% } else { %>
-      <div class="info-us grid-y">
+      <div class="info-us grid-y w100">
         <div class="wrap100 header grid align-middle">
           <h6>راه های تماس با ما</h6>
         </div>
@@ -76,7 +74,15 @@
     </div>
   </div>
 </section>
-
+<script src="https://www.google.com/recaptcha/api.js?render=6LdaoHsUAAAAANGo66tjlZzohd6tjNxKGS5Wsz6i"></script>
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LdaoHsUAAAAANGo66tjlZzohd6tjNxKGS5Wsz6i', {action: 'login'})
+            .then(function(token) {
+                $('.contactPage input[name = "recaptcha"]').val(token);
+            });
+    });
+</script>
 <%- include(viewPath('home/layout/footer')) %>
 
 

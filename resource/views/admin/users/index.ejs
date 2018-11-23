@@ -1,0 +1,68 @@
+<%- contentFor('panel-header') %>
+<div class="grid-x-no align-middle">
+  <i class="far fa-cog"></i>
+  <span class="name">تنظیمات سایت</span>
+</div>
+<i class="arrow far fa-angle-left"></i>
+<a href="/admin/users" class="active grid-x-no align-middle">
+  <i class="far fa-users"></i>
+  <span class="name">اعضای سایت</span>
+</a>
+<%- contentFor('body') %>
+<div class="blogs-categories grid align-center">
+  <div class="container grid-y">
+
+    <div class="controller grid-x">
+      <div class="mark grid-x-no align-middle">
+        <i class="far fa-users"></i>
+        <span class="name">کاربران</span>
+      </div>
+      <div class="btn-wrap grid-x-no align-middle">
+        <a href="/admin/users/add" class="btn sign btn-primary grid-x-no align-middle">
+          <span>اضافه کردن</span>
+          <i class="far fa-plus-circle"></i>
+        </a>
+        <div class="btn sign btn-danger grid-x-no align-middle RemoveUser">
+          <span>حذف کردن</span>
+          <i class="far fa-minus-circle"></i>
+        </div>
+      </div>
+    </div>
+    <div class="content grid-x">
+      <% if(webUsers !== 'undefined') { %>
+        <% webUsers.forEach(user => { %>
+          <div class="user-box">
+            <a href="/admin/users/<%= user._id %>" class="box-wrap grid-x align-middle align-left">
+              <div class="user-profile">
+                <img src="<%= user.imageUrl.destination %>">
+              </div>
+              <div class="user-info grid-y">
+                <h4>
+                  <%= user.name %>
+                </h4>
+                <p>
+                  <%= user.job %>
+                </p>
+              </div>
+            </a>
+            <input type="checkbox" name="select" class="box-check" value="<%= user._id %>">
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>کاربری وجود ندارد</p>
+      <% } %>  
+            
+    </div>
+    
+  </div>
+</div>
+<script>
+  const boxDelete = (boxs) => {
+    boxs.forEach(box => {
+      $(`input[value="${box}"]`).parent().remove();
+    })
+  }
+</script>
+
+
+

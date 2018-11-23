@@ -1,0 +1,133 @@
+<%- contentFor('panel-header') %>
+<div class="grid-x-no align-middle">
+  <i class="far fa-cog"></i>
+  <span class="name">تنظیمات سایت</span>
+</div>
+<i class="arrow far fa-angle-left"></i>
+<a href="/admin/users" class="grid-x-no align-middle">
+  <i class="far fa-users"></i>
+  <span class="name">اعضای سایت</span>
+</a>
+<i class="arrow far fa-angle-left"></i>
+<div class="active grid-x-no align-middle">
+  <span class="name"><%= webUser.name %></span>
+</div>
+<%- contentFor('body') %>
+<div class="blogs-categories grid align-center">
+  <div class="container grid-y">
+
+    <div class="controller grid-x">
+      <div class="mark grid-x-no align-middle">
+        <i class="far fa-user-plus"></i>
+        <span class="name">کاربر جدید</span>
+      </div>
+    </div>
+    <div class="post-info">
+      <div class="post-box w100">
+        <header class="navyBlue">
+          <h4>اطلاعات کاربر</h4>
+        </header>
+        <content>
+          <form class="UpdateUser">
+
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="name">نام</label>
+                <input name="name" type="text" value="<%= webUser.name %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="job">سمت کاری</label>
+                <input name="job" type="text" value="<%= webUser.job %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="telegram">لینک Telegram</label>
+                <input class="input-en" name="telegram" type="text" value="<%= webUser.telegram %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="whatsapp">لینک Whatsapp</label>
+                <input class="input-en" name="whatsapp" type="text" value="<%= webUser.whatsapp %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="website">لینک Website</label>
+                <input class="input-en" name="website" type="text" value="<%= webUser.website %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="email">لینک Email</label>
+                <input class="input-en" name="email" type="text" value="<%= webUser.email %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="instagram">لینک Instagram</label>
+                <input class="input-en" name="instagram" type="text" value="<%= webUser.instagram %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="facebook">لینک Facebook</label>
+                <input class="input-en" name="facebook" type="text" value="<%= webUser.facebook %>">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <div class="grid-y input-group">
+                <label for="photo">تصویر کاربر</label>
+                <div class="grid align-center">
+                  <div class="image-box box1 profile grid align-center-middle">
+                    <img src="<%= webUser.imageUrl.destination %>">
+                  </div>
+                </div>
+                <input class="input-en" name="photo" type="file">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <button type="submit" class="btn btn-primary grid align-center-middle">
+                <span>ثبت اطلاعات</span>
+              </button>
+            </div>
+          </form>
+        </content>
+      </div>
+      <div class="post-box w100">
+        <header class="navyBlue">
+          <h4>عکس پس زمینه</h4>
+        </header>
+        <content>
+          <form class="UserBackground">
+
+            <div class="input-wrap grid align-left">
+              <div class="grid-y input-group">
+                <label for="photo">تصویر پس زمینه</label>
+                <div class="grid align-center">
+                  <div class="image-box box2 grid align-center-middle">
+                    <img src="<%= webUser.backgroundUrl.destination %>">
+                  </div>
+                </div>
+                <input class="input-en" name="photo" type="file">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <button type="submit" class="btn btn-primary grid align-center-middle">
+                <span>ثبت اطلاعات</span>
+              </button>
+            </div>
+          </form>
+        </content>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+  $(".UpdateUser input[name='photo']").change(function () {
+    readURL2(this, "1");
+  });
+  $(".UserBackground input[name='photo']").change(function () {
+    readURL2(this, "2");
+  });
+</script>
+
+
+

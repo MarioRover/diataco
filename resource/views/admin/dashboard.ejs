@@ -3,4 +3,18 @@
   <i class="fas fa-tachometer"></i>
   <span class="name">داشبورد</span>
 </a>
-<!-- <i class="arrow far fa-angle-left"></i> -->
+<%- contentFor('body') %>
+<div class="dashboard w100 grid align-center">
+  <div class="container grid-x">
+    <div class="page-box grid-y align-center-middle">
+      <h4 class="mb-1">تعداد بازدید سایت</h4>
+      <span class="count">100</span>
+    </div>
+    <a href="/admin/messages">
+      <div class="page-box grid-y align-center-middle">
+        <h4 class="mb-1">تعداد پیام ها</h4>
+        <span class="count"><%= messages.length %></span>
+      </div>
+    </a>
+  </div>
+</div>

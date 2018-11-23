@@ -1,14 +1,51 @@
 const controller = require('../controller');
 
-class applicationController extends controller {
-  async showPage(req , res , next) {
+module.exports = new class applicationController extends controller {
+  async showPage(req, res, next) {
     try {
-      res.render('home/application', {
-        title: 'اپلیکشن'
+      let applications = await this.models.applications.find({}).limit(8).sort({createdAt :-1}).exec();
+      let siteInfo = await this.models.siteInfo.find({});
+      let appPage = await this.models.applicationPage.find({});
+      if (this.isEmptyArray(siteInfo)) {
+        siteInfo = 'undefined';
+      } else {
+        siteInfo = siteInfo[0]
+      }
+      if (this.isEmptyArray(appPage)) {
+        appPage = 'undefined';
+      } else {
+        appPage = appPage[0]
+      }
+      if(this.isEmptyArray(applications)) {
+        applications = 'undefined';
+      }
+      res.render('home/application/index', {
+        title: 'وب سایت',
+        applications,siteInfo,appPage
       });
     } catch (error) {
-      next(error);
+      return this.error('Error in showPage method in applicationController', 500, next);
+    }
+  }
+
+  async application(req, res, next) {
+    try {
+      let application = await this.models.applications.find({slug : req.params.application} , (error , application) => {
+        if (error) return this.error('Error in find website in applicationController', 500, next);
+        if (this.isEmptyArray(application)) return this.error('Error in find website in applicationController', 404, next);
+      })
+      let siteInfo = await this.models.siteInfo.find({});
+      if (this.isEmptyArray(siteInfo)) {
+        siteInfo = 'undefined';
+      } else {
+        siteInfo = siteInfo[0]
+      }
+      res.render('home/application/application', {
+        title: 'اپلیکیشن',
+        application : application[0],siteInfo
+      });
+    } catch (error) {
+      return this.error('Error in application method in applicationController', 500, next);
     }
   }
 }
-module.exports = new applicationController();

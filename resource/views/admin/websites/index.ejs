@@ -1,0 +1,63 @@
+<%- contentFor('panel-header') %>
+<div class="active grid-x-no align-middle">
+  <i class="far fa-window-alt"></i>
+  <span class="name">وب سایت</span>
+</div>
+<%- contentFor('body') %>
+<div class="controller grid-x">
+  <div class="mark grid-x-no align-middle">
+    <i class="far fa-window-alt"></i>
+    <span class="name">وب سایت</span>
+  </div>
+  <div class="btn-wrap grid-x-no align-middle">
+    <a href="/admin/websites/add" class="btn sign btn-primary grid-x-no align-middle">
+      <span>اضافه کردن</span>
+      <i class="far fa-plus-circle"></i>
+    </a>
+  </div>
+</div>
+<div class="table-wrap w100 grid align-center">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th><span>نام وب سایت</span></th>
+        <th><span>تاریخ ثبت</span></th>
+        <th><span>ایجاد شده توسطه</span></th>
+        <th><span>لینک</span></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if(websites.docs.length > 0) {
+        let i = 0;
+          websites.docs.forEach(website => { i+=1 %>
+          <tr>
+            <td class="col1"><%= i %></td>
+            <td class="col3"><%= website.name %></td>
+            <td class="col3"><%= date(website.createdAt).format('jYYYY/jM/jD') %></td>
+            <td class="col3"><%= website.admin.name %> <%= website.admin.family %></td>
+            <td class="col2 input-en"><%= website.link %></td>
+            <td class="col3">
+              <div class="grid-x align-center">
+                <a href="/admin/websites/<%= website.slug %>" class="button" title="View"><i class="fal fa-eye"></i></a>
+                <button title="Delete" class="deleteWebsite" value="<%= website._id %>"><i class="fal fa-trash-alt"></i></button>
+              </div>
+            </td>
+          </tr>
+          <% }) 
+        } %>
+    </tbody>
+  </table>
+</div>
+<%- include(viewPath('layout/pagination') , { pagination : websites }) -%>
+<script>
+  const rowDelete = (objId) => {
+    let row = $(`tr td button[value=${objId}]`).parents('tr');
+    $(row).remove();
+  }
+</script>
+
+
+
+

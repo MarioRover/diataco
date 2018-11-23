@@ -1,0 +1,24 @@
+<section class="error-stack grid align-center-middle">
+  <div class="container grid-y">
+    <div class="row grid-x-no align-middle"> 
+      <h6>Error Message</h6>
+      <p class="message">
+      <%= message %>
+      </p>
+    </div>
+    <div class="row grid-x-no align-middle">
+      <h6>Status Code : </h6>
+      <p class="statusCode"><%= statusCode %></p>
+    </div>
+    <pre>
+      <code class="html stack">
+        <%- stack %>
+      </code>
+    </pre>
+  </div>
+</section>
+<link rel="stylesheet" href="/plugin/higllight/darcula.css">
+<script src="/plugin/higllight/highlight.pack.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
