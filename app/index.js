@@ -34,7 +34,7 @@ module.exports = class Aplication {
   }
   setupExpress() {
     const server = http.createServer(app);
-    server.listen(config.port , () => {console.log(`Listening on Port 3000`)});
+    server.listen(config.port , () => {console.log(`Listening on Port ${config.port}`)});
   }
   setMongoConnection() {
     mongoose.Promise = global.Promise;

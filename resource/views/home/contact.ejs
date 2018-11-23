@@ -21,11 +21,9 @@
             <div class="row grid-x align-middle align-justify">
               <textarea name="description" cols="30" rows="10" placeholder="توضیحات"></textarea>
             </div>
-            <div class="row grid align-left">
-              <div id="html_element"></div>
-            </div>
             <div class="row grid-x align-middle align-justify">
               <button class="btn btn-primary grid align-center-middle" type="submit">
+                <input type="hidden" name="recaptcha" value="">
                 <span>ارسال</span>
               </button>
             </div>
@@ -76,7 +74,15 @@
     </div>
   </div>
 </section>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LdaoHsUAAAAANGo66tjlZzohd6tjNxKGS5Wsz6i"></script>
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LdaoHsUAAAAANGo66tjlZzohd6tjNxKGS5Wsz6i', {action: 'login'})
+            .then(function(token) {
+                $('.contactPage input[name = "recaptcha"]').val(token);
+            });
+    });
+</script>
 <%- include(viewPath('home/layout/footer')) %>
 
 

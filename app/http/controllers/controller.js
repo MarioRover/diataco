@@ -1,6 +1,8 @@
 const autoBind = require('auto-bind');
 const {validationResult} = require('express-validator/check');
 const isMongoId = require('validator/lib/isMongoId');
+const axios = require('axios');
+const isEmpty = require('is-empty');
 // Models
 const Messages = require('app/models/messages');
 const Admins = require('app/models/admin');
@@ -45,10 +47,16 @@ module.exports = class controller {
   }
   async recaptchaValidation(req , res , next) {
     try {
-      if (!req.body.recaptcha) {
-        return false;
+      let data = await axios({
+        method: 'post',
+        url: `https://www.google.com/recaptcha/api/siteverify?secret=6LdaoHsUAAAAAHVeocw621OviWryuD1lu_IdzpPs&response=${req.body.recaptcha}`,
+      })
+      if(!isEmpty(data.data['error-codes']) && data.data['error-codes'] == 'timeout-or-duplicate') {
+          return true;
+      } else if(data.data.success) {
+          return true;
       } else {
-        return true;
+          return false
       }
     } catch (error) {
       return this.serverError('Error in recaptchaValidation Method at controller.js', 500, error, res);

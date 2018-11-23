@@ -24,7 +24,7 @@ class loginAdmins extends controller {
     try {
       let recaptcha = await this.recaptchaValidation(req, res, next);
       if (!recaptcha) {
-        return this.izitoastMessage(['گزینه امنیتی مربوط به شناسایی ربات خاموش است'], 'warning', res);
+        return this.izitoastMessage(['شناسایی ربات : لطفا صفحه را بارگیری مجدد کنید'], 'warning', res);
       }
       let result = await this.validationData(req, next);
       if (! result) {
@@ -41,7 +41,7 @@ class loginAdmins extends controller {
     try {
       let recaptcha = await this.recaptchaValidation(req, res, next);
       if (!recaptcha) {
-        return this.izitoastMessage(['گزینه امنیتی مربوط به شناسایی ربات خاموش است'], 'warning', res);
+        return this.izitoastMessage(['شناسایی ربات : لطفا صفحه را بارگیری مجدد کنید'], 'warning', res);
       }
       let result = await this.validationData(req, next);
       if(!result) {

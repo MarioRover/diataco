@@ -88,22 +88,6 @@ const Fetch2 = (url,method,body) => {
     console.log(err);
   })
 }
-// Recaptcha
-const token = guidGenerator();
-const getToken = async() => {
-  return token;
-}
-var onloadCallback = function () {
-  grecaptcha.render('html_element', {
-    'sitekey': '6Lf5x20UAAAAAM8RZ_3GppCb-Hk_CKxdLo5F4aA0',
-    'theme': 'dark',
-    'callback': verifyCallback,
-    'hl' : 'fa'
-  });
-};
-const verifyCallback = (res) => {
-  sessionStorage.setItem('recaptcha', token);
-};
 //GuidGenerator
 function guidGenerator() {
   var S4 = function () {

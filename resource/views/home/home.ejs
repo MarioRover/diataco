@@ -113,34 +113,22 @@
                 <div class="product-wrap grid-x align-around">
                     <div class="owl-carousel owl-theme">
                         <% websites.forEach(website => { %>
-                        <div class="item card" onclick="">
-                            <img src="<%= website.previewImage.destination %>">
-                            <div class="info grid-y">
-                                <h3 class="EN mb-1">
-                                    <%= website.name %>
-                                </h3>
-                                <div class="grid-x-no">
-                                    <a href="http://<%= website.link %>" target="_blank">لینک وبسایت</a>
-                                    <a href="/websites/<%= website.slug %>">جزییات</a>
+                            <a href="/websites/<%= website.slug %>" class="card-web">
+                                <img src="<%= website.previewImage.destination %>">
+                                <div class="body">
+                                    <h3 class="EN"><%= website.name %></h3>
                                 </div>
-                            </div>
-                        </div>
+                            </a>
                         <% }) %>
                     </div>
                     <div class="carousel grid-x">
                         <% websites.forEach(website => { %>
-                        <div class="item card" onclick="">
-                            <img src="<%= website.previewImage.destination %>">
-                            <div class="info grid-y">
-                                <h3 class="EN mb-1">
-                                    <%= website.name %>
-                                </h3>
-                                <div class="grid-x-no">
-                                    <a href="http://<%= website.link %>" target="_blank">لینک وبسایت</a>
-                                    <a href="/websites/<%= website.slug %>">جزییات</a>
+                            <a href="/websites/<%= website.slug %>" class="card-web">
+                                <img src="<%= website.previewImage.destination %>">
+                                <div class="body">
+                                    <h3 class="EN"><%= website.name %></h3>
                                 </div>
-                            </div>
-                        </div>
+                            </a>
                         <% }) %>
                     </div>
                 </div>
@@ -149,34 +137,22 @@
                 <div class="product-wrap grid-x align-around">
                     <div class="owl-carousel owl-theme">
                         <% applications.forEach(app => { %>
-                            <div class="item card" onclick="">
+                            <a href="/applications/<%= app.slug %>" class="card-web">
                                 <img src="<%= app.previewImage.destination %>">
-                                <div class="info grid-y">
-                                    <h3 class="EN mb-1">
-                                        <%= app.name %>
-                                    </h3>
-                                    <div class="grid-x-no">
-                                        <a href="http://<%= app.link %>" target="_blank">لینک وبسایت</a>
-                                        <a href="/applications/<%= app.slug %>">جزییات</a>
-                                    </div>
+                                <div class="body">
+                                    <h3 class="EN"><%= app.name %></h3>
                                 </div>
-                            </div>
+                            </a>
                         <% }) %>
                     </div>
                     <div class="carousel grid-x">
                         <% applications.forEach(app => { %>
-                            <div class="item card" onclick="">
+                            <a href="/applications/<%= app.slug %>" class="card-web">
                                 <img src="<%= app.previewImage.destination %>">
-                                <div class="info grid-y">
-                                    <h3 class="EN mb-1">
-                                        <%= app.name %>
-                                    </h3>
-                                    <div class="grid-x-no">
-                                        <a href="http://<%= app.link %>" target="_blank">لینک وبسایت</a>
-                                        <a href="/applications/<%= app.slug %>">جزییات</a>
-                                    </div>
+                                <div class="body">
+                                    <h3 class="EN"><%= app.name %></h3>
                                 </div>
-                            </div>
+                            </a>
                         <% }) %>
                     </div>
                 </div>
@@ -193,7 +169,7 @@
         <div class="header-section mb-2">
             <h3>خبرنامه شرکت ما</h3>
         </div>
-        <div class="grid align-around">
+        <div class="grid align-around mb-2">
             <% if(blogs !== 'undefined') { %>
                 <div class="owl-carousel owl-theme">
                 <% blogs.forEach(blog => { %>
@@ -239,8 +215,10 @@
                 </div>
             <% } %>
         </div>    
-        <div class="grid align-center-middle view-all-news">
-            <a href="">مشاهده تمامی اخبار</a>
+        <div class="grid align-center">
+            <a class="btn btn-primary grid align-center-middle" href="/blog">
+                <span>مشاهده تمامی اخبار</span>
+            </a>
         </div>
     </div>
 </section>

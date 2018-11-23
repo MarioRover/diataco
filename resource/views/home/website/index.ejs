@@ -24,39 +24,31 @@
     <div class="container" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
         <div class="header-section grid align-center-middle">
             <h3>نمونه کار های شرکت ما</h3>
-            </div>
+        </div>
             <br>
             <div class="product-wrap grid-x align-around">
                 <div class="owl-carousel owl-theme">
                     <% websites.forEach(website => { %>
-                    <div class="item card" onclick="">
+                    <a href="/websites/<%= website.slug %>" class="card-web">
                         <img src="<%= website.previewImage.destination %>">
-                        <div class="info grid-y">
-                            <h3 class="EN mb-1">
+                        <div class="body">
+                            <h3 class="EN">
                                 <%= website.name %>
                             </h3>
-                            <div class="grid-x-no">
-                                <a href="http://<%= website.link %>" target="_blank">لینک وبسایت</a>
-                                <a href="/websites/<%= website.slug %>">جزییات</a>
-                            </div>
                         </div>
-                    </div>
+                    </a>
                     <% }) %>
                 </div>
                 <div class="carousel grid-x">
                     <% websites.forEach(website => { %>
-                    <div class="item card" onclick="">
+                    <a href="/websites/<%= website.slug %>" class="card-web">
                         <img src="<%= website.previewImage.destination %>">
-                        <div class="info grid-y">
-                            <h3 class="EN mb-1">
+                        <div class="body">
+                            <h3 class="EN">
                                 <%= website.name %>
                             </h3>
-                            <div class="grid-x-no">
-                                <a href="http://<%= website.link %>" target="_blank">لینک وبسایت</a>
-                                <a href="/websites/<%= website.slug %>">جزییات</a>
-                            </div>
                         </div>
-                    </div>
+                    </a>
                     <% }) %>
                 </div>
             </div>
