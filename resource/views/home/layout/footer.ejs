@@ -2,7 +2,11 @@
   <div class="footer-top wrap100 grid align-center-middle">
     <div class="container grid-y">
       <div class="logo wrap100 grid align-center">
+        <% if(typeof siteInfo.logo !== 'undefined' ) { %>
         <img src="<%= siteInfo.logo.destination %>" alt="<%= siteInfo.nameEn %>">
+        <% } else { %>
+        <img src="" alt="">
+        <% }%>  
       </div>
       <a class="brand wrap100" href="/">
         <h4><%= siteInfo.nameEn %></h4>

@@ -1,7 +1,11 @@
 <link rel="stylesheet" href="/plugin/home/homeSlider/css/homeSlider.css">
 <link rel="stylesheet" href="/css/aos.css">
 <%- include(viewPath('home/layout/header'))  %>
+<% if(typeof homeSlider.homeSliderImageUrl !== 'undefined' ) { %>
 <section class="homeSlider grid align-center-middle" style="background-image : url('<%= homeSlider.homeSliderImageUrl.destination %>')">
+<% } else { %>
+<section class="homeSlider grid align-center-middle"></section>
+<% } %>    
     <div class="grid align-center-middle">
     <div class="grid-y align-center-middle item-1">
         <i class="<%= homeSlider.homeSlidericonItem1 %>"></i>
@@ -23,7 +27,11 @@
             <img class="logo" src="/img/artakhe-logo.png">
             <h3><%= aboutUs.aboutUsheader %></h3>
             <p class="align-center"><%= aboutUs.aboutUsheaderDesc %></p>
+            <% if(typeof aboutUs.aboutUsImageUrl !== 'undefined' ) { %>
             <img src="<%= aboutUs.aboutUsImageUrl.destination %>">
+            <% } else { %>
+            <img src="" alt="">
+            <% } %>    
         </div>
     </div>
 </section>
@@ -87,7 +95,11 @@
     </div>
     
 </section>
+<% if(typeof parallax.parallaxImageUrl !== 'undefined' ) { %>
 <section class="parallax para1 style="background-image:url('<%=parallax.parallaxImageUrl.destination %>')">
+<% } else { %>
+<section class="parallax para1">
+<% }%>   
     <div class="overlay grid-y align-center-middle" >
         <h4 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"><%= parallax.headerParallax %></h4>
         <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"><%= parallax.descParallax %></p>

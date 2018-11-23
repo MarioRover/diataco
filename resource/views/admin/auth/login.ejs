@@ -5,7 +5,11 @@
   <div class="login-wrap grid-x-no">
     <form class="adminLogin w100">
       <a href="/" class="logo grid align-center-middle mb-1">
+        <% if(typeof siteInfo.logo !== 'undefined' ) { %>
         <img src="<%= siteInfo.logo.destination %>" alt="<%= siteInfo.nameEn %>">
+        <% } else { %>
+          <img src="" alt="">
+        <% }%> 
       </a>
       <div class="input-wrap grid-x mb-1">
         <div class="grid-y input-group w100">
