@@ -14,116 +14,75 @@
   <div class="seo-desc wrapper grid align-center">
     <div class="container">
       <div class="wrap w100 grid-x">
-        <div class="decription pl-5 grid-y">
-          <%- aboutPage.desc1Desc %>
-        </div>
-        <div class="image">
-          <img src="<%= aboutPage.desc1ImageUrl.destination %>" alt="SEO">
-        </div>
+        <%- aboutPage.descDesc %>
       </div>
     </div>
   </div>
-  <div class="border grid align-center">
-    <div class="container"></div>
-  </div>
-  <div class="seo-desc wrapper grid align-center">
-    <div class="container">
-      <div class="wrap w100 grid-x">
-        <div class="image">
-          <img src="<%= aboutPage.desc2ImageUrl.destination %>" alt="SEO">
-        </div>
-        <div class="decription pr-5 grid-y">
-          <%- aboutPage.desc2Desc %>
-        </div>
-      </div>
-    </div>
-  </div>
-   <div class="about-seo w100 grid align-center-middle wrapper">
+  <div class="about-seo w100 grid align-center-middle wrapper">
     <div class="container">
       <div class="grid-x align-around">
         <div class="item grid-x-no">
           <div class="icon grid align-justify align-top">
-            <img src="/img/Ability/LastTechno.png" alt="">
+            <img src="/img/Seo/hp2-service-icon-6.png" alt="">
           </div>
           <div class="content">
-            <h4>
-              <%= aboutPage.item1 %>
-            </h4>
-            <p>
-              <%= aboutPage.Descitem1 %>
-            </p>
+            <h4><%= aboutPage.item1 %></h4>
+            <p><%= aboutPage.Descitem1 %></p>
           </div>
         </div>
         <div class="item grid-x-no">
           <div class="icon grid align-justify align-top">
-            <img src="/img/Ability/LastTechno.png" alt="">
+            <img src="/img/Seo/hp2-service-icon-1.png" alt="">
           </div>
           <div class="content">
-            <h4>
-              <%= aboutPage.item2 %>
-            </h4>
-            <p>
-              <%= aboutPage.Descitem2 %>
-            </p>
+            <h4><%= aboutPage.item2 %></h4>
+            <p><%= aboutPage.Descitem2 %></p>
           </div>
         </div>
         <div class="item grid-x-no">
           <div class="icon grid align-justify align-top">
-            <img src="/img/Ability/LastTechno.png" alt="">
+            <img src="/img/Seo/hp2-service-icon-2.png" alt="">
           </div>
           <div class="content">
-            <h4>
-              <%= aboutPage.item3 %>
-            </h4>
-            <p>
-              <%= aboutPage.Descitem3 %>
-            </p>
+            <h4><%= aboutPage.item3 %></h4>
+            <p><%= aboutPage.Descitem3 %></p>
           </div>
         </div>
         <div class="item grid-x-no">
           <div class="icon grid align-justify align-top">
-            <img src="/img/Ability/LastTechno.png" alt="">
+            <img src="/img/Seo/hp2-service-icon-3.png" alt="">
           </div>
           <div class="content">
-            <h4>
-              <%= aboutPage.item4 %>
-            </h4>
-            <p>
-              <%= aboutPage.Descitem4 %>
-            </p>
+            <h4><%= aboutPage.item4 %></h4>
+            <p><%= aboutPage.Descitem4 %></p>
           </div>
         </div>
         <div class="item grid-x-no">
           <div class="icon grid align-justify align-top">
-            <img src="/img/Ability/LastTechno.png" alt="">
+            <img src="/img/Seo/hp2-service-icon-4.png" alt="">
           </div>
           <div class="content">
-            <h4>
-              <%= aboutPage.item5 %>
-            </h4>
-            <p>
-              <%= aboutPage.Descitem5 %>
-            </p>
+            <h4><%= aboutPage.item5 %></h4>
+            <p><%= aboutPage.Descitem5 %></p>
           </div>
         </div>
         <div class="item grid-x-no">
           <div class="icon grid align-justify align-top">
-            <img src="/img/Ability/LastTechno.png" alt="">
+            <img src="/img/Seo/hp2-service-icon-5.png" alt="">
           </div>
           <div class="content">
-            <h4>
-              <%= aboutPage.item6 %>
-            </h4>
-            <p>
-              <%= aboutPage.Descitem6 %>
-            </p>
+            <h4><%= aboutPage.item6 %></h4>
+            <p><%= aboutPage.Descitem6 %></p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+  <% if(typeof aboutPage.parallaxImageUrl !== 'undefined' ) { %>
   <section class="wrapper business parallax grid-y align-center-middle" style="background-image: url('<%= aboutPage.parallaxImageUrl.destination %>')">
+  <% } else { %>
+  <section class="wrapper business parallax grid-y align-center-middle">
+  <% } %>  
     <div id="wrapper-box" class="container grid-x align-center-middle">
         <% if(webUsers !== 'undefined') { %>
           <% webUsers.forEach(user => { %>

@@ -85,7 +85,9 @@
           <%- seoPage.desc1Desc %>
         </div>
         <div class="image">
+          <% if(typeof seoPage.desc1ImageUrl !== 'undefined') { %>
           <img src="<%= seoPage.desc1ImageUrl.destination %>" alt="SEO">
+          <% } %>
         </div>
       </div>
     </div>
@@ -97,7 +99,9 @@
     <div class="container">
       <div class="wrap w100 grid-x">
         <div class="image">
+          <% if(typeof seoPage.desc2ImageUrl !== 'undefined') { %>
           <img src="<%= seoPage.desc2ImageUrl.destination %>" alt="SEO">
+          <% } %>
         </div>
         <div class="decription pr-5 grid-y">
           <%- seoPage.desc2Desc %>

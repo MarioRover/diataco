@@ -15,112 +15,59 @@
 <%- contentFor('body') %>
 <div class="site-pages w100 grid align-center">
   <div class="container">
-    <div class="input-box">
-      <div class="flag grid align-center-middle">
-        <span>اطلاعات شرکت</span>
+    <div class="post-info">
+      <div class="post-box w100">
+        <header class="navyBlue">
+          <h4>Contact</h4>
+        </header>
+        <content>
+          <form class="contactPageSetting">
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                  <label for="telephone">تلفن شرکت</label>
+                  <input name="telephone" type="text" value="<%= contactPage.telephone %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="email">ایمیل شرکت</label>
+                <input class="input-en" name="email" type="text" value="<%= contactPage.email %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="address">آدرس شرکت</label>
+                <input name="address" type="text" value="<%= contactPage.address %>">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <div class="grid-y input-group">
+                <label for="photo">تصویر پس زمینه</label>
+                <div class="grid align-center">
+                  <div class="image-box box1 grid align-center-middle">
+                    <% if(typeof contactPage.imageUrl !== 'undefined') { %>
+                      <img src="<%= contactPage.imageUrl.destination %>">  
+                    <% } else { %>
+                      <img src="">
+                    <% } %>  
+                  </div>
+                </div>
+                <input class="input-en" name="photo" type="file">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <button type="submit" class="btn btn-primary grid align-center-middle">
+                <span>ثبت اطلاعات</span>
+              </button>
+            </div>
+          </form>
+        </content>
       </div>
-      <% if(contactPage !== 'undefined') { %>
-      <form class="contactPageSetting">
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="address">آدرس شرکت</label>
-            <input name="address" placeholder="آدرس" type="text" value="<%= contactPage.address %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="iconAddress">آیکون آدرس شرکت</label>
-            <input class="input-en" name="iconAddress" placeholder="آیکون" type="text" value="<%= contactPage.iconAddress %>">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="email">ایمیل شرکت</label>
-            <input class="input-en" name="email" placeholder="ایمیل" type="text" value="<%= contactPage.email %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="iconEmail">آیکون ایمیل شرکت</label>
-            <input class="input-en" name="iconEmail" placeholder="آیکون" type="text" value="<%= contactPage.iconEmail %>">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="telephone">تلفن شرکت</label>
-            <input class="input-en" name="telephone" placeholder="تلفن" type="text" value="<%= contactPage.telephone %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="iconTelephone">آیکون تلفن شرکت</label>
-            <input class="input-en" name="iconTelephone" placeholder="آیکون" type="text" value="<%= contactPage.iconTelephone %>">
-          </div>
-        </div>
-         <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="photo">تصویر پس زمینه</label>
-            <input class="input-en" name="photo" type="file">
-          </div>
-          <a href="<%= contactPage.imageUrl.destination %>" class="input-group grid align-center">
-            <img class="image" src="<%= contactPage.imageUrl.destination %>">
-          </a>
-        </div>
-        <div class="input-wrap grid align-left">
-          <button type="submit" class="btn btn-primary grid align-center-middle">
-            <span>ثبت اطلاعات</span>
-          </button>
-        </div>
-      </form>
-      <% } else { %>
-       <form class="contactPageSetting">
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="address">آدرس شرکت</label>
-            <input name="address" placeholder="آدرس" type="text">
-          </div>
-          <div class="grid-y input-group">
-            <label for="iconAddress">آیکون آدرس شرکت</label>
-            <input class="input-en" name="iconAddress" placeholder="آیکون" type="text">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="email">ایمیل شرکت</label>
-            <input class="input-en" name="email" placeholder="ایمیل" type="email">
-          </div>
-          <div class="grid-y input-group">
-            <label for="iconEmail">آیکون ایمیل شرکت</label>
-            <input class="input-en" name="iconEmail" placeholder="آیکون" type="text">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="telephone">تلفن شرکت</label>
-            <input class="input-en" name="telephone" placeholder="تلفن" type="text">
-          </div>
-          <div class="grid-y input-group">
-            <label for="iconTelephone">آیکون تلفن شرکت</label>
-            <input class="input-en" name="iconTelephone" placeholder="آیکون" type="text">
-          </div>
-        </div>
-         <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="photo">تصویر پس زمینه</label>
-            <input class="input-en" name="photo" type="file">
-          </div>
-          <div class="input-group grid align-center-middle">
-            <img src="/img/noimage.png" alt="No Image">
-          </div>  
-        </div>
-        <div class="input-wrap grid align-left">
-          <button type="submit" class="btn btn-primary grid align-center-middle">
-            <span>ثبت اطلاعات</span>
-          </button>
-        </div>
-      </form> 
-      <% } %>  
     </div>
   </div>
 </div>
 
 <script>
-  const setImageUrl = (imgUrl) => {
-    let image = $('.input-group .image');
-    $(image).attr('src' , `${imgUrl}`);
-  }
+  $(".contactPageSetting input[name='photo']").change(function () {
+    readURL2(this, "1");
+  });
 </script>
+

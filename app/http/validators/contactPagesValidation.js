@@ -9,23 +9,14 @@ module.exports = new class homeValidation extends validator {
       check('address')
         .not().isEmpty()
         .withMessage('فیلد آدرس نمی تواند خالی باشد'), 
-      check('iconAddress')
-        .not().isEmpty()
-        .withMessage('فیلد آیکون آدرس نمی تواند خالی باشد'),
       check('email')
         .custom(async (value , {req}) => {
           if (!value) throw new Error('فیلد ایمیل نمی تواند خالی باشد');
           if (!isEmail(value)) throw new Error('فرمت ایمیل وارد شده صحیح نمی باشد');
         }),
-      check('iconEmail')
-        .not().isEmpty()
-        .withMessage('فیلد آیکون ایمیل نمی تواند خالی باشد'),
       check('telephone')
         .not().isEmpty()
         .withMessage('فیلد تلفن نمی تواند خالی باشد'),
-      check('iconTelephone')
-        .not().isEmpty()
-        .withMessage('فیلد آیکون تلفن نمی تواند خالی باشد'),
       check('photoVal')
         .custom(async (value , {req})=>{
           if(req.method !== 'PUT') {

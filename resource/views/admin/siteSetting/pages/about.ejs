@@ -28,7 +28,6 @@
         </header>
         <content>
           <form class="AboutHeader">
-            <% if(aboutPage !== 'undefined' && typeof aboutPage.headerImageUrl !== 'undefined') { %>
             <div class="input-wrap grid-x">
               <div class="grid-y input-group w100">
                 <label for="title">تیتر</label>
@@ -40,31 +39,16 @@
                 <label for="photo">تصویر پس زمینه</label>
                 <div class="grid align-center">
                   <div class="image-box box1 grid align-center-middle">
+                    <% if(typeof aboutPage.headerImageUrl !== 'undefined') { %>
                     <img src="<%= aboutPage.headerImageUrl.destination %>">
+                    <% } else { %>
+                    <img src="" alt="">
+                    <% } %>  
                   </div>
                 </div>
                 <input class="input-en" name="photo" type="file">
               </div>
             </div>
-            <% } else {%>
-            <div class="input-wrap grid-x">
-              <div class="grid-y input-group w100">
-                <label for="title">تیتر</label>
-                <input name="title" type="text">
-              </div>
-            </div>
-            <div class="input-wrap grid align-left">
-              <div class="grid-y input-group">
-                <label for="photo">تصویر پس زمینه</label>
-                <div class="grid align-center">
-                  <div class="image-box box1 grid align-center-middle">
-                    <img src="">
-                  </div>
-                </div>
-                <input class="input-en" name="photo" type="file">
-              </div>
-            </div>
-            <% } %>  
             <div class="input-wrap grid align-left">
               <button type="submit" class="btn btn-primary grid align-center-middle">
                 <span>ثبت اطلاعات</span>
@@ -75,11 +59,10 @@
       </div>
       <div class="post-box w100">
         <header class="navyBlue">
-          <h4>About First Description</h4>
+          <h4>About Description</h4>
         </header>
         <content>
           <form class="AboutDesc1">
-            <% if(aboutPage !== 'undefined' && typeof aboutPage.desc1ImageUrl !== 'undefined') { %>
               <div class="input-wrap grid-x">
                 <div class="grid-y input-group w100">
                   <label for="desc">متن</label>
@@ -87,102 +70,10 @@
                 </div>
               </div>
               <div class="input-wrap grid align-left">
-                <div class="grid-y input-group">
-                  <label for="photo">تصویر پس زمینه</label>
-                  <div class="grid align-center">
-                    <div class="image-box box2 grid align-center-middle">
-                      <img src="<%= aboutPage.desc1ImageUrl.destination %>" alt="">
-                    </div>
-                  </div>
-                  <input class="input-en" name="photo" type="file">
-                </div>
-              </div>
-              <div class="input-wrap grid align-left">
                 <button type="submit" class="btn btn-primary grid align-center-middle">
                   <span>ثبت اطلاعات</span>
                 </button>
               </div>
-            <% } else {%>
-              <div class="input-wrap grid-x">
-                <div class="grid-y input-group w100">
-                  <label for="desc">متن</label>
-                  <textarea name="desc" id="desc1" cols="30" rows="10"></textarea>
-                </div>
-              </div>
-              <div class="input-wrap grid align-left">
-                <div class="grid-y input-group">
-                  <label for="photo">تصویر پس زمینه</label>
-                  <div class="grid align-center">
-                    <div class="image-box box2 grid align-center-middle">
-                      <img src="" alt="">
-                    </div>
-                  </div>
-                  <input class="input-en" name="photo" type="file">
-                </div>
-              </div>
-              <div class="input-wrap grid align-left">
-                <button type="submit" class="btn btn-primary grid align-center-middle">
-                  <span>ثبت اطلاعات</span>
-                </button>
-              </div>
-            <% } %>
-          </form>
-        </content>
-      </div>
-      <div class="post-box w100">
-        <header class="navyBlue">
-          <h4>About Second Description</h4>
-        </header>
-        <content>
-          <form class="AboutDesc2">
-            <% if(aboutPage !== 'undefined' && typeof aboutPage.desc2ImageUrl !== 'undefined') { %>
-              <div class="input-wrap grid-x">
-                <div class="grid-y input-group w100">
-                  <label for="desc">متن</label>
-                  <textarea name="desc" id="desc2" cols="30" rows="10"><%= aboutPage.desc2Desc %></textarea>
-                </div>
-              </div>
-              <div class="input-wrap grid align-left">
-                <div class="grid-y input-group">
-                  <label for="photo">تصویر پس زمینه</label>
-                  <div class="grid align-center">
-                    <div class="image-box box3 grid align-center-middle">
-                      <img src="<%= aboutPage.desc2ImageUrl.destination %>" alt="">
-                    </div>
-                  </div>
-                  <input class="input-en" name="photo" type="file">
-                </div>
-              </div>
-              <div class="input-wrap grid align-left">
-                <button type="submit" class="btn btn-primary grid align-center-middle">
-                  <span>ثبت اطلاعات</span>
-                </button>
-              </div>
-            <% } else {%>
-              <div class="input-wrap grid-x">
-                <div class="grid-y input-group w100">
-                  <label for="desc">متن</label>
-                  <textarea name="desc" id="desc2" cols="30" rows="10"></textarea>
-                </div>
-              </div>
-              <div class="input-wrap grid align-left">
-                <div class="grid-y input-group">
-                  <label for="photo">تصویر پس زمینه</label>
-                  <div class="grid align-center">
-                    <div class="image-box box3 grid align-center-middle">
-                      <img src="" alt="">
-                    </div>
-                  </div>
-                  <input class="input-en" name="photo" type="file">
-                </div>
-              </div>
-              <div class="input-wrap grid align-left">
-                <button type="submit" class="btn btn-primary grid align-center-middle">
-                  <span>ثبت اطلاعات</span>
-                </button>
-              </div>
-            <% } %>
-            
           </form>
         </content>
       </div>
@@ -193,13 +84,9 @@
         <content>
           <form class="AboutArticles">
             <div class="input-wrap grid-x">
-              <div class="grid-y input-group">
+              <div class="grid-y input-group w100">
                 <label for="item1">عنوان متن اول</label>
                 <input name="item1" type="text" value="<%= aboutPage.item1 %>">
-              </div>
-              <div class="grid-y input-group">
-                <label for="Iconitem1">آیکون متن اول</label>
-                <input class="input-en" name="Iconitem1" type="text" value="<%= aboutPage.Iconitem1 %>">
               </div>
             </div>
             <div class="input-wrap grid-x">
@@ -210,13 +97,9 @@
             </div>
             <div class="line-space2"></div>
             <div class="input-wrap grid-x">
-              <div class="grid-y input-group">
+              <div class="grid-y input-group w100">
                 <label for="item2">عنوان متن دوم</label>
                 <input name="item2" type="text" value="<%= aboutPage.item2 %>"> 
-              </div>
-              <div class="grid-y input-group">
-                <label for="Iconitem2">آیکون متن دوم</label>
-                <input class="input-en" name="Iconitem2" type="text" value="<%= aboutPage.Iconitem2 %>">
               </div>
             </div>
             <div class="input-wrap grid-x">
@@ -227,13 +110,9 @@
             </div>
             <div class="line-space2"></div>
             <div class="input-wrap grid-x">
-              <div class="grid-y input-group">
+              <div class="grid-y input-group w100">
                 <label for="item3">عنوان متن سوم</label>
                 <input name="item3" type="text" value="<%= aboutPage.item3 %>">
-              </div>
-              <div class="grid-y input-group">
-                <label for="Iconitem3">آیکون متن سوم</label>
-                <input class="input-en" name="Iconitem3" type="text" value="<%= aboutPage.Iconitem3 %>">
               </div>
             </div>
             <div class="input-wrap grid-x">
@@ -244,13 +123,9 @@
             </div>
             <div class="line-space2"></div>
             <div class="input-wrap grid-x">
-              <div class="grid-y input-group">
+              <div class="grid-y input-group w100">
                 <label for="item4">عنوان متن چهارم</label>
                 <input name="item4" type="text" value="<%= aboutPage.item4 %>">
-              </div>
-              <div class="grid-y input-group">
-                <label for="Iconitem4">آیکون متن چهارم</label>
-                <input class="input-en" name="Iconitem4" type="text" value="<%= aboutPage.Iconitem4 %>">
               </div>
             </div>
             <div class="input-wrap grid-x">
@@ -261,13 +136,9 @@
             </div>
             <div class="line-space2"></div>
             <div class="input-wrap grid-x">
-              <div class="grid-y input-group">
+              <div class="grid-y input-group w100">
                 <label for="item5">عنوان متن پنجم</label>
                 <input name="item5" type="text" value="<%= aboutPage.item15 %>">
-              </div>
-              <div class="grid-y input-group">
-                <label for="Iconitem5">آیکون متن پنجم</label>
-                <input class="input-en" name="Iconitem5" type="text" value="<%= aboutPage.Iconitem5 %>">
               </div>
             </div>
             <div class="input-wrap grid-x">
@@ -278,13 +149,9 @@
             </div>
             <div class="line-space2"></div>
             <div class="input-wrap grid-x">
-              <div class="grid-y input-group">
+              <div class="grid-y input-group w100">
                 <label for="item6">عنوان متن ششم</label>
                 <input name="item6" type="text" value="<%= aboutPage.item6 %>">
-              </div>
-              <div class="grid-y input-group">
-                <label for="Iconitem6">آیکون متن ششم</label>
-                <input class="input-en" name="Iconitem6" type="text" value="<%= aboutPage.Iconitem6 %>">
               </div>
             </div>
             <div class="input-wrap grid-x">
@@ -307,13 +174,22 @@
         </header>
         <content>
           <form class="AboutParallax">
-            <% if(aboutPage !== 'undefined' && typeof aboutPage.parallaxImageUrl !== 'undefined') { %>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="parallaxText">تیتر</label>
+                <input name="parallaxText" type="text" value="<%= aboutPage.parallaxText %>">
+              </div>
+            </div>
             <div class="input-wrap grid align-left">
               <div class="grid-y input-group">
                 <label for="photo">تصویر پس زمینه</label>
                 <div class="grid align-center">
-                  <div class="image-box box4 grid align-center-middle">
+                  <div class="image-box box2 grid align-center-middle">
+                    <% if(typeof aboutPage.parallaxImageUrl !== 'undefined') { %>
                     <img src="<%= aboutPage.parallaxImageUrl.destination %>" alt="">
+                    <% } else { %>
+                      <img src="" alt="">
+                    <% } %>  
                   </div>
                 </div>
                 <input class="input-en" name="photo" type="file">
@@ -324,24 +200,6 @@
                 <span>ثبت اطلاعات</span>
               </button>
             </div>
-            <% } else { %>
-            <div class="input-wrap grid align-left">
-              <div class="grid-y input-group">
-                <label for="photo">تصویر پس زمینه</label>
-                <div class="grid align-center">
-                  <div class="image-box box4 grid align-center-middle">
-                    <img src="">
-                  </div>
-                </div>
-                <input class="input-en" name="photo" type="file">
-              </div>
-            </div>
-            <div class="input-wrap grid align-left">
-              <button type="submit" class="btn btn-primary grid align-center-middle">
-                <span>ثبت اطلاعات</span>
-              </button>
-            </div>  
-            <% } %>  
           </form>
         </content>
       </div>
@@ -350,22 +208,14 @@
 </div>
 
 <script>
+  $(".AboutHeader input[name='photo']").change(function () {
+    readURL2(this, "1");
+  });
+  $(".AboutParallax input[name='photo']").change(function () {
+    readURL2(this, "2");
+  });
   CKEDITOR.replace('desc1' , {
     filebrowserUploadUrl : '/admin/upload-image'
   });
-  CKEDITOR.replace('desc2' , {
-    filebrowserUploadUrl : '/admin/upload-image'
-  });
-  $(".AboutHeader input[name='photo']").change(function() {
-    readURL2(this , "1");
-  });
-  $(".AboutDesc1 input[name='photo']").change(function() {
-    readURL2(this , "2");
-  });
-  $(".AboutDesc2 input[name='photo']").change(function() {
-    readURL2(this , "3");
-  });
-  $(".AboutParallax input[name='photo']").change(function() {
-    readURL2(this , "4");
-  });
+  
 </script>

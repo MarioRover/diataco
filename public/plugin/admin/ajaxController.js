@@ -1,25 +1,18 @@
 $('.contactPageSetting').submit((e) => {
   e.preventDefault();
-  let address = $('input[name = "address"]');
-  let iconAddress = $('input[name = "iconAddress"]');
-  let email = $('input[name = "email"]');
-  let iconEmail = $('input[name = "iconEmail"]');
-  let telephone = $('input[name = "telephone"]');
-  let iconTelephone = $('input[name = "iconTelephone"]');
-  let photo = $('input[name = "photo"]');
-  let photoVal = $('input[name = "photo"]');
+  let address = $('.contactPageSetting input[name = "address"]');
+  let email = $('.contactPageSetting input[name = "email"]');
+  let telephone = $('.contactPageSetting input[name = "telephone"]');
+  let photo = $('.contactPageSetting input[name = "photo"]');
+  let photoVal = $('.contactPageSetting input[name = "photo"]');
 
   let formData = new FormData();
   formData.append('address', address.val());
-  formData.append('iconAddress', iconAddress.val());
   formData.append('email', email.val());
-  formData.append('iconEmail', iconEmail.val());
   formData.append('telephone', telephone.val());
-  formData.append('iconTelephone', iconTelephone.val());
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
 
-   //Fetch('/admin/site-setting/pages/contact','POST',formData);
   Fetch('/admin/site-setting/pages/contact', 'PUT', formData);
 });
 
@@ -263,65 +256,38 @@ $('.AboutHeader').submit((e) => {
 
 $('.AboutDesc1').submit((e) => {
   e.preventDefault();
-  let photo = $('.AboutDesc1 input[name = "photo"]');
-  let photoVal = $('.AboutDesc1 input[name = "photo"]');
   let data = CKEDITOR.instances.desc1.getData();
-
-  let formData = new FormData();
-  formData.append('desc', data);
-  formData.append('photo', photo[0].files[0]);
-  formData.append('photoVal', photoVal.val());
-
-  Fetch('/admin/site-setting/pages/about/description1', 'PUT', formData);
-});
-
-$('.AboutDesc2').submit((e) => {
-  e.preventDefault();
-  let photo = $('.AboutDesc2 input[name = "photo"]');
-  let photoVal = $('.AboutDesc2 input[name = "photo"]');
-  let data = CKEDITOR.instances.desc2.getData();
-
-  let formData = new FormData();
-  formData.append('desc', data);
-  formData.append('photo', photo[0].files[0]);
-  formData.append('photoVal', photoVal.val());
-
-  Fetch('/admin/site-setting/pages/about/description2', 'PUT', formData);
+  const body = {desc : data}
+  Fetch2('/admin/site-setting/pages/about/description', 'PUT', body);
 });
 
 $('.AboutArticles').submit((e) => {
   e.preventDefault();
   let item1 = $('.AboutArticles input[name = "item1"]');
-  let Iconitem1 = $('.AboutArticles input[name = "Iconitem1"]');
   let Descitem1 = $('.AboutArticles input[name = "Descitem1"]');
 
   let item2 = $('.AboutArticles input[name = "item2"]');
-  let Iconitem2 = $('.AboutArticles input[name = "Iconitem2"]');
   let Descitem2 = $('.AboutArticles input[name = "Descitem2"]');
 
   let item3 = $('.AboutArticles input[name = "item3"]');
-  let Iconitem3 = $('.AboutArticles input[name = "Iconitem3"]');
   let Descitem3 = $('.AboutArticles input[name = "Descitem3"]');
 
   let item4 = $('.AboutArticles input[name = "item4"]');
-  let Iconitem4 = $('.AboutArticles input[name = "Iconitem4"]');
   let Descitem4 = $('.AboutArticles input[name = "Descitem4"]');
 
   let item5 = $('.AboutArticles input[name = "item5"]');
-  let Iconitem5 = $('.AboutArticles input[name = "Iconitem5"]');
   let Descitem5 = $('.AboutArticles input[name = "Descitem5"]');
 
   let item6 = $('.AboutArticles input[name = "item6"]');
-  let Iconitem6 = $('.AboutArticles input[name = "Iconitem6"]');
   let Descitem6 = $('.AboutArticles input[name = "Descitem6"]');
   
   const body = {
-    item1 : item1.val(),Iconitem1 : Iconitem1.val(),Descitem1 : Descitem1.val(),
-    item2 : item2.val(),Iconitem2 : Iconitem2.val(),Descitem2 : Descitem2.val(),
-    item3 : item3.val(),Iconitem3 : Iconitem3.val(),Descitem3 : Descitem3.val(),
-    item4 : item4.val(),Iconitem4 : Iconitem4.val(),Descitem4 : Descitem4.val(),
-    item5 : item5.val(),Iconitem5 : Iconitem5.val(),Descitem5 : Descitem5.val(),
-    item6 : item6.val(),Iconitem6 : Iconitem6.val(),Descitem6 : Descitem6.val()
+    item1 : item1.val(),Descitem1 : Descitem1.val(),
+    item2 : item2.val(),Descitem2 : Descitem2.val(),
+    item3 : item3.val(),Descitem3 : Descitem3.val(),
+    item4 : item4.val(),Descitem4 : Descitem4.val(),
+    item5 : item5.val(),Descitem5 : Descitem5.val(),
+    item6 : item6.val(),Descitem6 : Descitem6.val()
   }
   
   Fetch2('/admin/site-setting/pages/about/articles', 'PUT', body);

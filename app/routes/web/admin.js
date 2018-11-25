@@ -30,7 +30,6 @@ const updateCategoriesValidation = require('app/http/validators/blogValidation/u
 const createBlogValidation = require('app/http/validators/blogValidation/createBlogValidation');
 const aboutHeader = require('app/http/validators/aboutPageValidation/aboutHeader');
 const aboutDesc1 = require('app/http/validators/aboutPageValidation/aboutDesc1');
-const aboutDesc2 = require('app/http/validators/aboutPageValidation/aboutDesc2');
 const aboutArticles = require('app/http/validators/aboutPageValidation/aboutArticles');
 const aboutParallax = require('app/http/validators/aboutPageValidation/aboutParallax');
 const websitesValidation = require('app/http/validators/websitesValidation');
@@ -85,20 +84,14 @@ router.delete('/messages', redirectIfAuthenticated.adminLogin, messagesControlle
 router.get('/site-setting/pages', redirectIfAuthenticated.adminLogin, sitePagesController.index);
 // Contact Page
 router.get('/site-setting/pages/contact', redirectIfAuthenticated.adminLogin, contactPagesController.index);
-router.post('/site-setting/pages/contact',
-  redirectIfAuthenticated.adminLogin,
-  upload.single('photo'),
-  convertFileToField.handle,
-  contactPagesValidation.handle(),
-  contactPagesController.set
-);
 router.put('/site-setting/pages/contact',
   redirectIfAuthenticated.adminLogin,
   upload.single('photo'),
   convertFileToField.handle,
   contactPagesValidation.handle(),
-  contactPagesController.update
+  contactPagesController.contactPage
 );
+
 // About Page
 router.get('/site-setting/pages/about', redirectIfAuthenticated.adminLogin, aboutPagesController.index);
 router.put('/site-setting/pages/about/header',
@@ -108,25 +101,18 @@ router.put('/site-setting/pages/about/header',
   aboutHeader.handle(),
   aboutPagesController.header
   );
-router.put('/site-setting/pages/about/description1', 
+router.put('/site-setting/pages/about/description', 
   upload.single('photo'),
   convertFileToField.handle,
   aboutDesc1.handle(),
   redirectIfAuthenticated.adminLogin, 
-  aboutPagesController.description1
-);
-router.put('/site-setting/pages/about/description2',
-  redirectIfAuthenticated.adminLogin,
-  upload.single('photo'),
-  convertFileToField.handle,
-  aboutDesc2.handle(),
-  aboutPagesController.description2
+  aboutPagesController.description
 );
 router.put('/site-setting/pages/about/articles',
   redirectIfAuthenticated.adminLogin,
   aboutArticles.handle(),
   aboutPagesController.articles
-  );
+);
 router.put('/site-setting/pages/about/parallax',
   redirectIfAuthenticated.adminLogin,
   upload.single('photo'),
@@ -162,8 +148,6 @@ router.put('/site-setting/pages/home/parallax',
   homePagesParallaxValidation.handle(),
   homePagesController.parallax
 );
-
-
 // /////////// Seo Page
 router.get('/site-setting/pages/seo', redirectIfAuthenticated.adminLogin, seoPagesController.index);
 router.put('/site-setting/pages/seo/header', 
@@ -199,10 +183,6 @@ router.put('/site-setting/pages/seo/parallax',
   seoParallaxValidation.handle(),
   seoPagesController.parallax
 );
-
-
-
-
 ///////// Website Page
 router.get('/site-setting/pages/websites', redirectIfAuthenticated.adminLogin, websitesPagesController.index);
 router.post('/site-setting/pages/websites',
@@ -235,9 +215,6 @@ router.put('/site-setting/pages/applications',
   appPageValidation.handle(),
   appPagesController.update
 );
-
-
-
 /////// Category Blog
 router.get('/blogs/categories', redirectIfAuthenticated.adminLogin, blogController.index);
 router.get('/blogs/categories/add', redirectIfAuthenticated.adminLogin, blogController.viewCreateCategory);

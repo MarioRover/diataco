@@ -1,6 +1,10 @@
 <%- include(viewPath('home/layout/header'))  %>
 <section class="contact-page grid-y">
+  <% if(typeof contactPage.imageUrl !== 'undefined' ) { %>
   <header style="background-image : url('<%= contactPage.imageUrl.destination %>');">
+  <% } else { %>
+  <header>  
+  <% } %>  
     <div class="overlay"></div>
   </header>
   <div class="contact grid align-center">
@@ -30,57 +34,35 @@
           </form>
         </content>
       </div>
-      <% if(contactPage !== 'undefined') { %>
       <div class="info-us grid-y w100">
         <div class="wrap100 header grid align-middle">
           <h6>راه های تماس با ما</h6>
         </div>
         <content class="wrap100 grid-y">
           <div class="row grid-x-no align-middle">
-            <img src="/img/if_cursor_1287534.png">
+            <i class="fas fa-map-marker-alt"></i>
             <span><%= contactPage.address %></span>
           </div>
           <div class="row grid-x-no align-middle EN">
-            <img src="/img/if_mail_1287521.png">
+            <i class="fas fa-envelope"></i>
             <span><%= contactPage.email %></span>
           </div>
           <div class="row grid-x-no align-middle EN">
-            <img src="/img/if_phone_1287515.png">
+            <i class="fas fa-phone-volume"></i>
             <span><%= contactPage.telephone %></span>
           </div>
         </content>
       </div>
-      <% } else { %>
-      <div class="info-us grid-y w100">
-        <div class="wrap100 header grid align-middle">
-          <h6>راه های تماس با ما</h6>
-        </div>
-        <content class="wrap100 grid-y">
-          <div class="row grid-x-no">
-            <i class="fas fa-map-marker-alt"></i>
-            <span></span>
-          </div>
-          <div class="row grid-x-no">
-            <i class="fas fa-envelope-open"></i>
-            <span></span>
-          </div>
-          <div class="row grid-x-no">
-            <i class="fas fa-phone-square"></i>
-            <span></span>
-          </div>
-        </content>
-      </div>  
-      <% } %>
     </div>
   </div>
 </section>
-<script src="https://www.google.com/recaptcha/api.js?render=6LdaoHsUAAAAANGo66tjlZzohd6tjNxKGS5Wsz6i"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=<%= SITEKEY %>"></script>
 <script>
     grecaptcha.ready(function() {
-        grecaptcha.execute('6LdaoHsUAAAAANGo66tjlZzohd6tjNxKGS5Wsz6i', {action: 'login'})
-            .then(function(token) {
-                $('.contactPage input[name = "recaptcha"]').val(token);
-            });
+        grecaptcha.execute('<%= SITEKEY %>', {action: 'login'})
+          .then(function(token) {
+            $('.contactPage input[name = "recaptcha"]').val(token);
+          });
     });
 </script>
 <%- include(viewPath('home/layout/footer')) %>

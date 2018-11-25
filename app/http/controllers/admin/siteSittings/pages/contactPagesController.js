@@ -7,7 +7,7 @@ module.exports = new class contactPagesController extends controller {
     try {
       let user = req.user;
       let contactPage = await this.models.contactPage.find({});
-      if (contactPage == '') {
+      if (this.isEmpty(contactPage)) {
         contactPage = 'undefined';
       } else {
         contactPage = contactPage[0];
@@ -17,69 +17,65 @@ module.exports = new class contactPagesController extends controller {
         activeRow: 'site-pages',
         contactPage,user
       });
+      
     } catch (error) {
       return this.serverError('Error in Index method at sitePagesController.js', 500, error, res);
     }
   };
 
-  async set(req , res , next) {
+  async contactPage(req , res , next) {
     try {
       let result = await this.validationData(req, next);
       if (!result) {
-        if (req.file) fs.unlinkSync(req.file.path);
-        return this.izitoastMessage(req.flash('errors') , 'warning' , res);
-      }
-      const {address,iconAddress,email,iconEmail,telephone,iconTelephone} = req.body;
-      let contentObj = {
-        address, iconAddress, email, iconEmail, telephone, iconTelephone,
-        imageUrl : {
-          destination: await this.addressImage(req.file),
-          originalname: req.file.originalname,
-          path: req.file.path
-        } 
-      };
-      let newContactPage = new this.models.contactPage({...contentObj});
-      newContactPage.save(err => {
-        if(err) {
-          return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
-        }
-        return this.izitoastMessage(['اطلاعات با موفقیت ذخیره شد'], 'success', res);
-      })
-    } catch (error) {
-      return this.serverError('Error in set method at sitePagesController.js', 500, error, res);
-    }
-  }
-  async update(req , res , next) {
-    try {
-      let result = await this.validationData(req, next);
-      if (!result) {
-        if (req.file) fs.unlinkSync(req.file.path);
+        if (!this.isEmpty(req.file)) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
-      const {address,iconAddress,email,iconEmail,telephone,iconTelephone} = req.body;
-      let contentObj = {address, iconAddress, email, iconEmail, telephone, iconTelephone};
+      const {address,email,telephone} = req.body;
+      let contentObj = {address,email,telephone};
+      const imageUrl = req.file;
       let contactPage = await this.models.contactPage.find({});
-      let objId = contactPage[0]._id;
-      
-      if(req.file) {
-        if (contactPage[0].imageUrl.originalname === req.file.originalname) {
-          await fs.unlinkSync(req.file.path);
-        } else {
-          await fs.unlinkSync(contactPage[0].imageUrl.path);
+      if(this.isEmpty(contactPage)) {
+        if(!this.isEmpty(imageUrl)) {
           contentObj['imageUrl'] = {
-            destination: await this.addressImage(req.file),
-            originalname: req.file.originalname,
-            path: req.file.path
+            destination: await this.addressImage(imageUrl),
+            originalname: imageUrl.originalname,
+            path: imageUrl.path
           }
         }
+        let newHomePage = new this.models.contactPage({ ...contentObj});
+        await newHomePage.save(error => {
+          if (error) {
+            return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
+          }
+        });
+        return this.izitoastMessage(['قسمت Contact با موفقیت بروزرسانی شد'] , 'success' , res);
+      } else {
+        let objId = contactPage[0]._id;
+        if (imageUrl && typeof contactPage[0].imageUrl !== 'undefined') {
+          if (contactPage[0].imageUrl.originalname === imageUrl.originalname) {
+            await fs.unlinkSync(imageUrl.path);
+          } else {
+            if (await fs.existsSync(contactPage[0].imageUrl.path)) await fs.unlinkSync(contactPage[0].imageUrl.path);
+            contentObj['imageUrl'] = {
+              destination: await this.addressImage(imageUrl),
+              originalname: imageUrl.originalname,
+              path: imageUrl.path
+            }
+          }
+        } else if (imageUrl && typeof contactPage[0].imageUrl == 'undefined') {
+          contentObj['imageUrl'] = {
+            destination: await this.addressImage(imageUrl),
+            originalname: imageUrl.originalname,
+            path: imageUrl.path
+          }
+        }
+        await this.models.contactPage.findByIdAndUpdate(objId, {
+          $set: { ...contentObj,...contentObj}
+        });
+        return this.izitoastMessage(['قسمت Contact با موفقیت بروزرسانی شد'] , 'success' , res);
       }
-      await this.models.contactPage.findByIdAndUpdate(objId , {$set : {...contentObj , ...contentObj}});
-      let newDB = await this.refreshDB(this.models.contactPage);
-      let imageUrl = newDB.imageUrl.destination;
-      return this.transDataWithMessage(['تغییرات با موفقیت ثبت گردید'], 'success', imageUrl , res);
-      
     } catch (error) {
-      return this.serverError('Error in update method at contactPagesController', 500 , error , res);
+      return this.serverError('Error in contactPage method at sitePagesController.js', 500, error, res);
     }
   }
 

@@ -10,14 +10,15 @@ module.exports = new class contactController extends controller {
       } else {
         siteInfo = siteInfo[0]
       }
-      if (contactPage == '') {
+      if (this.isEmpty(contactPage)) {
         contactPage = 'undefined';
       } else {
         contactPage = contactPage[0];
       }
       res.render('home/contact', {
         title: 'درباره ما',
-        contactPage,siteInfo
+        contactPage,siteInfo,
+        SITEKEY : process.env.RECAPTCHA_SITEKEY
       });
     } catch (error) {
       this.error('Error in index Method at contactController.js' , 500 , next);
