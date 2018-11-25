@@ -7,10 +7,7 @@ const isEmpty = require('is-empty');
 const Messages = require('app/models/messages');
 const Admins = require('app/models/admin');
 const contactPage = require('app/models/contactPage');
-const aboutUs = require('app/models/homePageSetting/aboutUs');
-const parallax = require('app/models/homePageSetting/parallax');
-const homeSlider = require('app/models/homePageSetting/homeSlider');
-const ability = require('app/models/homePageSetting/ability');
+const homePage = require('app/models/homePage');
 const blogCategory = require('app/models/blog/categories');
 const blog = require('app/models/blog/blog');
 const aboutPage = require('app/models/aboutPage');
@@ -25,14 +22,12 @@ const applicationPage = require('app/models/applicationPage');
 module.exports = class controller {
   constructor() {
     autoBind(this);
+    this.isEmpty = isEmpty;
     this.models = {
       Admins,
       Messages,
       contactPage,
-      aboutUs,
-      parallax,
-      homeSlider,
-      ability,
+      homePage,
       blogCategory,
       blog,
       aboutPage,
@@ -49,7 +44,7 @@ module.exports = class controller {
     try {
       let data = await axios({
         method: 'post',
-        url: `https://www.google.com/recaptcha/api/siteverify?secret=6LdaoHsUAAAAAHVeocw621OviWryuD1lu_IdzpPs&response=${req.body.recaptcha}`,
+        url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRETKEY}&response=${req.body.recaptcha}`,
       })
       if(!isEmpty(data.data['error-codes']) && data.data['error-codes'] == 'timeout-or-duplicate') {
           return true;

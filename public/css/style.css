@@ -1184,10 +1184,7 @@ main {
   background-size: cover;
 }
 .error-page.page404 {
-  background-image: url('/img/404.png');
-}
-.error-page.page500 {
-  
+  background-image: url('/img/wallpaper/404-compressor.png');
 }
 .page-server-error {
   width: 100%;

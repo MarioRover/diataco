@@ -1,34 +1,36 @@
 <link rel="stylesheet" href="/plugin/home/homeSlider/css/homeSlider.css">
 <link rel="stylesheet" href="/css/aos.css">
 <%- include(viewPath('home/layout/header'))  %>
-<% if(typeof homeSlider.homeSliderImageUrl !== 'undefined' ) { %>
-<section class="homeSlider grid align-center-middle" style="background-image : url('<%= homeSlider.homeSliderImageUrl.destination %>')">
+<% if(typeof homePage.homeSliderImageUrl !== 'undefined' ) { %>
+<section class="homeSlider grid align-center-middle" style="background-image : url('<%= homePage.homeSliderImageUrl.destination %>')">
 <% } else { %>
-<section class="homeSlider grid align-center-middle"></section>
+<section class="homeSlider grid align-center-middle" style="background-image: url('/img/wallpaper/web-designing-wallpaper-compressor.jpg')">
 <% } %>    
     <div class="grid align-center-middle">
     <div class="grid-y align-center-middle item-1">
-        <i class="<%= homeSlider.homeSlidericonItem1 %>"></i>
-        <h3><%= homeSlider.homeSlideritem1 %></h3><br>
+        <%- homePage.homeSlidericonItem1 %>
+        <h3><%= homePage.homeSlideritem1 %></h3><br>
     </div>
     <div class="grid-y align-center-middle item-2">
-        <i class="<%= homeSlider.homeSlidericonItem2 %>"></i>
-        <h3><%= homeSlider.homeSlideritem2 %></h3><br>
+        <%- homePage.homeSlidericonItem2 %>
+        <h3><%= homePage.homeSlideritem2 %></h3><br>
     </div>
     <div class="grid-y align-center-middle item-3">
-        <i class="<%= homeSlider.homeSlidericonItem3 %>"></i>
-        <h3><%= homeSlider.homeSlideritem3 %></h3><br>
+        <%- homePage.homeSlidericonItem3 %>
+        <h3><%= homePage.homeSlideritem3 %></h3><br>
     </div>
   </div>
 </section>
 <section class="wrapper aboutUs grid align-center">
     <div class="container" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
         <div class="wrap grid align-center align-middle grid-y">
-            <img class="logo" src="/img/artakhe-logo.png">
-            <h3><%= aboutUs.aboutUsheader %></h3>
-            <p class="align-center"><%= aboutUs.aboutUsheaderDesc %></p>
-            <% if(typeof aboutUs.aboutUsImageUrl !== 'undefined' ) { %>
-            <img src="<%= aboutUs.aboutUsImageUrl.destination %>">
+            <% if(typeof siteInfo.logo !== 'undefined' ) { %>
+            <img class="logo" src="<%= siteInfo.logo.destination %>" alt="<%= siteInfo.nameEn %>">
+            <% } %>
+            <h3><%= homePage.aboutUsheader %></h3>
+            <p class="align-center"><%= homePage.aboutUsheaderDesc %></p>
+            <% if(typeof homePage.aboutUsImageUrl !== 'undefined' ) { %>
+            <img src="<%= homePage.aboutUsImageUrl.destination %>">
             <% } else { %>
             <img src="" alt="">
             <% } %>    
@@ -40,69 +42,69 @@
         <div class="ability-wrap grid-x align-around">
         <div class="item grid-x-no">
             <div class="icon grid align-justify align-top">
-                <img src="/img/Ability/LastTechno.png" alt="">
+                <img src="/img/Ability/LastTechno-compressor.png">
             </div>
             <div class="content">
-                <h4><%= ability.abilityitem1 %></h4>
-                <p><%= ability.abilityDescitem1 %></p>
+                <h4><%= homePage.abilityitem1 %></h4>
+                <p><%= homePage.abilityDescitem1 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
             <div class="icon grid align-justify align-top">
-                <img src="/img/Ability/Responsivi.png" alt="">
+                <img src="/img/Ability/Responsivi-compressor.png">
             </div>
             <div class="content">
-                <h4><%= ability.abilityitem2 %></h4>
-                <p><%= ability.abilityDescitem2 %></p>
+                <h4><%= homePage.abilityitem2 %></h4>
+                <p><%= homePage.abilityDescitem2 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
             <div class="icon grid align-justify align-top">
-                <img src="/img/Ability/idea.png" alt="">
+                <img src="/img/Ability/idea-compressor.png">
             </div>
             <div class="content">
-                <h4><%= ability.abilityitem3 %></h4>
-                <p><%= ability.abilityDescitem3 %></p>
+                <h4><%= homePage.abilityitem3 %></h4>
+                <p><%= homePage.abilityDescitem3 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
             <div class="icon grid align-justify align-top">
-                <img src="/img/Ability/Seo.png" alt="">
+                <img src="/img/Ability/Seo-compressor.png">
             </div>
             <div class="content">
-                <h4><%= ability.abilityitem4 %></h4>
-                <p><%= ability.abilityDescitem4 %></p>
+                <h4><%= homePage.abilityitem4 %></h4>
+                <p><%= homePage.abilityDescitem4 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
             <div class="icon grid align-justify align-top">
-                <img src="/img/Ability/Design.png" alt="">
+                <img src="/img/Ability/Design-compressor.png">
             </div>
             <div class="content">
-                <h4><%= ability.abilityitem5 %></h4>
-                <p><%= ability.abilityDescitem5 %></p>
+                <h4><%= homePage.abilityitem5 %></h4>
+                <p><%= homePage.abilityDescitem5 %></p>
             </div>
         </div>
         <div class="item grid-x-no">
             <div class="icon grid align-justify align-top">
-                <img src="/img/Ability/Fast.png" alt="">
+                <img src="/img/Ability/Fast-compressor.png">
             </div>
             <div class="content">
-                <h4><%= ability.abilityitem6 %></h4>
-                <p><%= ability.abilityDescitem6 %></p>
+                <h4><%= homePage.abilityitem6 %></h4>
+                <p><%= homePage.abilityDescitem6 %></p>
             </div>
         </div>
     </div>
     
 </section>
-<% if(typeof parallax.parallaxImageUrl !== 'undefined' ) { %>
-<section class="parallax para1 style="background-image:url('<%=parallax.parallaxImageUrl.destination %>')">
+<% if(typeof homePage.parallaxImageUrl !== 'undefined' ) { %>
+<section class="parallax para1 style="background-image:url('<%=homePage.parallaxImageUrl.destination %>')">
 <% } else { %>
 <section class="parallax para1">
 <% }%>   
     <div class="overlay grid-y align-center-middle" >
-        <h4 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"><%= parallax.headerParallax %></h4>
-        <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"><%= parallax.descParallax %></p>
+        <h4 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"><%= homePage.headerParallax %></h4>
+        <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"><%= homePage.descParallax %></p>
     </div>
 </section>
 <section class="wrapper products-tab grid align-center-middle ">
@@ -236,5 +238,3 @@
 </section>
 <%- include(viewPath('home/layout/footer')) %>
 <script src="/plugin/home/owlcarousel/owl.carousel.run.js"></script>
-<script src="./plugin/particles/particles.min.js"></script>
-<script src="./plugin/particles/particlesRun.js"></script>

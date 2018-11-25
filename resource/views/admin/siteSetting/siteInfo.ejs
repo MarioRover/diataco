@@ -20,8 +20,10 @@
       <div class="mark grid-x-no align-middle">
         <i class="fab fa-creative-commons-by"></i>
         <span class="name">آخرین بروزرسانی : </span>
+        <% if(typeof siteInfo.updateBy !== 'undefined' ) { %>
         <span><%= siteInfo.updateBy.name %> <%= siteInfo.updateBy.family %></span>
         <span><%= date(siteInfo.createdAt).format('jYYYY/jM/jD') %></span>
+        <% } %>
       </div>
     </div>
     <div class="post-info grid-y">

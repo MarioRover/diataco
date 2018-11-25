@@ -20,7 +20,8 @@ const appPagesController = require('app/http/controllers/admin/siteSittings/page
 // Validators
 const loginAdminsValidation = require('app/http/validators/loginAdminsValidation');
 const contactPagesValidation = require('app/http/validators/contactPagesValidation');
-const homePagesAboutValidation = require('app/http/validators/homePageValidation/aboutValidation');
+const homeSliderValidation = require('app/http/validators/homePageValidation/homeSliderValidation');
+const aboutValidation = require('app/http/validators/homePageValidation/aboutValidation');
 const homePagesParallaxValidation = require('app/http/validators/homePageValidation/parallaxValidation');
 const homePagesHomeSliderValidation = require('app/http/validators/homePageValidation/homeSliderValidation');
 const homePagesAbilityValidation = require('app/http/validators/homePageValidation/abilityValidation');
@@ -135,32 +136,34 @@ router.put('/site-setting/pages/about/parallax',
 );
 // Home Page
 router.get('/site-setting/pages/home', redirectIfAuthenticated.adminLogin, homePagesController.index);
-router.put('/site-setting/pages/home/about',
+router.put('/site-setting/pages/home/homeSlider',
   redirectIfAuthenticated.adminLogin,
-  upload.single('aboutUsphoto'),
+  upload.single('photo'),
   convertFileToField.handle,
-  homePagesAboutValidation.handle(),
-  homePagesController.updateAbout
+  homeSliderValidation.handle(),
+  homePagesController.homeSlider
 );
-router.put('/site-setting/pages/home/parallax',
+router.put('/site-setting/pages/home/aboutUs',
   redirectIfAuthenticated.adminLogin,
-  upload.single('parallaxphoto'),
+  upload.single('photo'),
   convertFileToField.handle,
-  homePagesParallaxValidation.handle(),
-  homePagesController.updateParallax
-);
-router.put('/site-setting/pages/home/homeslider',
-  redirectIfAuthenticated.adminLogin,
-  upload.single('homeSliderphoto'),
-  convertFileToField.handle,
-  homePagesHomeSliderValidation.handle(),
-  homePagesController.updateHomeSlider
+  aboutValidation.handle(),
+  homePagesController.aboutUs
 );
 router.put('/site-setting/pages/home/ability',
   redirectIfAuthenticated.adminLogin,
   homePagesAbilityValidation.handle(),
-  homePagesController.updateAbility
+  homePagesController.ability
 );
+router.put('/site-setting/pages/home/parallax',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  homePagesParallaxValidation.handle(),
+  homePagesController.parallax
+);
+
+
 // /////////// Seo Page
 router.get('/site-setting/pages/seo', redirectIfAuthenticated.adminLogin, seoPagesController.index);
 router.put('/site-setting/pages/seo/header', 

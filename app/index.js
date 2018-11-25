@@ -10,17 +10,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const passport = require('passport');
-const rateLimit = require("express-rate-limit");
-const apiLimiter = new rateLimit({
-  windowMs : 1000*60*15,
-  max : 50,
-  handler : function(req , res) {
-    res.json({
-      data : 'درخواست شما زیاد بوده ، لطفا 5 دقیقه دیگر دوباره تلاش کنید',
-      status : 'error'
-    })
-  }
-})
+
 const Helpers = require('./helper');
 //Middleware
 const rememberLogin = require('app/http/middleware/rememberLogin');
@@ -45,7 +35,6 @@ module.exports = class Aplication {
   setConfig() {
     // Passport
     require('app/passport/passport-admin');
-    require('app/passport/passport-jwt');
     // security
     app.enable('trust proxy');
     app.use(helmet());
@@ -75,7 +64,6 @@ module.exports = class Aplication {
     });
   }
   setRouters() {
-    app.use(apiLimiter , require('app/routes/api'));
     app.use(require('app/routes/web'));
   }
 }

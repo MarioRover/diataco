@@ -14,275 +14,260 @@
 </a>
 <%- contentFor('body') %>
 <div class="site-pages w100 grid align-center">
-  <div class="container">
-    <div class="input-box">
-      <div class="flag grid align-center-middle">
-        <span>HOME SLIDER</span>
+  <div class="container grid-y">
+    <div class="controller grid-y">
+      <div class="mark grid-x-no align-middle">
+        <i class="fas fa-home"></i>
+        <span class="name">صفحه اصلی</span>
       </div>
-      <form class="HomeSliderSetting">
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="homeSlideritem1">متن اول</label>
-            <input name="homeSlideritem1" type="text" value="<%= homeSlider.homeSlideritem1 %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="homeSlidericonItem1">آیکون متن اول</label>
-            <input name="homeSlidericonItem1" type="text" value="<%= homeSlider.homeSlidericonItem1 %>">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="homeSlideritem2">متن دوم</label>
-            <input name="homeSlideritem2" type="text" value="<%= homeSlider.homeSlideritem2 %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="homeSlidericonItem2">آیکون متن دوم</label>
-            <input name="homeSlidericonItem2" type="text" value="<%= homeSlider.homeSlidericonItem2 %>">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="homeSlideritem3">متن سوم</label>
-            <input name="homeSlideritem3" type="text" value="<%= homeSlider.homeSlideritem3 %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="homeSlidericonItem3">آیکون متن سوم</label>
-            <input name="homeSlidericonItem3" type="text" value="<%= homeSlider.homeSlidericonItem3 %>">
-          </div>
-        </div>
-         <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="homeSliderPhoto">تصویر پس زمینه</label>
-            <input class="input-en" name="homeSliderPhoto" type="file">
-          </div>
-          <% if(homeSlider !== 'undefined') { %>
-          <a href="<%= homeSlider.homeSliderImageUrl.destination %>" class="input-group homeSliderphoto grid align-center">
-            <img class="image" src="<%= homeSlider.homeSliderImageUrl.destination %>">
-          </a>
-          <% } else { %>
-          <div class="input-group homeSliderphoto grid align-center">
-            <img src="/img/noimage.png" alt="No Image">
-          </div> 
-          <% } %>  
-        </div>
-        <div class="input-wrap grid align-left">
-          <button type="submit" class="btn btn-primary grid align-center-middle">
-            <span>ثبت اطلاعات</span>
-          </button>
-        </div>
-      </form>
     </div>
-    <div class="input-box">
-      <div class="flag grid align-center-middle">
-        <span>ABOUT US</span>
+    <div class="post-info">
+      <div class="post-box w100">
+        <header class="navyBlue">
+          <h4>Home Slider</h4>
+        </header>
+        <content>
+          <form class="HomeSliderSetting">
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="homeSlideritem1">متن اول</label>
+                <input name="homeSlideritem1" type="text" value="<%= homePage.homeSlideritem1 %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="homeSlidericonItem1">آیکون متن اول</label>
+                <input class="input-en" name="homeSlidericonItem1" type="text" value="<%= homePage.homeSlidericonItem1 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="homeSlideritem2">متن دوم</label>
+                <input name="homeSlideritem2" type="text" value="<%= homePage.homeSlideritem2 %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="homeSlidericonItem2">آیکون متن دوم</label>
+                <input class="input-en" name="homeSlidericonItem2" type="text" value="<%= homePage.homeSlidericonItem2 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="homeSlideritem3">متن سوم</label>
+                <input name="homeSlideritem3" type="text" value="<%= homePage.homeSlideritem3 %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="homeSlidericonItem3">آیکون متن سوم</label>
+                <input class="input-en" name="homeSlidericonItem3" type="text" value="<%= homePage.homeSlidericonItem3 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <div class="grid-y input-group">
+                <label for="photo">تصویر پس زمینه</label>
+                <div class="grid align-center">
+                  <div class="image-box box1 grid align-center-middle">
+                    <% if(typeof homePage.homeSliderImageUrl !== 'undefined') { %>
+                      <img src="<%= homePage.homeSliderImageUrl.destination %>">  
+                    <% } else { %>
+                      <img src="">
+                    <% } %>  
+                  </div>
+                </div>
+                <input class="input-en" name="photo" type="file">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <button type="submit" class="btn btn-primary grid align-center-middle">
+                <span>ثبت اطلاعات</span>
+              </button>
+            </div>
+          </form>
+        </content>
       </div>
-      <form class="AboutUsPageSetting">
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group w100">
-            <label for="aboutUsheader">تیتر</label>
-            <input name="aboutUsheader" type="text" value="<%= aboutUs.aboutUsheader %>">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group w100">
-            <label for="aboutUsheaderDesc">توضیحات تیتر</label>
-            <textarea name="aboutUsheaderDesc" cols="30" rows="3"><%= aboutUs.aboutUsheaderDesc %></textarea>
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="aboutUsphoto">تصویر پس زمینه</label>
-            <input class="input-en" name="aboutUsphoto" type="file">
-          </div>
-
-          <% if(aboutUs !== 'undefined') { %>
-          <a href="<%= aboutUs.aboutUsImageUrl.destination %>" class="input-group aboutUsphoto grid align-center">
-            <img class="image" src="<%= aboutUs.aboutUsImageUrl.destination %>">
-          </a>
-          <% } else { %>
-          <div class="input-group aboutUsphoto grid align-center">
-            <img src="/img/noimage.png" alt="No Image">
-          </div> 
-          <% } %>
-        </div>
-        <div class="input-wrap grid align-left">
-          <button type="submit" class="btn btn-primary grid align-center-middle">
-            <span>ثبت اطلاعات</span>
-          </button>
-        </div>
-      </form>
     </div>
-    <div class="input-box">
-      <div class="flag grid align-center-middle">
-        <span>ABILITY</span>
+    <div class="post-info">
+      <div class="post-box w100">
+        <header class="navyBlue">
+          <h4>About Us</h4>
+        </header>
+        <content>
+          <form class="AboutUsPageSetting">
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="aboutUsheader">تیتر</label>
+                <input name="aboutUsheader" type="text" value="<%= homePage.aboutUsheader %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="aboutUsheaderDesc">توضیحات</label>
+                <textarea name="aboutUsheaderDesc" cols="30" rows="10"><%= homePage.aboutUsheaderDesc %></textarea>
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <div class="grid-y input-group">
+                <label for="photo">تصویر پس زمینه</label>
+                <div class="grid align-center">
+                  <div class="image-box box2 grid align-center-middle">
+                    <% if(typeof homePage.aboutUsImageUrl !== 'undefined') { %>
+                      <img src="<%= homePage.aboutUsImageUrl.destination %>">  
+                    <% } else { %>
+                      <img src="">
+                    <% } %>  
+                  </div>
+                </div>
+                <input class="input-en" name="photo" type="file">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <button type="submit" class="btn btn-primary grid align-center-middle">
+                <span>ثبت اطلاعات</span>
+              </button>
+            </div>
+          </form>
+        </content>
       </div>
-      <form class="AbilitySetting">
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="abilityitem1">عنوان متن اول</label>
-            <input name="abilityitem1" type="text" value="<%= ability.abilityitem1 %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="abilityIconitem1">آیکون متن اول</label>
-            <input name="abilityIconitem1" type="text" value="<%= ability.abilityIconitem1 %>">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group w100">
-            <label for="abilityDescitem1">توضیحات متن اول</label>
-            <input name="abilityDescitem1" type="text" value="<%= ability.abilityDescitem1 %>">
-          </div>
-        </div>
-        <div class="line-space2"></div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="abilityitem2">عنوان متن دوم</label>
-            <input name="abilityitem2" type="text" value="<%= ability.abilityitem2 %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="abilityIconitem2">آیکون متن دوم</label>
-            <input name="abilityIconitem2" type="text" value="<%= ability.abilityIconitem2 %>">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group w100">
-            <label for="abilityDescitem2">توضیحات متن دوم</label>
-            <input name="abilityDescitem2" type="text" value="<%= ability.abilityDescitem2 %>">
-          </div>
-        </div>
-        <div class="line-space2"></div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="abilityitem3">عنوان متن سوم</label>
-            <input name="abilityitem3" type="text" value="<%= ability.abilityitem3 %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="abilityIconitem3">آیکون متن سوم</label>
-            <input name="abilityIconitem3" type="text" value="<%= ability.abilityIconitem3 %>">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group w100">
-            <label for="abilityDescitem3">توضیحات متن سوم</label>
-            <input name="abilityDescitem3" type="text" value="<%= ability.abilityDescitem3 %>">
-          </div>
-        </div>
-        <div class="line-space2"></div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="abilityitem4">عنوان متن چهارم</label>
-            <input name="abilityitem4" type="text"value="<%= ability.abilityitem4 %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="abilityIconitem4">آیکون متن چهارم</label>
-            <input name="abilityIconitem4" type="text"value="<%= ability.abilityIconitem4 %>">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group w100">
-            <label for="abilityDescitem4">توضیحات متن چهارم</label>
-            <input name="abilityDescitem4" type="text"value="<%= ability.abilityDescitem4 %>">
-          </div>
-        </div>
-        <div class="line-space2"></div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="abilityitem5">عنوان متن پنجم</label>
-            <input name="abilityitem5" type="text"value="<%= ability.abilityitem5 %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="abilityIconitem5">آیکون متن پنجم</label>
-            <input name="abilityIconitem5" type="text" value="<%= ability.abilityIconitem5 %>">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group w100">
-            <label for="abilityDescitem5">توضیحات متن پنجم</label>
-            <input name="abilityDescitem5" type="text" value="<%= ability.abilityDescitem5 %>">
-          </div>
-        </div>
-        <div class="line-space2"></div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="abilityitem6">عنوان متن ششم</label>
-            <input name="abilityitem6" type="text" value="<%= ability.abilityitem6 %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="abilityIconitem6">آیکون متن ششم</label>
-            <input name="abilityIconitem6" type="text"value="<%= ability.abilityIconitem6 %>">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group w100">
-            <label for="abilityDescitem6">توضیحات متن ششم</label>
-            <input name="abilityDescitem6" type="text" value="<%= ability.abilityDescitem6 %>">
-          </div>
-        </div>       
-        <div class="input-wrap grid align-left">
-          <button type="submit" class="btn btn-primary grid align-center-middle">
-            <span>ثبت اطلاعات</span>
-          </button>
-        </div>
-      </form>
     </div>
-     <div class="input-box">
-      <div class="flag grid align-center-middle">
-        <span>PARALLAX</span>
+    <div class="post-info">
+      <div class="post-box w100">
+        <header class="navyBlue">
+          <h4>ABILITY</h4>
+        </header>
+        <content>
+          <form class="AbilitySetting">
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="abilityitem1">عنوان متن اول</label>
+                <input name="abilityitem1" type="text" value="<%= homePage.abilityitem1 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="abilityDescitem1">توضیحات متن اول</label>
+                <input name="abilityDescitem1" value="<%= homePage.abilityDescitem1 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="abilityitem2">عنوان متن دوم</label>
+                <input name="abilityitem2" type="text" value="<%= homePage.abilityitem2 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="abilityDescitem2">توضیحات متن دوم</label>
+                <input name="abilityDescitem2" value="<%= homePage.abilityDescitem2 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="abilityitem3">عنوان متن سوم</label>
+                <input name="abilityitem3" type="text" value="<%= homePage.abilityitem3 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="abilityDescitem3">توضیحات متن سوم</label>
+                <input name="abilityDescitem3" value="<%= homePage.abilityDescitem3 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="abilityitem4">عنوان متن چهارم</label>
+                <input name="abilityitem4" type="text" value="<%= homePage.abilityitem4 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="abilityDescitem4">توضیحات متن چهارم</label>
+                <input name="abilityDescitem4" value="<%= homePage.abilityDescitem4 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="abilityitem5">عنوان متن پنجم</label>
+                <input name="abilityitem5" type="text" value="<%= homePage.abilityitem5 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="abilityDescitem5">توضیحات متن پنجم</label>
+                <input name="abilityDescitem5" value="<%= homePage.abilityDescitem5 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="abilityitem6">عنوان متن ششم</label>
+                <input name="abilityitem6" type="text" value="<%= homePage.abilityitem6 %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="abilityDescitem6">توضیحات متن ششم</label>
+                <input name="abilityDescitem6" value="<%= homePage.abilityDescitem6 %>">
+              </div>
+            </div>
+            
+            
+            <div class="input-wrap grid align-left">
+              <button type="submit" class="btn btn-primary grid align-center-middle">
+                <span>ثبت اطلاعات</span>
+              </button>
+            </div>
+          </form>
+        </content>
       </div>
-      <form class="ParallaxSetting">
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="headerParallax">تیتر پارالاکس</label>
-            <input name="headerParallax" type="text" value="<%= parallax.headerParallax %>">
-          </div>
-          <div class="grid-y input-group">
-            <label for="descParallax">توضیحات پارالاکس</label>
-            <input name="descParallax" type="text" value="<%= parallax.descParallax %>">
-          </div>
-        </div>
-        <div class="input-wrap grid-x">
-          <div class="grid-y input-group">
-            <label for="parallaxphoto">تصویر پس زمینه پارالاکس</label>
-            <input class="input-en" name="parallaxphoto" type="file">
-          </div>
-          <% if(parallax !== 'undefined') { %>
-          <a href="<%= parallax.parallaxImageUrl.destination %>" class="input-group parallaxphoto grid align-center">
-            <img class="image" src="<%= parallax.parallaxImageUrl.destination %>">
-          </a>
-          <% } else { %>
-          <div class="input-group parallaxphoto grid align-center">
-            <img src="/img/noimage.png" alt="No Image">
-          </div> 
-          <% } %>
-        </div>
-        <div class="input-wrap grid align-left">
-          <button type="submit" class="btn btn-primary grid align-center-middle">
-            <span>ثبت اطلاعات</span>
-          </button>
-        </div>
-      </form>
     </div>
+    <div class="post-info">
+      <div class="post-box w100">
+        <header class="navyBlue">
+          <h4>Parallax</h4>
+        </header>
+        <content>
+          <form class="ParallaxSetting">
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group">
+                <label for="headerParallax">تیتر پارالاکس</label>
+                <input name="headerParallax" type="text" value="<%= homePage.headerParallax %>">
+              </div>
+              <div class="grid-y input-group">
+                <label for="descParallax">توضیحات پارالاکس</label>
+                <input class="input-en" name="descParallax" type="text" value="<%= homePage.descParallax %>">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <div class="grid-y input-group">
+                <label for="photo">تصویر پس زمینه</label>
+                <div class="grid align-center">
+                  <div class="image-box box3 grid align-center-middle">
+                    <% if(typeof homePage.parallaxImageUrl !== 'undefined') { %>
+                      <img src="<%= homePage.parallaxImageUrl.destination %>">  
+                    <% } else { %>
+                      <img src="">
+                    <% } %>  
+                  </div>
+                </div>
+                <input class="input-en" name="photo" type="file">
+              </div>
+            </div>
+            <div class="input-wrap grid align-left">
+              <button type="submit" class="btn btn-primary grid align-center-middle">
+                <span>ثبت اطلاعات</span>
+              </button>
+            </div>
+          </form>
+        </content>
+      </div>
+    </div>
+     
   </div>
 </div>
 
 <script>
-  const setImageUrl = (imgUrl) => {
-    
-    const {homeSliderphoto,aboutUsphoto,parallaxphoto} = imgUrl;
-
-    let homeSliderImg = $('.input-group.homeSliderphoto .image');
-    if(typeof homeSliderphoto !== 'undefined') {
-      $(homeSliderImg).attr('src', `${homeSliderphoto}`);
-    }
-
-    let aboutUsImg = $('.input-group.aboutUsphoto .image');
-    if(typeof aboutUsphoto !== 'undefined') {
-      $(aboutUsImg).attr('src', `${aboutUsphoto}`);
-    }
-
-    let parallaxImg = $('.input-group.parallaxphoto .image');
-    if(typeof parallaxphoto !== 'undefined') {
-      $(parallaxImg).attr('src', `${parallaxphoto}`);
-    }  
-  }
+  $(".HomeSliderSetting input[name='photo']").change(function () {
+    readURL2(this, "1");
+  });
+  $(".AboutUsPageSetting input[name='photo']").change(function () {
+    readURL2(this, "2");
+  });
+  $(".ParallaxSetting input[name='photo']").change(function () {
+    readURL2(this, "3");
+  });
 </script>

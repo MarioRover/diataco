@@ -23,7 +23,7 @@ module.exports = new class homeSliderValidation extends validator {
       check('homeSlidericonItem3')
         .not().isEmpty()
         .withMessage('فیلد آیکون متن سوم نمی تواند خالی باشد'),
-      check('homeSliderphotoVal')
+      check('photoVal')
         .custom(async (value , {req})=>{
           if(req.method !== 'PUT') {
             if (!value) throw new Error('وارد کردن تصویر صفحه نخست الزامی است');
