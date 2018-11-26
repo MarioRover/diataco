@@ -28,28 +28,36 @@
             <br>
             <div class="product-wrap grid-x align-around">
                 <div class="owl-carousel owl-theme">
-                    <% websites.forEach(website => { %>
-                    <a href="/websites/<%= website.slug %>" class="card-web">
-                        <img src="<%= website.previewImage.destination %>">
-                        <div class="body">
-                            <h3 class="EN">
-                                <%= website.name %>
-                            </h3>
-                        </div>
-                    </a>
-                    <% }) %>
+                    <% if(websites !== 'undefined') { %>
+                        <% websites.forEach(website => { %>
+                            <a href="/websites/<%= website.slug %>" class="card-web">
+                                <img src="<%= website.previewImage.destination %>">
+                                <div class="body">
+                                    <h3 class="EN">
+                                        <%= website.name %>
+                                    </h3>
+                                </div>
+                            </a>
+                        <% }) %>
+                    <% } else { %>
+                        <h6>وب سایتی وجود ندارد</h6>
+                    <% } %> 
                 </div>
                 <div class="carousel grid-x">
-                    <% websites.forEach(website => { %>
-                    <a href="/websites/<%= website.slug %>" class="card-web">
-                        <img src="<%= website.previewImage.destination %>">
-                        <div class="body">
-                            <h3 class="EN">
-                                <%= website.name %>
-                            </h3>
-                        </div>
-                    </a>
-                    <% }) %>
+                    <% if(websites !== 'undefined') { %>
+                        <% websites.forEach(website => { %>
+                        <a href="/websites/<%= website.slug %>" class="card-web">
+                            <img src="<%= website.previewImage.destination %>">
+                            <div class="body">
+                                <h3 class="EN">
+                                    <%= website.name %>
+                                </h3>
+                            </div>
+                        </a>
+                        <% }) %>
+                    <% } else { %>   
+                        <h6>وب سایتی وجود ندارد</h6>
+                    <% } %>    
                 </div>
             </div>
         </div>

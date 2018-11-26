@@ -23,7 +23,6 @@ const contactPagesValidation = require('app/http/validators/contactPagesValidati
 const homeSliderValidation = require('app/http/validators/homePageValidation/homeSliderValidation');
 const aboutValidation = require('app/http/validators/homePageValidation/aboutValidation');
 const homePagesParallaxValidation = require('app/http/validators/homePageValidation/parallaxValidation');
-const homePagesHomeSliderValidation = require('app/http/validators/homePageValidation/homeSliderValidation');
 const homePagesAbilityValidation = require('app/http/validators/homePageValidation/abilityValidation');
 const addCategoriesValidation = require('app/http/validators/blogValidation/addCategoriesValidation');
 const updateCategoriesValidation = require('app/http/validators/blogValidation/updateCategoriesValidation');
@@ -36,8 +35,7 @@ const websitesValidation = require('app/http/validators/websitesValidation');
 const applicationValidation = require('app/http/validators/applicationValidation');
 const siteInfoValidation = require('app/http/validators/siteInfoValidation');
 const seoHeaderValidation = require('app/http/validators/seoPageValidation/seoHeader');
-const seoDesc1Validation = require('app/http/validators/seoPageValidation/seoDesc1');
-const seoDesc2Validation = require('app/http/validators/seoPageValidation/seoDesc2');
+const seoDescValidation = require('app/http/validators/seoPageValidation/seoDesc');
 const seoParallaxValidation = require('app/http/validators/seoPageValidation/seoParallax');
 const usersValidation = require('app/http/validators/usersValidation');
 const usersBackgroundValidation = require('app/http/validators/usersBackgroundValidation');
@@ -91,7 +89,6 @@ router.put('/site-setting/pages/contact',
   contactPagesValidation.handle(),
   contactPagesController.contactPage
 );
-
 // About Page
 router.get('/site-setting/pages/about', redirectIfAuthenticated.adminLogin, aboutPagesController.index);
 router.put('/site-setting/pages/about/header',
@@ -157,19 +154,12 @@ router.put('/site-setting/pages/seo/header',
   seoHeaderValidation.handle(),
   seoPagesController.header
 );
-router.put('/site-setting/pages/seo/description1',
+router.put('/site-setting/pages/seo/description',
   redirectIfAuthenticated.adminLogin,
   upload.single('photo'),
   convertFileToField.handle,
-  seoDesc1Validation.handle(),
-  seoPagesController.description1
-);
-router.put('/site-setting/pages/seo/description2',
-  redirectIfAuthenticated.adminLogin,
-  upload.single('photo'),
-  convertFileToField.handle,
-  seoDesc2Validation.handle(),
-  seoPagesController.description2
+  seoDescValidation.handle(),
+  seoPagesController.description
 );
 router.put('/site-setting/pages/seo/articles',
   redirectIfAuthenticated.adminLogin,

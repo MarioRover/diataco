@@ -6,17 +6,17 @@ module.exports = new class websiteController extends controller {
       let websites = await this.models.websites.find({}).limit(8).sort({createdAt :-1}).exec();
       let siteInfo = await this.models.siteInfo.find({});
       let websitePage = await this.models.websitePage.find({});
-      if (this.isEmptyArray(siteInfo)) {
+      if (this.isEmpty(siteInfo)) {
         siteInfo = 'undefined';
       } else {
         siteInfo = siteInfo[0]
       }
-      if (this.isEmptyArray(websitePage)) {
+      if (this.isEmpty(websitePage)) {
         websitePage = 'undefined';
       } else {
         websitePage = websitePage[0]
       }
-      if(this.isEmptyArray(websites)) {
+      if(this.isEmpty(websites)) {
         websites = 'undefined';
       }
       res.render('home/website', {
