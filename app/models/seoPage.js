@@ -18,7 +18,8 @@ const seoPageSchema = new Schema({
   Descitem5 : {type : String , default : ''},
   item6     : {type : String , default : ''},
   Descitem6 : {type : String , default : ''},
-  parallaxImageUrl  : {type : Object}
+  parallaxImageUrl  : {type : Object},
+  tags      : { type : Array , default : ''}
 } , {timestamps : true});
 
 module.exports = mongoose.model('seoPage', seoPageSchema);

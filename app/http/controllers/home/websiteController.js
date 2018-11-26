@@ -21,7 +21,8 @@ module.exports = new class websiteController extends controller {
       }
       res.render('home/website', {
         title: 'وب سایت',
-        websites,siteInfo,websitePage
+        websites,siteInfo,websitePage,
+        tags : websitePage.tags
       });
     } catch (error) {
       return this.error('Error in showPage method in websiteController',500,next);

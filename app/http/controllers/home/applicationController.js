@@ -21,7 +21,8 @@ module.exports = new class applicationController extends controller {
       }
       res.render('home/application/index', {
         title: 'وب سایت',
-        applications,siteInfo,appPage
+        applications,siteInfo,appPage,
+        tags : appPage.tags
       });
     } catch (error) {
       return this.error('Error in showPage method in applicationController', 500, next);

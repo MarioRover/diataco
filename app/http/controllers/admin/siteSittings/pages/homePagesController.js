@@ -226,6 +226,29 @@ module.exports = new class homePagesController extends controller {
       return this.serverError('Error in parallax method at sitePagesController.js', 500, error, res);
     }
   }
+  async tags(req , res , next) {
+    try {
+      let contentObj = {tags : req.body.tags};
+      let homePage = await this.models.homePage.find({});
+      if(this.isEmpty(homePage)) {
+        let newHomePage = new this.models.homePage({ ...contentObj});
+        await newHomePage.save(error => {
+          if (error) {
+            return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
+          }
+        });
+        return this.izitoastMessage(['قسمت Home Page Tags با موفقیت بروزرسانی شد'] , 'success' , res);
+      } else {
+        let objId = homePage[0]._id;
+        await this.models.homePage.findByIdAndUpdate(objId, {
+          $set: { ...contentObj,...contentObj}
+        });
+        return this.izitoastMessage(['قسمت Home Page Tags با موفقیت بروزرسانی شد'] , 'success' , res);
+      }
+    } catch (error) {
+      return this.serverError('Error in tags method at sitePagesController.js', 500, error, res);
+    }
+  }
 }
 
 

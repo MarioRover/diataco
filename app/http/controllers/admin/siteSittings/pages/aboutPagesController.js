@@ -149,6 +149,7 @@ module.exports = new class aboutPagesController extends controller {
         if (!this.isEmpty(req.file)) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
+      let contentObj = {parallaxText : req.body.parallaxText}
       const parallaxImageUrl = req.file;
       let aboutPage = await this.models.aboutPage.find({});
       
@@ -194,6 +195,29 @@ module.exports = new class aboutPagesController extends controller {
       }
     } catch (error) {
       return this.serverError('Error in parallax method at aboutPagesController.js', 500, error, res);
+    }
+  }
+  async tags(req , res , next) {
+    try {
+      let contentObj = {tags : req.body.tags};
+      let aboutPage = await this.models.aboutPage.find({});;
+      if(this.isEmpty(aboutPage)) {
+        let newHomePage = new this.models.aboutPage({ ...contentObj});
+        await newHomePage.save(error => {
+          if (error) {
+            return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
+          }
+        });
+        return this.izitoastMessage(['قسمت About Page Tags با موفقیت بروزرسانی شد'] , 'success' , res);
+      } else {
+        let objId = aboutPage[0]._id;
+        await this.models.aboutPage.findByIdAndUpdate(objId, {
+          $set: { ...contentObj,...contentObj}
+        });
+        return this.izitoastMessage(['قسمت About Page Tags با موفقیت بروزرسانی شد'] , 'success' , res);
+      }
+    } catch (error) {
+      return this.serverError('Error in tags method at sitePagesController.js', 500, error, res);
     }
   }
 }

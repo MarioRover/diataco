@@ -1299,9 +1299,10 @@ main {
 .login-admin {
   width: 100%;
   height: 100%;
-  background-color: #002055;
-  background-image: radial-gradient(ellipse 50% 70% at 50% 0, #002c74 20%, #001536);
+  background-image: url('/img/wallpaper/3dsky-compressor.jpg');
   background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .login-admin .login-wrap {
   width: 21em;

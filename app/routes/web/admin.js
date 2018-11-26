@@ -89,6 +89,10 @@ router.put('/site-setting/pages/contact',
   contactPagesValidation.handle(),
   contactPagesController.contactPage
 );
+router.put('/site-setting/pages/contact/tags',
+  redirectIfAuthenticated.adminLogin,
+  contactPagesController.tags
+);
 // About Page
 router.get('/site-setting/pages/about', redirectIfAuthenticated.adminLogin, aboutPagesController.index);
 router.put('/site-setting/pages/about/header',
@@ -116,6 +120,13 @@ router.put('/site-setting/pages/about/parallax',
   convertFileToField.handle,
   aboutParallax.handle(),
   aboutPagesController.parallax
+);
+router.put('/site-setting/pages/about/tags',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  aboutParallax.handle(),
+  aboutPagesController.tags
 );
 // Home Page
 router.get('/site-setting/pages/home', redirectIfAuthenticated.adminLogin, homePagesController.index);
@@ -145,6 +156,10 @@ router.put('/site-setting/pages/home/parallax',
   homePagesParallaxValidation.handle(),
   homePagesController.parallax
 );
+router.put('/site-setting/pages/home/tags',
+  redirectIfAuthenticated.adminLogin,
+  homePagesController.tags
+);
 // /////////// Seo Page
 router.get('/site-setting/pages/seo', redirectIfAuthenticated.adminLogin, seoPagesController.index);
 router.put('/site-setting/pages/seo/header', 
@@ -173,6 +188,10 @@ router.put('/site-setting/pages/seo/parallax',
   seoParallaxValidation.handle(),
   seoPagesController.parallax
 );
+router.put('/site-setting/pages/seo/tags',
+  redirectIfAuthenticated.adminLogin,
+  seoPagesController.tags
+);
 ///////// Website Page
 router.get('/site-setting/pages/websites', redirectIfAuthenticated.adminLogin, websitesPagesController.index);
 router.post('/site-setting/pages/websites',
@@ -189,6 +208,10 @@ router.put('/site-setting/pages/websites',
   websitePageValidation.handle(),
   websitesPagesController.update
 );
+router.put('/site-setting/pages/websites/tags',
+  redirectIfAuthenticated.adminLogin,
+  websitesPagesController.tags
+);
 ///////// Application Page
 router.get('/site-setting/pages/applications', redirectIfAuthenticated.adminLogin, appPagesController.index);
 router.post('/site-setting/pages/applications',
@@ -204,6 +227,10 @@ router.put('/site-setting/pages/applications',
   convertFileToField.handle,
   appPageValidation.handle(),
   appPagesController.update
+);
+router.put('/site-setting/pages/applications/tags',
+  redirectIfAuthenticated.adminLogin,
+  appPagesController.tags
 );
 /////// Category Blog
 router.get('/blogs/categories', redirectIfAuthenticated.adminLogin, blogController.index);

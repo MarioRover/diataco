@@ -18,7 +18,9 @@ const aboutPageSchema = new Schema({
   Descitem5 : {type : String , default : ''},
   item6     : {type : String , default : ''},
   Descitem6 : {type : String , default : ''},
+  parallaxText : {type : String , default : ''},
   parallaxImageUrl  : {type : Object},
+  tags       : { type : Array , default : ''}
 } , {timestamps : true});
 
 module.exports = mongoose.model('AboutPage', aboutPageSchema);

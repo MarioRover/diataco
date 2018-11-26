@@ -29,7 +29,9 @@ const homePage = new Schema({
 
   headerParallax     : { type : String , default : ''},
   descParallax       : { type : String , default : ''},
-  parallaxImageUrl   : { type : Object}
+  parallaxImageUrl   : { type : Object},
+
+  tags       : { type : Array , default : ''}
 } , {timestamps : true});
 
 

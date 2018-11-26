@@ -17,7 +17,8 @@ module.exports = new class seoController extends controller {
       }
       res.render('home/seo', {
         title: 'سئو',
-        seoPage,siteInfo
+        seoPage,siteInfo,
+        tags : seoPage.tags
       });
     } catch (error) {
       return this.serverError('Error in Index method at seoPagesController.js', 500, error, res);

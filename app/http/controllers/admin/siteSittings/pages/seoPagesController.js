@@ -204,5 +204,27 @@ module.exports = new class seoPagesController extends controller {
       return this.serverError('Error in parallax method of seoPagesController.js', 500, error, res);
     }
   }
-  
+  async tags(req , res , next) {
+    try {
+      let contentObj = {tags : req.body.tags};
+      let seoPage = await this.models.seoPage.find({});
+      if(this.isEmpty(seoPage)) {
+        let newHomePage = new this.models.seoPage({ ...contentObj});
+        await newHomePage.save(error => {
+          if (error) {
+            return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
+          }
+        });
+        return this.izitoastMessage(['قسمت SEO Page Tags با موفقیت بروزرسانی شد'] , 'success' , res);
+      } else {
+        let objId = seoPage[0]._id;
+        await this.models.seoPage.findByIdAndUpdate(objId, {
+          $set: { ...contentObj,...contentObj}
+        });
+        return this.izitoastMessage(['قسمت SEO Page Tags با موفقیت بروزرسانی شد'] , 'success' , res);
+      }
+    } catch (error) {
+      return this.serverError('Error in tags method at sitePagesController.js', 500, error, res);
+    }
+  }
 }

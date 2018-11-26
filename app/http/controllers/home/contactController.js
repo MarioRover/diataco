@@ -18,7 +18,8 @@ module.exports = new class contactController extends controller {
       res.render('home/contact', {
         title: 'درباره ما',
         contactPage,siteInfo,
-        SITEKEY : process.env.RECAPTCHA_SITEKEY
+        SITEKEY : process.env.RECAPTCHA_SITEKEY,
+        tags : contactPage.tags
       });
     } catch (error) {
       this.error('Error in index Method at contactController.js' , 500 , next);

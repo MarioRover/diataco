@@ -2,7 +2,6 @@ const controller = require('../../../controller');
 const fs = require('fs');
 
 module.exports = new class contactPagesController extends controller {
-
   async index(req, res, next) {
     try {
       let user = req.user;
@@ -22,7 +21,6 @@ module.exports = new class contactPagesController extends controller {
       return this.serverError('Error in Index method at sitePagesController.js', 500, error, res);
     }
   };
-
   async contactPage(req , res , next) {
     try {
       let result = await this.validationData(req, next);
@@ -78,6 +76,27 @@ module.exports = new class contactPagesController extends controller {
       return this.serverError('Error in contactPage method at sitePagesController.js', 500, error, res);
     }
   }
-
-  
+  async tags(req , res , next) {
+    try {
+      let contentObj = {tags : req.body.tags};
+      let contactPage = await this.models.contactPage.find({});
+      if(this.isEmpty(contactPage)) {
+        let newHomePage = new this.models.contactPage({ ...contentObj});
+        await newHomePage.save(error => {
+          if (error) {
+            return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
+          }
+        });
+        return this.izitoastMessage(['قسمت Contact Page Tags با موفقیت بروزرسانی شد'] , 'success' , res);
+      } else {
+        let objId = contactPage[0]._id;
+        await this.models.contactPage.findByIdAndUpdate(objId, {
+          $set: { ...contentObj,...contentObj}
+        });
+        return this.izitoastMessage(['قسمت Contact Page Tags با موفقیت بروزرسانی شد'] , 'success' , res);
+      }
+    } catch (error) {
+      return this.serverError('Error in tags method at sitePagesController.js', 500, error, res);
+    }
+  } 
 }

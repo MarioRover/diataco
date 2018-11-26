@@ -15,7 +15,8 @@ module.exports = new class blogController extends controller {
       }
       res.render('home/blog/category', {
         title: 'وبلاگ',
-        categories,siteInfo
+        categories,siteInfo,
+        tags : ['وبلاک','اخبار']
       });
     } catch (error) {
       return this.error('Error in index method of blogController.js', 500, next);

@@ -21,7 +21,6 @@ module.exports = new class appPagesController extends controller {
       return this.serverError('Error in Index method at appPagesController.js', 500, error, res);
     }
   };
-
   async update(req , res , next) {
     try {
       let result = await this.validationData(req, next);
@@ -80,6 +79,28 @@ module.exports = new class appPagesController extends controller {
       return this.serverError('Error in update method at appPagesController', 500, error, res);
     }
   }
-
+  async tags(req , res , next) {
+    try {
+      let contentObj = {tags : req.body.tags};
+      let applicationPage = await this.models.applicationPage.find({});
+      if(this.isEmpty(applicationPage)) {
+        let newHomePage = new this.models.applicationPage({ ...contentObj});
+        await newHomePage.save(error => {
+          if (error) {
+            return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
+          }
+        });
+        return this.izitoastMessage(['قسمت Application Page Tags با موفقیت بروزرسانی شد'] , 'success' , res);
+      } else {
+        let objId = applicationPage[0]._id;
+        await this.models.applicationPage.findByIdAndUpdate(objId, {
+          $set: { ...contentObj,...contentObj}
+        });
+        return this.izitoastMessage(['قسمت Application Page Tags با موفقیت بروزرسانی شد'] , 'success' , res);
+      }
+    } catch (error) {
+      return this.serverError('Error in tags method at appPagesController.js', 500, error, res);
+    }
+  }
   
 }

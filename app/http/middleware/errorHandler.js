@@ -23,14 +23,16 @@ class errorHandler {
         message,
         stack,
         statusCode,
-        title : 'Error'
+        title : 'Error',
+        tags : ['Error']
       })
     } else {
       res.render(`errors/${statusCode}`, {
         ...layouts,
         title: `Error ${statusCode}`,
         message,
-        statusCode
+        statusCode,
+        tags : ['Error']
       });
     }
   }

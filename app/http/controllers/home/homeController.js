@@ -32,7 +32,8 @@ module.exports = new class homeController extends controller {
       }
       res.render('home/home', {
         title: 'Diata',
-        homePage, blogs, websites, applications, siteInfo
+        homePage, blogs, websites, applications, siteInfo,
+        tags : homePage.tags
       });
     } catch (error) {
       return this.error('Error in showPage method at homeController.js', 500, next);

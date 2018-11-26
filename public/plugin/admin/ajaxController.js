@@ -15,7 +15,16 @@ $('.contactPageSetting').submit((e) => {
 
   Fetch('/admin/site-setting/pages/contact', 'PUT', formData);
 });
-
+$('.contactPageTags').submit((e) => {
+  e.preventDefault();
+  let inputTag = $('.contactPageTags input[name = "tags"]').siblings('tag').find('span');
+  let tags = [];
+  inputTag.map((index , tag) => {
+    tags.push($.trim($(tag).text()));   
+  })
+  const body = {tags : tags.reverse()};
+  Fetch2('/admin/site-setting/pages/contact/tags', 'PUT', body);
+});
 /////////Messsages////////////
 let messages = $('.deleteMessage');
 let formData = new FormData();
@@ -114,6 +123,16 @@ $('.ParallaxSetting').submit((e) => {
   formData.append('photoVal', photoVal.val());
 
   Fetch('/admin/site-setting/pages/home/parallax', 'PUT', formData);
+});
+$('.HomePageTags').submit((e) => {
+  e.preventDefault();
+  let inputTag = $('.HomePageTags input[name = "tags"]').siblings('tag').find('span');
+  let tags = [];
+  inputTag.map((index , tag) => {
+    tags.push($.trim($(tag).text()));   
+  })
+  const body = {tags : tags.reverse()};
+  Fetch2('/admin/site-setting/pages/home/tags', 'PUT', body);
 });
 /////////Profile////////////
 $('.ProfileEdit').submit((e) => {
@@ -297,14 +316,24 @@ $('.AboutParallax').submit((e) => {
   e.preventDefault();
   let photo = $('.AboutParallax input[name = "photo"]');
   let photoVal = $('.AboutParallax input[name = "photo"]');
-
+  let parallaxText =  $('.parallaxText input[name = "parallaxText"]');
   let formData = new FormData();
+  formData.append('parallaxText', parallaxText.val());
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
 
   Fetch('/admin/site-setting/pages/about/parallax', 'PUT', formData);
 });
-
+$('.aboutPageTags').submit((e) => {
+  e.preventDefault();
+  let inputTag = $('.aboutPageTags input[name = "tags"]').siblings('tag').find('span');
+  let tags = [];
+  inputTag.map((index , tag) => {
+    tags.push($.trim($(tag).text()));   
+  })
+  const body = {tags : tags.reverse()};
+  Fetch2('/admin/site-setting/pages/about/tags', 'PUT', body);
+});
 ///////////SEO Page///////////////
 $('.SEOHeader').submit((e) => {
   e.preventDefault();
@@ -372,6 +401,16 @@ $('.SEOParallax').submit((e) => {
   formData.append('photoVal', photoVal.val());
 
   Fetch('/admin/site-setting/pages/seo/parallax', 'PUT', formData);
+});
+$('.seoPageTags').submit((e) => {
+  e.preventDefault();
+  let inputTag = $('.seoPageTags input[name = "tags"]').siblings('tag').find('span');
+  let tags = [];
+  inputTag.map((index , tag) => {
+    tags.push($.trim($(tag).text()));   
+  })
+  const body = {tags : tags.reverse()};
+  Fetch2('/admin/site-setting/pages/seo/tags', 'PUT', body);
 });
 /////////////Users///////////////
 $(".NewUser").submit(e => {
@@ -787,6 +826,16 @@ $(".WebsitePage").submit(e => {
 
   Fetch(`/admin/site-setting/pages/websites`, `${method.val()}`, formData);
 });
+$('.websitePageTags').submit((e) => {
+  e.preventDefault();
+  let inputTag = $('.websitePageTags input[name = "tags"]').siblings('tag').find('span');
+  let tags = [];
+  inputTag.map((index , tag) => {
+    tags.push($.trim($(tag).text()));   
+  })
+  const body = {tags : tags.reverse()};
+  Fetch2('/admin/site-setting/pages/websites/tags', 'PUT', body);
+});
 
 $(".AppPage").submit(e => {
   e.preventDefault();
@@ -803,4 +852,14 @@ $(".AppPage").submit(e => {
   formData.append("backgroundVal", backgroundVal.val());
 
   Fetch(`/admin/site-setting/pages/applications`, `${method.val()}`, formData);
+});
+$('.appPageTags').submit((e) => {
+  e.preventDefault();
+  let inputTag = $('.appPageTags input[name = "tags"]').siblings('tag').find('span');
+  let tags = [];
+  inputTag.map((index , tag) => {
+    tags.push($.trim($(tag).text()));   
+  })
+  const body = {tags : tags.reverse()};
+  Fetch2('/admin/site-setting/pages/applications/tags', 'PUT', body);
 });

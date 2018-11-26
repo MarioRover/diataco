@@ -21,7 +21,6 @@ module.exports = new class websitesPagesController extends controller {
       return this.serverError('Error in Index method at websitesPagesController.js', 500, error, res);
     }
   };
-
   async update(req , res , next) {
     try {
       let result = await this.validationData(req, next);
@@ -80,6 +79,28 @@ module.exports = new class websitesPagesController extends controller {
       return this.serverError('Error in update method at websitesPagesController', 500, error, res);
     }
   }
-
+  async tags(req , res , next) {
+    try {
+      let contentObj = {tags : req.body.tags};
+      let websitePage = await this.models.websitePage.find({});
+      if(this.isEmpty(websitePage)) {
+        let newHomePage = new this.models.websitePage({ ...contentObj});
+        await newHomePage.save(error => {
+          if (error) {
+            return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
+          }
+        });
+        return this.izitoastMessage(['قسمت Website Page Tags با موفقیت بروزرسانی شد'] , 'success' , res);
+      } else {
+        let objId = websitePage[0]._id;
+        await this.models.websitePage.findByIdAndUpdate(objId, {
+          $set: { ...contentObj,...contentObj}
+        });
+        return this.izitoastMessage(['قسمت Website Page Tags با موفقیت بروزرسانی شد'] , 'success' , res);
+      }
+    } catch (error) {
+      return this.serverError('Error in tags method at sitePagesController.js', 500, error, res);
+    }
+  }
   
 }

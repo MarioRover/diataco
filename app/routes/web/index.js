@@ -23,7 +23,8 @@ router.use('/websites', websiteRouter);
 router.get('/error' , (req , res , next) => {
   res.render('errors/stack' , {
     title : 'Error',
-    layout: 'home/master'
+    layout: 'home/master',
+    tags : ['Error']
   })
 })
 

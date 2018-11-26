@@ -21,7 +21,8 @@ module.exports = new class aboutController extends controller {
       }
       res.render('home/about', {
         title: 'درباره ما',
-        aboutPage,webUsers,siteInfo
+        aboutPage,webUsers,siteInfo,
+        tags : aboutPage.tags
       });
     } catch (error) {
       this.error('Error in showPage method at aboutController.js', 500, next);
