@@ -14,7 +14,8 @@ class loginAdmins extends controller {
         layout : 'home/master',
         title : 'Sign in Diata | Official Diata&#x2122;',
         siteInfo,
-        tags : ['Login,Sign in']
+        tags : ['Login,Sign in'],
+        SITEKEY : process.env.RECAPTCHA_SITEKEY
       })
     } catch (error) {
       this.error('Error in render login page (index method)' , 500 , next);
