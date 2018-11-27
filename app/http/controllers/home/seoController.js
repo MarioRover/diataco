@@ -16,7 +16,7 @@ module.exports = new class seoController extends controller {
         seoPage = seoPage[0]
       }
       res.render('home/seo', {
-        title: 'سئو',
+        title: 'Design SEO | Official Diata&#x2122; | طراحی سئو در دیاتا',
         seoPage,siteInfo,
         tags : seoPage.tags
       });

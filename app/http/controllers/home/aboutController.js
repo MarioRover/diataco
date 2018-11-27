@@ -20,7 +20,7 @@ module.exports = new class aboutController extends controller {
         aboutPage = aboutPage[0];
       }
       res.render('home/about', {
-        title: 'درباره ما',
+        title: 'About Diata&#x2122; | درباره دیاتا',
         aboutPage,webUsers,siteInfo,
         tags : aboutPage.tags
       });

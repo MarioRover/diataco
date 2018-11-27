@@ -14,7 +14,7 @@ module.exports = new class blogController extends controller {
         categories = 'undefined';
       }
       res.render('home/blog/category', {
-        title: 'وبلاگ',
+        title: 'Blog in Diata | Official Diata&#x2122; | وبلاگ و خبرنامه های دیاتا',
         categories,siteInfo,
         tags : ['وبلاک','اخبار']
       });

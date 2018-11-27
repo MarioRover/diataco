@@ -31,7 +31,7 @@ module.exports = new class homeController extends controller {
         blogs = 'undefined';
       }
       res.render('home/home', {
-        title: 'Diata',
+        title: 'Diata&#x2122; | Home of Diata , Design Website, Application, SEO | دیاتا - طراحی سایت ، اپلیکیشن ، سئو',
         homePage, blogs, websites, applications, siteInfo,
         tags : homePage.tags
       });

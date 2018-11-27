@@ -20,7 +20,7 @@ module.exports = new class applicationController extends controller {
         applications = 'undefined';
       }
       res.render('home/application/index', {
-        title: 'وب سایت',
+        title: 'Design Application | Official Diata&#x2122; | طراحی اپلیکیشن در دیاتا',
         applications,siteInfo,appPage,
         tags : appPage.tags
       });

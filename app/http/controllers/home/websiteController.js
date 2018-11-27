@@ -20,7 +20,7 @@ module.exports = new class websiteController extends controller {
         websites = 'undefined';
       }
       res.render('home/website', {
-        title: 'وب سایت',
+        title: 'Design Website | Official Diata&#x2122; | طراحی سایت در دیاتا',
         websites,siteInfo,websitePage,
         tags : websitePage.tags
       });

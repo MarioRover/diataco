@@ -16,7 +16,7 @@ module.exports = new class contactController extends controller {
         contactPage = contactPage[0];
       }
       res.render('home/contact', {
-        title: 'درباره ما',
+        title: 'Contact of Diata&#x2122; | تماس با دیاتا',
         contactPage,siteInfo,
         SITEKEY : process.env.RECAPTCHA_SITEKEY,
         tags : contactPage.tags

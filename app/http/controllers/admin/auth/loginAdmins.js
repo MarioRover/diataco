@@ -12,8 +12,9 @@ class loginAdmins extends controller {
       }
       res.render('admin/auth/login' , {
         layout : 'home/master',
-        title : 'ورود',
-        siteInfo
+        title : 'Sign in Diata | Official Diata&#x2122;',
+        siteInfo,
+        tags : ['Login,Sign in']
       })
     } catch (error) {
       this.error('Error in render login page (index method)' , 500 , next);
