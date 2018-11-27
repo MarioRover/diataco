@@ -197,6 +197,6 @@ module.exports = class controller {
   async debug() {
     let info = await this.models.siteInfo.find({});
     if(!isEmpty(info)) return info[0].debug;
-    return false;
+    return true;
   }
 }
