@@ -38,6 +38,25 @@ module.exports = new class applicationValidation extends validator {
         }
       }),
 
+      check('wallpaperVal')
+      .custom(async (value, {
+        req
+      }) => {
+        if (req.method !== 'PUT') {
+          if (!value) throw new Error('وارد کردن تصویر پس زمینه اپلیکیشن الزامی است');
+          let fileExt = ['.png', '.jpg', '.jpeg', '.svg'];
+          if (!fileExt.includes(path.extname(value))) {
+            throw new Error('پسوند فایل وارد شده از پسوندهای تصاویر نیست');
+          }
+        } else if (value) {
+          if (!value) throw new Error('وارد کردن تصویر پس زمینه اپلیکیشن الزامی است');
+          let fileExt = ['.png', '.jpg', '.jpeg', '.svg'];
+          if (!fileExt.includes(path.extname(value))) {
+            throw new Error('پسوند فایل وارد شده از پسوندهای تصاویر نیست');
+          }
+        }
+      }),
+
       check('previewImageVal')
       .custom(async (value, {
         req

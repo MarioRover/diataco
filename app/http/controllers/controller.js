@@ -3,6 +3,7 @@ const {validationResult} = require('express-validator/check');
 const isMongoId = require('validator/lib/isMongoId');
 const axios = require('axios');
 const isEmpty = require('is-empty');
+const Jimp = require('jimp');
 // Models
 const Messages = require('app/models/messages');
 const Admins = require('app/models/admin');
@@ -174,10 +175,6 @@ module.exports = class controller {
     })
   }
   
-  getUrlImage(dir) {
-    return dir.substring(8);
-  }
-
   async getDate() {
     let d = new Date();
     return `${d.getFullYear()}.${d.getMonth()}.${d.getDate()}`;
@@ -198,5 +195,19 @@ module.exports = class controller {
     let info = await this.models.siteInfo.find({});
     if(!isEmpty(info)) return info[0].debug;
     return true;
+  }
+
+  imageResize(imagePath) {
+    Jimp.read(imagePath , (err , image) => {
+      if(err) console.log(err);
+      image
+        .resize(480 , Jimp.AUTO)
+        .quality(70)
+        .writeAsync(imagePath);
+    })
+  }
+  
+  getUrlImage(dir) {
+    return dir.substring(8);
   }
 }

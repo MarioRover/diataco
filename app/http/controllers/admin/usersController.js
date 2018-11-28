@@ -40,6 +40,8 @@ module.exports = new class usersController extends controller {
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
       const {name,job,telegram,whatsapp,website,email,instagram,facebook} = req.body;
+      // Resize Image
+      this.imageResize(req.file.path);
       let contentObj = {
         name,job,telegram,whatsapp,website,email,instagram,facebook,
         imageUrl : {
@@ -69,12 +71,14 @@ module.exports = new class usersController extends controller {
     try {
       let result = await this.validationData(req, next);
       if (!result) {
-        if (req.file) fs.unlinkSync(req.file.path);
+        if (!this.isEmpty(req.file)) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
       let webUsers = await this.models.webUsers.findById(req.params.user);
       let contentObj = {};
       let objId = webUsers._id;
+      // Resize Image
+      this.imageResize(req.file.path);
       if (req.file && typeof webUsers.backgroundUrl !== 'undefined') {
         if (webUsers.backgroundUrl.originalname === req.file.originalname) {
           await fs.unlinkSync(req.file.path);
@@ -138,13 +142,15 @@ module.exports = new class usersController extends controller {
     try {
       let result = await this.validationData(req, next);
       if (!result) {
-        if (req.file) fs.unlinkSync(req.file.path);
+        if (!this.isEmpty(req.file)) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
       let webUser = await this.models.webUsers.findById(req.params.user);
       const {name,job,telegram,whatsapp,website,email,instagram,facebook} = req.body;
       let contentObj = {name,job,telegram,whatsapp,website,email,instagram,facebook};
       let objId = webUser._id;
+      // Resize Image
+      this.imageResize(req.file.path);
       if (req.file && typeof webUser.imageUrl !== 'undefined') {
         if (webUser.imageUrl.originalname === req.file.originalname) {
           await fs.unlinkSync(req.file.path);

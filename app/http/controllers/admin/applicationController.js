@@ -63,6 +63,9 @@ module.exports = new class applicationController extends controller {
       const {name,link,slug,desc,appstore,sibapp,googleplay,cafebazar} = req.body;
       const logo = req.files['logo'][0];
       const previewImage = req.files['previewImage'][0];
+      const wallpaper = req.files['wallpaper'][0];
+      // Resize Image
+      this.imageResize(previewImage.path);
       // Check Slug
       let applicationDuplicate = {
         slug : await this.models.applications.find({ slug: slug } , (error , application) => {
@@ -79,8 +82,9 @@ module.exports = new class applicationController extends controller {
       if (!this.isEmptyArray(applicationDuplicate.name)) message.push('نام اپلیکیشن وارد شده قبلا ثبت شده است');
       if (!this.isEmptyArray(message)) {
         if (!isEmptyObject(req.files)) {
-          fs.unlinkSync(req.files["logo"][0].path);
-          fs.unlinkSync(req.files["previewImage"][0].path);
+          fs.unlinkSync(logo.path);
+          fs.unlinkSync(previewImage.path);
+          fs.unlinkSync(wallpaper.path);
           req.files["images"].forEach(image => {
             fs.unlinkSync(image.path);
           });
@@ -97,6 +101,11 @@ module.exports = new class applicationController extends controller {
           destination: this.addressImage(previewImage),
           originalname: previewImage.originalname,
           path: previewImage.path
+        }
+        contentObj['wallpaper'] = {
+          destination: this.addressImage(wallpaper),
+          originalname: wallpaper.originalname,
+          path: wallpaper.path
         }
         let i = 1;
         req.files['images'].forEach(image => {
@@ -134,6 +143,7 @@ module.exports = new class applicationController extends controller {
       });
       await fs.unlinkSync(application['logo'].path);
       await fs.unlinkSync(application['previewImage'].path);
+      await fs.unlinkSync(website['wallpaper'].path);
       for (let i = 1; i <= 6; i++) {
         if (application[`image${i}`] !== '') {
           await fs.unlinkSync(application[`image${i}`].path);
@@ -176,6 +186,7 @@ module.exports = new class applicationController extends controller {
         if (!isEmptyObject(req.files)) {
           fs.unlinkSync(req.files['logo'][0].path);
           fs.unlinkSync(req.files['previewImage'][0].path);
+          fs.unlinkSync(req.files['wallpaper'][0].path);
           if(!this.isEmptyArray(req.files['images'])) {
             req.files['images'].forEach(image => {
               fs.unlinkSync(image.path);
@@ -217,6 +228,7 @@ module.exports = new class applicationController extends controller {
         if (!isEmptyObject(req.files)) {
           fs.unlinkSync(req.files['logo'][0].path);
           fs.unlinkSync(req.files['previewImage'][0].path);
+          fs.unlinkSync(req.files['wallpaper'][0].path);
           req.files['images'].forEach(image => {
             fs.unlinkSync(image.path);
           })
@@ -224,8 +236,8 @@ module.exports = new class applicationController extends controller {
         return this.izitoastMessage(message, 'warning', res);
       } else {
         let contentObj = {name,link,slug,desc,appstore,sibapp,googleplay,cafebazar,admin : req.user._id};
-        let logo,previewImage,images;
-        if(!isEmptyObject(req.files)) {
+        let logo,previewImage,images,wallpaper;
+        if(!this.isEmpty(req.files)) {
           if (!this.isEmptyArray(req.files['logo'])) {
             logo = req.files['logo'][0];
             if (thisApplication[0].logo.originalname === logo.originalname) {
@@ -245,10 +257,27 @@ module.exports = new class applicationController extends controller {
                 await fs.unlinkSync(previewImage.path);
               } else {
                 if (await fs.existsSync(thisApplication[0].previewImage.path)) await fs.unlinkSync(thisApplication[0].previewImage.path);
+                // Resize image
+                this.imageResize(previewImage.path);
+                //
                 contentObj["previewImage"] = {
                   destination: this.addressImage(previewImage),
                   originalname: previewImage.originalname,
                   path: previewImage.path
+                };
+              }
+            }
+
+            if (!this.isEmptyArray(req.files['wallpaper'])) {
+              wallpaper = req.files['wallpaper'][0];
+              if (thisApplication[0].wallpaper.originalname === wallpaper.originalname) {
+                await fs.unlinkSync(wallpaper.path);
+              } else {
+                if (await fs.existsSync(thisApplication[0].previewImage.path)) await fs.unlinkSync(thisApplication[0].wallpaper.path);
+                contentObj["wallpaper"] = {
+                  destination: this.addressImage(wallpaper),
+                  originalname: wallpaper.originalname,
+                  path: wallpaper.path
                 };
               }
             }

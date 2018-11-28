@@ -32,8 +32,8 @@ module.exports = new class applicationController extends controller {
   async application(req, res, next) {
     try {
       let application = await this.models.applications.find({slug : req.params.application} , (error , application) => {
-        if (error) return this.error('Error in find website in applicationController', 500, next);
-        if (this.isEmptyArray(application)) return this.error('Error in find website in applicationController', 404, next);
+        if (error) return this.error('Error in find application in applicationController', 500, next);
+        if (this.isEmptyArray(application)) return this.error('Error in find application in applicationController', 404, next);
       })
       let siteInfo = await this.models.siteInfo.find({});
       if (this.isEmptyArray(siteInfo)) {

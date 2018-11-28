@@ -16,6 +16,7 @@ const applicationsSchema = new Schema({
   cafebazar  : { type : String },
   viewCount  : { type : Number , default : 0 },
   commentCount : { type : Number , default : 0 },
+  wallpaper : { type : Object },
   previewImage : { type : Object },
   image1 : { type : Object , default : '' },
   image2 : { type : Object , default : '' },

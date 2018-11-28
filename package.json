@@ -28,6 +28,7 @@
     "is-empty": "^1.2.0",
     "is-empty-object": "^1.1.1",
     "izitoast": "^1.4.0",
+    "jimp": "^0.5.6",
     "mkdirp": "^0.5.1",
     "moment-jalaali": "^0.8.1",
     "mongoose": "^5.2.5",

@@ -1,7 +1,7 @@
 const controller = require('./../controller');
 const fs = require('fs');
 
-class adminController extends controller {
+module.exports = new class adminController extends controller {
   async index(req, res) {
     let messages = await this.models.Messages.find({});
     let user = req.user;    
@@ -30,7 +30,8 @@ class adminController extends controller {
       }
       const {name,family,newPass,replayNewPass} = req.body;
       let contentObj = {name , family};
-      
+      // Resize Image
+      this.imageResize(req.file.path); 
       if(newPass !== '' || replayNewPass !== '') {
         if (newPass == '') return this.izitoastMessage(['فیلد رمز عبور جدید نمی تواند خالی باشد'], 'warning' , res);
         if (replayNewPass == '') return this.izitoastMessage(['فیلد تکرار رمز عبور جدید نمی تواند خالی باشد'], 'warning', res);
@@ -111,5 +112,3 @@ class adminController extends controller {
   }
     
 }
-
-module.exports = new adminController();

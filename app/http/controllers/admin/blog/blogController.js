@@ -43,12 +43,14 @@ module.exports = new class blogController extends controller {
     try {
       let result = await this.validationData(req, next);
       if (!result) {
-        if (req.file) fs.unlinkSync(req.file.path);
+        if (!this.isEmpty(req.file)) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
       const {name,slug,desc} = req.body;
       let contentObj = {name , slug , desc , admin : req.user._id};
       const categoryPhoto = req.file;
+      // Resize Image
+      this.imageResize(categoryPhoto.path);
       // check slug
       let categoryDuplicate = {
         slug : await this.models.blogCategory.find({ slug: slug } , (error , category) => {
@@ -120,12 +122,14 @@ module.exports = new class blogController extends controller {
     try {
       let result = await this.validationData(req, next);
       if (!result) {
-        if (req.file) fs.unlinkSync(req.file.path);
+        if (!this.isEmpty(req.file)) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
       const {name,slug,desc} = req.body;
       let contentObj = {name , slug , desc};
       const categoryPhoto = req.file;
+      // Resize Image
+      this.imageResize(categoryPhoto.path);
       let thisCategory = await this.models.blogCategory.find({ slug: req.params.slug } , (error , category) => {
         if (error) return this.serverError('جستجو اطلاعات با مشکل مواجه شد', 500, error, res);
         return category;
@@ -169,13 +173,10 @@ module.exports = new class blogController extends controller {
             }
           }
         }
-
         await this.models.blogCategory.findByIdAndUpdate(thisCategory[0]._id, {
           $set: { ...contentObj,...contentObj}
         });
         return this.izitoastMessage(['تغییرات با موفقیت ثیت گردید'] , 'success' , res);
-
-
       }
 
     } catch (error) {
@@ -223,6 +224,8 @@ module.exports = new class blogController extends controller {
       }
       const {title,slug,summery,description,tags} = req.body;
       const blogPhoto = req.file;
+      // Resize Image
+      this.imageResize(blogPhoto.path);
       // check slug
       let blogDuplicate = {
         slug : await this.models.blog.find({ slug: slug } , (error , blog) => {
@@ -320,6 +323,8 @@ module.exports = new class blogController extends controller {
         if (error) return this.serverError('جستجو اطلاعات با مشکل مواجه شد', 500, error, res);
         return blog;
       });
+      // Resize Image
+      this.imageResize(blogPhoto.path);
       // check slug
       let blogDuplicate = {
         slug : await this.models.blog.find({ slug: slug } , (error , blog) => {

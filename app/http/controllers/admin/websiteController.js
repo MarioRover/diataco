@@ -1,6 +1,6 @@
 const controller = require('./../controller');
 const fs = require('fs');
-const isEmptyObject = require('is-empty-object');
+
 
 module.exports = new class websiteController extends controller {
   async index(req, res, next) {
@@ -18,9 +18,9 @@ module.exports = new class websiteController extends controller {
           select: 'name , family'
         },
       });
-      if (!this.checkObj(websites)) {
+      if (this.isEmpty(websites)) {
         websites = 'undefined';
-      }
+      } 
       res.render('admin/websites/index', {
         title: 'وب سایت',
         activeRow: 'websites',
@@ -30,7 +30,6 @@ module.exports = new class websiteController extends controller {
       return this.error('Error in index method at websiteController.js', 500, next);
     }
   };
-
   async indexAdd(req, res, next) {
     try {
       let user = req.user;
@@ -43,14 +42,14 @@ module.exports = new class websiteController extends controller {
       return this.serverError('Error in indexAdd method at websiteController.js', 500, error, res);
     }
   };
-
   async addWebsite(req, res, next) {
     try {
       let result = await this.validationData(req, next);
       if (!result) {
-        if (!isEmptyObject(req.files)) {
+        if (!this.isEmpty(req.files)) {
           fs.unlinkSync(req.files['logo'][0].path);
           fs.unlinkSync(req.files['previewImage'][0].path);
+          fs.unlinkSync(req.files['wallpaper'][0].path);
           if(!this.isEmptyArray(req.files['images'])) {
             req.files['images'].forEach(image => {
               fs.unlinkSync(image.path);
@@ -62,6 +61,9 @@ module.exports = new class websiteController extends controller {
       const {name,link,slug,desc} = req.body;
       const logo = req.files['logo'][0];
       const previewImage = req.files['previewImage'][0];
+      const wallpaper = req.files['wallpaper'][0];
+      // Resize Image
+      this.imageResize(previewImage.path);
       // Check Slug
       let websiteDuplicate = {
         slug : await this.models.websites.find({ slug: slug } , (error , website) => {
@@ -77,9 +79,10 @@ module.exports = new class websiteController extends controller {
       if (!this.isEmptyArray(websiteDuplicate.slug)) message.push('اسلاگ وب سایت وارد شده قبلا ثبت شده است');
       if (!this.isEmptyArray(websiteDuplicate.name)) message.push('نام وب سایت وارد شده قبلا ثبت شده است');
       if (!this.isEmptyArray(message)) {
-        if (!isEmptyObject(req.files)) {
-          fs.unlinkSync(req.files['logo'][0].path);
-          fs.unlinkSync(req.files['previewImage'][0].path);
+        if (!this.isEmpty(req.files)) {
+          fs.unlinkSync(logo.path);
+          fs.unlinkSync(previewImage.path);
+          fs.unlinkSync(wallpaper.path);
           req.files['images'].forEach(image => {
             fs.unlinkSync(image.path);
           })
@@ -92,10 +95,15 @@ module.exports = new class websiteController extends controller {
           originalname: logo.originalname,
           path: logo.path
         }
+        contentObj['wallpaper'] = {
+          destination: this.addressImage(wallpaper),
+          originalname: wallpaper.originalname,
+          path: wallpaper.path
+        }
         contentObj['previewImage'] = {
-          destination: this.addressImage(previewImage),
+          destination : this.addressImage(previewImage),
           originalname: previewImage.originalname,
-          path: previewImage.path
+          path : previewImage.path
         }
         let i = 1;
         req.files['images'].forEach(image => {
@@ -106,20 +114,19 @@ module.exports = new class websiteController extends controller {
           }
           i++;
         });
+        
         let newWebsite = new this.models.websites({ ...contentObj });
         newWebsite.save(error => {
           if (error) {
             return this.serverError('ذخیره اطلاعات با مشکل مواجه شد', 500, error, res);
           }
-            return this.redirectWithMessage([' وب سایت با موفقیت ثبت گردید'], 'success', '/admin/websites', res);
+          return this.redirectWithMessage([' وب سایت با موفقیت ثبت گردید'], 'success', '/admin/websites', res);
         });
-        
       }
     } catch (error) {
       return this.serverError('Error in addWebsite method at websiteController.js', 500, error, res);
     }
   };
-
   async website(req, res, next) {
     try {
       let website = await this.models.websites.find({ slug: req.params.website }).populate({
@@ -142,7 +149,6 @@ module.exports = new class websiteController extends controller {
       return this.error('Error in website method at websiteController.js', 500, next);
     }
   };
-
   async removeWebsite(req, res, next) {
     try {
       let result = await this.isMongoId(req.body.website, next);
@@ -156,6 +162,7 @@ module.exports = new class websiteController extends controller {
       });
       await fs.unlinkSync(website['logo'].path);
       await fs.unlinkSync(website['previewImage'].path);
+      await fs.unlinkSync(website['wallpaper'].path);
       for(let i=1; i <=6 ; i++) {
         if(website[`image${i}`] !== '') {
           await fs.unlinkSync(website[`image${i}`].path);
@@ -167,14 +174,14 @@ module.exports = new class websiteController extends controller {
       return this.serverError('Error in deleteBlog method at websiteController.js', 500, error, res);
     }
   }
-
   async updateWebsite(req, res, next) {
     try {
       let result = await this.validationData(req, next);
       if (!result) {
-        if (!isEmptyObject(req.files)) {
+        if (!this.isEmpty(req.files)) {
           fs.unlinkSync(req.files['logo'][0].path);
           fs.unlinkSync(req.files['previewImage'][0].path);
+          fs.unlinkSync(req.files['wallpaper'][0].path);
           if(!this.isEmptyArray(req.files['images'])) {
             req.files['images'].forEach(image => {
               fs.unlinkSync(image.path);
@@ -217,6 +224,7 @@ module.exports = new class websiteController extends controller {
         if (this.checkObj(req.files)) {
           fs.unlinkSync(req.files['logo'][0].path);
           fs.unlinkSync(req.files['previewImage'][0].path);
+          fs.unlinkSync(req.files['wallpaper'][0].path);
           req.files['images'].forEach(image => {
             fs.unlinkSync(image.path);
           })
@@ -224,8 +232,8 @@ module.exports = new class websiteController extends controller {
         return this.izitoastMessage(message, 'warning', res);
       } else {
         let contentObj = {name,link,slug,desc,updatedBy : req.user._id};
-        let logo,previewImage,images;
-        if(!isEmptyObject(req.files)) {
+        let logo,previewImage,images,wallpaper;
+        if(!this.isEmpty(req.files)) {
           if (!this.isEmptyArray(req.files['logo'])) {
             logo = req.files['logo'][0];
             if (thiswebsite[0].logo.originalname === logo.originalname) {
@@ -245,10 +253,27 @@ module.exports = new class websiteController extends controller {
               await fs.unlinkSync(previewImage.path);
             } else {
               if (await fs.existsSync(thiswebsite[0].previewImage.path)) await fs.unlinkSync(thiswebsite[0].previewImage.path);
-              contentObj["previewImage"] = {
-                destination: this.addressImage(previewImage),
+              // Resize image
+              this.imageResize(previewImage.path);
+              //
+              contentObj['previewImage'] = {
+                destination : this.addressImage(previewImage),
                 originalname: previewImage.originalname,
-                path: previewImage.path
+                path : previewImage.path
+              }
+            }
+          }
+
+          if (!this.isEmptyArray(req.files['wallpaper'])) {
+            wallpaper = req.files['wallpaper'][0];
+            if (thiswebsite[0].wallpaper.originalname === wallpaper.originalname) {
+              await fs.unlinkSync(wallpaper.path);
+            } else {
+              if (await fs.existsSync(thiswebsite[0].previewImage.path)) await fs.unlinkSync(thiswebsite[0].wallpaper.path);
+              contentObj["wallpaper"] = {
+                destination: this.addressImage(wallpaper),
+                originalname: wallpaper.originalname,
+                path: wallpaper.path
               };
             }
           }
@@ -281,6 +306,5 @@ module.exports = new class websiteController extends controller {
     } catch (error) {
       return this.serverError('Error in updateWebsite method of websiteController.js', 500, error, res);
     }
-  } 
-
+  }
 }

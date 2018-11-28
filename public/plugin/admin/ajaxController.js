@@ -574,6 +574,8 @@ $(".websites").submit(e => {
   let logoVal = $('.websites input[name = "logo"]');
   let previewImage = $('.websites input[name = "previewImage"]');
   let previewImageVal = $('.websites input[name = "previewImage"]');
+  let wallpaper = $('.websites input[name = "wallpaper"]');
+  let wallpaperVal = $('.websites input[name = "wallpaper"]');
   let imagesVal = $('.gallery-box .box-wrap .box').length;
 
   let formData = new FormData();
@@ -585,6 +587,8 @@ $(".websites").submit(e => {
   formData.append("logoVal", logoVal.val());
   formData.append("previewImage", previewImage[0].files[0]);
   formData.append("previewImageVal", previewImageVal.val());
+  formData.append("wallpaper", wallpaper[0].files[0]);
+  formData.append("wallpaperVal", wallpaperVal.val());
   formData.append("imagesVal", imagesVal);
   $.each(boxsData, function (indexInArray, boxData) {
     formData.append(`images`, boxData);
@@ -640,6 +644,8 @@ $(".UpdateWebsites").submit(e => {
   let logoVal = $('.UpdateWebsites input[name = "logo"]');
   let previewImage = $('.UpdateWebsites input[name = "previewImage"]');
   let previewImageVal = $('.UpdateWebsites input[name = "previewImage"]');
+  let wallpaper = $('.UpdateWebsites input[name = "wallpaper"]');
+  let wallpaperVal = $('.UpdateWebsites input[name = "wallpaper"]');
   let imagesVal = $('.gallery-box .box-wrap .box').length;
 
   let formData = new FormData();
@@ -651,6 +657,8 @@ $(".UpdateWebsites").submit(e => {
   formData.append("logoVal", logoVal.val());
   formData.append("previewImage", previewImage[0].files[0]);
   formData.append("previewImageVal", previewImageVal.val());
+  formData.append("wallpaper", wallpaper[0].files[0]);
+  formData.append("wallpaperVal", wallpaperVal.val());
   formData.append("imagesVal", imagesVal);
   $.each(boxsData, function (indexInArray, boxData) {
     formData.append(`images`, boxData);
@@ -677,6 +685,8 @@ $(".applications").submit(e => {
   let logoVal = $('.applications input[name = "logo"]');
   let previewImage = $('.applications input[name = "previewImage"]');
   let previewImageVal = $('.applications input[name = "previewImage"]');
+  let wallpaper = $('.applications input[name = "wallpaper"]');
+  let wallpaperVal = $('.applications input[name = "wallpaper"]');
   let imagesVal = $('.gallery-box .box-wrap .box').length;
 
   let formData = new FormData();
@@ -694,6 +704,8 @@ $(".applications").submit(e => {
   formData.append("logoVal", logoVal.val());
   formData.append("previewImage", previewImage[0].files[0]);
   formData.append("previewImageVal", previewImageVal.val());
+  formData.append("wallpaper", wallpaper[0].files[0]);
+  formData.append("wallpaperVal", wallpaperVal.val());
   formData.append("imagesVal", imagesVal);
   $.each(boxsData, function (indexInArray, boxData) {
     formData.append(`images`, boxData);
@@ -751,6 +763,8 @@ $(".UpdateApplications").submit(e => {
   let logoVal = $('.UpdateApplications input[name = "logo"]');
   let previewImage = $('.UpdateApplications input[name = "previewImage"]');
   let previewImageVal = $('.UpdateApplications input[name = "previewImage"]');
+  let wallpaper = $('.UpdateApplications input[name = "wallpaper"]');
+  let wallpaperVal = $('.UpdateApplications input[name = "wallpaper"]');
   let imagesVal = $('.gallery-box .box-wrap .box').length;
 
   let formData = new FormData();
@@ -766,6 +780,8 @@ $(".UpdateApplications").submit(e => {
   formData.append("logoVal", logoVal.val());
   formData.append("previewImage", previewImage[0].files[0]);
   formData.append("previewImageVal", previewImageVal.val());
+  formData.append("wallpaper", wallpaper[0].files[0]);
+  formData.append("wallpaperVal", wallpaperVal.val());
   formData.append("imagesVal", imagesVal);
   $.each(boxsData, function (indexInArray, boxData) {
     formData.append(`images`, boxData);

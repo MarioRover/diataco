@@ -57,6 +57,25 @@ module.exports = new class contactValidation extends validator {
         }
       }),
 
+      check('wallpaperVal')
+      .custom(async (value, {
+        req
+      }) => {
+        if (req.method !== 'PUT') {
+          if (!value) throw new Error('وارد کردن تصویر پس زمینه وب سایت الزامی است');
+          let fileExt = ['.png', '.jpg', '.jpeg', '.svg'];
+          if (!fileExt.includes(path.extname(value))) {
+            throw new Error('پسوند فایل وارد شده از پسوندهای تصاویر نیست');
+          }
+        } else if (value) {
+          if (!value) throw new Error('وارد کردن تصویر پس زمینه وب سایت الزامی است');
+          let fileExt = ['.png', '.jpg', '.jpeg', '.svg'];
+          if (!fileExt.includes(path.extname(value))) {
+            throw new Error('پسوند فایل وارد شده از پسوندهای تصاویر نیست');
+          }
+        }
+      }),
+
       check('imagesVal')
         .custom(async (value, {req}) => {
           if (value == 0) throw new Error('وارد کردن حداقل یک عکس الزامی می باشد');

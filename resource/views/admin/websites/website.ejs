@@ -91,6 +91,10 @@
                 <label for="slug">اسلاگ وب سایت</label>
                 <input name="slug" type="text" value="<%= website.slug %>">
               </div>
+              <div class="grid-y input-group">
+                <label for="slug">تگ های وب سایت</label>
+                <input name="tags" type="text" value="<%= website.tags %>">
+              </div>
             </div>
             <div class="input-wrap grid align-left">
               <div class="grid-y input-group">
@@ -102,7 +106,6 @@
                 </div>
                 <input class="input-en" name="logo" type="file">
               </div>
-
               <div class="grid-y input-group">
                 <label for="previewImage">تصویر پیش نمایش وب سایت</label>
                 <div class="grid align-center">
@@ -112,7 +115,17 @@
                 </div>
                 <input class="input-en" name="previewImage" type="file">
               </div>
-
+            </div>
+            <div class="input-wrap grid align-left">
+              <div class="grid-y input-group">
+                  <label for="logo">تصویر پس زمینه وب سایت</label>
+                  <div class="grid align-center">
+                    <div class="image-box box4 grid align-center-middle">
+                      <img src="<%= website.wallpaper.destination %>">
+                    </div>
+                  </div>
+                  <input class="input-en" name="wallpaper" type="file">
+              </div>
             </div>
             <div class="input-wrap grid align-right">
               <div class="grid-y input-group w100">
@@ -210,5 +223,7 @@
     $(".UpdateWebsites input[name='images']").change(function () {
     readURL2(this, "3");
     });
-
+    $(".UpdateWebsites input[name='wallpaper']").change(function () {
+    readURL2(this, "4");
+    });
 </script>
