@@ -18,7 +18,8 @@ module.exports = new class seoController extends controller {
       res.render('home/seo', {
         title: 'Design SEO | Official Diata&#x2122; | طراحی سئو در دیاتا',
         seoPage,siteInfo,
-        tags : seoPage.tags
+        tags : seoPage.tags,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.serverError('Error in Index method at seoPagesController.js', 500, error, res);

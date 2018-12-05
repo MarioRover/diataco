@@ -4,6 +4,7 @@ const isMongoId = require('validator/lib/isMongoId');
 const axios = require('axios');
 const isEmpty = require('is-empty');
 const Jimp = require('jimp');
+const Manifest = require('../../../public/dist/manifest.json');
 // Models
 const Messages = require('app/models/messages');
 const Admins = require('app/models/admin');
@@ -24,6 +25,7 @@ module.exports = class controller {
   constructor() {
     autoBind(this);
     this.isEmpty = isEmpty;
+    this.Manifest = Manifest;
     this.models = {
       Admins,
       Messages,

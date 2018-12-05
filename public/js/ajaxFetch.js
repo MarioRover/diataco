@@ -1,3 +1,5 @@
+import izitoast from '../plugin/izitoast/iziToast.min';
+
 const Fetch = (url,method,body) => {  
   fetch(url, {method,body})
   .then(res => {
@@ -95,3 +97,5 @@ function guidGenerator() {
   };
   return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
+
+export {Fetch,Fetch2,guidGenerator};

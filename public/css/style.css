@@ -45,12 +45,10 @@ main {
 /* //////////////Home Slider///////////// */
 .homeSlider {
   width: 100%;
-  /* height: 40em; */
   min-height: 31em;
   z-index: 2;
   overflow: hidden;
   position: relative;
-  background-image: url("/img/web-designing-wallpaper.jpg");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -498,7 +496,6 @@ main {
   background-size: cover
 }
 .parallax.para1 {
-  background-image: url('/img/blur2.jpg');
   height: 20em;
   z-index: -1;
 }
@@ -530,7 +527,6 @@ main {
   width: 100%;
   height: 100%;
   background-color: #232741;
-  background-image: url("");
   background-repeat: no-repeat;
   background-size: 20%;
   background-position: 50% 50%;
@@ -723,9 +719,6 @@ main {
 }
 
 /* Business Card*/
-.business{
-  background-image:url(/img/blur2.jpg);
-}
 #wrapper {
   width: 100%;
   height: 100%;

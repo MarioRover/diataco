@@ -19,7 +19,8 @@ module.exports = new class contactController extends controller {
         title: 'Contact of Diata&#x2122; | تماس با دیاتا',
         contactPage,siteInfo,
         SITEKEY : process.env.RECAPTCHA_SITEKEY,
-        tags : contactPage.tags
+        tags : contactPage.tags,
+        manifest : this.Manifest
       });
     } catch (error) {
       this.error('Error in index Method at contactController.js' , 500 , next);

@@ -1,4 +1,5 @@
 
+import {Fetch2} from './ajaxFetch';
 
 $('.contactPage').submit((e) => {
   e.preventDefault();

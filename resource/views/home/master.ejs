@@ -15,14 +15,7 @@
   <meta name="og:brand" property="og:brand" content="دیاتا" />
   <meta name="og:locale" property="og:locale" content="fa" />
   <%- include(viewPath('layout/favicon')) %>
-  <link rel="stylesheet" href="/css/fonts.css">
-  <link rel="stylesheet" href="/css/fontawesome-all.css">
-  <link rel="stylesheet" href="/css/setting.css">
-  <link rel="stylesheet" href="/plugin/preloader/preloader.css">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/plugin/izitoast/iziToast.css">
-  <link rel="stylesheet" href="/plugin/home/owlcarousel/owl.carousel.min.css">
-  <link rel="stylesheet" href="/plugin/home/owlcarousel/owl.theme.default.min.css">
+  <link rel="stylesheet" href="/dist/<%= manifest.bundle[0] %>">
   <%- style %>  
 </head>
 <body>
@@ -35,14 +28,9 @@
     <%- body %>
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/dist/<%= manifest.bundle[1] %>"></script>
   <script src="/js/aos.js"></script>
-  <script src="/plugin/preloader/jquery.preloader.min.js"></script>
-  <script src="/plugin/preloader/preloader.js"></script>
-  <script src="/plugin/izitoast/iziToast.min.js"></script>
-  <script src="/js/ajaxFetch.js"></script>
-  <script src="/js/ajaxController.js"></script>
-  <script src="/plugin/home/owlcarousel/owl.carousel.min.js"></script>
+  <script>AOS.init();</script>
   <%- script %>
-  <script src="/js/main.js"></script>
 </body>
 </html>

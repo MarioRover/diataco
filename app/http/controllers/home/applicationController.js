@@ -22,7 +22,8 @@ module.exports = new class applicationController extends controller {
       res.render('home/application/index', {
         title: 'Design Application | Official Diata&#x2122; | طراحی اپلیکیشن در دیاتا',
         applications,siteInfo,appPage,
-        tags : appPage.tags
+        tags : appPage.tags,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.error('Error in showPage method in applicationController', 500, next);
@@ -43,7 +44,8 @@ module.exports = new class applicationController extends controller {
       }
       res.render('home/application/application', {
         title: 'اپلیکیشن',
-        application : application[0],siteInfo
+        application : application[0],siteInfo,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.error('Error in application method in applicationController', 500, next);

@@ -1,3 +1,18 @@
+// CSS Loader
+import '../css/fonts.css';
+import '../css/fontawesome-all.css';
+import '../css/setting.css';
+import '../plugin/preloader/preloader.css';
+import '../css/style.css';
+import '../plugin/izitoast/iziToast.css';
+import '../plugin/home/owlcarousel/owl.carousel.min.css';
+import '../plugin/home/owlcarousel/owl.theme.default.min.css';
+import '../css/aos.css';
+// JS Loader
+import '../plugin/preloader/jquery.preloader.min';
+import '../plugin/preloader/preloader';
+import './ajaxController';
+import '../plugin/home/owlcarousel/owl.carousel.min';
 //////////////Mobile Navigation/////////////////// 
 let mobileIcon = $('#nav-icon');
 let mobileNav = $('.mobile-nav');
@@ -33,8 +48,7 @@ $.each(tabNavs , (tabIndex , tabNav) => {
     $(tabContent[tabIndex]).addClass('active');
   });
 })
-//////AOS////////
-AOS.init();
+//////AOS////
 window.addEventListener('load', function (event) {
   //////Input/////
   let inputs = $('input');
@@ -58,4 +72,4 @@ $('.count').each(function () {
     }
   });
 });
-////////////Responsivi///////////////
+

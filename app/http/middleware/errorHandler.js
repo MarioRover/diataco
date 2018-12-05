@@ -1,4 +1,6 @@
-class errorHandler {
+const Controller = require('../controllers/controller');
+
+class errorHandler extends Controller {
   async error404(req , res , next) {
     try {
       let error = new Error('صفحه مورد نظر یافت نشد');
@@ -24,7 +26,8 @@ class errorHandler {
         stack,
         statusCode,
         title : 'Error',
-        tags : ['Error']
+        tags : ['Error'],
+        manifest : this.Manifest
       })
     } else {
       res.render(`errors/${statusCode}`, {
@@ -32,7 +35,8 @@ class errorHandler {
         title: `Error ${statusCode}`,
         message,
         statusCode,
-        tags : ['Error']
+        tags : ['Error'],
+        manifest : this.Manifest
       });
     }
   }
