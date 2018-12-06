@@ -6,13 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><%- title || Artakhe %></title>
   <%- include(viewPath('layout/favicon')) %>
-  <link rel="stylesheet" href="/css/fonts.css">
-  <link rel="stylesheet" href="/css/fontawesome-all.css">
-  <link rel="stylesheet" href="/css/setting.css">
-  <link rel="stylesheet" href="/plugin/preloader/preloader.css">
-  <link rel="stylesheet" href="/plugin/admin/admin.css">
-  <link rel="stylesheet" href="/plugin/izitoast/iziToast.css">
-  <link rel="stylesheet" href="/plugin/tagify/tagify.css">
+  <link rel="stylesheet" href="/dist/<%= manifest.admin[0] %>">
   <%- style %>
 </head>
 
@@ -52,16 +46,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
   <script src="//cdn.ckeditor.com/4.11.1/full/ckeditor.js"></script>
-  <script src="/plugin/admin/admin.js"></script>
-  <script src="/plugin/tagify/jQuery.tagify.js"></script>
+  <script src="/dist/<%= manifest.admin[1] %>"></script>
   <%- script %>
-  <script src="/plugin/preloader/jquery.preloader.min.js"></script>
-  <script src="/plugin/preloader/preloader.js"></script>
-  <script src="/plugin/izitoast/iziToast.min.js"></script>
-  <script src="/js/ajaxFetch.js"></script>
-  <script src="/plugin/admin/ajaxController.js"></script>
-  <script>
-    activeRow('<%- activeRow %>')
-  </script>
+  <script src="/plugin/admin/activerow.js"></script>
+  <script>activeRow('<%= activeRow %>')</script>
 </body>
 </html>

@@ -14,7 +14,8 @@ module.exports = new class contactPagesController extends controller {
       res.render('admin/siteSetting/pages/contact', {
         title: 'تنظیمات سایت',
         activeRow: 'site-pages',
-        contactPage,user
+        contactPage,user,
+        manifest : this.Manifest
       });
       
     } catch (error) {
@@ -78,7 +79,10 @@ module.exports = new class contactPagesController extends controller {
   }
   async tags(req , res , next) {
     try {
-      let contentObj = {tags : req.body.tags};
+      let contentObj = {
+        descTags : req.body.descTags,
+        keysTags : req.body.keysTags
+      };
       let contactPage = await this.models.contactPage.find({});
       if(this.isEmpty(contactPage)) {
         let newHomePage = new this.models.contactPage({ ...contentObj});

@@ -15,7 +15,8 @@ module.exports = new class appPagesController extends controller {
       res.render('admin/siteSetting/pages/application', {
         title: 'صفحه اپلیکیشن',
         activeRow: 'site-pages',
-        appPage,user
+        appPage,user,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.serverError('Error in Index method at appPagesController.js', 500, error, res);

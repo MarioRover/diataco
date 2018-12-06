@@ -8,7 +8,8 @@ module.exports = new class adminController extends controller {
     res.render('admin/dashboard' , {
       title : 'پنل مدیریت',
       activeRow: 'dashbaord',
-      user,messages
+      user,messages,
+      manifest : this.Manifest
     });
   }
 
@@ -17,7 +18,8 @@ module.exports = new class adminController extends controller {
     res.render('admin/profile/edit', {
       title: 'پنل مدیریت',
       activeRow: 'profileEdit',
-      user
+      user,
+      manifest : this.Manifest
     });
   }
 

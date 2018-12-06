@@ -15,7 +15,8 @@ module.exports = new class seoPagesController extends controller {
       res.render('admin/siteSetting/pages/seo', {
         title: 'تنظیمات سایت',
         activeRow: 'site-pages',
-        seoPage,user
+        seoPage,user,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.serverError('Error in Index method at seoPagesController.js', 500, error, res);

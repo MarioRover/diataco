@@ -7,7 +7,8 @@ module.exports = new class sitePagesController extends controller {
       res.render('admin/siteSetting/pages/index' , {
         title: 'تنظیمات سایت',
         activeRow: 'site-pages',
-        user
+        user,
+        manifest : this.Manifest
       });
     } catch (error) {
       this.error('Error in Index method at sitePagesController.js', 500, next);

@@ -15,7 +15,8 @@ module.exports = new class websitesPagesController extends controller {
       res.render('admin/siteSetting/pages/website', {
         title: 'صفحه وب سایت',
         activeRow: 'site-pages',
-        websitePage,user
+        websitePage,user,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.serverError('Error in Index method at websitesPagesController.js', 500, error, res);

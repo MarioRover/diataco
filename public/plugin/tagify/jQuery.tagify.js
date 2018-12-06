@@ -170,4 +170,3 @@
         }
     }
 })(jQuery);
-$("input[type='tag']").tagify();

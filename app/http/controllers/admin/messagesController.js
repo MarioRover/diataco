@@ -15,7 +15,8 @@ module.exports = new class messagesController extends controller {
       res.render('admin/messages', {
         title: 'پیام های دریافتی',
         activeRow: 'messages',
-        messages,user
+        messages,user,
+        manifest : this.Manifest
       });
     } catch (error) {
       this.error('Error in Index method at messageController.js' , 500 , next);
@@ -35,7 +36,8 @@ module.exports = new class messagesController extends controller {
         res.render('admin/message', {
           title: 'پیام های دریافتی',
           activeRow: 'messages',
-          message,user
+          message,user,
+          manifest : this.Manifest
         });
       });
       

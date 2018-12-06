@@ -25,7 +25,8 @@ module.exports = new class applicationController extends controller {
          title: 'اپلیکیشن',
          activeRow: 'applications',
          user,
-         applications
+         applications,
+         manifest : this.Manifest
        });
      } catch (error) {
        return this.error('Error in index method at applicationController.js', 500, next);
@@ -38,7 +39,8 @@ module.exports = new class applicationController extends controller {
       res.render('admin/application/add', {
         title: 'اپلیکیشن',
         activeRow: 'applications',
-        user
+        user,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.serverError('Error in indexAdd method at applicationController.js', 500, error, res);
@@ -172,7 +174,8 @@ module.exports = new class applicationController extends controller {
         title: 'وب سایت',
         activeRow: 'applications',
         user,
-        application : application[0]
+        application : application[0],
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.error('Error in application method at applicationController.js', 500, next);

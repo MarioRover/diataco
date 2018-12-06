@@ -14,7 +14,8 @@ module.exports = new class aboutPagesController extends controller {
       res.render('admin/siteSetting/pages/about', {
         title: 'تنظیمات سایت',
         activeRow: 'site-pages',
-        user,aboutPage
+        user,aboutPage,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.serverError('Error in Index method at aboutPagesController.js', 500, error, res);

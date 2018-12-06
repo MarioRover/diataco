@@ -24,7 +24,8 @@ module.exports = new class websiteController extends controller {
       res.render('admin/websites/index', {
         title: 'وب سایت',
         activeRow: 'websites',
-        user,websites
+        user,websites,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.error('Error in index method at websiteController.js', 500, next);
@@ -36,7 +37,8 @@ module.exports = new class websiteController extends controller {
       res.render('admin/websites/add', {
         title: 'وب سایت',
         activeRow: 'websites',
-        user
+        user,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.serverError('Error in indexAdd method at websiteController.js', 500, error, res);
@@ -143,7 +145,8 @@ module.exports = new class websiteController extends controller {
         title: 'وب سایت',
         activeRow: 'websites',
         user,
-        website : website[0]
+        website : website[0],
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.error('Error in website method at websiteController.js', 500, next);

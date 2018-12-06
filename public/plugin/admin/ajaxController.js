@@ -1,3 +1,6 @@
+import izitoast from '../izitoast/iziToast.min';
+import {Fetch,Fetch2} from '../../js/ajaxFetch';
+
 $('.contactPageSetting').submit((e) => {
   e.preventDefault();
   let address = $('.contactPageSetting input[name = "address"]');
@@ -17,12 +20,20 @@ $('.contactPageSetting').submit((e) => {
 });
 $('.contactPageTags').submit((e) => {
   e.preventDefault();
-  let inputTag = $('.contactPageTags input[name = "tags"]').siblings('tag').find('span');
-  let tags = [];
-  inputTag.map((index , tag) => {
-    tags.push($.trim($(tag).text()));   
-  })
-  const body = {tags : tags.reverse()};
+  let inputDescTag = $('.contactPageTags input[name = "descTag"]').siblings('tag').find('span');
+  let inputKeyTag = $('.contactPageTags input[name = "keyTag"]').siblings('tag').find('span');
+  let descTags = [];
+  let keysTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keysTags.push($.trim($(tag).text()));   
+  });
+  const body = {
+    descTags : descTags.reverse(),
+    keysTags : keysTags.reverse()
+  };
   Fetch2('/admin/site-setting/pages/contact/tags', 'PUT', body);
 });
 /////////Messsages////////////

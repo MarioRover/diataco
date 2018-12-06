@@ -19,7 +19,8 @@ module.exports = new class blogController extends controller {
       res.render('admin/blog/index', {
         title: 'وبلاگ',
         activeRow: 'blog',
-        user, categories
+        user, categories,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.error('Error in index method of blogController.js' , 500 , next);
@@ -32,7 +33,8 @@ module.exports = new class blogController extends controller {
       res.render('admin/blog/CreateCategory', {
         title: 'ساخت دسته بندی وبلاگ جدید',
         activeRow: 'blog',
-        user
+        user,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.error('Error in index method of blogController.js', 500, next);
@@ -111,7 +113,8 @@ module.exports = new class blogController extends controller {
         title: 'ساخت دسته بندی وبلاگ جدید',
         activeRow: 'blog',
         user,
-        category : category[0]
+        category : category[0],
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.error('Error in index method of blogController.js', 500, next);
@@ -208,7 +211,8 @@ module.exports = new class blogController extends controller {
       res.render('admin/blog/addBlog', {
         title: 'ساخت وبلاگ جدید',
         activeRow: 'blog',
-        user , category : category[0]
+        user , category : category[0],
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.error('Error in index method of blogController.js', 500, next);
@@ -303,7 +307,8 @@ module.exports = new class blogController extends controller {
       res.render('admin/blog/blog', {
         title: 'ساخت وبلاگ جدید',
         activeRow: 'blog',
-        user , blog : blog[0]
+        user , blog : blog[0],
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.error('Error in index method of blogController.js', 500, next);

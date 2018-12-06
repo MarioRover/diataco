@@ -18,7 +18,8 @@ module.exports = new class siteInfoController extends controller {
       res.render('admin/siteSetting/siteInfo', {
         title: 'تنظیمات سایت',
         activeRow: 'site-info',
-        user, siteInfo
+        user, siteInfo,
+        manifest : this.Manifest
       });
     } catch (error) {
       this.error('Error in Index method at siteInfoController.js', 500, next);

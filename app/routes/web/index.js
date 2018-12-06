@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
+const controller = require('app/http/controllers/controller');
+let {Manifest} = new controller();
 // Router
 const adminRouter = require('./admin');
 const homeRouter = require('./home');
@@ -24,7 +25,8 @@ router.get('/error' , (req , res , next) => {
   res.render('errors/stack' , {
     title : 'Error',
     layout: 'home/master',
-    tags : ['Error']
+    tags : ['Error'],
+    manifest : Manifest
   })
 })
 

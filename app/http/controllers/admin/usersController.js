@@ -12,7 +12,8 @@ module.exports = new class usersController extends controller {
       res.render('admin/users/index', {
         title: 'کاربران سایت',
         activeRow: 'users',
-        user,webUsers
+        user,webUsers,
+        manifest : this.Manifest
       });
     } catch (error) {
       this.error('Error in index method at usersController.js', 500, next);
@@ -25,7 +26,8 @@ module.exports = new class usersController extends controller {
       res.render('admin/users/add', {
         title: 'کاربران سایت',
         activeRow: 'users',
-        user
+        user,
+        manifest : this.Manifest
       });
     } catch (error) {
       this.error('Error in showAddUser method at usersController.js', 500, next);
@@ -131,7 +133,8 @@ module.exports = new class usersController extends controller {
       res.render('admin/users/user', {
         title: 'کاربران سایت',
         activeRow: 'users',
-        user,webUser
+        user,webUser,
+        manifest : this.Manifest
       });
     } catch (error) {
       this.error('Error in showUpdateUser method at usersController.js', 500, next);

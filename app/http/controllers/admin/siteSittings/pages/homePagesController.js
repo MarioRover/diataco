@@ -14,7 +14,8 @@ module.exports = new class homePagesController extends controller {
       res.render('admin/siteSetting/pages/home', {
         title: 'تنظیمات سایت',
         activeRow: 'site-pages',
-        homePage , user
+        homePage , user,
+        manifest : this.Manifest
       });
     } catch (error) {
       return this.serverError('Error in Index method at sitePagesController.js', 500, error, res);
