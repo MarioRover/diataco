@@ -20,7 +20,8 @@ const aboutPageSchema = new Schema({
   Descitem6 : {type : String , default : ''},
   parallaxText : {type : String , default : ''},
   parallaxImageUrl  : {type : Object},
-  tags       : { type : Array , default : ''}
+  descTags       : { type : String , default : ''},
+  keyTags       : { type : String , default : ''}
 } , {timestamps : true});
 
 module.exports = mongoose.model('AboutPage', aboutPageSchema);

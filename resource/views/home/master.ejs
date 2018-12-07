@@ -5,11 +5,11 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="Description" content="<% if(typeof tags !== 'undefined') { %>  <% tags.forEach((tag , index) => { %><%= tag %><%= tags.length-1 !== index ? ',' : ''  %><% }) %><% } %>">
-  <meta name="keywords" content="<% if(typeof tags !== 'undefined') { %><% tags.forEach((tag , index) => { %><%= tag %><%= tags.length-1 !== index ? ',' : ''  %><% }) %><% } %>">
+  <meta name="Description" content="<%= descTags %>">
+  <meta name="keywords" content="<%= keyTags %>">
   <title><%- title || Diata  %></title>
   <meta name="og:title" property="og:title" content="diata" />
-  <meta name="og:description" property="og:description" content="<% if(typeof tags !== 'undefined') { %><% tags.forEach((tag , index) => { %><%= tag %><%= tags.length-1 !== index ? ',' : ''  %><% }) %><% } %>" />
+  <meta name="og:description" property="og:description" content="<%= descTags %>" />
   <meta name="og:url" property="og:url" content="http://diata.com" />
   <meta name="og:site_name" property="og:site_name" content="" />
   <meta name="og:brand" property="og:brand" content="دیاتا" />

@@ -136,7 +136,6 @@
               </div>
             </div>
             <div class="input-wrap grid align-left gallery">
-
               <div class="grid-y input-group">
                 <label for="images">انتخاب عکس</label>
                 <div class="grid align-center">
@@ -151,7 +150,6 @@
                 </div>
                 <input class="input-en" name="images" type="file">
               </div>
-
               <div class="grid-y input-group gallery-box">
                 <label>عکس های انتخاب شده</label>
                 <div class="grid-x box-wrap">
@@ -165,7 +163,18 @@
                   <% } %>
                 </div>
               </div>
-
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="descTags">Description Tags</label>
+                <input name="descTags" type="text" value="<%= website.descTags %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="keyTags">keywords Tags</label>
+                <input name="keyTags" type="text" value="<%= website.keyTags %>">
+              </div>
             </div>
             <div class="input-wrap grid align-left">
               <button type="submit" class="btn btn-primary grid align-center-middle">
@@ -226,4 +235,6 @@
     $(".UpdateWebsites input[name='wallpaper']").change(function () {
     readURL2(this, "4");
     });
+    $(".UpdateWebsites input[name='descTags']").tagify();
+    $(".UpdateWebsites input[name='keyTags']").tagify();
 </script>

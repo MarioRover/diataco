@@ -13,7 +13,9 @@ const BlogSchema = new Schema({
   viewCount   : { type : Number , default : 0 },
   commentCount: { type : Number , default : 0 },
   description : { type : String },
-  summery     : { type : String }
+  summery     : { type : String },
+  descTags       : { type : String , default : ''},
+  keyTags       : { type : String , default : ''}
 } , { timestamps : true });
 
 BlogSchema.plugin(mongoosePaginate);

@@ -62,7 +62,7 @@ module.exports = new class applicationController extends controller {
         }
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
-      const {name,link,slug,desc,appstore,sibapp,googleplay,cafebazar} = req.body;
+      const {name,link,slug,desc,appstore,sibapp,googleplay,cafebazar,descTags,keyTags} = req.body;
       const logo = req.files['logo'][0];
       const previewImage = req.files['previewImage'][0];
       const wallpaper = req.files['wallpaper'][0];
@@ -93,7 +93,7 @@ module.exports = new class applicationController extends controller {
         }
         return this.izitoastMessage(message, 'warning', res);
       } else {
-        let contentObj = {name,link,slug,desc,appstore,sibapp,googleplay,cafebazar,admin : req.user._id};
+        let contentObj = {name,link,slug,desc,appstore,sibapp,googleplay,cafebazar,descTags,keyTags,admin : req.user._id};
         contentObj['logo'] = {
           destination: this.addressImage(logo),
           originalname: logo.originalname,
@@ -145,7 +145,7 @@ module.exports = new class applicationController extends controller {
       });
       await fs.unlinkSync(application['logo'].path);
       await fs.unlinkSync(application['previewImage'].path);
-      await fs.unlinkSync(website['wallpaper'].path);
+      await fs.unlinkSync(application['wallpaper'].path);
       for (let i = 1; i <= 6; i++) {
         if (application[`image${i}`] !== '') {
           await fs.unlinkSync(application[`image${i}`].path);
@@ -169,7 +169,6 @@ module.exports = new class applicationController extends controller {
       }).exec();
       if (this.isEmptyArray(application)) return this.error('Error in find application in applicationController.js', 404, next);
       let user = req.user;
-      // return res.json(application[0]);
       res.render('admin/application/application', {
         title: 'وب سایت',
         activeRow: 'applications',
@@ -198,7 +197,7 @@ module.exports = new class applicationController extends controller {
         }
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
-      const {name,link,slug,desc,appstore,sibapp,googleplay,cafebazar} = req.body;
+      const {name,link,slug,desc,appstore,sibapp,googleplay,cafebazar,descTags,keyTags} = req.body;
       let thisApplication = await this.models.applications.find({ slug: req.params.application } , (error , application) => {
         if (error) return this.serverError('جستجو اطلاعات با مشکل مواجه شد', 500, error, res);
         return application;
@@ -238,7 +237,7 @@ module.exports = new class applicationController extends controller {
         }
         return this.izitoastMessage(message, 'warning', res);
       } else {
-        let contentObj = {name,link,slug,desc,appstore,sibapp,googleplay,cafebazar,admin : req.user._id};
+        let contentObj = {name,link,slug,desc,appstore,sibapp,googleplay,cafebazar,descTags,keyTags,admin : req.user._id};
         let logo,previewImage,images,wallpaper;
         if(!this.isEmpty(req.files)) {
           if (!this.isEmptyArray(req.files['logo'])) {

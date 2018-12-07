@@ -22,7 +22,8 @@ module.exports = new class aboutController extends controller {
       res.render('home/about', {
         title: 'About Diata&#x2122; | درباره دیاتا',
         aboutPage,webUsers,siteInfo,
-        tags : aboutPage.tags,
+        descTags : aboutPage.descTags,
+        keyTags : aboutPage.keyTags,
         manifest : this.Manifest
       });
     } catch (error) {

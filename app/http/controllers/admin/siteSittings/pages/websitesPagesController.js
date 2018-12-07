@@ -82,7 +82,10 @@ module.exports = new class websitesPagesController extends controller {
   }
   async tags(req , res , next) {
     try {
-      let contentObj = {tags : req.body.tags};
+      let contentObj = {
+        descTags : req.body.descTags,
+        keyTags  : req.body.keyTags
+      };
       let websitePage = await this.models.websitePage.find({});
       if(this.isEmpty(websitePage)) {
         let newHomePage = new this.models.websitePage({ ...contentObj});

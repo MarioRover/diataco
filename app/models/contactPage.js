@@ -9,8 +9,8 @@ const contactPageSchema = new Schema({
   telephone   : { type : String , default : ''},
   iconTelephone : { type : String , default : ''},
   imageUrl      : { type : Object},
-  descTags       : { type : Array , default : ''},
-  keysTags       : { type : Array , default : ''}
+  descTags       : { type : String , default : ''},
+  keyTags       : { type : String , default : ''}
 } , {timestamps : true});
 
 module.exports = mongoose.model('contactPage', contactPageSchema);

@@ -29,13 +29,9 @@
             </div>
           </div>
           <div class="input-wrap grid-x">
-            <div class="grid-y input-group">
+            <div class="grid-y input-group w100">
               <label for="slug">اسلاگ وب سایت</label>
               <input name="slug" type="text">
-            </div>
-            <div class="grid-y input-group">
-              <label for="slug">تگ های وب سایت</label>
-              <input name="tags" type="text">
             </div>
           </div>
           <div class="input-wrap grid-x">
@@ -98,6 +94,18 @@
             </div>
 
           </div>
+          <div class="input-wrap grid-x">
+            <div class="grid-y input-group w100">
+              <label for="descTags">Description Tags</label>
+              <input name="descTags" type="text" value="">
+            </div>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="grid-y input-group w100">
+              <label for="keyTags">keywords Tags</label>
+              <input name="keyTags" type="text" value="">
+            </div>
+          </div>
           <div class="input-wrap grid align-left">
             <button type="submit" class="btn btn-primary grid align-center-middle">
               <span>ثبت اطلاعات</span>
@@ -125,4 +133,6 @@
   $(".websites input[name='wallpaper']").change(function () {
     readURL2(this, "4");
   });
+  $(".websites input[name='descTags']").tagify();
+  $(".websites input[name='keyTags']").tagify();
 </script>

@@ -47,6 +47,18 @@
             <input class="input-en" name="photo" type="file">
           </div>
         </div>
+        <div class="input-wrap grid-x">
+          <div class="grid-y input-group w100">
+            <label for="descTags">Description Tags</label>
+            <input name="descTags" type="text" value="">
+          </div>
+        </div>
+        <div class="input-wrap grid-x">
+          <div class="grid-y input-group w100">
+            <label for="keyTags">keywords Tags</label>
+            <input name="keyTags" type="text" value="">
+          </div>
+        </div>
         <div class="input-wrap grid align-left">
           <button type="submit" class="btn btn-primary grid align-center-middle">
             <span>ثبت اطلاعات</span>
@@ -54,11 +66,12 @@
         </div>
       </form>
     </div>
-
   </div>
 </div>
 <script>
   $("input[name='photo']").change(function() {
     readURL(this);
   });
+  $(".CategoryBlogCreate input[name='descTags']").tagify();
+  $(".CategoryBlogCreate input[name='keyTags']").tagify();
 </script>

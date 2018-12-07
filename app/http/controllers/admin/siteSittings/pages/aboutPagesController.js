@@ -200,7 +200,10 @@ module.exports = new class aboutPagesController extends controller {
   }
   async tags(req , res , next) {
     try {
-      let contentObj = {tags : req.body.tags};
+      let contentObj = {
+        descTags : req.body.descTags,
+        keyTags  : req.body.keyTags
+      };
       let aboutPage = await this.models.aboutPage.find({});;
       if(this.isEmpty(aboutPage)) {
         let newHomePage = new this.models.aboutPage({ ...contentObj});

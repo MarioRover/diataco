@@ -31,7 +31,8 @@ const homePage = new Schema({
   descParallax       : { type : String , default : ''},
   parallaxImageUrl   : { type : Object},
 
-  tags       : { type : Array , default : ''}
+  descTags       : { type : String , default : ''},
+  keyTags       : { type : String , default : ''}
 } , {timestamps : true});
 
 

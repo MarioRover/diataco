@@ -47,6 +47,18 @@
                   <input name="desc" type="text" value="<%= category.desc %>">
                 </div>
               </div>
+              <div class="input-wrap grid-x">
+                <div class="grid-y input-group w100">
+                  <label for="descTags">Description Tags</label>
+                  <input name="descTags" type="text" value="<%= category.descTags %>">
+                </div>
+              </div>
+              <div class="input-wrap grid-x">
+                <div class="grid-y input-group w100">
+                  <label for="keyTags">keywords Tags</label>
+                  <input name="keyTags" type="text" value="<%= category.keyTags %>">
+                </div>
+              </div>
               <div class="input-wrap grid align-right">
                 <div class="grid-y input-group w100">
                   <label for="photo">تصویر پس زمینه</label>
@@ -207,4 +219,6 @@
     let row = $(`tr td button[value=${objId}]`).parents('tr');
     $(row).remove();
   }
+  $(".UpdateCategory input[name='descTags']").tagify();
+  $(".UpdateCategory input[name='keyTags']").tagify();
 </script>

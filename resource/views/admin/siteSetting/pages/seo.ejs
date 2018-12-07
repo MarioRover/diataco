@@ -206,7 +206,14 @@
             <form class="seoPageTags">
               <div class="input-wrap grid-x">
                 <div class="grid-y input-group w100">
-                  <input name="tags" type="tag" value="">
+                  <label for="descTags">Description Tags</label>
+                  <input name="descTags" type="text" value="<%= seoPage.descTags %>">
+                </div>
+              </div>
+              <div class="input-wrap grid-x">
+                <div class="grid-y input-group w100">
+                  <label for="keyTags">keywords Tags</label>
+                  <input name="keyTags" type="text" value="<%= seoPage.keyTags %>">
                 </div>
               </div>
               <div class="input-wrap grid align-left">
@@ -232,4 +239,6 @@
   $(".SEOParallax input[name='photo']").change(function () {
     readURL2(this, "2");
   });
+  $(".seoPageTags input[name='descTags']").tagify();
+  $(".seoPageTags input[name='keyTags']").tagify();
 </script>

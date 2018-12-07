@@ -72,7 +72,14 @@
             <form class="websitePageTags">
               <div class="input-wrap grid-x">
                 <div class="grid-y input-group w100">
-                  <input name="tags" type="tag" value="">
+                  <label for="descTags">Description Tags</label>
+                  <input name="descTags" type="text" value="<%= websitePage.descTags %>">
+                </div>
+              </div>
+              <div class="input-wrap grid-x">
+                <div class="grid-y input-group w100">
+                  <label for="keyTags">keywords Tags</label>
+                  <input name="keyTags" type="text" value="<%= websitePage.keyTags %>">
                 </div>
               </div>
               <div class="input-wrap grid align-left">
@@ -96,4 +103,6 @@
   $(".WebsitePage input[name='photo']").change(function () {
     readURL2(this, "1");
   });
+  $(".websitePageTags input[name='descTags']").tagify();
+  $(".websitePageTags input[name='keyTags']").tagify();
 </script>

@@ -9,7 +9,9 @@ const categoiesBlogSchema = new Schema({
   imageUrl : { type : Object },
   slug : { type : String },
   viewCount : { type : Number , default : 0 },
-  blogCount : { type : Number , default : 0 }
+  blogCount : { type : Number , default : 0 },
+  descTags       : { type : String , default : ''},
+  keyTags       : { type : String , default : ''}
 } , {timestamps: true , toJSON : { virtuals : true } });
 
 categoiesBlogSchema.plugin(mongoosePaginate);

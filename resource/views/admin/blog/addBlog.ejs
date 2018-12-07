@@ -39,10 +39,6 @@
           </div>
           <div class="input-wrap grid align-left">
             <div class="grid-y input-group">
-              <label for="tags">تگ های بلاگ</label>
-              <input name="tags" type="text">
-            </div>
-            <div class="grid-y input-group">
               <label for="photo">تصویر پس زمینه</label>
               <div class="grid align-center">
                 <div class="image-box grid align-center-middle">
@@ -64,6 +60,18 @@
               <textarea name="description" id="editor1" cols="30" rows="10"></textarea>
             </div>
           </div>
+          <div class="input-wrap grid-x">
+            <div class="grid-y input-group w100">
+              <label for="descTags">Description Tags</label>
+              <input name="descTags" type="text" value="">
+            </div>
+          </div>
+          <div class="input-wrap grid-x">
+            <div class="grid-y input-group w100">
+              <label for="keyTags">keywords Tags</label>
+              <input name="keyTags" type="text" value="">
+            </div>
+          </div>
           <div class="input-wrap grid align-left">
             <button type="submit" class="btn btn-primary grid align-center-middle">
               <span>ثبت اطلاعات</span>
@@ -82,5 +90,6 @@
   $("input[name='photo']").change(function() {
     readURL(this);
   });
-
+  $(".CreateBlog input[name='descTags']").tagify();
+  $(".CreateBlog input[name='keyTags']").tagify();
 </script>

@@ -263,7 +263,14 @@
           <form class="HomePageTags">
             <div class="input-wrap grid-x">
               <div class="grid-y input-group w100">
-                <input name="tags" type="tag" value="">
+                <label for="descTags">Description Tags</label>
+                <input name="descTags" type="text" value="<%= homePage.descTags %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="keyTags">keywords Tags</label>
+                <input name="keyTags" type="text" value="<%= homePage.keyTags %>">
               </div>
             </div>
             <div class="input-wrap grid align-left">
@@ -288,4 +295,6 @@
   $(".ParallaxSetting input[name='photo']").change(function () {
     readURL2(this, "3");
   });
+  $(".HomePageTags input[name='descTags']").tagify();
+  $(".HomePageTags input[name='keyTags']").tagify();
 </script>

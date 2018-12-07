@@ -229,7 +229,10 @@ module.exports = new class homePagesController extends controller {
   }
   async tags(req , res , next) {
     try {
-      let contentObj = {tags : req.body.tags};
+      let contentObj = {
+        descTags : req.body.descTags,
+        keyTags  : req.body.keyTags
+      };
       let homePage = await this.models.homePage.find({});
       if(this.isEmpty(homePage)) {
         let newHomePage = new this.models.homePage({ ...contentObj});

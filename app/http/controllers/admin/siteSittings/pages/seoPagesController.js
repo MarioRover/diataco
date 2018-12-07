@@ -207,7 +207,10 @@ module.exports = new class seoPagesController extends controller {
   }
   async tags(req , res , next) {
     try {
-      let contentObj = {tags : req.body.tags};
+      let contentObj = {
+        descTags : req.body.descTags,
+        keyTags  : req.body.keyTags
+      };
       let seoPage = await this.models.seoPage.find({});
       if(this.isEmpty(seoPage)) {
         let newHomePage = new this.models.seoPage({ ...contentObj});

@@ -26,7 +26,6 @@ module.exports = new class blogController extends controller {
       return this.error('Error in index method of blogController.js' , 500 , next);
     }
   }
-
   async viewCreateCategory(req, res, next) {
     try {
       let user = req.user;
@@ -40,7 +39,6 @@ module.exports = new class blogController extends controller {
       return this.error('Error in index method of blogController.js', 500, next);
     }
   }
-
   async createCategory(req , res , next) {
     try {
       let result = await this.validationData(req, next);
@@ -48,8 +46,8 @@ module.exports = new class blogController extends controller {
         if (!this.isEmpty(req.file)) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
-      const {name,slug,desc} = req.body;
-      let contentObj = {name , slug , desc , admin : req.user._id};
+      const {name,slug,desc,descTags,keyTags} = req.body;
+      let contentObj = {name,slug,desc,descTags,keyTags,admin : req.user._id};
       const categoryPhoto = req.file;
       // Resize Image
       this.imageResize(categoryPhoto.path);
@@ -89,7 +87,6 @@ module.exports = new class blogController extends controller {
       return this.serverError('Error in createCategory method of blogController.js', 500, error , res);
     }
   }
-
   async viewCategory(req , res , next) {
     try {
       let user = req.user;
@@ -120,7 +117,6 @@ module.exports = new class blogController extends controller {
       return this.error('Error in index method of blogController.js', 500, next);
     }
   }
-
   async updateCategory(req , res , next) {
     try {
       let result = await this.validationData(req, next);
@@ -128,11 +124,10 @@ module.exports = new class blogController extends controller {
         if (!this.isEmpty(req.file)) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
-      const {name,slug,desc} = req.body;
-      let contentObj = {name , slug , desc};
+      const {name,slug,desc,descTags,keyTags} = req.body;
+      let contentObj = {name,slug,desc,descTags,keyTags};
       const categoryPhoto = req.file;
-      // Resize Image
-      this.imageResize(categoryPhoto.path);
+     
       let thisCategory = await this.models.blogCategory.find({ slug: req.params.slug } , (error , category) => {
         if (error) return this.serverError('جستجو اطلاعات با مشکل مواجه شد', 500, error, res);
         return category;
@@ -165,6 +160,8 @@ module.exports = new class blogController extends controller {
       } else {
         
         if (req.file) {
+           // Resize Image
+          this.imageResize(categoryPhoto.path);
           if (thisCategory[0].imageUrl.originalname === req.file.originalname) {
             await fs.unlinkSync(req.file.path);
           } else {
@@ -186,7 +183,6 @@ module.exports = new class blogController extends controller {
       return this.serverError('Error in updateCategory method of blogController.js', 500, error, res);
     }
   }
-
   async removeCategory(req, res, next) {
     try {
       req.body.forEach(async category => {
@@ -202,7 +198,6 @@ module.exports = new class blogController extends controller {
       this.error('Error in removeCategory method at blogController.js', 500, next);
     }
   }
-
   async viewCreateBlog(req , res , next) {
     try {
       let category = await this.models.blogCategory.find({ slug: req.params.category });
@@ -218,7 +213,6 @@ module.exports = new class blogController extends controller {
       return this.error('Error in index method of blogController.js', 500, next);
     }
   }
-
   async createBlog(req, res, next) {
     try {
       let result = await this.validationData(req, next);
@@ -226,7 +220,7 @@ module.exports = new class blogController extends controller {
         if (req.file) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
-      const {title,slug,summery,description,tags} = req.body;
+      const {title,slug,summery,description,tags,descTags,keyTags} = req.body;
       const blogPhoto = req.file;
       // Resize Image
       this.imageResize(blogPhoto.path);
@@ -248,7 +242,7 @@ module.exports = new class blogController extends controller {
           return category;
         });
         let contentObj = {
-          title, slug, summery, description, tags,
+          title, slug, summery, description, tags,descTags,keyTags,
           admin: req.user._id,
           category: category[0]._id
         };
@@ -269,7 +263,6 @@ module.exports = new class blogController extends controller {
       return this.serverError('Error in saveBlog method of blogController.js', 500, error, res);
     }
   }
-
   async deleteBlog(req , res , next) {
     try {
       let result = await this.isMongoId(req.body.blog, next);
@@ -288,7 +281,6 @@ module.exports = new class blogController extends controller {
       return this.serverError('Error in deleteBlog method at blogController.js', 500, error, res);
     }
   }
-
   async viewBlog(req , res , next) {
     try {
       let blog = await this.models.blog.find({ slug: req.params.blog }).populate({
@@ -314,7 +306,6 @@ module.exports = new class blogController extends controller {
       return this.error('Error in index method of blogController.js', 500, next);
     }
   }
-
   async updateBlog(req , res , next) {
     try {
       let result = await this.validationData(req, next);
@@ -322,14 +313,12 @@ module.exports = new class blogController extends controller {
         if (req.file) fs.unlinkSync(req.file.path);
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
-      const {title,slug,summery,description,tags} = req.body;
+      const {title,slug,summery,description,tags,descTags,keyTags} = req.body;
       const blogPhoto = req.file;
       let thisBlog = await this.models.blog.find({ slug: req.params.blog } , (error , blog) => {
         if (error) return this.serverError('جستجو اطلاعات با مشکل مواجه شد', 500, error, res);
         return blog;
       });
-      // Resize Image
-      this.imageResize(blogPhoto.path);
       // check slug
       let blogDuplicate = {
         slug : await this.models.blog.find({ slug: slug } , (error , blog) => {
@@ -348,11 +337,12 @@ module.exports = new class blogController extends controller {
         return this.izitoastMessage(message , 'warning', res);
       } else {
         let contentObj = {
-          title, slug, summery, description, tags,
+          title, slug, summery, description, tags,descTags,keyTags,
           updatedBy : req.user._id
         };
-
         if (req.file) {
+          // Resize Image
+          this.imageResize(blogPhoto.path);
           if (thisBlog[0].imageUrl.originalname === req.file.originalname) {
             await fs.unlinkSync(req.file.path);
           } else {
@@ -360,12 +350,10 @@ module.exports = new class blogController extends controller {
             contentObj["imageUrl"] = { destination: this.addressImage(blogPhoto), originalname: blogPhoto.originalname, path: blogPhoto.path };
           }
         }
-        
         await this.models.blog.findByIdAndUpdate(thisBlog[0]._id, {
           $set: { ...contentObj, ...contentObj }
         });
         return this.redirectWithMessage(["تغییرات با موفقیت ثیت گردید"], "success", `/admin/blogs/categories/${req.params.category}`, res);
-        
       }  
     } catch (error) {
       return this.serverError('Error in saveBlog method of blogController.js', 500, error, res);

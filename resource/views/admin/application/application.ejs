@@ -176,6 +176,18 @@
               </div>
 
             </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="descTags">Description Tags</label>
+                <input name="descTags" type="text" value="<%= application.descTags %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="keyTags">keywords Tags</label>
+                <input name="keyTags" type="text" value="<%= application.keyTags %>">
+              </div>
+            </div>
             <div class="input-wrap grid align-left">
               <button type="submit" class="btn btn-primary grid align-center-middle">
                 <span>بروز رسانی اطلاعات</span>
@@ -235,4 +247,6 @@
     $(".UpdateApplications input[name='wallpaper']").change(function () {
       readURL2(this, "4");
     });
+    $(".UpdateApplications input[name='descTags']").tagify();
+    $(".UpdateApplications input[name='keyTags']").tagify();
 </script>

@@ -10,7 +10,6 @@ const websitesSchema = new Schema({
   link : { type : String },
   desc : { type : String },
   logo : { type : Object },
-  tags : { type : Array },
   viewCount : { type : Number , default : 0 },
   commentCount : { type : Number , default : 0 },
   wallpaper : { type : Object },
@@ -20,7 +19,9 @@ const websitesSchema = new Schema({
   image3 : { type : Object , default : '' },
   image4 : { type : Object , default : '' },
   image5 : { type : Object , default : '' },
-  image6 : { type : Object , default : '' }
+  image6 : { type : Object , default : '' },
+  descTags       : { type : String , default : ''},
+  keyTags       : { type : String , default : ''}
 
 } , {timestamps : true});
 websitesSchema.plugin(mongoosePaginate);

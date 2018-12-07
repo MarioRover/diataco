@@ -22,7 +22,8 @@ module.exports = new class websiteController extends controller {
       res.render('home/website', {
         title: 'Design Website | Official Diata&#x2122; | طراحی سایت در دیاتا',
         websites,siteInfo,websitePage,
-        tags : websitePage.tags,
+        descTags : websitePage.descTags,
+        keyTags : websitePage.keyTags,
         manifest : this.Manifest
       });
     } catch (error) {
@@ -43,10 +44,12 @@ module.exports = new class websiteController extends controller {
         siteInfo = siteInfo[0]
       }
       res.render('home/website/website', {
-        title: 'وب سایت',
+        title: `Diata | ${website[0].name} Website`,
         website : website[0],
         siteInfo,
-        manifest : this.Manifest
+        manifest : this.Manifest,
+        descTags : website[0].descTags,
+        keyTags : website[0].keyTags,
       });
     } catch (error) {
       return this.error('Error in website method in websiteController', 500, next);

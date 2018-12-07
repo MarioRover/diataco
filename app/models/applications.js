@@ -23,7 +23,9 @@ const applicationsSchema = new Schema({
   image3 : { type : Object , default : '' },
   image4 : { type : Object , default : '' },
   image5 : { type : Object , default : '' },
-  image6 : { type : Object , default : '' }
+  image6 : { type : Object , default : '' },
+  descTags       : { type : String , default : ''},
+  keyTags       : { type : String , default : ''}
 
 } , {timestamps : true});
 applicationsSchema.plugin(mongoosePaginate);

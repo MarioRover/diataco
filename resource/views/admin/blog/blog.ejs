@@ -124,6 +124,18 @@
                 <textarea name="description" id="editor1" cols="30" rows="10"><%= blog.description %></textarea>
               </div>
             </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="descTags">Description Tags</label>
+                <input name="descTags" type="text" value="<%= blog.descTags %>">
+              </div>
+            </div>
+            <div class="input-wrap grid-x">
+              <div class="grid-y input-group w100">
+                <label for="keyTags">keywords Tags</label>
+                <input name="keyTags" type="text" value="<%= blog.keyTags %>">
+              </div>
+            </div>
             <div class="input-wrap grid align-left">
               <button type="submit" class="btn btn-primary grid align-center-middle">
                 <span>ثبت اطلاعات</span>
@@ -174,5 +186,6 @@
     $("input[name='photo']").change(function() {
       readURL(this);
     });
-
+    $(".UpdateBlog input[name='descTags']").tagify();
+    $(".UpdateBlog input[name='keyTags']").tagify();
 </script>

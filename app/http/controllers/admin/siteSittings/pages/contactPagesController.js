@@ -81,7 +81,7 @@ module.exports = new class contactPagesController extends controller {
     try {
       let contentObj = {
         descTags : req.body.descTags,
-        keysTags : req.body.keysTags
+        keyTags  : req.body.keyTags
       };
       let contactPage = await this.models.contactPage.find({});
       if(this.isEmpty(contactPage)) {

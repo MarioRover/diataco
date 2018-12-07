@@ -212,7 +212,14 @@
             <form class="aboutPageTags">
               <div class="input-wrap grid-x">
                 <div class="grid-y input-group w100">
-                  <input name="tags" type="tag" value="">
+                  <label for="descTags">Description Tags</label>
+                  <input name="descTags" type="text" value="<%= aboutPage.descTags %>">
+                </div>
+              </div>
+              <div class="input-wrap grid-x">
+                <div class="grid-y input-group w100">
+                  <label for="keyTags">keywords Tags</label>
+                  <input name="keyTags" type="text" value="<%= aboutPage.keyTags %>">
                 </div>
               </div>
               <div class="input-wrap grid align-left">
@@ -238,5 +245,6 @@
   CKEDITOR.replace('desc1' , {
     filebrowserUploadUrl : '/admin/upload-image'
   });
-  
+  $(".aboutPageTags input[name='descTags']").tagify();
+  $(".aboutPageTags input[name='keyTags']").tagify();
 </script>

@@ -71,7 +71,14 @@
             <form class="appPageTags">
               <div class="input-wrap grid-x">
                 <div class="grid-y input-group w100">
-                  <input name="tags" type="tag" value="">
+                  <label for="descTags">Description Tags</label>
+                  <input name="descTags" type="text" value="<%= appPage.descTags %>">
+                </div>
+              </div>
+              <div class="input-wrap grid-x">
+                <div class="grid-y input-group w100">
+                  <label for="keyTags">keywords Tags</label>
+                  <input name="keyTags" type="text" value="<%= appPage.keyTags %>">
                 </div>
               </div>
               <div class="input-wrap grid align-left">
@@ -94,4 +101,6 @@
   $(".AppPage input[name='photo']").change(function () {
     readURL2(this, "1");
   });
+  $(".appPageTags input[name='descTags']").tagify();
+  $(".appPageTags input[name='keyTags']").tagify();
 </script>

@@ -20,19 +20,19 @@ $('.contactPageSetting').submit((e) => {
 });
 $('.contactPageTags').submit((e) => {
   e.preventDefault();
-  let inputDescTag = $('.contactPageTags input[name = "descTag"]').siblings('tag').find('span');
-  let inputKeyTag = $('.contactPageTags input[name = "keyTag"]').siblings('tag').find('span');
+  let inputDescTag = $('.contactPageTags input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.contactPageTags input[name = "keyTags"]').siblings('tag').find('span');
   let descTags = [];
-  let keysTags = [];
+  let keyTags = [];
   inputDescTag.map((index , tag) => {
     descTags.push($.trim($(tag).text()));   
   });
   inputKeyTag.map((index , tag) => {
-    keysTags.push($.trim($(tag).text()));   
+    keyTags.push($.trim($(tag).text()));   
   });
   const body = {
     descTags : descTags.reverse(),
-    keysTags : keysTags.reverse()
+    keyTags  : keyTags.reverse()
   };
   Fetch2('/admin/site-setting/pages/contact/tags', 'PUT', body);
 });
@@ -137,12 +137,20 @@ $('.ParallaxSetting').submit((e) => {
 });
 $('.HomePageTags').submit((e) => {
   e.preventDefault();
-  let inputTag = $('.HomePageTags input[name = "tags"]').siblings('tag').find('span');
-  let tags = [];
-  inputTag.map((index , tag) => {
-    tags.push($.trim($(tag).text()));   
-  })
-  const body = {tags : tags.reverse()};
+  let inputDescTag = $('.HomePageTags input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.HomePageTags input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
+  const body = {
+    descTags : descTags.reverse(),
+    keyTags  : keyTags.reverse()
+  };
   Fetch2('/admin/site-setting/pages/home/tags', 'PUT', body);
 });
 /////////Profile////////////
@@ -168,11 +176,21 @@ $('.ProfileEdit').submit((e) => {
 ///////////Blog Category//////////////
 $('.CategoryBlogCreate').submit((e) => {
   e.preventDefault();
-  let name = $('input[name = "name"]');
-  let slug = $('input[name = "slug"]');
-  let desc = $('input[name = "desc"]');
-  let photo = $('input[name = "photo"]');
-  let photoVal = $('input[name = "photo"]');
+  let name = $('.CategoryBlogCreate input[name = "name"]');
+  let slug = $('.CategoryBlogCreate input[name = "slug"]');
+  let desc = $('.CategoryBlogCreate input[name = "desc"]');
+  let photo = $('.CategoryBlogCreate input[name = "photo"]');
+  let photoVal = $('.CategoryBlogCreate input[name = "photo"]');
+  let inputDescTag = $('.CategoryBlogCreate input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.CategoryBlogCreate input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
 
   let formData = new FormData();
   formData.append('name', name.val());
@@ -180,17 +198,29 @@ $('.CategoryBlogCreate').submit((e) => {
   formData.append('desc', desc.val());
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
+  formData.append("descTags", descTags.reverse());
+  formData.append("keyTags", keyTags.reverse());
 
   Fetch('/admin/blogs/categories/add', 'POST', formData);
 });
 
 $('.UpdateCategory').submit((e) => {
   e.preventDefault();
-  let name = $('input[name = "name"]');
-  let slug = $('input[name = "slug"]');
-  let desc = $('input[name = "desc"]');
-  let photo = $('input[name = "photo"]');
-  let photoVal = $('input[name = "photo"]');
+  let name = $('.UpdateCategory input[name = "name"]');
+  let slug = $('.UpdateCategory input[name = "slug"]');
+  let desc = $('.UpdateCategory input[name = "desc"]');
+  let photo = $('.UpdateCategory input[name = "photo"]');
+  let photoVal = $('.UpdateCategory input[name = "photo"]');
+  let inputDescTag = $('.UpdateCategory input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.UpdateCategory input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
 
   let formData = new FormData();
   formData.append('name', name.val());
@@ -198,6 +228,8 @@ $('.UpdateCategory').submit((e) => {
   formData.append('desc', desc.val());
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
+  formData.append("descTags", descTags.reverse());
+  formData.append("keyTags", keyTags.reverse());
 
   let pathName = window.location.pathname.split('/');
   let catSlug = pathName[pathName.length-1];    
@@ -206,13 +238,23 @@ $('.UpdateCategory').submit((e) => {
 
 $('.CreateBlog').submit((e) => {
   e.preventDefault();
-  let title = $('input[name = "title"]');
-  let slug = $('input[name = "slug"]');
-  let summery = $('textarea[name="summery"]');
-  let tags = $('input[name="tags"]');
-  let photo = $('input[name = "photo"]');
-  let photoVal = $('input[name = "photo"]');
+  let title = $('.CreateBlog input[name = "title"]');
+  let slug = $('.CreateBlog input[name = "slug"]');
+  let summery = $('.CreateBlog textarea[name="summery"]');
+  let tags = $('.CreateBlog input[name="tags"]');
+  let photo = $('.CreateBlog input[name = "photo"]');
+  let photoVal = $('.CreateBlog input[name = "photo"]');
   let data = CKEDITOR.instances.editor1.getData();
+  let inputDescTag = $('.CreateBlog input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.CreateBlog input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
 
   let formData = new FormData();
   formData.append('title', title.val());
@@ -222,6 +264,8 @@ $('.CreateBlog').submit((e) => {
   formData.append('tags', tags.val());
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
+  formData.append("descTags", descTags.reverse());
+  formData.append("keyTags", keyTags.reverse());
 
   let pathName = window.location.pathname.split('/');
   let catSlug = pathName[pathName.length - 3];
@@ -245,13 +289,23 @@ $.each(blogs, function (indexInArray, blog) {
 
 $('.UpdateBlog').submit((e) => {
   e.preventDefault();
-  let title = $('input[name = "title"]');
-  let slug = $('input[name = "slug"]');
-  let summery = $('textarea[name="summery"]');
-  let tags = $('input[name="tags"]');
-  let photo = $('input[name = "photo"]');
-  let photoVal = $('input[name = "photo"]');
+  let title = $('.UpdateBlog input[name = "title"]');
+  let slug = $('.UpdateBlog input[name = "slug"]');
+  let summery = $('.UpdateBlog textarea[name="summery"]');
+  let tags = $('.UpdateBlog input[name="tags"]');
+  let photo = $('.UpdateBlog input[name = "photo"]');
+  let photoVal = $('.UpdateBlog input[name = "photo"]');
   let data = CKEDITOR.instances.editor1.getData();
+  let inputDescTag = $('.UpdateBlog input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.UpdateBlog input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
 
   let formData = new FormData();
   formData.append('title', title.val());
@@ -261,7 +315,8 @@ $('.UpdateBlog').submit((e) => {
   formData.append('tags', tags.val());
   formData.append('photo', photo[0].files[0]);
   formData.append('photoVal', photoVal.val());
-  
+  formData.append("descTags", descTags.reverse());
+  formData.append("keyTags", keyTags.reverse());
 
   let pathName = window.location.pathname.split('/');
   let catSlug = pathName[pathName.length - 2];
@@ -337,12 +392,20 @@ $('.AboutParallax').submit((e) => {
 });
 $('.aboutPageTags').submit((e) => {
   e.preventDefault();
-  let inputTag = $('.aboutPageTags input[name = "tags"]').siblings('tag').find('span');
-  let tags = [];
-  inputTag.map((index , tag) => {
-    tags.push($.trim($(tag).text()));   
-  })
-  const body = {tags : tags.reverse()};
+  let inputDescTag = $('.aboutPageTags input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.aboutPageTags input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
+  const body = {
+    descTags : descTags.reverse(),
+    keyTags  : keyTags.reverse()
+  };
   Fetch2('/admin/site-setting/pages/about/tags', 'PUT', body);
 });
 ///////////SEO Page///////////////
@@ -415,12 +478,20 @@ $('.SEOParallax').submit((e) => {
 });
 $('.seoPageTags').submit((e) => {
   e.preventDefault();
-  let inputTag = $('.seoPageTags input[name = "tags"]').siblings('tag').find('span');
-  let tags = [];
-  inputTag.map((index , tag) => {
-    tags.push($.trim($(tag).text()));   
-  })
-  const body = {tags : tags.reverse()};
+  let inputDescTag = $('.seoPageTags input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.seoPageTags input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
+  const body = {
+    descTags : descTags.reverse(),
+    keyTags  : keyTags.reverse()
+  };
   Fetch2('/admin/site-setting/pages/seo/tags', 'PUT', body);
 });
 /////////////Users///////////////
@@ -588,6 +659,16 @@ $(".websites").submit(e => {
   let wallpaper = $('.websites input[name = "wallpaper"]');
   let wallpaperVal = $('.websites input[name = "wallpaper"]');
   let imagesVal = $('.gallery-box .box-wrap .box').length;
+  let inputDescTag = $('.websites input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.websites input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
 
   let formData = new FormData();
   formData.append("name", name.val());
@@ -604,6 +685,8 @@ $(".websites").submit(e => {
   $.each(boxsData, function (indexInArray, boxData) {
     formData.append(`images`, boxData);
   });
+  formData.append("descTags", descTags.reverse());
+  formData.append("keyTags", keyTags.reverse());
   
   Fetch(`/admin/websites/add`, "POST", formData);
 });
@@ -658,6 +741,16 @@ $(".UpdateWebsites").submit(e => {
   let wallpaper = $('.UpdateWebsites input[name = "wallpaper"]');
   let wallpaperVal = $('.UpdateWebsites input[name = "wallpaper"]');
   let imagesVal = $('.gallery-box .box-wrap .box').length;
+  let inputDescTag = $('.UpdateWebsites input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.UpdateWebsites input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
 
   let formData = new FormData();
   formData.append("name", name.val());
@@ -674,6 +767,8 @@ $(".UpdateWebsites").submit(e => {
   $.each(boxsData, function (indexInArray, boxData) {
     formData.append(`images`, boxData);
   });
+  formData.append("descTags", descTags.reverse());
+  formData.append("keyTags", keyTags.reverse());
 
   let pathName = window.location.pathname.split('/');
   let catSlug = pathName[pathName.length - 1];
@@ -700,6 +795,17 @@ $(".applications").submit(e => {
   let wallpaperVal = $('.applications input[name = "wallpaper"]');
   let imagesVal = $('.gallery-box .box-wrap .box').length;
 
+  let inputDescTag = $('.applications input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.applications input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
+
   let formData = new FormData();
   formData.append("name", name.val());
   formData.append("link", link.val());
@@ -721,6 +827,9 @@ $(".applications").submit(e => {
   $.each(boxsData, function (indexInArray, boxData) {
     formData.append(`images`, boxData);
   });
+
+  formData.append("descTags", descTags.reverse());
+  formData.append("keyTags", keyTags.reverse());
 
   Fetch(`/admin/applications/add`, "POST", formData);
 });
@@ -777,6 +886,16 @@ $(".UpdateApplications").submit(e => {
   let wallpaper = $('.UpdateApplications input[name = "wallpaper"]');
   let wallpaperVal = $('.UpdateApplications input[name = "wallpaper"]');
   let imagesVal = $('.gallery-box .box-wrap .box').length;
+  let inputDescTag = $('.UpdateApplications input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.UpdateApplications input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
 
   let formData = new FormData();
   formData.append("name", name.val());
@@ -797,6 +916,8 @@ $(".UpdateApplications").submit(e => {
   $.each(boxsData, function (indexInArray, boxData) {
     formData.append(`images`, boxData);
   });
+  formData.append("descTags", descTags.reverse());
+  formData.append("keyTags", keyTags.reverse());
 
   let pathName = window.location.pathname.split('/');
   let catSlug = pathName[pathName.length - 1];
@@ -855,12 +976,20 @@ $(".WebsitePage").submit(e => {
 });
 $('.websitePageTags').submit((e) => {
   e.preventDefault();
-  let inputTag = $('.websitePageTags input[name = "tags"]').siblings('tag').find('span');
-  let tags = [];
-  inputTag.map((index , tag) => {
-    tags.push($.trim($(tag).text()));   
-  })
-  const body = {tags : tags.reverse()};
+  let inputDescTag = $('.websitePageTags input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.websitePageTags input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
+  const body = {
+    descTags : descTags.reverse(),
+    keyTags  : keyTags.reverse()
+  };
   Fetch2('/admin/site-setting/pages/websites/tags', 'PUT', body);
 });
 
@@ -882,11 +1011,19 @@ $(".AppPage").submit(e => {
 });
 $('.appPageTags').submit((e) => {
   e.preventDefault();
-  let inputTag = $('.appPageTags input[name = "tags"]').siblings('tag').find('span');
-  let tags = [];
-  inputTag.map((index , tag) => {
-    tags.push($.trim($(tag).text()));   
-  })
-  const body = {tags : tags.reverse()};
+  let inputDescTag = $('.appPageTags input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.appPageTags input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
+  const body = {
+    descTags : descTags.reverse(),
+    keyTags  : keyTags.reverse()
+  };
   Fetch2('/admin/site-setting/pages/applications/tags', 'PUT', body);
 });

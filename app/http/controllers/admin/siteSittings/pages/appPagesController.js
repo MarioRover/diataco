@@ -82,7 +82,10 @@ module.exports = new class appPagesController extends controller {
   }
   async tags(req , res , next) {
     try {
-      let contentObj = {tags : req.body.tags};
+      let contentObj = {
+        descTags : req.body.descTags,
+        keyTags  : req.body.keyTags
+      };
       let applicationPage = await this.models.applicationPage.find({});
       if(this.isEmpty(applicationPage)) {
         let newHomePage = new this.models.applicationPage({ ...contentObj});

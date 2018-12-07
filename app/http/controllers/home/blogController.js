@@ -16,8 +16,9 @@ module.exports = new class blogController extends controller {
       res.render('home/blog/category', {
         title: 'Blog in Diata | Official Diata&#x2122; | وبلاگ و خبرنامه های دیاتا',
         categories,siteInfo,
-        tags : ['وبلاک','اخبار'],
-        manifest : this.Manifest
+        manifest : this.Manifest,
+        descTags : '',
+        keyTags :'',
       });
     } catch (error) {
       return this.error('Error in index method of blogController.js', 500, next);
@@ -42,10 +43,12 @@ module.exports = new class blogController extends controller {
        categories[0].viewCount += 1;
        categories[0].save();
       res.render('home/blog/blogs', {
-        title : categories[0].name,
+        title : `Diata| ${categories[0].name} Category`,
         categories : categories[0],
         siteInfo,
-        manifest : this.Manifest
+        manifest : this.Manifest,
+        descTags : categories[0].descTags,
+        keyTags : categories[0].keyTags,
       });
     } catch (error) {
       return this.error('Error in showBlogs method of blogController.js', 500, next);
@@ -76,9 +79,11 @@ module.exports = new class blogController extends controller {
       blog[0].save();
       return res.json(blog[0]);
       // res.render('home/blog/blogs', {
-      //   title : categories[0].name,
+      //   title : `Diata | ${blog[0].name}`,
       //   categories : categories[0],
-      //   manifest : this.Manifest
+      //   manifest : this.Manifest,
+        // descTags : blog[0].descTags,
+        // keyTags : blog[0].keyTags,
       // });
     } catch (error) {
       return this.error('Error in showBlog method of blogController.js', 500, next);

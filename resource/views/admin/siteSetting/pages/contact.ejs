@@ -68,13 +68,17 @@
           </header>
           <content>
             <form class="contactPageTags">
-              <div class="grid-y input-group w100 mb-1">
-                <label class="mb-1" for="descTag">Description Tags</label>
-                <input name="descTag" type="text" value="">
+              <div class="input-wrap grid-x">
+                <div class="grid-y input-group w100">
+                  <label for="descTags">Description Tags</label>
+                  <input name="descTags" type="text" value="<%= contactPage.descTags %>">
+                </div>
               </div>
-              <div class="grid-y input-group w100 mb-1">
-                <label class="mb-1" for="keyTag">keywords Tags</label>
-                <input name="keyTag" type="text" value="">
+              <div class="input-wrap grid-x">
+                <div class="grid-y input-group w100">
+                  <label for="keyTags">keywords Tags</label>
+                  <input name="keyTags" type="text" value="<%= contactPage.keyTags %>">
+                </div>
               </div>
               <div class="input-wrap grid align-left">
                 <button type="submit" class="btn btn-primary grid align-center-middle">
@@ -93,7 +97,7 @@
   $(".contactPageSetting input[name='photo']").change(function () {
     readURL2(this, "1");
   });
-  $(".contactPageTags input[name='descTag']").tagify();
-  $(".contactPageTags input[name='keyTag']").tagify();
+  $(".contactPageTags input[name='descTags']").tagify();
+  $(".contactPageTags input[name='keyTags']").tagify();
 </script>
 

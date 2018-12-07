@@ -33,8 +33,9 @@ module.exports = new class homeController extends controller {
       res.render('home/home', {
         title: 'Diata&#x2122; | Home of Diata , Design Website, Application, SEO | دیاتا - طراحی سایت ، اپلیکیشن ، سئو',
         homePage, blogs, websites, applications, siteInfo,
-        tags : homePage.tags,
-        manifest : this.Manifest
+        manifest : this.Manifest,
+        descTags : homePage.descTags,
+        keyTags : homePage.keyTags
       });
     } catch (error) {
       return this.error('Error in showPage method at homeController.js', 500, next);
