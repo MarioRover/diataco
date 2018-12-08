@@ -1,5 +1,6 @@
 const controller = require('../../controller');
 const fs = require('fs');
+const isEmptyObject = require('is-empty-object');
 
 module.exports = new class blogController extends controller {
   async index(req, res, next) {
@@ -43,14 +44,18 @@ module.exports = new class blogController extends controller {
     try {
       let result = await this.validationData(req, next);
       if (!result) {
-        if (!this.isEmpty(req.file)) fs.unlinkSync(req.file.path);
+        if (!this.isEmpty(req.files['previewImage'])) {
+          fs.unlinkSync(req.files['previewImage'][0].path);
+        }
+        if(!this.isEmpty(req.files['wallpaper'])) {
+          fs.unlinkSync(req.files['wallpaper'][0].path);
+        }
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
       const {name,slug,desc,descTags,keyTags} = req.body;
       let contentObj = {name,slug,desc,descTags,keyTags,admin : req.user._id};
-      const categoryPhoto = req.file;
-      // Resize Image
-      this.imageResize(categoryPhoto.path);
+      const previewImage = req.files['previewImage'][0];
+      const wallpaper = req.files['wallpaper'][0];
       // check slug
       let categoryDuplicate = {
         slug : await this.models.blogCategory.find({ slug: slug } , (error , category) => {
@@ -66,13 +71,19 @@ module.exports = new class blogController extends controller {
       if (!this.isEmptyArray(categoryDuplicate.name)) message.push('نام دسته بندی وارد شده قبلا ثبت شده است')
       if (!this.isEmptyArray(categoryDuplicate.slug)) message.push('اسلاگ دسته بندی وارد شده قبلا ثبت شده است');
       if (!this.isEmptyArray(message)) {
-        if (req.file) fs.unlinkSync(req.file.path);
+        fs.unlinkSync(previewImage.path);
+        fs.unlinkSync(wallpaper.path);
         return this.izitoastMessage(message , 'warning', res);
       } else {
-        contentObj['imageUrl'] = {
-          destination: this.addressImage(categoryPhoto),
-          originalname: categoryPhoto.originalname,
-          path: categoryPhoto.path
+        contentObj['previewImage'] = {
+          destination: this.addressImage(previewImage),
+          originalname: previewImage.originalname,
+          path: previewImage.path
+        }
+        contentObj['wallpaper'] = {
+          destination: this.addressImage(wallpaper),
+          originalname: wallpaper.originalname,
+          path: wallpaper.path
         }
         let newCategory = new this.models.blogCategory({ ...contentObj });
         newCategory.save(err => {
@@ -121,13 +132,25 @@ module.exports = new class blogController extends controller {
     try {
       let result = await this.validationData(req, next);
       if (!result) {
-        if (!this.isEmpty(req.file)) fs.unlinkSync(req.file.path);
+        if (!this.isEmpty(req.files['previewImage'])) {
+          fs.unlinkSync(req.files['previewImage'][0].path);
+        }
+        if(!this.isEmpty(req.files['wallpaper'])) {
+          fs.unlinkSync(req.files['wallpaper'][0].path);
+        }
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
       const {name,slug,desc,descTags,keyTags} = req.body;
       let contentObj = {name,slug,desc,descTags,keyTags};
-      const categoryPhoto = req.file;
-     
+      let previewImage,wallpaper;
+
+      if (!this.isEmpty(req.files['previewImage'])) {
+        previewImage = req.files['previewImage'][0];
+      }
+      if(!this.isEmpty(req.files['wallpaper'])) {
+        wallpaper = req.files['wallpaper'][0];
+      }
+
       let thisCategory = await this.models.blogCategory.find({ slug: req.params.slug } , (error , category) => {
         if (error) return this.serverError('جستجو اطلاعات با مشکل مواجه شد', 500, error, res);
         return category;
@@ -155,23 +178,42 @@ module.exports = new class blogController extends controller {
         }
       } 
       if (!this.isEmptyArray(message)) {
-        if (req.file) fs.unlinkSync(req.file.path);
+        if (!isEmptyObject(req.files)) {
+          fs.unlinkSync(previewImage.path);
+          fs.unlinkSync(wallpaper.path);
+        }
         return this.izitoastMessage(message , 'warning', res);
       } else {
         
-        if (req.file) {
-           // Resize Image
-          this.imageResize(categoryPhoto.path);
-          if (thisCategory[0].imageUrl.originalname === req.file.originalname) {
-            await fs.unlinkSync(req.file.path);
-          } else {
-            if (await fs.existsSync(thisCategory[0].imageUrl.path)) await fs.unlinkSync(thisCategory[0].imageUrl.path);
-            contentObj['imageUrl'] = {
-              destination: this.addressImage(categoryPhoto),
-              originalname: categoryPhoto.originalname,
-              path: categoryPhoto.path
+        if (!isEmptyObject(req.files)) {
+          
+          if(!this.isEmpty(req.files['previewImage'])) {
+            if (thisCategory[0].previewImage.originalname === previewImage.originalname) {
+              await fs.unlinkSync(previewImage.path);
+            } else {
+              if (await fs.existsSync(thisCategory[0].previewImage.path)) await fs.unlinkSync(thisCategory[0].previewImage.path);
+              contentObj['previewImage'] = {
+                destination: this.addressImage(previewImage),
+                originalname: previewImage.originalname,
+                path: previewImage.path
+              }
             }
           }
+
+          if(!this.isEmpty(req.files['wallpaper'])) {
+            if (thisCategory[0].wallpaper.originalname === wallpaper.originalname) {
+              await fs.unlinkSync(wallpaper.path);
+            } else {
+              if (await fs.existsSync(thisCategory[0].wallpaper.path)) await fs.unlinkSync(thisCategory[0].wallpaper.path);
+              contentObj['wallpaper'] = {
+                destination: this.addressImage(wallpaper),
+                originalname: wallpaper.originalname,
+                path: wallpaper.path
+              }
+            }
+          }
+
+          
         }
         await this.models.blogCategory.findByIdAndUpdate(thisCategory[0]._id, {
           $set: { ...contentObj,...contentObj}
@@ -191,6 +233,8 @@ module.exports = new class blogController extends controller {
           await this.models.blog.findByIdAndDelete(blog._id);
           await fs.unlinkSync(blog.imageUrl.path);
         });
+        await fs.unlinkSync(cat.wallpaper.path);
+        await fs.unlinkSync(cat.previewImage.path);
         await this.models.blogCategory.findByIdAndDelete(cat._id);
       });
       return this.deleteObj(['دسته بندی مورد نظر با موفقیت حذف گردید'], 'success', req.body, 'box', res);

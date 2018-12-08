@@ -54,6 +54,7 @@ module.exports = new class applicationController extends controller {
         if (!isEmptyObject(req.files)) {
           fs.unlinkSync(req.files['logo'][0].path);
           fs.unlinkSync(req.files['previewImage'][0].path);
+          fs.unlinkSync(req.files['wallpaper'][0].path);
           if(!this.isEmptyArray(req.files['images'])) {
             req.files['images'].forEach(image => {
               fs.unlinkSync(image.path);

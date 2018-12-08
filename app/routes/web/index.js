@@ -25,7 +25,8 @@ router.get('/error' , (req , res , next) => {
   res.render('errors/stack' , {
     title : 'Error',
     layout: 'home/master',
-    tags : ['Error'],
+    descTags : 'Error',
+    keyTags : 'Error',
     manifest : Manifest
   })
 })

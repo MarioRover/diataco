@@ -38,13 +38,22 @@
         </div>
         <div class="input-wrap grid align-left">
           <div class="grid-y input-group">
-            <label for="photo">تصویر پس زمینه</label>
+            <label for="photo">تصویر پس زمینه دسته بندی</label>
             <div class="grid align-center">
-              <div class="image-box grid align-center-middle">
+              <div class="image-box box1 grid align-center-middle">
                 <img src="">
               </div>
             </div>
-            <input class="input-en" name="photo" type="file">
+            <input class="input-en" name="wallpaper" type="file">
+          </div>
+          <div class="grid-y input-group">
+            <label for="photo">تصویر پیش نمایش دسته بندی</label>
+            <div class="grid align-center">
+              <div class="image-box box2 grid align-center-middle">
+                <img src="">
+              </div>
+            </div>
+            <input class="input-en" name="previewImage" type="file">
           </div>
         </div>
         <div class="input-wrap grid-x">
@@ -69,8 +78,11 @@
   </div>
 </div>
 <script>
-  $("input[name='photo']").change(function() {
-    readURL(this);
+  $(".CategoryBlogCreate input[name='wallpaper']").change(function () {
+    readURL2(this, "1");
+  });
+  $(".CategoryBlogCreate input[name='previewImage']").change(function () {
+    readURL2(this, "2");
   });
   $(".CategoryBlogCreate input[name='descTags']").tagify();
   $(".CategoryBlogCreate input[name='keyTags']").tagify();

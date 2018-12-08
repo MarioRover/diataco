@@ -14,7 +14,7 @@ module.exports = new class contactValidation extends validator {
       check('desc')
         .not().isEmpty()
         .withMessage('فیلد خلاصه دسته بندی نمی تواند خالی باشد'),
-      check('photoVal')
+      check('wallpaperVal')
       .custom(async (value, {
         req
       }) => {
@@ -26,6 +26,24 @@ module.exports = new class contactValidation extends validator {
           }
         } else if (value) {
           if (!value) throw new Error('وارد کردن تصویر پس زمینه دسته بندی الزامی است');
+          let fileExt = ['.png', '.jpg', '.jpeg', '.svg'];
+          if (!fileExt.includes(path.extname(value))) {
+            throw new Error('پسوند فایل وارد شده از پسوندهای تصاویر نیست');
+          }
+        }
+      }),
+      check('previewImageVal')
+      .custom(async (value, {
+        req
+      }) => {
+        if (req.method !== 'PUT') {
+          if (!value) throw new Error('وارد کردن تصویر پیش نمایش دسته بندی الزامی است');
+          let fileExt = ['.png', '.jpg', '.jpeg', '.svg'];
+          if (!fileExt.includes(path.extname(value))) {
+            throw new Error('پسوند فایل وارد شده از پسوندهای تصاویر نیست');
+          }
+        } else if (value) {
+          if (!value) throw new Error('وارد کردن تصویر پیش نمایش دسته بندی الزامی است');
           let fileExt = ['.png', '.jpg', '.jpeg', '.svg'];
           if (!fileExt.includes(path.extname(value))) {
             throw new Error('پسوند فایل وارد شده از پسوندهای تصاویر نیست');

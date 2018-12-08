@@ -61,15 +61,26 @@
               </div>
               <div class="input-wrap grid align-right">
                 <div class="grid-y input-group w100">
-                  <label for="photo">تصویر پس زمینه</label>
+                  <label for="previewImage">تصویر پیش نمایش دسته بندی</label>
                   <div class="grid align-center">
-                    <div class="image-box grid align-center-middle">
-                      <img src="<%= category.imageUrl.destination %>">
+                    <div class="image-box box1 grid align-center-middle">
+                      <img src="<%= category.previewImage.destination %>">
                     </div>
                   </div>
-                  <input class="input-en" name="photo" type="file">
+                  <input class="input-en" name="previewImage" type="file">
                 </div>
               </div>
+              <div class="input-wrap grid align-right">
+                  <div class="grid-y input-group w100">
+                    <label for="wallpaper">تصویر پس زمینه دسته بندی</label>
+                    <div class="grid align-center">
+                      <div class="image-box box2 grid align-center-middle">
+                        <img src="<%= category.wallpaper.destination %>">
+                      </div>
+                    </div>
+                    <input class="input-en" name="wallpaper" type="file">
+                  </div>
+                </div>
               <div class="input-wrap grid align-left">
                 <button type="submit" class="btn btn-primary grid align-center-middle">
                   <span>بروز رسانی</span>
@@ -203,18 +214,12 @@
     Chart.defaults.global.defaultFontSize = 10;
     Chart.defaults.global.defaultFontColor = '#333';
     
-  $("input[name='photo']").change(function() {
-    readURL(this);
+  $(".UpdateCategory input[name='previewImage']").change(function () {
+    readURL2(this, "1");
   });
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        $('.image-box img').attr('src', e.target.result);
-      }
-      reader.readAsDataURL(input.files[0]);
-    }
-  }  
+  $(".UpdateCategory input[name='wallpaper']").change(function () {
+    readURL2(this, "2");
+  });
   const rowDelete = (objId) => {
     let row = $(`tr td button[value=${objId}]`).parents('tr');
     $(row).remove();

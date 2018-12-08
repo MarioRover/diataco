@@ -5,20 +5,26 @@ module.exports = new class blogController extends controller {
     try {
       let categories = await this.models.blogCategory.find();
       let siteInfo = await this.models.siteInfo.find({});
+      let blogPage = await this.models.blogPage.find({});
       if (this.isEmptyArray(siteInfo)) {
         siteInfo = 'undefined';
       } else {
         siteInfo = siteInfo[0]
+      }
+      if (this.isEmptyArray(blogPage)) {
+        blogPage = 'undefined';
+      } else {
+        blogPage = blogPage[0]
       }
       if(categories == '') {
         categories = 'undefined';
       }
       res.render('home/blog/category', {
         title: 'Blog in Diata | Official Diata&#x2122; | وبلاگ و خبرنامه های دیاتا',
-        categories,siteInfo,
+        categories,siteInfo,blogPage,
         manifest : this.Manifest,
-        descTags : '',
-        keyTags :'',
+        descTags : blogPage.descTags,
+        keyTags : blogPage.keyTags
       });
     } catch (error) {
       return this.error('Error in index method of blogController.js', 500, next);

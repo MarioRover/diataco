@@ -1,37 +1,29 @@
-const validator = require('../validator');
+const validator = require('./validator');
 const {check} = require('express-validator/check');
 const path = require('path');
 
-module.exports = new class updateCategoriesValidation extends validator {
+module.exports = new class blogPageValidation extends validator {
   handle() {
     return [
-      check('name')
+      check('title')
         .not().isEmpty()
-        .withMessage('فیلد نام دسته بندی نمی تواند خالی باشد'),
-      check('slug')
-        .not().isEmpty()
-        .withMessage('فیلد اسلاگ نمی تواند خالی باشد'),
-      check('desc')
-        .not().isEmpty()
-        .withMessage('فیلد خلاصه دسته بندی نمی تواند خالی باشد'),
-      check('wallpaperVal')
+        .withMessage('فیلد تیتر صفحه بلاگ نمی تواند خالی باشد'),
+      check('photoVal')
       .custom(async (value, {req}) => {
-        if(value) {
+        if (req.method !== 'PUT') {
+          if (!value) throw new Error('وارد کردن تصویر پس زمینه صفحه بلاگ الزامی است');
+          let fileExt = ['.png', '.jpg', '.jpeg', '.svg'];
+          if (!fileExt.includes(path.extname(value))) {
+            throw new Error('پسوند فایل وارد شده از پسوندهای تصاویر نیست');
+          }
+        } else if (value) {
+          if (!value) throw new Error('وارد کردن تصویر پس زمینه صفحه بلاگ الزامی است');
           let fileExt = ['.png', '.jpg', '.jpeg', '.svg'];
           if (!fileExt.includes(path.extname(value))) {
             throw new Error('پسوند فایل وارد شده از پسوندهای تصاویر نیست');
           }
         }
-      }),
-      check('previewImageVal')
-      .custom(async (value, {req}) => {
-        if(value) {
-          let fileExt = ['.png', '.jpg', '.jpeg', '.svg'];
-          if (!fileExt.includes(path.extname(value))) {
-            throw new Error('پسوند فایل وارد شده از پسوندهای تصاویر نیست');
-          }
-        }
-      }),
+      })
     ]
   }
 }

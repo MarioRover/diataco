@@ -179,8 +179,13 @@ $('.CategoryBlogCreate').submit((e) => {
   let name = $('.CategoryBlogCreate input[name = "name"]');
   let slug = $('.CategoryBlogCreate input[name = "slug"]');
   let desc = $('.CategoryBlogCreate input[name = "desc"]');
-  let photo = $('.CategoryBlogCreate input[name = "photo"]');
-  let photoVal = $('.CategoryBlogCreate input[name = "photo"]');
+
+  let wallpaper = $('.CategoryBlogCreate input[name = "wallpaper"]');
+  let wallpaperVal = $('.CategoryBlogCreate input[name = "wallpaper"]');
+
+  let previewImage = $('.CategoryBlogCreate input[name = "previewImage"]');
+  let previewImageVal = $('.CategoryBlogCreate input[name = "previewImage"]');
+
   let inputDescTag = $('.CategoryBlogCreate input[name = "descTags"]').siblings('tag').find('span');
   let inputKeyTag = $('.CategoryBlogCreate input[name = "keyTags"]').siblings('tag').find('span');
   let descTags = [];
@@ -196,8 +201,10 @@ $('.CategoryBlogCreate').submit((e) => {
   formData.append('name', name.val());
   formData.append('slug', slug.val());
   formData.append('desc', desc.val());
-  formData.append('photo', photo[0].files[0]);
-  formData.append('photoVal', photoVal.val());
+  formData.append('wallpaper', wallpaper[0].files[0]);
+  formData.append('wallpaperVal', wallpaperVal.val());
+  formData.append('previewImage', previewImage[0].files[0]);
+  formData.append('previewImageVal', previewImageVal.val());
   formData.append("descTags", descTags.reverse());
   formData.append("keyTags", keyTags.reverse());
 
@@ -209,8 +216,13 @@ $('.UpdateCategory').submit((e) => {
   let name = $('.UpdateCategory input[name = "name"]');
   let slug = $('.UpdateCategory input[name = "slug"]');
   let desc = $('.UpdateCategory input[name = "desc"]');
-  let photo = $('.UpdateCategory input[name = "photo"]');
-  let photoVal = $('.UpdateCategory input[name = "photo"]');
+
+  let wallpaper = $('.UpdateCategory input[name = "wallpaper"]');
+  let wallpaperVal = $('.UpdateCategory input[name = "wallpaper"]');
+
+  let previewImage = $('.UpdateCategory input[name = "previewImage"]');
+  let previewImageVal = $('.UpdateCategory input[name = "previewImage"]');
+
   let inputDescTag = $('.UpdateCategory input[name = "descTags"]').siblings('tag').find('span');
   let inputKeyTag = $('.UpdateCategory input[name = "keyTags"]').siblings('tag').find('span');
   let descTags = [];
@@ -226,8 +238,10 @@ $('.UpdateCategory').submit((e) => {
   formData.append('name', name.val());
   formData.append('slug', slug.val());
   formData.append('desc', desc.val());
-  formData.append('photo', photo[0].files[0]);
-  formData.append('photoVal', photoVal.val());
+  formData.append('wallpaper', wallpaper[0].files[0]);
+  formData.append('wallpaperVal', wallpaperVal.val());
+  formData.append('previewImage', previewImage[0].files[0]);
+  formData.append('previewImageVal', previewImageVal.val());
   formData.append("descTags", descTags.reverse());
   formData.append("keyTags", keyTags.reverse());
 
@@ -1026,4 +1040,36 @@ $('.appPageTags').submit((e) => {
     keyTags  : keyTags.reverse()
   };
   Fetch2('/admin/site-setting/pages/applications/tags', 'PUT', body);
+});
+/////////// Blog Page //////////////
+$('.BlogHeader').submit((e) => {
+  e.preventDefault();
+  let title = $('.BlogHeader input[name = "title"]');
+  let photo = $('.BlogHeader input[name = "photo"]');
+  let photoVal = $('.BlogHeader input[name = "photo"]');
+
+  let formData = new FormData();
+  formData.append('title', title.val());
+  formData.append('photo', photo[0].files[0]);
+  formData.append('photoVal', photoVal.val());
+
+  Fetch('/admin/site-setting/pages/blog', 'PUT', formData);
+});
+$('.bogPageTags').submit((e) => {
+  e.preventDefault();
+  let inputDescTag = $('.bogPageTags input[name = "descTags"]').siblings('tag').find('span');
+  let inputKeyTag = $('.bogPageTags input[name = "keyTags"]').siblings('tag').find('span');
+  let descTags = [];
+  let keyTags = [];
+  inputDescTag.map((index , tag) => {
+    descTags.push($.trim($(tag).text()));   
+  });
+  inputKeyTag.map((index , tag) => {
+    keyTags.push($.trim($(tag).text()));   
+  });
+  const body = {
+    descTags : descTags.reverse(),
+    keyTags  : keyTags.reverse()
+  };
+  Fetch2('/admin/site-setting/pages/blog/tags', 'PUT', body);
 });

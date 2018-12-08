@@ -1,11 +1,13 @@
-<link rel="stylesheet" href="/plugin/Hoverbox/css/set1.css">
 <%- include(viewPath('home/layout/header')) %>
-
 <section class="seo-page w100 grid-y">
-  <div class="header-slider w100" style="background-image: url('./../img/blog.jpg')">
+  <% if(typeof categories.wallpaper !== 'undefined' ) { %>
+  <div class="header-slider w100" style="background-image: url('<%= categories.wallpaper.destination %>')">
+  <% } else { %>
+    <div class="header-slider w100">  
+  <% } %>   
     <div class="overlay grid align-center-middle">
       <div class="container">
-        <h2>Blog</h2>
+        <h2><%= categories.desc %></h2>
       </div>
     </div>
   </div>

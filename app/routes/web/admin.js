@@ -17,6 +17,7 @@ const applicationController = require('app/http/controllers/admin/applicationCon
 const siteInfoController = require('app/http/controllers/admin/siteSittings/siteInfoController');
 const websitesPagesController = require('app/http/controllers/admin/siteSittings/pages/websitesPagesController');
 const appPagesController = require('app/http/controllers/admin/siteSittings/pages/appPagesController');
+const blogPageController = require('app/http/controllers/admin/siteSittings/pages/blogPageController');
 // Validators
 const loginAdminsValidation = require('app/http/validators/loginAdminsValidation');
 const contactPagesValidation = require('app/http/validators/contactPagesValidation');
@@ -42,6 +43,7 @@ const usersBackgroundValidation = require('app/http/validators/usersBackgroundVa
 const profileValidation = require('app/http/validators/profileValidation');
 const websitePageValidation = require('app/http/validators/websitePageValidation');
 const appPageValidation = require('app/http/validators/appPageValidation');
+const blogPageValidation = require('app/http/validators/blogPageValidation');
 // Middleware
 const redirectIfAuthenticated = require('app/http/middleware/redirectIfAuthenticated');
 const convertFileToField = require('app/http/middleware/convertFileToField')
@@ -212,7 +214,7 @@ router.put('/site-setting/pages/websites/tags',
   redirectIfAuthenticated.adminLogin,
   websitesPagesController.tags
 );
-///////// Application Page
+///////// Application Page ///////////
 router.get('/site-setting/pages/applications', redirectIfAuthenticated.adminLogin, appPagesController.index);
 router.post('/site-setting/pages/applications',
   redirectIfAuthenticated.adminLogin,
@@ -232,13 +234,29 @@ router.put('/site-setting/pages/applications/tags',
   redirectIfAuthenticated.adminLogin,
   appPagesController.tags
 );
-/////// Category Blog
+//////////// Blog Page //////////////
+router.get('/site-setting/pages/blog', redirectIfAuthenticated.adminLogin, blogPageController.index);
+router.put('/site-setting/pages/blog/tags',
+  redirectIfAuthenticated.adminLogin,
+  blogPageController.tags
+);
+router.put('/site-setting/pages/blog',
+  redirectIfAuthenticated.adminLogin,
+  upload.single('photo'),
+  convertFileToField.handle,
+  blogPageValidation.handle(),
+  blogPageController.header
+);
+/////// Category Blog ///////////////
 router.get('/blogs/categories', redirectIfAuthenticated.adminLogin, blogController.index);
 router.get('/blogs/categories/add', redirectIfAuthenticated.adminLogin, blogController.viewCreateCategory);
 router.delete('/blogs/categories', redirectIfAuthenticated.adminLogin, blogController.removeCategory);
 router.post('/blogs/categories/add',
   redirectIfAuthenticated.adminLogin,
-  upload.single('photo'),
+  upload.fields([
+    {name : 'wallpaper' , maxCount : 1},
+    {name : 'previewImage' , maxCount : 1}
+  ]),
   convertFileToField.handle,
   addCategoriesValidation.handle(),
   blogController.createCategory
@@ -246,7 +264,10 @@ router.post('/blogs/categories/add',
 router.get('/blogs/categories/:category', redirectIfAuthenticated.adminLogin, blogController.viewCategory);
 router.put('/blogs/categories/:slug/update', 
   redirectIfAuthenticated.adminLogin, 
-  upload.single('photo'),
+  upload.fields([
+    {name : 'wallpaper' , maxCount : 1},
+    {name : 'previewImage' , maxCount : 1}
+  ]),
   convertFileToField.handle,
   updateCategoriesValidation.handle(),
   blogController.updateCategory,

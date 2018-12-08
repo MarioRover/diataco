@@ -2,13 +2,17 @@
 <%- include(viewPath('home/layout/header')) %>
 
 <section class="seo-page w100 grid-y">
-  <div class="header-slider w100" style="background-image: url('./../img/blog.jpg')">
-    <div class="overlay grid align-center-middle">
-      <div class="container">
-        <h2>Blog</h2>
-      </div>
+    <% if(typeof blogPage.imageUrl !== 'undefined' ) { %>
+    <div class="header-slider w100" style="background-image: url('<%= blogPage.imageUrl.destination %>')">
+    <% } else { %>
+    <div class="header-slider w100">   
+    <% } %>     
+        <div class="overlay grid align-center-middle">
+        <div class="container">
+            <h2><%= blogPage.title %></h2>
+        </div>
+        </div>
     </div>
-  </div>
 <section class="wrapper grid grid-y align-center-middle">
     <div class="header-section mb-2">
         <h3>دسته بندی وبلاگ</h3>
@@ -19,7 +23,7 @@
             <div class="owl-carousel owl-theme">
                 <% categories.forEach(category => { %>
                     <div class="item card-portlet">
-                        <a href="/blog/<%= category.slug %>" class="wrap grid align-bottom" style="background-image: url('<%= category.imageUrl.destination %>')">
+                        <a href="/blog/<%= category.slug %>" class="wrap grid align-bottom" style="background-image: url('<%= category.previewImage.destination %>')">
                             <div class="tag">   
                                 <span><%= category.name %></span>
                             </div>
@@ -34,7 +38,7 @@
             <div class="carousel grid-x">
                 <% categories.forEach(category => { %>
                     <div class="item card-portlet">
-                        <a href="/blog/<%= category.slug %>" class="wrap grid align-bottom" style="background-image: url('<%= category.imageUrl.destination %>')">
+                        <a href="/blog/<%= category.slug %>" class="wrap grid align-bottom" style="background-image: url('<%= category.previewImage.destination %>')">
                             <div class="tag">   
                                 <span><%= category.name %></span>
                             </div>

@@ -26,7 +26,8 @@ class errorHandler extends Controller {
         stack,
         statusCode,
         title : 'Error',
-        tags : ['Error'],
+        descTags : 'Error',
+        keyTags : 'Error',
         manifest : this.Manifest
       })
     } else {
@@ -35,7 +36,8 @@ class errorHandler extends Controller {
         title: `Error ${statusCode}`,
         message,
         statusCode,
-        tags : ['Error'],
+        descTags : 'Error',
+        keyTags : 'Error',
         manifest : this.Manifest
       });
     }

@@ -20,6 +20,7 @@ const applications = require('app/models/applications');
 const siteInfo = require('app/models/siteInfo');
 const websitePage = require('app/models/websitePage');
 const applicationPage = require('app/models/applicationPage');
+const blogPage = require('app/models/blogPage');
 
 module.exports = class controller {
   constructor() {
@@ -40,7 +41,8 @@ module.exports = class controller {
       applications,
       siteInfo,
       websitePage,
-      applicationPage
+      applicationPage,
+      blogPage
     };
   }
   async recaptchaValidation(req , res , next) {
