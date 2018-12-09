@@ -165,7 +165,7 @@
             <td class="col3"><%= date(blog.createdAt).format('jYYYY/jM/jD') %></td>
             <td class="col3"><%= blog.admin.name %> <%= blog.admin.family %></td>
             <td class="col2 image">
-              <img src="<%= blog.imageUrl.destination %>" alt="<%= blog.imageUrl.destination %>">
+              <img src="<%= blog.previewImage.destination %>" alt="<%= blog.previewImage.destination %>">
             </td>
             <td class="col3">
               <div class="grid-x align-center">

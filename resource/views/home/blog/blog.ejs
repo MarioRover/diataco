@@ -1,0 +1,22 @@
+<%- include(viewPath('home/layout/header')) %>
+
+<section class="seo-page w100 grid-y">
+    <% if(typeof blog.wallpaper !== 'undefined' ) { %>
+    <div class="header-slider w100" style="background-image: url('<%= blog.wallpaper.destination %>')">
+    <% } else { %>
+    <div class="header-slider w100">   
+    <% } %>     
+        <div class="overlay grid align-center-middle">
+        <div class="container">
+            <h2><%= blog.title %></h2>
+        </div>
+        </div>
+    </div>
+<section class="wrapper grid grid-y align-center-middle">
+    <div class="container grid-x align-center-middle">
+        <%- blog.description %>
+    </div>
+</section>
+
+<%- include(viewPath('home/layout/footer')) %>
+

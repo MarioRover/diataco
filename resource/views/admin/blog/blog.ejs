@@ -95,21 +95,24 @@
                 <input name="slug" type="text" value="<%= blog.slug %>">
               </div>
             </div>
-            <div class="input-wrap grid">
-              <div class="grid-y input-group w100">
-                <label for="tags">تگ های بلاگ</label>
-                <input name="tags" type="text" value="<%= blog.tags %>">
-              </div>
-            </div>
             <div class="input-wrap grid align-left">
               <div class="grid-y input-group">
-                <label for="photo">تصویر پس زمینه</label>
+                <label for="wallpaper">تصویر پس زمینه بلاگ</label>
                 <div class="grid align-center">
-                  <div class="image-box grid align-center-middle">
-                    <img src="<%= blog.imageUrl.destination %>" alt="<%= blog.imageUrl.destination %>">
+                  <div class="image-box box1 grid align-center-middle">
+                    <img src="<%= blog.wallpaper.destination %>" alt="<%= blog.wallpaper.destination %>">
                   </div>
                 </div>
-                <input class="input-en" name="photo" type="file">
+                <input class="input-en" name="wallpaper" type="file">
+              </div>
+              <div class="grid-y input-group">
+                <label for="previewImage">تصویر پیش نمایش بلاگ</label>
+                <div class="grid align-center">
+                  <div class="image-box box2 grid align-center-middle">
+                    <img src="<%= blog.previewImage.destination %>" alt="<%= blog.previewImage.destination %>">
+                  </div>
+                </div>
+                <input class="input-en" name="previewImage" type="file">
               </div>
             </div>
             <div class="input-wrap grid align-right">
@@ -183,8 +186,11 @@
     CKEDITOR.replace('editor1' , {
       filebrowserUploadUrl : '/admin/upload-image'
     });
-    $("input[name='photo']").change(function() {
-      readURL(this);
+    $(".UpdateBlog input[name='wallpaper']").change(function () {
+    readURL2(this, "1");
+    });
+    $(".UpdateBlog input[name='previewImage']").change(function () {
+      readURL2(this, "2");
     });
     $(".UpdateBlog input[name='descTags']").tagify();
     $(".UpdateBlog input[name='keyTags']").tagify();

@@ -276,7 +276,10 @@ router.put('/blogs/categories/:slug/update',
 router.get('/blogs/categories/:category/blog/add', redirectIfAuthenticated.adminLogin, blogController.viewCreateBlog);
 router.post('/blogs/categories/:category/blog/add', 
 redirectIfAuthenticated.adminLogin, 
-  upload.single('photo'),
+upload.fields([
+  {name : 'wallpaper' , maxCount : 1},
+  {name : 'previewImage' , maxCount : 1}
+]),
   convertFileToField.handle,
   createBlogValidation.handle(),
   blogController.createBlog
@@ -285,7 +288,10 @@ router.delete('/blogs/categories/:category/blog/delete', redirectIfAuthenticated
 router.get('/blogs/categories/:category/:blog', redirectIfAuthenticated.adminLogin, blogController.viewBlog);
 router.put('/blogs/categories/:category/:blog', 
   redirectIfAuthenticated.adminLogin,
-  upload.single('photo'),
+  upload.fields([
+    {name : 'wallpaper' , maxCount : 1},
+    {name : 'previewImage' , maxCount : 1}
+  ]),
   convertFileToField.handle,
   createBlogValidation.handle(),
   blogController.updateBlog

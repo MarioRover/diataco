@@ -261,13 +261,17 @@ module.exports = new class blogController extends controller {
     try {
       let result = await this.validationData(req, next);
       if (!result) {
-        if (req.file) fs.unlinkSync(req.file.path);
+        if (!this.isEmpty(req.files['previewImage'])) {
+          fs.unlinkSync(req.files['previewImage'][0].path);
+        }
+        if(!this.isEmpty(req.files['wallpaper'])) {
+          fs.unlinkSync(req.files['wallpaper'][0].path);
+        }
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
       const {title,slug,summery,description,tags,descTags,keyTags} = req.body;
-      const blogPhoto = req.file;
-      // Resize Image
-      this.imageResize(blogPhoto.path);
+      const previewImage = req.files['previewImage'][0];
+      const wallpaper = req.files['wallpaper'][0];
       // check slug
       let blogDuplicate = {
         slug : await this.models.blog.find({ slug: slug } , (error , blog) => {
@@ -278,7 +282,12 @@ module.exports = new class blogController extends controller {
       let message = [];
       if (!this.isEmptyArray(blogDuplicate.slug)) message.push('اسلاگ بلاگ وارد شده قبلا ثبت شده است');
       if (!this.isEmptyArray(message)) {
-        if (req.file) fs.unlinkSync(req.file.path);
+        if (!this.isEmpty(req.files['previewImage'])) {
+          fs.unlinkSync(req.files['previewImage'][0].path);
+        }
+        if(!this.isEmpty(req.files['wallpaper'])) {
+          fs.unlinkSync(req.files['wallpaper'][0].path);
+        }
         return this.izitoastMessage(message , 'warning', res);
       } else {
         let category = await this.models.blogCategory.find({slug : req.params.category} , (error , category) =>  {
@@ -290,10 +299,15 @@ module.exports = new class blogController extends controller {
           admin: req.user._id,
           category: category[0]._id
         };
-        contentObj['imageUrl'] = {
-          destination: this.addressImage(blogPhoto),
-          originalname: blogPhoto.originalname,
-          path: blogPhoto.path
+        contentObj['previewImage'] = {
+          destination: this.addressImage(previewImage),
+          originalname: previewImage.originalname,
+          path: previewImage.path
+        }
+        contentObj['wallpaper'] = {
+          destination: this.addressImage(wallpaper),
+          originalname: wallpaper.originalname,
+          path: wallpaper.path
         }
         let newBlog = new this.models.blog({ ...contentObj });
         newBlog.save(error => {
@@ -318,7 +332,8 @@ module.exports = new class blogController extends controller {
         if (!blog) return this.serverError('not found message in deleteBlog method at blogController.js', 404, error, res);
         return blog;
       });
-      await fs.unlinkSync(blog.imageUrl.path);
+      await fs.unlinkSync(blog.wallpaper.path);
+      await fs.unlinkSync(blog.previewImage.path);
       blog.remove();
       return this.deleteObj(['پیام شما با موفقیت حذف گردید'], 'success', req.body.blog, 'row', res);
     } catch (error) {
@@ -354,11 +369,23 @@ module.exports = new class blogController extends controller {
     try {
       let result = await this.validationData(req, next);
       if (!result) {
-        if (req.file) fs.unlinkSync(req.file.path);
+        if (!this.isEmpty(req.files['previewImage'])) {
+          fs.unlinkSync(req.files['previewImage'][0].path);
+        }
+        if(!this.isEmpty(req.files['wallpaper'])) {
+          fs.unlinkSync(req.files['wallpaper'][0].path);
+        }
         return this.izitoastMessage(req.flash('errors'), 'warning', res);
       }
       const {title,slug,summery,description,tags,descTags,keyTags} = req.body;
-      const blogPhoto = req.file;
+      let previewImage,wallpaper;
+
+      if (!this.isEmpty(req.files['previewImage'])) {
+        previewImage = req.files['previewImage'][0];
+      }
+      if(!this.isEmpty(req.files['wallpaper'])) {
+        wallpaper = req.files['wallpaper'][0];
+      }
       let thisBlog = await this.models.blog.find({ slug: req.params.blog } , (error , blog) => {
         if (error) return this.serverError('جستجو اطلاعات با مشکل مواجه شد', 500, error, res);
         return blog;
@@ -377,22 +404,37 @@ module.exports = new class blogController extends controller {
         }
       }
       if (!this.isEmptyArray(message)) {
-        if (req.file) fs.unlinkSync(req.file.path);
+        if (!this.isEmpty(req.files['previewImage'])) {
+          fs.unlinkSync(req.files['previewImage'][0].path);
+        }
+        if(!this.isEmpty(req.files['wallpaper'])) {
+          fs.unlinkSync(req.files['wallpaper'][0].path);
+        }
         return this.izitoastMessage(message , 'warning', res);
       } else {
         let contentObj = {
           title, slug, summery, description, tags,descTags,keyTags,
           updatedBy : req.user._id
         };
-        if (req.file) {
-          // Resize Image
-          this.imageResize(blogPhoto.path);
-          if (thisBlog[0].imageUrl.originalname === req.file.originalname) {
-            await fs.unlinkSync(req.file.path);
-          } else {
-            if (await fs.existsSync(thisBlog[0].imageUrl.path)) await fs.unlinkSync(thisBlog[0].imageUrl.path);
-            contentObj["imageUrl"] = { destination: this.addressImage(blogPhoto), originalname: blogPhoto.originalname, path: blogPhoto.path };
+        if (!isEmptyObject(req.files)) {
+
+          if (!this.isEmpty(req.files['previewImage'])) {
+            if (thisBlog[0].previewImage.originalname === previewImage.originalname) {
+              await fs.unlinkSync(previewImage.path);
+            } else {
+              if (await fs.existsSync(thisBlog[0].previewImage.path)) await fs.unlinkSync(thisBlog[0].previewImage.path);
+              contentObj["previewImage"] = { destination: this.addressImage(previewImage), originalname: previewImage.originalname, path: previewImage.path };
+            }
           }
+          if(!this.isEmpty(req.files['wallpaper'])) {
+            if (thisBlog[0].wallpaper.originalname === wallpaper.originalname) {
+              await fs.unlinkSync(wallpaper.path);
+            } else {
+              if (await fs.existsSync(thisBlog[0].wallpaper.path)) await fs.unlinkSync(thisBlog[0].wallpaper.path);
+              contentObj["wallpaper"] = { destination: this.addressImage(wallpaper), originalname: wallpaper.originalname, path: wallpaper.path };
+            }
+          }
+
         }
         await this.models.blog.findByIdAndUpdate(thisBlog[0]._id, {
           $set: { ...contentObj, ...contentObj }

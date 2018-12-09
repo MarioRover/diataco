@@ -39,13 +39,22 @@
           </div>
           <div class="input-wrap grid align-left">
             <div class="grid-y input-group">
-              <label for="photo">تصویر پس زمینه</label>
+              <label for="wallpaper">تصویر پس زمینه بلاگ</label>
               <div class="grid align-center">
-                <div class="image-box grid align-center-middle">
+                <div class="image-box box1 grid align-center-middle">
                   <img src="">
                 </div>
               </div>
-              <input class="input-en" name="photo" type="file">
+              <input class="input-en" name="wallpaper" type="file">
+            </div>
+            <div class="grid-y input-group">
+              <label for="previewImage">تصویر پیش نمایش بلاگ</label>
+              <div class="grid align-center">
+                <div class="image-box box2 grid align-center-middle">
+                  <img src="">
+                </div>
+              </div>
+              <input class="input-en" name="previewImage" type="file">
             </div>
           </div>
            <div class="input-wrap grid align-right">
@@ -87,8 +96,11 @@
   CKEDITOR.replace('editor1' , {
     filebrowserUploadUrl : '/admin/upload-image'
   });
-  $("input[name='photo']").change(function() {
-    readURL(this);
+  $(".CreateBlog input[name='wallpaper']").change(function () {
+    readURL2(this, "1");
+  });
+  $(".CreateBlog input[name='previewImage']").change(function () {
+    readURL2(this, "2");
   });
   $(".CreateBlog input[name='descTags']").tagify();
   $(".CreateBlog input[name='keyTags']").tagify();

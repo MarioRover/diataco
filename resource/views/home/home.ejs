@@ -186,7 +186,7 @@
                 <div class="owl-carousel owl-theme">
                 <% blogs.forEach(blog => { %>
                     <div class="blog-card grid-y">
-                    <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.imageUrl.destination %>')"></a>
+                    <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.previewImage.destination %>')"></a>
                     <div class="body grid-y">
                         <div class="date grid align-left mb-1">
                         <span>
@@ -207,7 +207,7 @@
                 <div class="carousel grid-x">
                 <% blogs.forEach(blog => { %>
                     <div class="blog-card grid-y">
-                    <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.imageUrl.destination %>')"></a>
+                    <a href="/blog/<%= blog.category.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.previewImage.destination %>')"></a>
                     <div class="body grid-y">
                         <div class="date grid align-left mb-1">
                         <span>

@@ -11,16 +11,13 @@ module.exports = new class createBlogValidation extends validator {
       check('slug')
       .not().isEmpty()
       .withMessage('فیلد اسلاگ نمی تواند خالی باشد'),
-      check('tags')
-        .not().isEmpty()
-        .withMessage('فیلد تگ های بلاگ نمی تواند خالی باشد'),
       check('summery')
         .not().isEmpty()
         .withMessage('خلاصه بلاگ نمی تواند خالی باشد'),
       check('description')
         .not().isEmpty()
         .withMessage('متن بلاگ نمی تواند خالی باشد'),
-      check('photoVal')
+      check('wallpaperVal')
         .custom(async (value, {req}) => {
           if (req.method !== 'PUT') {
             if (!value) throw new Error('وارد کردن تصویر پس زمینه بلاگ الزامی است');
@@ -36,7 +33,22 @@ module.exports = new class createBlogValidation extends validator {
             }
           }
         }),
-      
+      check('previewImageVal')
+        .custom(async (value, {req}) => {
+          if (req.method !== 'PUT') {
+            if (!value) throw new Error('وارد کردن تصویر پیش نمایش بلاگ الزامی است');
+            let fileExt = ['.png', '.jpg', '.jpeg', '.svg'];
+            if (!fileExt.includes(path.extname(value))) {
+              throw new Error('پسوند فایل وارد شده از پسوندهای تصاویر نیست');
+            }
+          } else if (value) {
+            if (!value) throw new Error('وارد کردن تصویر پیش نمایش بلاگ الزامی است');
+            let fileExt = ['.png', '.jpg', '.jpeg', '.svg'];
+            if (!fileExt.includes(path.extname(value))) {
+              throw new Error('پسوند فایل وارد شده از پسوندهای تصاویر نیست');
+            }
+          }
+        }),
     ]
   }
 }

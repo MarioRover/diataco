@@ -255,9 +255,11 @@ $('.CreateBlog').submit((e) => {
   let title = $('.CreateBlog input[name = "title"]');
   let slug = $('.CreateBlog input[name = "slug"]');
   let summery = $('.CreateBlog textarea[name="summery"]');
-  let tags = $('.CreateBlog input[name="tags"]');
-  let photo = $('.CreateBlog input[name = "photo"]');
-  let photoVal = $('.CreateBlog input[name = "photo"]');
+  let wallpaper = $('.CreateBlog input[name = "wallpaper"]');
+  let wallpaperVal = $('.CreateBlog input[name = "wallpaper"]');
+
+  let previewImage = $('.CreateBlog input[name = "previewImage"]');
+  let previewImageVal = $('.CreateBlog input[name = "previewImage"]');
   let data = CKEDITOR.instances.editor1.getData();
   let inputDescTag = $('.CreateBlog input[name = "descTags"]').siblings('tag').find('span');
   let inputKeyTag = $('.CreateBlog input[name = "keyTags"]').siblings('tag').find('span');
@@ -275,9 +277,10 @@ $('.CreateBlog').submit((e) => {
   formData.append('slug', slug.val());
   formData.append('summery', summery.val());
   formData.append('description', data);
-  formData.append('tags', tags.val());
-  formData.append('photo', photo[0].files[0]);
-  formData.append('photoVal', photoVal.val());
+  formData.append('wallpaper', wallpaper[0].files[0]);
+  formData.append('wallpaperVal', wallpaperVal.val());
+  formData.append('previewImage', previewImage[0].files[0]);
+  formData.append('previewImageVal', previewImageVal.val());
   formData.append("descTags", descTags.reverse());
   formData.append("keyTags", keyTags.reverse());
 
@@ -307,8 +310,11 @@ $('.UpdateBlog').submit((e) => {
   let slug = $('.UpdateBlog input[name = "slug"]');
   let summery = $('.UpdateBlog textarea[name="summery"]');
   let tags = $('.UpdateBlog input[name="tags"]');
-  let photo = $('.UpdateBlog input[name = "photo"]');
-  let photoVal = $('.UpdateBlog input[name = "photo"]');
+  let wallpaper = $('.UpdateBlog input[name = "wallpaper"]');
+  let wallpaperVal = $('.UpdateBlog input[name = "wallpaper"]');
+
+  let previewImage = $('.UpdateBlog input[name = "previewImage"]');
+  let previewImageVal = $('.UpdateBlog input[name = "previewImage"]');
   let data = CKEDITOR.instances.editor1.getData();
   let inputDescTag = $('.UpdateBlog input[name = "descTags"]').siblings('tag').find('span');
   let inputKeyTag = $('.UpdateBlog input[name = "keyTags"]').siblings('tag').find('span');
@@ -327,8 +333,10 @@ $('.UpdateBlog').submit((e) => {
   formData.append('summery', summery.val());
   formData.append('description', data);
   formData.append('tags', tags.val());
-  formData.append('photo', photo[0].files[0]);
-  formData.append('photoVal', photoVal.val());
+  formData.append('wallpaper', wallpaper[0].files[0]);
+  formData.append('wallpaperVal', wallpaperVal.val());
+  formData.append('previewImage', previewImage[0].files[0]);
+  formData.append('previewImageVal', previewImageVal.val());
   formData.append("descTags", descTags.reverse());
   formData.append("keyTags", keyTags.reverse());
 

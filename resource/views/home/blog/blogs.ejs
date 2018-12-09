@@ -17,11 +17,11 @@
     </div>
     <div class="container grid-x align-center-middle">
 
-      <% if(categories !== 'undefined') { %>
+      <% if(categories.blogs.length > 0) { %>
         <div class="owl-carousel owl-theme">
           <% categories.blogs.forEach(blog => { %>
             <div class="blog-card grid-y">
-              <a href="/blog/<%= categories.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.imageUrl.destination %>')"></a>
+              <a href="/blog/<%= categories.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.previewImage.destination %>')"></a>
               <div class="body grid-y">
                 <div class="date grid align-left mb-1">
                   <span>
@@ -42,7 +42,7 @@
         <div class="carousel grid-x">
           <% categories.blogs.forEach(blog => { %>
             <div class="blog-card grid-y">
-              <a href="/blog/<%= categories.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.imageUrl.destination %>')"></a>
+              <a href="/blog/<%= categories.slug %>/<%= blog.slug %>" class="head" style="background-image: url('<%= blog.previewImage.destination %>')"></a>
               <div class="body grid-y">
                 <div class="date grid align-left mb-1">
                   <span>
@@ -60,10 +60,9 @@
             </div>
           <% }) %>
         </div>
+      <% } else { %>
+        <h4>بلاگی وجود ندارد</h4>
       <% } %>
-
-      
-
     </div>
   </section>
 
