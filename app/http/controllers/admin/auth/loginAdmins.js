@@ -14,7 +14,8 @@ class loginAdmins extends controller {
         layout : 'home/master',
         title : 'Sign in Diata | Official Diata&#x2122;',
         siteInfo,
-        tags : ['Login,Sign in'],
+        descTags : 'login,sing in',
+        keyTags : 'login,sing in',
         SITEKEY : process.env.RECAPTCHA_SITEKEY,
         manifest : this.Manifest
       })
