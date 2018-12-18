@@ -21,6 +21,4 @@ module.exports = class Helpers {
   date(time) {
     return moment(time);
   }
-  
-
 }
