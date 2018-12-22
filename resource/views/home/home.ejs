@@ -128,7 +128,7 @@
                             <a href="/websites/<%= website.slug %>" class="card-web">
                                 <img src="<%= website.previewImage.destination %>">
                                 <div class="body">
-                                    <h3 class="EN"><%= website.name %></h3>
+                                    <h3><%= website.name %></h3>
                                 </div>
                             </a>
                         <% }) %>
@@ -138,7 +138,7 @@
                             <a href="/websites/<%= website.slug %>" class="card-web">
                                 <img src="<%= website.previewImage.destination %>">
                                 <div class="body">
-                                    <h3 class="EN"><%= website.name %></h3>
+                                    <h3><%= website.name %></h3>
                                 </div>
                             </a>
                         <% }) %>
@@ -149,20 +149,20 @@
                 <div class="product-wrap grid-x align-around">
                     <div class="owl-carousel owl-theme">
                         <% applications.forEach(app => { %>
-                            <a href="/applications/<%= app.slug %>" class="card-web">
+                            <a href="/applications/<%= app.slug %>" class="card-web app grid align-center-middle">
                                 <img src="<%= app.previewImage.destination %>">
                                 <div class="body">
-                                    <h3 class="EN"><%= app.name %></h3>
+                                    <h3><%= app.name %></h3>
                                 </div>
                             </a>
                         <% }) %>
                     </div>
                     <div class="carousel grid-x">
                         <% applications.forEach(app => { %>
-                            <a href="/applications/<%= app.slug %>" class="card-web">
+                            <a href="/applications/<%= app.slug %>" class="card-web app grid align-center-middle">
                                 <img src="<%= app.previewImage.destination %>">
                                 <div class="body">
-                                    <h3 class="EN"><%= app.name %></h3>
+                                    <h3><%= app.name %></h3>
                                 </div>
                             </a>
                         <% }) %>

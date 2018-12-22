@@ -702,6 +702,15 @@ main {
   -webkit-transition: opacity .5s ease;
   transition: opacity .5s ease;
 }
+.card-web.app {
+  background-image: url('/img/wallpaper/black-wallpaper-10-compressor.jpg');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.card-web.app img {
+  width: 9em;
+}
 .card-web .body {
   position: absolute;
   width: 100%;
@@ -1081,7 +1090,7 @@ main {
   color: #fff;
   text-align: center;
   font-family: 'iransans';
-  font-size: 8em;
+  font-size: 2em;
 }
 .header-slider .overlay .desc .name {
   font-family: 'iransans';

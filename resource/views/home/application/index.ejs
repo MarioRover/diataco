@@ -30,10 +30,10 @@
                 <div class="owl-carousel owl-theme">
                     <% if(applications !== 'undefined') { %>
                         <% applications.forEach(app => { %>
-                            <a href="/applications/<%= app.slug %>" class="card-web">
+                            <a href="/applications/<%= app.slug %>" class="card-web app grid align-center-middle">
                                 <img src="<%= app.previewImage.destination %>">
                                 <div class="body">
-                                    <h3 class="EN">
+                                    <h3>
                                         <%= app.name %>
                                     </h3>
                                 </div>
@@ -46,10 +46,10 @@
                 <div class="carousel grid-x">
                     <% if(applications !== 'undefined') { %>
                         <% applications.forEach(app => { %>
-                            <a href="/applications/<%= app.slug %>" class="card-web">
+                            <a href="/applications/<%= app.slug %>" class="card-web app grid align-center-middle">
                                 <img src="<%= app.previewImage.destination %>">
                                 <div class="body">
-                                    <h3 class="EN">
+                                    <h3>
                                         <%= app.name %>
                                     </h3>
                                 </div>

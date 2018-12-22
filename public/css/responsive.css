@@ -1,0 +1,17 @@
+@media all and (min-width: 480px) {
+}
+@media all and (min-width: 599px) {
+}
+@media all and (min-width: 768px) {
+    .header-slider .overlay h2 {
+        font-size: 3em;
+    }
+}
+@media all and (min-width: 960px) {
+}
+@media all and (min-width:1400px) {
+}
+@media all and (min-width:1600px) {
+}
+@media all and (min-width:1900px) {
+}
