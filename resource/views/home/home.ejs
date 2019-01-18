@@ -23,14 +23,14 @@
     <div class="container" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
         <div class="wrap grid align-center align-middle grid-y">
             <% if(typeof siteInfo.logo !== 'undefined' ) { %>
-            <img class="logo" src="<%= siteInfo.logo.destination %>" alt="<%= siteInfo.nameEn %>">
+            <img class="logo" src="<%= siteInfo.logo.destination %>" alt="<%= siteInfo.nameEn %>" alt="Diata"> 
             <% } %>
             <h3><%= homePage.aboutUsheader %></h3>
             <p class="align-center"><%= homePage.aboutUsheaderDesc %></p>
             <% if(typeof homePage.aboutUsImageUrl !== 'undefined' ) { %>
-            <img src="<%= homePage.aboutUsImageUrl.destination %>">
+            <img src="<%= homePage.aboutUsImageUrl.destination %>" alt="Home Slider">
             <% } else { %>
-            <img src="" alt="">
+            <img src="" alt="No Image">
             <% } %>    
         </div>
     </div>
@@ -40,7 +40,7 @@
         <div class="ability-wrap grid-x align-around">
         <div class="item grid-x-no">
             <div class="icon grid align-justify align-top">
-                <img src="/img/Ability/LastTechno-compressor.png">
+                <img src="/img/Ability/LastTechno-compressor.png" alt="Technology">
             </div>
             <div class="content">
                 <h4><%= homePage.abilityitem1 %></h4>
@@ -49,7 +49,7 @@
         </div>
         <div class="item grid-x-no">
             <div class="icon grid align-justify align-top">
-                <img src="/img/Ability/Responsivi-compressor.png">
+                <img src="/img/Ability/Responsivi-compressor.png" alt="Responsivi">
             </div>
             <div class="content">
                 <h4><%= homePage.abilityitem2 %></h4>
@@ -58,7 +58,7 @@
         </div>
         <div class="item grid-x-no">
             <div class="icon grid align-justify align-top">
-                <img src="/img/Ability/idea-compressor.png">
+                <img src="/img/Ability/idea-compressor.png" alt="Idea">
             </div>
             <div class="content">
                 <h4><%= homePage.abilityitem3 %></h4>
@@ -76,7 +76,7 @@
         </div>
         <div class="item grid-x-no">
             <div class="icon grid align-justify align-top">
-                <img src="/img/Ability/Design-compressor.png">
+                <img src="/img/Ability/Design-compressor.png" alt="Design">
             </div>
             <div class="content">
                 <h4><%= homePage.abilityitem5 %></h4>
@@ -85,7 +85,7 @@
         </div>
         <div class="item grid-x-no">
             <div class="icon grid align-justify align-top">
-                <img src="/img/Ability/Fast-compressor.png">
+                <img src="/img/Ability/Fast-compressor.png" alt="SEO">
             </div>
             <div class="content">
                 <h4><%= homePage.abilityitem6 %></h4>
@@ -126,7 +126,7 @@
                     <div class="owl-carousel owl-theme">
                         <% websites.forEach(website => { %>
                             <a href="/websites/<%= website.slug %>" class="card-web">
-                                <img src="<%= website.previewImage.destination %>">
+                                <img src="<%= website.previewImage.destination %>" alt="<%= website.name %>">
                                 <div class="body">
                                     <h3><%= website.name %></h3>
                                 </div>
@@ -136,7 +136,7 @@
                     <div class="carousel grid-x">
                         <% websites.forEach(website => { %>
                             <a href="/websites/<%= website.slug %>" class="card-web">
-                                <img src="<%= website.previewImage.destination %>">
+                                <img src="<%= website.previewImage.destination %>" alt="<%= website.name %>">
                                 <div class="body">
                                     <h3><%= website.name %></h3>
                                 </div>
@@ -150,7 +150,7 @@
                     <div class="owl-carousel owl-theme">
                         <% applications.forEach(app => { %>
                             <a href="/applications/<%= app.slug %>" class="card-web app grid align-center-middle">
-                                <img src="<%= app.previewImage.destination %>">
+                                <img src="<%= app.previewImage.destination %>" alt="<%= app.name %>">
                                 <div class="body">
                                     <h3><%= app.name %></h3>
                                 </div>
@@ -160,7 +160,7 @@
                     <div class="carousel grid-x">
                         <% applications.forEach(app => { %>
                             <a href="/applications/<%= app.slug %>" class="card-web app grid align-center-middle">
-                                <img src="<%= app.previewImage.destination %>">
+                                <img src="<%= app.previewImage.destination %>" alt="<%= app.name %>">
                                 <div class="body">
                                     <h3><%= app.name %></h3>
                                 </div>

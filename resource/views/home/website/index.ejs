@@ -31,7 +31,7 @@
                     <% if(websites !== 'undefined') { %>
                         <% websites.forEach(website => { %>
                             <a href="/websites/<%= website.slug %>" class="card-web">
-                                <img src="<%= website.previewImage.destination %>">
+                                <img src="<%= website.previewImage.destination %>" alt="<%= website.name %>">
                                 <div class="body">
                                     <h3 class="EN">
                                         <%= website.name %>
@@ -47,7 +47,7 @@
                     <% if(websites !== 'undefined') { %>
                         <% websites.forEach(website => { %>
                         <a href="/websites/<%= website.slug %>" class="card-web">
-                            <img src="<%= website.previewImage.destination %>">
+                            <img src="<%= website.previewImage.destination %>" alt="<%= website.name %>">
                             <div class="body">
                                 <h3 class="EN">
                                     <%= website.name %>

@@ -12,7 +12,7 @@
       <div class="container">
         <div class="grid-y desc align-center">
           <div class="logo grid-x align-center mb-1">
-            <img src="<%= application.logo.destination %>">
+            <img src="<%= application.logo.destination %>" alt="<%= application.name %>">
           </div>
           <h4 class="name"><%= application.name %></h4>
           <div class="deliver grid-y align-center-middle">
@@ -23,17 +23,17 @@
             <% } %>
             <% if(application.sibapp !== '') { %>
               <a href="<%= application.sibapp %>" target="_blank">
-                <img src="/img/button/download-on-sibapp.png" alt="App Store">
+                <img src="/img/button/download-on-sibapp.png" alt="Sib App">
               </a>
             <% } %>
             <% if(application.googleplay !== '') { %>
               <a href="<%= application.googleplay %>" target="_blank">
-                <img src="/img/button/get-it-on-google-play.png" alt="App Store">
+                <img src="/img/button/get-it-on-google-play.png" alt="Google Play">
               </a>
             <% } %>
             <% if(application.cafebazar !== '') { %>
               <a href="<%= application.cafebazar %>" target="_blank">
-                <img src="/img/button/get-from-cafe-bazar.png" alt="App Store">
+                <img src="/img/button/get-from-cafe-bazar.png" alt="Cafe Bazar">
               </a>
             <% } %>
           </div>
@@ -53,7 +53,7 @@
               <% for(let i = 1 ; i <= 6 ; i++) { %>
                 <% if(application[`image${i}`] !== '' ) { %>
                   <div class="item app" onclick="">
-                    <img class="demo active" src="<%= application[`image${i}`].destination %>" id="ember<%= i %>">
+                    <img class="demo active" src="<%= application[`image${i}`].destination %>" id="ember<%= i %>" alt="image">
                   </div>
                 <% } %>
               <% } %>

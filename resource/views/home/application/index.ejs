@@ -31,7 +31,7 @@
                     <% if(applications !== 'undefined') { %>
                         <% applications.forEach(app => { %>
                             <a href="/applications/<%= app.slug %>" class="card-web app grid align-center-middle">
-                                <img src="<%= app.previewImage.destination %>">
+                                <img src="<%= app.previewImage.destination %>" alt="<%= app.name %>">
                                 <div class="body">
                                     <h3>
                                         <%= app.name %>
@@ -47,7 +47,7 @@
                     <% if(applications !== 'undefined') { %>
                         <% applications.forEach(app => { %>
                             <a href="/applications/<%= app.slug %>" class="card-web app grid align-center-middle">
-                                <img src="<%= app.previewImage.destination %>">
+                                <img src="<%= app.previewImage.destination %>" alt="<%= app.name %>">
                                 <div class="body">
                                     <h3>
                                         <%= app.name %>

@@ -8,7 +8,7 @@
       <div class="container">
         <div class="grid-y desc align-center">
           <div class="logo grid-x align-center mb-1">
-            <img src="<%= website.logo.destination %>">
+            <img src="<%= website.logo.destination %>" alt="<%= website.name %>">
           </div>
           <h4 class="name"><%= website.name %></h4>
           <div class="deliver grid align-center">
@@ -29,7 +29,7 @@
             <% if(website[`image${i}`] !== '' ) { %>
               <div class="myslides" style="display: none;">
                 <a href="<%= website[`image${i}`].destination %>">
-                  <img src="<%= website[`image${i}`].destination %>">
+                  <img src="<%= website[`image${i}`].destination %>" alt="image">
                 </a>
               </div>
             <% } %>
@@ -41,7 +41,7 @@
               <% for(let i = 1 ; i <= 6 ; i++) { %>
                 <% if(website[`image${i}`] !== '' ) { %>
                   <div class="item">
-                    <img class="demo active" src="<%= website[`image${i}`].destination %>" id="ember<%= i %>">
+                    <img class="demo active" src="<%= website[`image${i}`].destination %>" id="ember<%= i %>" alt="image">
                   </div>
                 <% } %>
               <% } %>
