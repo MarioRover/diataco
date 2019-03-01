@@ -6,7 +6,7 @@ const controller = require('../app/http/controllers/controller');
 let newCon = new controller();
 
 module.exports = {
-  port : process.env.PORT,
+  port : process.env.PORT || 3000,
   database,
   layout,
   session,
