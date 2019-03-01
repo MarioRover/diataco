@@ -1,9 +1,9 @@
-const controller = require('../controller');
+const controller = require('./controller');
 
 module.exports = new class recaptchaController extends controller {
-  async index(req, res , next) {
+  async get(req, res , next) {
     try {
-        console.log(req.body);
+      console.log(req.body);
       res.json({
           data : {
             recaptcha : {
@@ -20,5 +20,33 @@ module.exports = new class recaptchaController extends controller {
       })
     }
   };
-    
+  async post(req , res , next) {
+    try {
+      let recaptcha = await this.recaptchaValidation(req, res, next , req.body.token);
+      if(!recaptcha) {
+        return res.json({
+          status : 'success',
+          data : {
+            recaptcha : true
+          }
+        })
+      } else {
+        return res.json({
+          status : 'success',
+          data : {
+            recaptcha : false
+          }
+        })
+      }
+      
+    } catch (error) {
+      res.json({
+        status : false,
+        data : {
+          errorCode : 500
+        }
+        
+      })
+    }
+  }  
 }

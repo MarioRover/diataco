@@ -1,5 +1,4 @@
 const autoBind = require('auto-bind');
-const isMongoId = require('validator/lib/isMongoId');
 const axios = require('axios');
 const isEmpty = require('is-empty');
 
@@ -8,11 +7,11 @@ module.exports = class controller {
     autoBind(this);
     this.isEmpty = isEmpty;
   }
-  async recaptchaValidation(req , res , next) {
+  async recaptchaValidation(req , res , next , token) {
     try {
       let data = await axios({
         method: 'post',
-        url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRETKEY}&response=${req.body.recaptcha}`,
+        url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRETKEY}&response=${token}`,
       })
       if(!isEmpty(data.data['error-codes']) && data.data['error-codes'] == 'timeout-or-duplicate') {
           return true;
